@@ -1,0 +1,4 @@
+web: bundle exec rails s
+client: ./bin/webpack-dev-server
+worker1: bundle exec sidekiq
+worker2: bundle exec sidekiq

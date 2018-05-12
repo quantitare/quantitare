@@ -7,25 +7,43 @@
 # Ignore bundler config.
 /.bundle
 
+.env
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development
-/storage/*
+# Rails secrets
+config/initializers/secret_token.rb
+config/master.key
 
 /node_modules
 /yarn-error.log
 
-/public/assets
 .byebug_history
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
 /public/packs
 /public/packs-test
 /node_modules
-yarn-debug.log*
-.yarn-integrity
+
+# editor stuff
+.idea
+.idea/dataSources.xml
+tags
+*.sublime-workspace
+*.sublime-project
+.project
+
+# OS stuff
+.DS_Store
+
+# CI stuff
+.yardoc
+.yardoc/**
+coverage/**
+doc/**
+
+# RSpec stuff
+.rspec_status
+spec/examples.txt

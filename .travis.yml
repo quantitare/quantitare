@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.5.1
+addons:
+  postgresql: "10.1"
+services:
+  - postgresql
+before_install: gem install bundler -v 1.16.1
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - psql -c 'create database plato_dashboard_test;' -U postgres
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

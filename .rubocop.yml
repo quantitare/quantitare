@@ -1,0 +1,41 @@
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+
+# Metrics
+
+Metrics/LineLength:
+  Max: 120
+
+# Layout
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+# Style
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/**/*'
+
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
+
+Layout/IndentHash:
+  EnforcedStyle: consistent

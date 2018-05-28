@@ -47,3 +47,8 @@ doc/**
 # RSpec stuff
 .rspec_status
 spec/examples.txt
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity

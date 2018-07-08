@@ -42,14 +42,16 @@ class CreateScrobblersAndScrobbles < ActiveRecord::Migration[5.2]
     create_table :scrobbles do |t|
       t.string :type, null: false
       t.jsonb :data
+      t.string :guid, null: false
 
       t.references :user, foreign_key: true
-      t.references :service
+      t.references :scrobbler
 
-      t.datetime :scrobbled_at
+      t.datetime :scrobbled_at, null: false
       t.timestamps
 
       t.index :type
+      t.index :guid
       t.index :scrobbled_at
     end
   end

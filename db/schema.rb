@@ -37,13 +37,15 @@ ActiveRecord::Schema.define(version: 2018_05_27_003950) do
   create_table "scrobbles", force: :cascade do |t|
     t.string "type", null: false
     t.jsonb "data"
+    t.string "guid", null: false
     t.bigint "user_id"
-    t.bigint "service_id"
-    t.datetime "scrobbled_at"
+    t.bigint "scrobbler_id"
+    t.datetime "scrobbled_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["guid"], name: "index_scrobbles_on_guid"
     t.index ["scrobbled_at"], name: "index_scrobbles_on_scrobbled_at"
-    t.index ["service_id"], name: "index_scrobbles_on_service_id"
+    t.index ["scrobbler_id"], name: "index_scrobbles_on_scrobbler_id"
     t.index ["type"], name: "index_scrobbles_on_type"
     t.index ["user_id"], name: "index_scrobbles_on_user_id"
   end

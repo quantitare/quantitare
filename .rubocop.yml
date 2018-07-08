@@ -5,6 +5,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'db/**/*'
     - 'config/**/*'
+    - '**/*.haml'
 
 # Metrics
 

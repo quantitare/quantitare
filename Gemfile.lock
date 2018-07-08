@@ -269,6 +269,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   devise
   dotenv-rails
@@ -283,6 +284,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rails-controller-testing
   redis (~> 4.0)
+  responders
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
@@ -303,4 +305,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

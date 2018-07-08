@@ -11,8 +11,4 @@ class Service < ApplicationRecord
   validates :provider, presence: true
   validates :name, presence: true
   validates :token, presence: true
-
-  class << self
-
-  end
 end

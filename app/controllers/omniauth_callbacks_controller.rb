@@ -7,14 +7,18 @@ class OmniauthCallbacksController < AuthenticatedController
   def action_missing(action_name)
     case action_name.to_sym
     when *Devise.omniauth_providers
+      @service = handle_omniauth
+
       if handle_omniauth
-        redirect_to services_path, success: "Successfully added #{action_name}!"
+        flash[:success] = "Successfully added #{action_name.humanize}!"
       else
-        redirect_to services_path, danger: "An error occurred while trying to add #{action_name}."
+        flash[:danger] = "An error occurred while trying to add #{action_name.humanize}."
       end
     else
-      redirect_to services_path, danger: "We couldn't find a provider for #{action_name}"
+      flash[:danger] = "We couldn't find a provider for #{action_name.humanize}"
     end
+
+    redirect_to services_path
   end
 
   private

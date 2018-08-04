@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       sign_out: 'logout',
       registration: 'register',
       sign_up: 'sign_up'
+    },
+    controllers: {
+      omniauth_callbacks: 'omniauth_callbacks'
     }
 
   resources :services

@@ -262,7 +262,9 @@ Devise.setup do |config|
     (key = ENV['FOURSQUARE_OAUTH_KEY']).present? &&
     (secret = ENV['FOURSQUARE_OAUTH_SECRET']).present?
 
-    config.omniauth :foursquare, key, secret
+    config.omniauth :foursquare, key, secret,
+      strategy_class: OmniAuth::Strategies::Foursquare,
+      icon_class: 'fab fa-foursquare'
   end
 
   # ==> Warden configuration

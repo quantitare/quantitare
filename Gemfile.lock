@@ -79,7 +79,13 @@ GEM
       railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.23)
+    foursquare2 (2.0.2)
+      faraday (~> 0.8)
+      faraday_middleware (>= 0.8)
+      hashie (>= 1.0, < 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -149,6 +155,7 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
+    rack-cors (1.0.2)
     rack-protection (2.0.1)
       rack
     rack-proxy (0.6.4)
@@ -295,6 +302,7 @@ DEPENDENCIES
   devise (~> 4.4.3)
   dotenv-rails
   factory_bot_rails
+  foursquare2
   haml
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -304,6 +312,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 3.11)
+  rack-cors
   rails (~> 5.2.0)
   rails-controller-testing
   redis (~> 4.0)

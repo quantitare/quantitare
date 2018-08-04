@@ -1,0 +1,9 @@
+- content_for :title, 'Services'
+
+%h2 Services
+
+- Devise.omniauth_providers.each do |provider|
+  = omniauth_button(provider)
+
+- @services.each do |service|
+  = service.name

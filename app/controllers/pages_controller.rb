@@ -4,6 +4,6 @@
 # Pages controller
 #
 class PagesController < ApplicationController
-  def welcome
+  def index
   end
 end

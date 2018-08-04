@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'pages#welcome'
+  root to: 'pages#index'
 
   devise_for :users,
     path: 'auth',
@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       registration: 'register',
       sign_up: 'sign_up'
     }
+
+  resources :services
 end

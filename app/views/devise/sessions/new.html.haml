@@ -1,0 +1,29 @@
+.row.justify-content-sm-center
+  .col-md-8
+    %h2 Log in
+
+.row.justify-content-sm-center.my-3
+  .col-md-8
+    = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      .form-group.row
+        = f.label :email, class: 'col-sm-3 col-form-label text-right'
+        .col-sm-9
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+
+      .form-group.row
+        = f.label :password, class: 'col-sm-3 col-form-label text-right'
+        .col-sm-9
+          = f.password_field :password, autocomplete: 'off', class: 'form-control'
+
+      - if devise_mapping.rememberable?
+        .row
+          .offset-sm-3.col-sm-9
+            .from-group.form-check
+              = f.check_box :remember_me, class: 'form-check-input'
+              = f.label :remember_me, class: 'form-check-label'
+
+      .my-3.row
+        .offset-sm-3.col-sm-9
+          = f.submit 'Log in', class: 'btn btn-primary'
+
+    = render 'devise/shared/links'

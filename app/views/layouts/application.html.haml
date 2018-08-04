@@ -1,7 +1,7 @@
 !!!5
 %html
   %head
-    %title Quantitare
+    %title= content_for?(:title) ? yield(:title) + ' - Quantitare' : 'Quantitare'
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -11,8 +11,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    - unless flash.empty?
-      - flash.each do |level, content|
-        %p{ class: level }
-          = content
-    = yield
+    = render 'layouts/nav'
+    .container.py-5
+      = render 'layouts/alert'
+      = yield

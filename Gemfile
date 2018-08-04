@@ -20,11 +20,15 @@ gem 'webpacker'
 
 # Back-end
 gem 'bcrypt', '~> 3.1.7'
-gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
 gem 'responders'
 gem 'sidekiq', '~> 5.0'
+
+gem 'devise', '~> 4.4.3'
+gem 'omniauth', '~> 1.8.1'
+
+gem 'omniauth-foursquare', '~> 1.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

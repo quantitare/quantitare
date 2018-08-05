@@ -10,10 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_04_170545) do
+ActiveRecord::Schema.define(version: 2018_08_04_192313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "location_scrobbles", force: :cascade do |t|
+    t.string "type", null: false
+    t.string "name"
+    t.string "category"
+    t.decimal "distance"
+    t.text "description"
+    t.jsonb "trackpoints", default: "[]", null: false
+    t.bigint "place_id"
+    t.bigint "user_id"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_location_scrobbles_on_place_id"
+    t.index ["trackpoints"], name: "index_location_scrobbles_on_trackpoints", using: :gin
+    t.index ["type", "category"], name: "index_location_scrobbles_on_type_and_category"
+    t.index ["user_id"], name: "index_location_scrobbles_on_user_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "country"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.string "category"
+    t.text "description"
+    t.string "service_identifier"
+    t.bigint "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category"], name: "index_places_on_category"
+    t.index ["name"], name: "index_places_on_name"
+    t.index ["service_id"], name: "index_places_on_service_id"
+    t.index ["service_identifier"], name: "index_places_on_service_identifier"
+  end
 
   create_table "scrobblers", force: :cascade do |t|
     t.text "options"

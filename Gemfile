@@ -18,13 +18,19 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby
 
-# Back-end
+# Back-end core
+gem 'redis', '~> 4.0'
+gem 'sidekiq', '~> 5.0'
+
+# Utilities
 gem 'bcrypt', '~> 3.1.7'
 gem 'jbuilder', '~> 2.5'
-gem 'rack-cors'
-gem 'redis', '~> 4.0'
-gem 'responders'
-gem 'sidekiq', '~> 5.0'
+gem 'nokogiri', '~> 1.8.4'
+
+# Extensions
+gem 'activerecord-import', '~> 0.25.0'
+gem 'rack-cors', '~> 1.0.2'
+gem 'responders', '~> 2.4.0'
 
 # Authentication
 gem 'devise', '~> 4.4.3'

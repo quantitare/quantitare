@@ -16,8 +16,9 @@ Rails.application.routes.draw do
     }
 
   resources :services, only: [:index, :destroy]
-  resources :locations, controller: 'location_scrobbles', only: [:index]
-  namespace :locations do
-    resource :import, except: [:index, :show, :destroy]
+  resources :locations, controller: 'location_scrobbles', only: [:index] do
+    collection do
+      resources :imports, except: [:index, :destroy], as: 'location_imports', controller: 'location_imports'
+    end
   end
 end

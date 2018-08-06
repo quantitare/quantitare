@@ -5,9 +5,8 @@
 # different from a typical scrobble.
 #
 class LocationScrobble < ApplicationRecord
-  @importers = [GoogleMapsKmlAdapter]
-
   belongs_to :place
+  belongs_to :location_import
 
   class << self
     attr_accessor :importers

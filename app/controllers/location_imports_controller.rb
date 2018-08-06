@@ -3,12 +3,12 @@
 ##
 # LocationScrobble importers get called from here.
 #
-class Locations::ImportsController < AuthenticatedController
+class LocationImportsController < AuthenticatedController
   def show
   end
 
   def new
-    @importers = LocationScrobble.importers
+    @location_import = LocationImport.new
   end
 
   def create
@@ -28,10 +28,10 @@ class Locations::ImportsController < AuthenticatedController
     end
 
     if success
-      flash[:success] = 'Locations successfully imported!'
+      flash.success = 'Locations successfully imported!'
       redirect_to :show
     else
-      flash[:danger] = 'There was a problem importing your file.'
+      flash.danger = 'There was a problem importing your file.'
       redirect_to :back
     end
   end

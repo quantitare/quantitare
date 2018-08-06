@@ -4,4 +4,6 @@
 # A place
 #
 class Place < ApplicationRecord
+  has_many :location_scrobbles
+  belongs_to :user
 end

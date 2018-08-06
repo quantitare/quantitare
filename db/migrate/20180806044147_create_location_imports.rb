@@ -4,6 +4,8 @@ class CreateLocationImports < ActiveRecord::Migration[5.2]
       t.string :guid
       t.string :adapter
 
+      t.references :user, foreign_key: true
+
       t.timestamps
 
       t.index :guid

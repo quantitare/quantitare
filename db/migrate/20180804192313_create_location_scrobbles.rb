@@ -18,7 +18,8 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
 
       t.string :service_identifier
 
-      t.references :service
+      t.references :service, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
 
@@ -36,8 +37,8 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
 
       t.jsonb :trackpoints, null: false, default: '[]'
 
-      t.references :place
-      t.references :user
+      t.references :place, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.datetime :start_time, null: false
       t.datetime :end_time, null: false

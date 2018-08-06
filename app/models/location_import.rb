@@ -7,6 +7,7 @@ class LocationImport < ApplicationRecord
   include HasGuid
 
   has_many :location_scrobbles
+  belongs_to :user
   has_one_attached :import_file
 
   @adapters = []

@@ -5,6 +5,7 @@
 # different from a typical scrobble.
 #
 class LocationScrobble < ApplicationRecord
+  belongs_to :user
   belongs_to :place
   belongs_to :location_import
 

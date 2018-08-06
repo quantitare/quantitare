@@ -39,9 +39,11 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
   create_table "location_imports", force: :cascade do |t|
     t.string "guid"
     t.string "adapter"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guid"], name: "index_location_imports_on_guid"
+    t.index ["user_id"], name: "index_location_imports_on_user_id"
   end
 
   create_table "location_scrobbles", force: :cascade do |t|
@@ -79,12 +81,14 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.text "description"
     t.string "service_identifier"
     t.bigint "service_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category"], name: "index_places_on_category"
     t.index ["name"], name: "index_places_on_name"
     t.index ["service_id"], name: "index_places_on_service_id"
     t.index ["service_identifier"], name: "index_places_on_service_identifier"
+    t.index ["user_id"], name: "index_places_on_user_id"
   end
 
   create_table "scrobblers", force: :cascade do |t|
@@ -156,7 +160,12 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "location_imports", "users"
   add_foreign_key "location_scrobbles", "location_imports"
+  add_foreign_key "location_scrobbles", "places"
+  add_foreign_key "location_scrobbles", "users"
+  add_foreign_key "places", "services"
+  add_foreign_key "places", "users"
   add_foreign_key "scrobblers", "users"
   add_foreign_key "scrobbles", "users"
   add_foreign_key "services", "users"

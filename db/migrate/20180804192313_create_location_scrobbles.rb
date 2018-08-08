@@ -39,6 +39,7 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
 
       t.references :place, foreign_key: true
       t.references :user, foreign_key: true
+      t.references :source, polymorphic: true
 
       t.datetime :start_time, null: false
       t.datetime :end_time, null: false
@@ -46,6 +47,8 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
 
       t.index [:type, :category]
       t.index :trackpoints, using: :gin
+      t.index :start_time
+      t.index :end_time
     end
   end
 end

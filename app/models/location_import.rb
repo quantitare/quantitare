@@ -6,7 +6,7 @@
 class LocationImport < ApplicationRecord
   include HasGuid
 
-  has_many :location_scrobbles
+  has_many :location_scrobbles, as: :source
   belongs_to :user
   has_one_attached :import_file
 

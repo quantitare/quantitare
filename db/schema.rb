@@ -55,13 +55,18 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.jsonb "trackpoints", default: "[]", null: false
     t.bigint "place_id"
     t.bigint "user_id"
+    t.string "source_type"
+    t.bigint "source_id"
     t.datetime "start_time", null: false
     t.datetime "end_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "location_import_id"
+    t.index ["end_time"], name: "index_location_scrobbles_on_end_time"
     t.index ["location_import_id"], name: "index_location_scrobbles_on_location_import_id"
     t.index ["place_id"], name: "index_location_scrobbles_on_place_id"
+    t.index ["source_type", "source_id"], name: "index_location_scrobbles_on_source_type_and_source_id"
+    t.index ["start_time"], name: "index_location_scrobbles_on_start_time"
     t.index ["trackpoints"], name: "index_location_scrobbles_on_trackpoints", using: :gin
     t.index ["type", "category"], name: "index_location_scrobbles_on_type_and_category"
     t.index ["user_id"], name: "index_location_scrobbles_on_user_id"
@@ -115,13 +120,14 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.jsonb "data"
     t.string "guid", null: false
     t.bigint "user_id"
-    t.bigint "scrobbler_id"
+    t.string "source_type"
+    t.bigint "source_id"
     t.datetime "scrobbled_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guid"], name: "index_scrobbles_on_guid"
     t.index ["scrobbled_at"], name: "index_scrobbles_on_scrobbled_at"
-    t.index ["scrobbler_id"], name: "index_scrobbles_on_scrobbler_id"
+    t.index ["source_type", "source_id"], name: "index_scrobbles_on_source_type_and_source_id"
     t.index ["type"], name: "index_scrobbles_on_type"
     t.index ["user_id"], name: "index_scrobbles_on_user_id"
   end

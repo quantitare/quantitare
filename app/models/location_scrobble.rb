@@ -7,7 +7,7 @@
 class LocationScrobble < ApplicationRecord
   belongs_to :user
   belongs_to :place
-  belongs_to :location_import
+  belongs_to :source, polymorphic: true
 
   class << self
     attr_accessor :importers

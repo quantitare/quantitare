@@ -45,7 +45,7 @@ class CreateScrobblersAndScrobbles < ActiveRecord::Migration[5.2]
       t.string :guid, null: false
 
       t.references :user, foreign_key: true
-      t.references :scrobbler
+      t.references :source, polymorphic: true
 
       t.datetime :scrobbled_at, null: false
       t.timestamps

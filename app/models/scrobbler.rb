@@ -7,7 +7,7 @@
 class Scrobbler < ActiveRecord::Base
   include HasGuid
 
+  has_many :scrobbles, as: :source, inverse_of: :scrobbler
   belongs_to :user
   belongs_to :service
-  has_many :scrobbles, inverse_of: :scrobbler
 end

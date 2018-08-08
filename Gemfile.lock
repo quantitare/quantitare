@@ -74,11 +74,13 @@ GEM
       railties (>= 3.2, < 6.0)
     erubi (1.7.1)
     execjs (2.7.0)
-    factory_bot (4.8.2)
+    factory_bot (4.10.0)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.8.2)
-      factory_bot (~> 4.8.2)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
       railties (>= 3.0.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
@@ -95,7 +97,7 @@ GEM
       tilt
     hashdiff (0.3.7)
     hashie (3.5.7)
-    i18n (1.0.1)
+    i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -162,7 +164,7 @@ GEM
       rack
     rack-proxy (0.6.4)
       rack
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.0)
       actioncable (= 5.2.0)
@@ -305,6 +307,7 @@ DEPENDENCIES
   devise (~> 4.4.3)
   dotenv-rails
   factory_bot_rails
+  faker
   foursquare2
   haml
   jbuilder (~> 2.5)

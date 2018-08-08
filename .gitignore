@@ -14,6 +14,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/storage
 
 # Rails secrets
 config/initializers/secret_token.rb

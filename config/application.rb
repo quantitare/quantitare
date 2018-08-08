@@ -39,5 +39,7 @@ module Quantitare
           methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

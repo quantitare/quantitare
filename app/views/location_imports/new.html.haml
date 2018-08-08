@@ -6,6 +6,7 @@
 .row.justify-content-sm-center.py-4
   .col-md-8
     = form_for @location_import, multipart: true do |f|
+      = errors_for(@location_import)
       .form-group.row
         = f.label :import_file, 'File to import', class: 'col-sm-3 col-form-label text-right'
         .col-sm-9

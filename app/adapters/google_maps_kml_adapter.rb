@@ -4,13 +4,15 @@
 # An adapter for dealing with a Google Maps KML file.
 #
 class GoogleMapsKmlAdapter
+  include LocationImportable
+
   class << self
     def importer_label
       'Google Maps KML'
     end
 
-    def parse_import_file(file_contents)
-      new(file_contents)
+    def from_file_contents(contents)
+      new(contents)
     end
   end
 

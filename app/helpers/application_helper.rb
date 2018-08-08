@@ -11,6 +11,15 @@ module ApplicationHelper
     content_tag :i, nil, class: dom_class
   end
 
+  def errors_for(object)
+    return unless object.errors.any?
+
+    content_tag(:div, class: 'card border-danger mb-4') do
+      concat error_header_for_object(object)
+      concat error_list_for_object(object)
+    end
+  end
+
   def nav_link(name, path, options = {})
     options = options.deep_dup
     options[:class] = add_dom_classes(options[:class], 'nav-link nav-item')
@@ -55,5 +64,25 @@ module ApplicationHelper
 
   def user_omniauth_authorize_path(provider)
     send "user_#{provider}_omniauth_authorize_path"
+  end
+
+  private
+
+  def error_header_for_object(object)
+    error_plural = pluralize(object.errors.count, 'error')
+
+    content_tag(:div, class: 'card-header bg-danger text-white') do
+      concat "#{error_plural} prohibited this #{object.class.name.underscore.humanize.downcase} from being saved:"
+    end
+  end
+
+  def error_list_for_object(object)
+    content_tag(:div, class: 'card-body') do
+      concat(content_tag(:ul, class: 'mb-0') do
+        object.errors.full_messages.each do |msg|
+          concat content_tag(:li, msg)
+        end
+      end)
+    end
   end
 end

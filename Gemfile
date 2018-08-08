@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rspec-rails'
 
   gem 'factory_bot_rails'
+  gem 'faker'
 
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -72,10 +73,11 @@ end
 
 group :test do
   gem 'rails-controller-testing'
+  gem 'webmock'
+
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
-  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

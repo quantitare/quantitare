@@ -29,6 +29,7 @@ gem 'nokogiri', '~> 1.8.4'
 
 # Extensions
 gem 'activerecord-import', '~> 0.25.0'
+gem 'memoist'
 gem 'rack-cors', '~> 1.0.2'
 gem 'responders', '~> 2.4.0'
 
@@ -79,6 +80,3 @@ group :test do
   gem 'simplecov'
   gem 'vcr'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

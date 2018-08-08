@@ -7,8 +7,8 @@ module LocationImportable
   extend ActiveSupport::Concern
 
   class_methods do
-    def load_import(import)
-      contents = File.load(import.import_file)
+    def for_location_import(location_import)
+      contents = location_import.import_file.download
       load_file_contents(contents)
     end
   end

@@ -23,8 +23,16 @@ class LocationImport < ApplicationRecord
     end
   end
 
-  def adapter
-    self[:adapter].nil? ? nil : Object.const_get(self[:adapter])
+  def prepared_adapter
+    preparable_adapter? ? adapter_klass.for_location_import(self) : nil
+  end
+
+  def preparable_adapter?
+    adapter_klass.present? && import_file.attachment.present?
+  end
+
+  def adapter_klass
+    adapter.nil? ? nil : Object.const_get(adapter)
   end
 
   add_adapter GoogleMapsKmlAdapter

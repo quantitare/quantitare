@@ -16,17 +16,24 @@ Metrics/MethodLength:
   Max: 15
 
 # Layout
+#
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
-Layout/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
-
-Layout/MultilineOperationIndentation:
-  EnforcedStyle: indented
-
 # Style
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/**/*'
 
 Style/DoubleNegation:
   Enabled: false
@@ -34,15 +41,8 @@ Style/DoubleNegation:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+Style/LambdaCall:
+  EnforcedStyle: braces
+
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/**/*'
-
-Layout/EmptyLinesAroundArguments:
-  Enabled: false
-
-Layout/IndentHash:
-  EnforcedStyle: consistent

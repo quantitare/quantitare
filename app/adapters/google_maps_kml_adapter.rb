@@ -11,7 +11,7 @@ class GoogleMapsKmlAdapter
       'Google Maps KML'
     end
 
-    def from_file_contents(contents)
+    def load_file_contents(contents)
       new(contents)
     end
   end

@@ -12,31 +12,13 @@ class LocationImportsController < AuthenticatedController
     @location_import = current_user.location_imports.new(location_import_params)
     @location_import.import_file.attach(params[:location_import][:import_file])
 
-    if @location_import.save
-      redirect_to :edit
+    result = ProcessLocationImport.(@location_import)
+
+    if result.success?
+      redirect_to edit_location_import_path(@location_import)
     else
       render :new
     end
-
-    # parsed = importer.parse_import_file(file)
-    # success = true
-
-    # LocationScrobble.transaction do
-    #   result = LocationScrobble.import(parsed.location_scrobbles)
-
-    #   if result.failed_instances.present?
-    #     success = false
-    #     raise ActiveRecord::Rollback
-    #   end
-    # end
-
-    # if success
-    #   flash.success = 'Locations successfully imported!'
-    #   redirect_to :show
-    # else
-    #   flash.danger = 'There was a problem importing your file.'
-    #   redirect_to :back
-    # end
   end
 
   def edit

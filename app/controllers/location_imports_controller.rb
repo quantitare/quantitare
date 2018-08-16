@@ -12,10 +12,10 @@ class LocationImportsController < AuthenticatedController
     @location_import = current_user.location_imports.new(location_import_params)
     @location_import.import_file.attach(params[:location_import][:import_file])
 
-    result = ProcessLocationImport.(@location_import)
+    @result = ProcessLocationImport.(@location_import)
 
-    if result.success?
-      redirect_to edit_location_import_path(@location_import)
+    if @result.success?
+      redirect_to locations_path(from: @location_import.interval[0], to: @location_import.interval[1])
     else
       render :new
     end

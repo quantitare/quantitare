@@ -4,13 +4,11 @@ class CreateLocationImports < ActiveRecord::Migration[5.2]
       t.string :guid
       t.string :adapter
 
-      t.references :user, foreign_key: true
+      t.references :user, foreign_key: true, null: false
 
       t.timestamps
 
       t.index :guid
     end
-
-    add_reference :location_scrobbles, :location_import, foreign_key: true
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_044147) do
+ActiveRecord::Schema.define(version: 2018_08_14_050431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
   create_table "location_imports", force: :cascade do |t|
     t.string "guid"
     t.string "adapter"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guid"], name: "index_location_imports_on_guid"
@@ -53,17 +53,17 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.decimal "distance"
     t.text "description"
     t.jsonb "trackpoints", default: "[]", null: false
+    t.bigint "user_id", null: false
     t.bigint "place_id"
-    t.bigint "user_id"
-    t.string "source_type"
-    t.bigint "source_id"
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
     t.datetime "start_time", null: false
     t.datetime "end_time", null: false
+    t.tsrange "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "location_import_id"
     t.index ["end_time"], name: "index_location_scrobbles_on_end_time"
-    t.index ["location_import_id"], name: "index_location_scrobbles_on_location_import_id"
+    t.index ["period"], name: "index_location_scrobbles_on_period", using: :gist
     t.index ["place_id"], name: "index_location_scrobbles_on_place_id"
     t.index ["source_type", "source_id"], name: "index_location_scrobbles_on_source_type_and_source_id"
     t.index ["start_time"], name: "index_location_scrobbles_on_start_time"
@@ -85,10 +85,12 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.string "category"
     t.text "description"
     t.string "service_identifier"
+    t.boolean "global"
+    t.bigint "user_id", null: false
     t.bigint "service_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "guid"
     t.index ["category"], name: "index_places_on_category"
     t.index ["name"], name: "index_places_on_name"
     t.index ["service_id"], name: "index_places_on_service_id"
@@ -103,7 +105,7 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.string "schedule"
     t.string "guid", null: false
     t.boolean "disabled", default: false, null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.bigint "service_id"
     t.datetime "last_scrobbled_at"
     t.datetime "created_at", null: false
@@ -119,9 +121,9 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.string "type", null: false
     t.jsonb "data"
     t.string "guid", null: false
-    t.bigint "user_id"
-    t.string "source_type"
-    t.bigint "source_id"
+    t.bigint "user_id", null: false
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
     t.datetime "scrobbled_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -139,11 +141,11 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
     t.text "secret"
     t.string "uid"
     t.text "refresh_token"
-    t.bigint "user_id"
+    t.jsonb "options", default: "{}"
+    t.bigint "user_id", null: false
     t.datetime "expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.jsonb "options"
     t.index ["provider"], name: "index_services_on_provider"
     t.index ["uid"], name: "index_services_on_uid"
     t.index ["user_id"], name: "index_services_on_user_id"
@@ -167,11 +169,11 @@ ActiveRecord::Schema.define(version: 2018_08_06_044147) do
   end
 
   add_foreign_key "location_imports", "users"
-  add_foreign_key "location_scrobbles", "location_imports"
   add_foreign_key "location_scrobbles", "places"
   add_foreign_key "location_scrobbles", "users"
   add_foreign_key "places", "services"
   add_foreign_key "places", "users"
+  add_foreign_key "scrobblers", "services"
   add_foreign_key "scrobblers", "users"
   add_foreign_key "scrobbles", "users"
   add_foreign_key "services", "users"

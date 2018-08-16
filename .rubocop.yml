@@ -16,7 +16,7 @@ Metrics/MethodLength:
   Max: 15
 
 # Layout
-#
+
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 

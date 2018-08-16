@@ -2,7 +2,7 @@
 
 module Serviceable
   class Result
-    attr_reader :errors
+    attr_writer :errors
 
     def errors
       @errors ||= []

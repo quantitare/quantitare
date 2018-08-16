@@ -29,6 +29,7 @@ gem 'nokogiri', '~> 1.8.4'
 
 # Extensions
 gem 'activerecord-import', '~> 0.25.0'
+gem 'draper', '~> 3.0.1'
 gem 'memoist'
 gem 'rack-cors', '~> 1.0.2'
 gem 'responders', '~> 2.4.0'

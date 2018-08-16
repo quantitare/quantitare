@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :destroy]
   resources :locations, controller: 'location_scrobbles', only: [:index] do
     collection do
+      resources :scrobbles, only: [:edit, :update], as: 'location_scrobbles', controller: 'location_scrobbles'
+      resources :transit_scrobbles, only: [:edit, :update], as: 'transit_scrobbles', controller: 'location_scrobbles'
+      resources :place_scrobbles, only: [:edit, :update], as: 'place_scrobbles', controller: 'location_scrobbles'
+
       resources :imports, except: [:index, :destroy], as: 'location_imports', controller: 'location_imports'
     end
   end

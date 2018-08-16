@@ -1,0 +1,42 @@
+- content_for :title, 'Edit location scrobble'
+
+.row.border-bottom.pb-2
+  %h2
+    = @location_scrobble.icon_tag(class: 'mr-1')
+    = @location_scrobble.name
+    %small.text-muted
+      - if @location_scrobble.transit?
+        #{@location_scrobble.distance}
+      %i from
+      = @location_scrobble.start_time
+      %i to
+      = @location_scrobble.end_time
+
+.row.justify-content-sm-center.py-4
+  .col-md-8
+    = form_for @location_scrobble do |f|
+      %h3.border-bottom.pb-2.my-2 Basic info
+      .form-group.row
+        = f.label :name, class: 'col-sm-3 col-form-label text-right'
+        .col-sm-9
+          = f.text_field :name, class: 'form-control-plaintext', readonly: true
+
+      .form-group.row
+        = f.label :type, class: 'col-sm-3 col-form-label text-right'
+        .col-sm-9
+          %span.form-control-plaintext{ readonly: true }= f.object.friendly_type
+
+      .form-group.row
+        = f.label :category, class: 'col-sm-3 col-form-label text-right'
+        .col-sm-9
+          = f.text_field :category, class: 'form-control-plaintext', readonly: true
+
+      - if @location_scrobble.place?
+        %h3.border-bottom.pb-2.my-2 Place info
+
+        .form-group.row
+          = f.label :place, 'Private place', class: 'col-sm-3 col-form-label text-right'
+          .col-sm-7
+            = f.select :place, options_from_collection_for_select(current_user.places, :id, :name), { include_blank: true }, class: 'form-control'
+          .col-sm-2
+            = link_to icon_tag('fas fa-plus'), '#', class: 'btn btn-success form-control'

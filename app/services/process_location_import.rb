@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 ##
-# Walks through the supplemental processes involved with {LocationImport} creation
+# Defines the workflow for creating a {LocationImport}
 #
 class ProcessLocationImport
-  extend Memoist
   include Serviceable
 
   attr_reader :location_import, :options
@@ -17,33 +16,33 @@ class ProcessLocationImport
   end
 
   def call
+    step(:process_scrobbles)
     step(:save_location_import)
-    step(:create_scrobbles)
 
     result.set(location_import: location_import, options: options)
   end
 
   private
 
-  def save_location_import
-    result.errors << location.errors.full_messages unless location_import.save
-  end
+  # Steps
 
-  def create_scrobbles
-    scrobbles = prepare_location_scrobbles
-    import_result = LocationScrobble.import(scrobbles, validate: true)
-    process_import_result(import_result)
-  end
-
-  def prepare_location_scrobbles
-    scrobbles = adapter.location_scrobbles
-
+  def process_scrobbles
     scrobbles.each do |scrobble|
-      scrobble.assign_attributes(source: location_import, user: location_import.user)
-      scrobble.run_callbacks(:save) { false }
-    end
+      location_import.location_scrobbles << scrobble
+      scrobble.assign_attributes(user: location_import.user)
 
-    scrobbles
+      result.errors += ProcessLocationScrobble.(scrobble, save: false).errors
+    end
+  end
+
+  def save_location_import
+    result.errors += location_import.errors.full_messages unless location_import.save
+  end
+
+  # Helpers
+
+  def scrobbles
+    @scrobbles ||= adapter.location_scrobbles
   end
 
   def adapter

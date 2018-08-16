@@ -4,6 +4,10 @@
 # Helper methods for controllers & views.
 #
 module ApplicationHelper
+  def friendly_format_time(time)
+    time.strftime('%-d %b %Y %l:%M:%S%P')
+  end
+
   def icon_tag(icon_class, options = {})
     icon_class ||= 'fa fa-lock'
     dom_class = add_dom_classes(options[:class], icon_class)

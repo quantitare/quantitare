@@ -24,7 +24,7 @@ class Service < ApplicationRecord
     end
 
     def lookup_provider(omniauth)
-      available_providers.fetch(omniauth[:provider], available_providers[:default]).call(omniauth)
+      available_providers.fetch(omniauth[:provider], available_providers[:default]).(omniauth)
     end
 
     def find_or_initialize_via_omniauth(omniauth)
@@ -43,7 +43,7 @@ class Service < ApplicationRecord
     end
 
     def get_options(omniauth)
-      available_providers.fetch(omniauth['provider'].to_sym, available_providers[:default]).call(omniauth)
+      available_providers.fetch(omniauth['provider'].to_sym, available_providers[:default]).(omniauth)
     end
   end
 

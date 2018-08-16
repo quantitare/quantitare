@@ -10,7 +10,9 @@ class CreateScrobblersAndScrobbles < ActiveRecord::Migration[5.2]
       t.string :uid
       t.text :refresh_token
 
-      t.references :user, foreign_key: true
+      t.jsonb :options, default: '{}'
+
+      t.references :user, foreign_key: true, null: false
 
       t.datetime :expires_at
       t.timestamps
@@ -28,8 +30,8 @@ class CreateScrobblersAndScrobbles < ActiveRecord::Migration[5.2]
 
       t.boolean :disabled, default: false, null: false
 
-      t.references :user, foreign_key: true
-      t.references :service
+      t.references :user, foreign_key: true, null: false
+      t.references :service, foreign_key: true, null: true
 
       t.datetime :last_scrobbled_at
       t.timestamps
@@ -44,8 +46,8 @@ class CreateScrobblersAndScrobbles < ActiveRecord::Migration[5.2]
       t.jsonb :data
       t.string :guid, null: false
 
-      t.references :user, foreign_key: true
-      t.references :source, polymorphic: true
+      t.references :user, foreign_key: true, null: false
+      t.references :source, polymorphic: true, null: false
 
       t.datetime :scrobbled_at, null: false
       t.timestamps

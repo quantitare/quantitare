@@ -23,6 +23,13 @@ class LocationImport < ApplicationRecord
     end
   end
 
+  def interval
+    [
+      location_scrobbles.min_by(&:start_time).start_time,
+      location_scrobbles.max_by(&:end_time).end_time
+    ]
+  end
+
   def prepared_adapter
     preparable_adapter? ? adapter_klass.for_location_import(self) : nil
   end

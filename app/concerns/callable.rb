@@ -4,7 +4,7 @@
 # Adds a +.call+ class method that passes its arguments to +initialize+ and calls the instance method +#call+. Use for
 # DRYing up service/query object boilerplate.
 #
-# ==Usage
+# == Usage
 #
 #   class MyCoolThing
 #     include Callable
@@ -27,7 +27,7 @@ module Callable
 
   class_methods do
     def call(*args)
-      new(*args).call
+      new(*args).()
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_050431) do
+ActiveRecord::Schema.define(version: 2018_08_06_044147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_050431) do
     t.string "category"
     t.decimal "distance"
     t.text "description"
+    t.string "guid"
     t.jsonb "trackpoints", default: "[]", null: false
     t.bigint "user_id", null: false
     t.bigint "place_id"
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_050431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["end_time"], name: "index_location_scrobbles_on_end_time"
+    t.index ["guid"], name: "index_location_scrobbles_on_guid"
     t.index ["period"], name: "index_location_scrobbles_on_period", using: :gist
     t.index ["place_id"], name: "index_location_scrobbles_on_place_id"
     t.index ["source_type", "source_id"], name: "index_location_scrobbles_on_source_type_and_source_id"
@@ -85,12 +87,12 @@ ActiveRecord::Schema.define(version: 2018_08_14_050431) do
     t.string "category"
     t.text "description"
     t.string "service_identifier"
+    t.string "guid"
     t.boolean "global"
     t.bigint "user_id", null: false
     t.bigint "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "guid"
     t.index ["category"], name: "index_places_on_category"
     t.index ["name"], name: "index_places_on_name"
     t.index ["service_id"], name: "index_places_on_service_id"
@@ -111,6 +113,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_050431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["disabled"], name: "index_scrobblers_on_disabled"
+    t.index ["guid"], name: "index_scrobblers_on_guid"
     t.index ["schedule"], name: "index_scrobblers_on_schedule"
     t.index ["service_id"], name: "index_scrobblers_on_service_id"
     t.index ["type"], name: "index_scrobblers_on_type"
@@ -119,17 +122,27 @@ ActiveRecord::Schema.define(version: 2018_08_14_050431) do
 
   create_table "scrobbles", force: :cascade do |t|
     t.string "type", null: false
+    t.string "category", null: false
     t.jsonb "data"
     t.string "guid", null: false
+    t.string "adapter"
+    t.string "service_identifier"
     t.bigint "user_id", null: false
     t.string "source_type", null: false
     t.bigint "source_id", null: false
-    t.datetime "scrobbled_at", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.tsrange "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["adapter", "service_identifier"], name: "index_scrobbles_on_adapter_and_service_identifier"
+    t.index ["category"], name: "index_scrobbles_on_category"
+    t.index ["data"], name: "index_scrobbles_on_data", using: :gin
+    t.index ["end_time"], name: "index_scrobbles_on_end_time"
     t.index ["guid"], name: "index_scrobbles_on_guid"
-    t.index ["scrobbled_at"], name: "index_scrobbles_on_scrobbled_at"
+    t.index ["period"], name: "index_scrobbles_on_period", using: :gist
     t.index ["source_type", "source_id"], name: "index_scrobbles_on_source_type_and_source_id"
+    t.index ["start_time"], name: "index_scrobbles_on_start_time"
     t.index ["type"], name: "index_scrobbles_on_type"
     t.index ["user_id"], name: "index_scrobbles_on_user_id"
   end

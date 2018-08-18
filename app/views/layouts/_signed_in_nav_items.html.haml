@@ -1,6 +1,7 @@
 .navbar-nav.mr-auto
-  = nav_link 'Services', services_path
+  = nav_link 'Scrobblers', scrobblers_path
   = nav_link 'Locations', locations_path
+  = nav_link 'Services', services_path
 
 .navbar-nav
   = nav_link 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-link nav-link btn-sm'

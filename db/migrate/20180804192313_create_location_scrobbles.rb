@@ -17,6 +17,7 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
       t.text :description
 
       t.string :service_identifier
+      t.string :guid
       t.boolean :global
 
       t.references :user, foreign_key: true, null: false
@@ -36,6 +37,8 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
       t.decimal :distance
       t.text :description
 
+      t.string :guid
+
       t.jsonb :trackpoints, null: false, default: '[]'
 
       t.references :user, foreign_key: true, null: false
@@ -49,6 +52,7 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
 
       t.index [:type, :category]
       t.index :trackpoints, using: :gin
+      t.index :guid
       t.index :start_time
       t.index :end_time
       t.index :period, using: :gist

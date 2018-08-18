@@ -13,9 +13,9 @@ document.addEventListener('turbolinks:load', () => {
   Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   // document.body.appendChild(document.createElement('app'));
 
-  const timelineApp = new Vue({
+  const timeline = new Vue({
     el: '#timeline',
-    template: '<timeline />',
-    components: { timeline },
+    template: '<timeline/>',
+    components: { timeline }
   });
 });

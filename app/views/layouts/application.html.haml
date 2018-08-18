@@ -10,6 +10,8 @@
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
+    = content_for(:head)
+
   %body
     = render 'layouts/nav'
     .container.py-5

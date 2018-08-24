@@ -1,5 +1,6 @@
 - content_for :head do
   = javascript_pack_tag 'scrobbler-form'
+  = stylesheet_pack_tag 'scrobbler-form'
 
 #scrobbler-form
   = vue_form_with model: @scrobbler do |f|
@@ -7,11 +8,12 @@
       .col-md-6.pr-5
         = errors_for(@scrobbler)
 
-        .row.form-group
-          = f.label :type
-          = f.text_field :type, class: 'form-control'
+        - if @scrobbler.new_record?
+          .row.form-group
+            = f.label :type
+            = f.select :type, options_for_select(scrobbler_type_select_options, @scrobbler.type), {}, class: 'form-control', autofocus: true
 
-        .row.rowm-group
+        .row.form-group
           = f.label :name
           = f.text_field :name, class: 'form-control'
 

@@ -89,4 +89,8 @@ module ApplicationHelper
       end)
     end
   end
+
+  def humanize_type(type)
+    type.gsub(/^.*::/, '').titleize
+  end
 end

@@ -23,7 +23,7 @@ module Typeable
 
     private
 
-    def fetch_base_types
+    def fetch_base_types(module_name)
       base_path = Rails.root.join('app', 'models', module_name.underscore, '*.rb')
       Dir[base_path].map { |path| module_name + '::' + File.basename(path, '.rb').camelize }
     end

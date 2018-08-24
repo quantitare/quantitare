@@ -11,4 +11,6 @@ class Scrobbler < ActiveRecord::Base
   has_many :scrobbles, as: :source, inverse_of: :scrobbler
   belongs_to :user
   belongs_to :service, optional: true
+
+  load_types_in 'Scrobblers'
 end

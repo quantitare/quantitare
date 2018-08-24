@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     }
 
   resources :services, only: [:index, :destroy]
-  resources :scrobblers, only: [:index]
+  resources :scrobblers, only: [:index, :new, :create]
 
   resources :locations, controller: 'location_scrobbles', only: [:index] do
     collection do

@@ -1,0 +1,8 @@
+- content_for :title, 'Scrobblers'
+
+.row.border-bottom.pb-2
+  %h2 Scrobblers
+
+.row.py-4
+  .btn-group
+    = link_to icon_tag('fas fa-plus') + ' New Scrobbler', new_scrobbler_path, class: 'btn btn-sm btn-outline-dark'

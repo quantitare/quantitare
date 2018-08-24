@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def icon_tag(icon_class, options = {})
-    icon_class ||= 'fa fa-lock'
+    icon_class ||= 'fas fa-question-circle'
     dom_class = add_dom_classes(options[:class], icon_class)
 
     content_tag :i, nil, class: dom_class

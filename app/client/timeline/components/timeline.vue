@@ -4,6 +4,8 @@
 
 <script>
 export default {
+  name: 'timeline',
+
   data: function() {
     return {
       greeting: 'Hello world',

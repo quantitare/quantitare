@@ -1,0 +1,18 @@
+- content_for :head do
+  = javascript_pack_tag 'scrobbler-form'
+
+#scrobbler-form
+  = vue_form_with model: @scrobbler do |f|
+    .row
+      .col-md-6.pr-5
+        = errors_for(@scrobbler)
+
+        .row.form-group
+          = f.label :type
+          = f.text_field :type, class: 'form-control'
+
+        .row.rowm-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control'
+
+      .col-md-6.pl-5

@@ -8,3 +8,12 @@ Provider.register(
   icon_text_color: '#fff',
   icon_bg_color: '#2d5be3'
 )
+
+Provider.register(
+  :lastfm, 'LASFM_OAUTH_KEY', 'LASFM_OAUTH_SECRET',
+  strategy_class: OmniAuth::Strategies::Lastfm,
+
+  icon_css_class: 'fab fa-lastfm',
+  icon_text_color: '#fff',
+  icon_bg_color: '#b90000'
+)

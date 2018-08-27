@@ -13,4 +13,10 @@ class Scrobbler < ActiveRecord::Base
   belongs_to :service, optional: true
 
   load_types_in 'Scrobblers'
+
+  class << self
+    def require_provider(provider_name)
+
+    end
+  end
 end

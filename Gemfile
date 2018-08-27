@@ -43,6 +43,7 @@ gem 'omniauth', '~> 1.8.1'
 
 # Omniauth strategies
 gem 'omniauth-foursquare', '~> 1.0'
+gem 'omniauth-lastfm', '~> 0.0.7'
 
 # API adapters
 gem 'foursquare2'

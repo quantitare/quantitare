@@ -9,7 +9,7 @@ class OmniauthCallbacksController < AuthenticatedController
     when *Devise.omniauth_providers
       @service = handle_omniauth
 
-      if handle_omniauth
+      if @service
         flash[:success] = "Successfully added #{action_name.humanize}!"
       else
         flash[:danger] = "An error occurred while trying to add #{action_name.humanize}."

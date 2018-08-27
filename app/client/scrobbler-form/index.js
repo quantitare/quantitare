@@ -26,6 +26,8 @@ document.addEventListener('turbolinks:load', () => {
   });
 
   const typeChoices = new Choices('#scrobbler_type', {
+    itemSelectText: '',
+
     classNames: {
       containerOuter: 'choices',
       containerInner: 'form-control',

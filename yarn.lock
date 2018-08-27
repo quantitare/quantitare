@@ -4851,6 +4851,10 @@ rails-erb-loader@^5.4.2:
     loader-utils "^1.1.0"
     lodash.defaults "^4.2.0"
 
+rails-ujs@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/rails-ujs/-/rails-ujs-5.2.1.tgz#2869c6d54fdfefac3aaa257f4efe211d8f5a7169"
+
 randomatic@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-3.0.0.tgz#d35490030eb4f7578de292ce6dfb04a91a128923"
@@ -5841,6 +5845,10 @@ tunnel-agent@^0.6.0:
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
   dependencies:
     safe-buffer "^5.0.1"
+
+turbolinks@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/turbolinks/-/turbolinks-5.2.0.tgz#e6877a55ea5c1cb3bb225f0a4ae303d6d32ff77c"
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"

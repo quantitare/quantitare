@@ -35,8 +35,8 @@ module ApplicationHelper
     link_to name, path, options
   end
 
-  def omniauth_provider_icon_tag(provider)
-    icon_class = Devise.omniauth_configs[provider.to_sym].options[:icon_class]
+  def omniauth_provider_icon_tag(provider_name)
+    icon_class = Provider[provider_name].icon_css_class
     icon_tag(icon_class)
   end
 

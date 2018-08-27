@@ -17,4 +17,9 @@
           = f.label :name
           = f.text_field :name, class: 'form-control'
 
+        - if @scrobbler.try(:oauthable?)
+          .row.form-group
+            = f.label :service
+            = f.select :service, options_for_select(@scrobbler.valid_services_for(current_user))
+
       .col-md-6.pl-5

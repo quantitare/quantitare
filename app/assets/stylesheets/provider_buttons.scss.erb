@@ -1,0 +1,13 @@
+<% Provider.registry.values.each do |provider| %>
+  <% next unless provider.icon_text_color || provider.icon_bg_color %>
+
+  .btn-service-<%= provider.name %> {
+    <% if provider.icon_text_color %>
+      color: <%= provider.icon_text_color %>;
+    <% end %>
+
+    <% if provider.icon_bg_color %>
+      background-color: <%= provider.icon_bg_color %>;
+    <% end %>
+  }
+<% end %>

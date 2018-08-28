@@ -6,33 +6,33 @@
 module Oauthable
   extend ActiveSupport::Concern
 
-  included do
-    @valid_oauth_providers = :all
-    validates :service_id, presence: true
-  end
-
   class_methods do
-    def valid_oauth_providers(*providers)
-      return @valid_oauth_providers if providers.empty?
-      @valid_oauth_providers = providers
+    attr_reader :required_provider
+
+    def requires_provider?
+      required_provider.present?
     end
 
-    alias_method :valid_oauth_provider, :valid_oauth_providers
+    def requires_provider(provider_name)
+      instance_variable_set('@required_provider', provider_name)
+
+      validates :service_id, presence: true
+
+      validates_each :service do |record, attr, value|
+        record.errors.add(attr, "must be a service for #{provider_name}") if value.try(:provider) != provider_name
+      end
+    end
   end
 
-  def oauthable?
-    true
+  def requires_provider?
+    self.class.requires_provider?
+  end
+
+  def required_provider
+    self.class.required_provider
   end
 
   def valid_services_for(user)
-    if valid_oauth_providers == :all
-      user.available_services
-    else
-      user.available_services.where(provider: valid_oauth_providers)
-    end
-  end
-
-  def valid_oauth_providers
-    self.class.valid_oauth_providers
+    user.available_services.where(provider: required_provider)
   end
 end

@@ -22,11 +22,33 @@ document.addEventListener('turbolinks:load', () => {
   if (!el) return;
 
   const app = new Vue({
-    el
+    el,
+
+    data: {
+      scrobblerMetadata: {
+        ready: false
+      },
+    },
+
+    methods: {
+      typeChanged(event) {
+        const type = event.detail.value;
+        this.$http.get('/scrobblers/type_data', { params: { type: type } }).then(
+          (response) => {
+            this.scrobblerMetadata = response.body;
+          },
+
+          (response) => {
+            console.log('oops'); // TODO: Display some error message.
+          }
+        );
+      }
+    }
   });
 
   const typeChoices = new Choices('#scrobbler_type', {
     itemSelectText: '',
+    placeholder: true,
 
     classNames: {
       containerOuter: 'choices',

@@ -7,16 +7,11 @@
 class Scrobbler < ActiveRecord::Base
   include HasGuid
   include Typeable
+  include Oauthable
 
   has_many :scrobbles, as: :source, inverse_of: :scrobbler
   belongs_to :user
   belongs_to :service, optional: true
 
   load_types_in 'Scrobblers'
-
-  class << self
-    def require_provider(provider_name)
-
-    end
-  end
 end

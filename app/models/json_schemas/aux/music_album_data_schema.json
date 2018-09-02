@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Aux::MusicAlbum#data",
+  "description": "A general-purpose music album",
+
+  "type": "object",
+  "properties" : {
+    "mbid": {
+      "description": "The Musicbrainz ID for the album",
+      "type": "string"
+    },
+
+    "title": {
+      "description": "The title of the album",
+      "type": "string"
+    },
+
+    "release_date": {
+      "description": "The release date of the album, in parseable format",
+      "type": "date"
+    },
+
+    "artist_name": {
+      "description": "The name of artist associated with the album",
+      "type": "string"
+    },
+
+    "artist_mbid": {
+      "description": "The Musicbrainz ID of the artist associated with the album",
+      "type": "string"
+    },
+
+    "tracks": {
+      "description": "A summary of the album's track listing",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "description": "The ordering of the track on the album",
+            "type": "integer"
+          },
+
+          "title": {
+            "description": "The title of the track",
+            "type": "string"
+          },
+
+          "mbid": {
+            "description": "The Musicbrainz ID of the track",
+            "type": "string"
+          },
+
+          "artist_name": {
+            "description": "The name of the track's artist",
+            "type": "string"
+          },
+
+          "artist_mbid": {
+            "description": "The Musicbrainz ID of the track's artist",
+            "type": "string"
+          }
+        },
+        "required": ["title"]
+      }
+    },
+
+    "info": {
+      "description": "A blurb containing information about the album",
+      "type": "object",
+      "properties": {
+        "summary": {
+          "description": "Generally, the first paragraph of the album's full info blurb",
+          "type": "string"
+        },
+
+        "content": {
+          "description": "The album's full info blurb",
+          "type": "string"
+        }
+      }
+    },
+
+    "image": {
+      "description": "URLs to the album's artwork image. Supports multiple size categories",
+      "type": "object",
+      "properties": {
+        "small": {
+          "description": "The small artwork image",
+          "type": "string"
+        },
+
+        "medium": {
+          "description": "The medium artwork image. If not available, fall back to small",
+          "type": "string"
+        },
+
+        "large": {
+          "description": "The large artwork image. If not available, fall back to medium",
+          "type": "string"
+        },
+
+        "original": {
+          "description": "The original artwork image. Generally, the largest artwork image available for the album",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["title", "artist_name"]
+}

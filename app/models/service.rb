@@ -47,6 +47,18 @@ class Service < ApplicationRecord
     end
   end
 
+  def provider_data
+    Provider[provider]
+  end
+
+  def provider_key
+    provider_data.key
+  end
+
+  def provider_secret
+    provider_data.secret
+  end
+
   register_provider(:default) do |omniauth|
     { name: omniauth[:info][:nickname] || omniauth[:info][:name] }
   end

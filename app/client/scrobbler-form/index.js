@@ -21,10 +21,12 @@ document.addEventListener('turbolinks:load', () => {
 
   if (!el) return;
 
-  const app = new Vue({
+  window.scrobblerForm = new Vue({
     el,
 
     data: {
+      errors: [],
+
       scrobblerMetadata: {
         ready: false
       },
@@ -32,7 +34,10 @@ document.addEventListener('turbolinks:load', () => {
 
     methods: {
       typeChanged(event) {
-        const type = event.detail.value;
+        this.loadTypeOptions(this.scrobbler.type);
+      },
+
+      loadTypeOptions(type) {
         this.$http.get('/scrobblers/type_data', { params: { type: type } }).then(
           (response) => {
             this.scrobblerMetadata = response.body;
@@ -43,6 +48,10 @@ document.addEventListener('turbolinks:load', () => {
           }
         );
       }
+    },
+
+    mounted() {
+      this.loadTypeOptions(this.scrobbler.type);
     }
   });
 

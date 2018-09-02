@@ -19,7 +19,9 @@ module Oauthable
       validates :service_id, presence: true
 
       validates_each :service do |record, attr, value|
-        record.errors.add(attr, "must be a service for #{provider_name}") if value.try(:provider) != provider_name
+        if value.try(:provider).try(:to_sym) != provider_name
+          record.errors.add(attr, "must be a service for #{provider_name}")
+        end
       end
     end
   end

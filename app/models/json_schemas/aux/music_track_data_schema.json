@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Aux::MusicTrack#data",
+  "description": "A general-purpose music track",
+
+  "type": "object",
+  "properties" : {
+    "mbid": {
+      "description": "The Musicbrainz ID for the track",
+      "type": "string"
+    },
+
+    "title": {
+      "description": "The title of the track",
+      "type": "string"
+    },
+
+    "duration": {
+      "description": "The duration of the track in milliseconds",
+      "type": "integer"
+    },
+
+    "artist_name": {
+      "description": "The name of artist associated with the track",
+      "type": "string"
+    },
+
+    "artist_mbid": {
+      "description": "The Musicbrainz ID of the artist associated with the track",
+      "type": "string"
+    },
+
+    "album_title": {
+      "description": "The title of the album associated with the track",
+      "type": "string"
+    },
+
+    "album_mbid": {
+      "description": "The Musicbrainz ID of the album associated with the track",
+      "type": "string"
+    }
+  },
+  "required": ["title", "duration", "artist_name"]
+}

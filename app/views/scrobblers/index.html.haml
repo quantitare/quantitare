@@ -3,6 +3,24 @@
 .row.border-bottom.pb-2
   %h2 Scrobblers
 
-.row.py-4
+.row.pt-4
+  %table.table.table-sm.table-hover
+    %thead
+      %tr
+        %th{ scope: 'col' } Name
+        %th{ scope: 'col' } Age
+        %th{ scope: 'col' } Last scrobbled at
+        %th{ scope: 'col' } Scrobble count
+        %th{ scope: 'col' }
+      %tbody
+        - @scrobblers.each do |scrobbler|
+          %tr
+            %th{ scope: 'row' }= scrobbler.name
+            %td= time_ago_in_words scrobbler.created_at
+            %td= time_ago_in_words scrobbler.last_scrobbled_at if scrobbler.last_scrobbled_at.present?
+            %td= scrobbler.scrobbles.size
+            %td
+
+.row
   .btn-group
     = link_to icon_tag('fas fa-plus') + ' New Scrobbler', new_scrobbler_path, class: 'btn btn-sm btn-outline-dark'

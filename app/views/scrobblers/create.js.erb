@@ -1,0 +1,2 @@
+var validationErrors = "<%= j @scrobbler.errors.full_messages.to_json.html_safe %>";
+window.scrobblerForm.errors = JSON.parse(validationErrors);

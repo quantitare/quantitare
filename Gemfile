@@ -28,10 +28,12 @@ gem 'sidekiq', '~> 5.0'
 # Utilities
 gem 'bcrypt', '~> 3.1.7'
 gem 'jbuilder', '~> 2.5'
+gem 'json_schemer', '~> 0.1.7'
 gem 'nokogiri', '~> 1.8.4'
 
 # Extensions
 gem 'activerecord-import', '~> 0.25.0'
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'draper', '~> 3.0.1'
 gem 'memoist'
 gem 'rack-cors', '~> 1.0.2'
@@ -47,6 +49,7 @@ gem 'omniauth-lastfm', '~> 0.0.7'
 
 # API adapters
 gem 'foursquare2'
+gem 'lastfm'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

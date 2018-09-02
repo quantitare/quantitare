@@ -1,0 +1,6 @@
+.card.border-danger.mb-4{ 'v-if': 'errors.length' }
+  .card-header.bg-danger.text-white
+    {{ errors.length }} error{{ errors.length !== 1 ? 's' : '' }} prevented this item from being saved:
+  .card-body
+    %ul.mb-0
+      %li{ 'v-for': 'error in errors' } {{ error }}

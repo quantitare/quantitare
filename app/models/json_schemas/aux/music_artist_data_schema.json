@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Aux::MusicArtist#data",
+  "description": "A general-purpose music artist",
+
+  "type": "object",
+  "properties" : {
+    "mbid": {
+      "description": "The Musicbrainz ID for the artist",
+      "type": "string"
+    },
+
+    "name": {
+      "description": "The name of the artist",
+      "type": "string"
+    },
+
+    "bio": {
+      "description": "The artist's bio",
+      "type": "object",
+      "properties": {
+        "summary": {
+          "description": "Generally, the first paragraph of the artist's full bio",
+          "type": "string"
+        },
+
+        "content": {
+          "description": "The artist's full bio",
+          "type": "string"
+        }
+      }
+    },
+
+    "image": {
+      "description": "URLs to the artist's image. Supports multiple size categories",
+      "type": "object",
+      "properties": {
+        "small": {
+          "description": "The small image",
+          "type": "string"
+        },
+
+        "medium": {
+          "description": "The medium image. If not available, fall back to small",
+          "type": "string"
+        },
+
+        "large": {
+          "description": "The large image. If not available, fall back to medium",
+          "type": "string"
+        },
+
+        "original": {
+          "description": "The original image. Generally, the largest image available for the artist",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["name"]
+}

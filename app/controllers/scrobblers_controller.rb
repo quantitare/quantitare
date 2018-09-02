@@ -14,5 +14,13 @@ class ScrobblersController < AuthenticatedController
 
   def create
     @scrobbler = current_user.scrobblers.new(scrobbler_params)
+
+    redirect_to scrobblers_path if @scrobbler.save
+  end
+
+  private
+
+  def scrobbler_params
+    params.require(:scrobbler).permit(:type, :name, :service_id)
   end
 end

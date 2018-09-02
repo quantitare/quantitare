@@ -12,13 +12,13 @@ module Typeable
 
   class_methods do
     def load_types_in(module_name, my_name = module_name.singularize)
-      instance_variable_set('@type_module_name', module_name)
-      instance_variable_set('@type_base_klass_name', my_name)
-      instance_variable_set('@types', fetch_base_types(module_name))
+      class_variable_set('@@type_module_name', module_name)
+      class_variable_set('@@type_base_klass_name', my_name)
+      class_variable_set('@@types', fetch_base_types(module_name))
     end
 
     def types
-      instance_variable_get('@types').map(&:constantize)
+      class_variable_get('@@types').map(&:constantize)
     end
 
     private
@@ -35,7 +35,7 @@ module Typeable
   end
 
   def valid_type?
-    types.include?(type)
+    types.include?(type.constantize)
   end
 
   def types

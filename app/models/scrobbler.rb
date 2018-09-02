@@ -9,9 +9,11 @@ class Scrobbler < ActiveRecord::Base
   include Typeable
   include Oauthable
 
-  has_many :scrobbles, as: :source, inverse_of: :scrobbler
+  has_many :scrobbles, as: :source
   belongs_to :user
   belongs_to :service, optional: true
+
+  validates :name, presence: true
 
   load_types_in 'Scrobblers'
 end

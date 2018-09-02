@@ -7,5 +7,5 @@ class Scrobble < ApplicationRecord
   include HasGuid
 
   belongs_to :user
-  belongs_to :source, polymorphic: true
+  belongs_to :source, polymorphic: true, counter_cache: true
 end

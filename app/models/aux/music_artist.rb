@@ -34,7 +34,7 @@ module Aux
 
       def fetch_by_name(name, adapter:)
         cached = where(service: adapter.service)
-          .where("data->>'name' = ?", name)
+          .where("data->>'name' = ?", name).first
 
         return cached if cached.present? && !cached.expired?
 
@@ -42,6 +42,14 @@ module Aux
         new_cache.save!
         new_cache
       end
+    end
+
+    def mbid
+      data[:mbid]
+    end
+
+    def name
+      data[:name]
     end
   end
 end

@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_031522) do
     t.decimal "distance"
     t.text "description"
     t.string "guid"
-    t.jsonb "trackpoints", default: "[]", null: false
+    t.jsonb "trackpoints", default: [], null: false
     t.bigint "user_id", null: false
     t.bigint "place_id"
     t.string "source_type", null: false
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_031522) do
     t.boolean "disabled", default: false, null: false
     t.bigint "user_id", null: false
     t.bigint "service_id"
+    t.integer "scrobbles_count"
     t.datetime "last_scrobbled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -123,10 +124,8 @@ ActiveRecord::Schema.define(version: 2018_08_30_031522) do
   create_table "scrobbles", force: :cascade do |t|
     t.string "type", null: false
     t.string "category", null: false
-    t.jsonb "data"
+    t.jsonb "data", default: {}, null: false
     t.string "guid", null: false
-    t.string "adapter"
-    t.string "service_identifier"
     t.bigint "user_id", null: false
     t.string "source_type", null: false
     t.bigint "source_id", null: false
@@ -135,7 +134,6 @@ ActiveRecord::Schema.define(version: 2018_08_30_031522) do
     t.tsrange "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["adapter", "service_identifier"], name: "index_scrobbles_on_adapter_and_service_identifier"
     t.index ["category"], name: "index_scrobbles_on_category"
     t.index ["data"], name: "index_scrobbles_on_data", using: :gin
     t.index ["end_time"], name: "index_scrobbles_on_end_time"
@@ -149,7 +147,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_031522) do
 
   create_table "service_caches", force: :cascade do |t|
     t.string "type"
-    t.jsonb "data"
+    t.jsonb "data", default: {}, null: false
     t.bigint "service_id"
     t.datetime "expires_at"
     t.datetime "created_at", null: false
@@ -166,7 +164,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_031522) do
     t.text "secret"
     t.string "uid"
     t.text "refresh_token"
-    t.jsonb "options", default: "{}"
+    t.jsonb "options", default: {}
     t.bigint "user_id", null: false
     t.datetime "expires_at"
     t.datetime "created_at", null: false

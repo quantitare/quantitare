@@ -7,7 +7,7 @@
 class HashSerializer
   class << self
     def dump(hash)
-      hash.to_json
+      hash
     end
 
     def load(hash)

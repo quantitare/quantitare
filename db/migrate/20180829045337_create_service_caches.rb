@@ -2,7 +2,7 @@ class CreateServiceCaches < ActiveRecord::Migration[5.2]
   def change
     create_table :service_caches do |t|
       t.string :type
-      t.jsonb :data
+      t.jsonb :data, null: false, default: {}
 
       t.references :service, foreign_key: true, null: true
 

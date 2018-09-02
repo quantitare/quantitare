@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
   def change
     create_table :places do |t|
@@ -39,7 +41,7 @@ class CreateLocationScrobbles < ActiveRecord::Migration[5.2]
 
       t.string :guid
 
-      t.jsonb :trackpoints, null: false, default: '[]'
+      t.jsonb :trackpoints, null: false, default: []
 
       t.references :user, foreign_key: true, null: false
       t.references :place, foreign_key: true, null: true

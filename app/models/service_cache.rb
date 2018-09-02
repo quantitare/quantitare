@@ -6,6 +6,8 @@
 class ServiceCache < ApplicationRecord
   EXPIRY_INTERVAL = 1.month.freeze
 
+  serialize :data, HashSerializer
+
   belongs_to :service, optional: true
 
   acts_as_taggable

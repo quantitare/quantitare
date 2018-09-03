@@ -14,6 +14,30 @@ class ServiceCache < ApplicationRecord
 
   delegate :user, to: :service
 
+  class << self
+    def fetchers
+      @fetchers ||= []
+    end
+
+    def fetcher(fetcher_name, fetcher_keywords)
+      fetchers << ServiceCache::Fetcher.new(fetcher_name, fetcher_keywords)
+    end
+
+    def fetch(opts = {})
+      fetchers.each do |fetcher|
+        next unless fetcher.can_fetch?(opts)
+
+        return fetcher.fetch(self, opts)
+      end
+    end
+
+    def adapter_method
+      underscore = name.split('::').last.underscore
+
+      "fetch_#{underscore}"
+    end
+  end
+
   def expired?
     expires_at.present? && expires_at < Time.now
   end

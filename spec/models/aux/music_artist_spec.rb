@@ -30,7 +30,7 @@ RSpec.describe Aux::MusicArtist do
       end
 
       context 'when the cache is expired' do
-        subject { create :music_artist, :expired, mbid: mbid }
+        subject! { create :music_artist, :expired, mbid: mbid }
 
         it 'fetches data from the adapter' do
           expect(adapter).to receive(:fetch_music_artist).and_return(subject)
@@ -38,7 +38,9 @@ RSpec.describe Aux::MusicArtist do
           action
         end
 
-        it 'does not create a new record' # TODO
+        it 'does not create a new record' do
+          expect { action }.to change(Aux::MusicArtist, :count).by(0)
+        end
       end
 
       context 'when there is no cache' do
@@ -77,7 +79,7 @@ RSpec.describe Aux::MusicArtist do
       end
 
       context 'when the cache is expired' do
-        subject { create :music_artist, :expired, name: name }
+        subject! { create :music_artist, :expired, name: name }
 
         it 'fetches data from the adapter' do
           expect(adapter).to receive(:fetch_music_artist).and_return(subject)
@@ -85,7 +87,9 @@ RSpec.describe Aux::MusicArtist do
           action
         end
 
-        it 'does not create a new record' # TODO
+        it 'does not create a new record' do
+          expect { action }.to change(Aux::MusicArtist, :count).by(0)
+        end
       end
 
       context 'when there is no cache' do

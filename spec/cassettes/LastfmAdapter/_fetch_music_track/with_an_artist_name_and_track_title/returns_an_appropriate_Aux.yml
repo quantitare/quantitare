@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?api_key=LASTFM_OAUTH_KEY&artist=Beck&method=track.getInfo&track=Guero
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.5
+      Date:
+      - Mon, 03 Sep 2018 19:37:25 GMT
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Ntcoent-Length:
+      - '1252'
+      Connection:
+      - keep-alive
+      Access-Control-Request-Headers:
+      - Origin, X-Atmosphere-tracking-id, X-Atmosphere-Framework, X-Cache-Date, Content-Type,
+        X-Atmosphere-Transport, *
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+      Cache-Control:
+      - private
+      Content-Length:
+      - '544'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <lfm status="ok"><track><name>Guero</name>
+        <mbid>a8b4bc8f-4ca4-4ae6-a74e-14c8d2cbfa45</mbid>
+        <url>https://www.last.fm/music/Beck/_/Guero</url>
+        <duration>139000</duration>
+        <streamable fulltrack="0">0</streamable>
+        <listeners>6832</listeners>
+        <playcount>27109</playcount>
+        <artist><name>Beck</name>
+        <mbid>a8baaa41-50f1-4f63-979e-717c14979dfb</mbid>
+        <url>https://www.last.fm/music/Beck</url>
+        </artist>
+        <album position="11"><artist>Beck</artist>
+        <title>2006-10-13: City Hall, Nashville, TN, USA</title>
+        <mbid>b569e571-8c09-46db-bff8-42b5a565d7c3</mbid>
+        <url>https://www.last.fm/music/Beck/2006-10-13:+City+Hall,+Nashville,+TN,+USA</url>
+        <image size="small"></image>
+        <image size="medium"></image>
+        <image size="large"></image>
+        <image size="extralarge"></image>
+        </album>
+        <toptags><tag><name>beck</name>
+        <url>https://www.last.fm/tag/beck</url>
+        </tag>
+        <tag><name>electronica</name>
+        <url>https://www.last.fm/tag/electronica</url>
+        </tag>
+        <tag><name>alternative</name>
+        <url>https://www.last.fm/tag/alternative</url>
+        </tag>
+        <tag><name>downtempo</name>
+        <url>https://www.last.fm/tag/downtempo</url>
+        </tag>
+        <tag><name>singer-songwriter</name>
+        <url>https://www.last.fm/tag/singer-songwriter</url>
+        </tag>
+        </toptags>
+        </track>
+        </lfm>
+    http_version: 
+  recorded_at: Mon, 03 Sep 2018 19:37:25 GMT
+recorded_with: VCR 4.0.0

@@ -46,7 +46,7 @@ FactoryBot.define do
     end
 
     trait :expired do
-      expires_at { Faker::Time.between(30.days.ago, 1.minute.ago, :all) }
+      expires_at { Faker::Time.between(30.days.ago, 1.week.ago, :all) }
     end
   end
 end

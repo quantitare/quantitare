@@ -63,7 +63,7 @@ class Provider
   )
 
   register(
-    :lastfm, 'LASFM_OAUTH_KEY', 'LASFM_OAUTH_SECRET',
+    :lastfm, 'LASTFM_OAUTH_KEY', 'LASTFM_OAUTH_SECRET',
     strategy_class: OmniAuth::Strategies::Lastfm,
 
     icon_css_class: 'fab fa-lastfm',

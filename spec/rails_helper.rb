@@ -9,6 +9,7 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'vcr'
 require 'devise'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -37,6 +38,17 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+
+  config.filter_sensitive_data('LASTFM_OAUTH_KEY') { ENV['LASTFM_OAUTH_KEY'] }
+  config.filter_sensitive_data('LASTFM_OAUTH_SECRET') { ENV['LASTFM_OAUTH_SECRET'] }
+  config.filter_sensitive_data('LASTFM_TEST_USER_UID') { ENV['LASTFM_TEST_USER_UID'] }
+  config.filter_sensitive_data('LASTFM_TEST_USER_TOKEN') { ENV['LASTFM_TEST_USER_TOKEN'] }
 end
 
 RSpec.configure do |config|

@@ -33,7 +33,7 @@ class LastfmAdapter
         artist_name: raw_album[:artist],
         artist_mbid: find_artist_mbid,
 
-        tracks: tracks_data.map(&:compact),
+        tracks: tracks_data,
 
         image: {
           small: image_for(:small),
@@ -65,18 +65,18 @@ class LastfmAdapter
 
           artist_name: track_info[:artist][:name],
           artist_mbid: track_info[:artist][:mbid]
-        }
+        }.compact
       end
     end
 
     def image_for(size)
-      raw_album[:image].find { |image_info| image_info[:size] == size.to_s }[:content]
+      raw_album[:image].find { |image_info| image_info[:size] == size.to_s }.with_indifferent_access[:content]
     end
 
     def tag_list
       (raw_album.dig(:toptags, :tag) || raw_album.dig(:tags, :tag)).map do |tag_info|
         tag_info.with_indifferent_access[:name]
-      end.join(', ')
+      end.compact.join(', ')
     end
 
     def raw_track_info

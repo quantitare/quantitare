@@ -46,11 +46,11 @@ class LastfmAdapter
     # rubocop:enable Metrics/AbcSize
 
     def tag_list
-      raw_artist[:tags][:tag].map { |tag_info| tag_info[:name] }.join(', ')
+      raw_artist[:tags][:tag].map { |tag_info| tag_info.with_indifferent_access[:name] }.compact.join(', ')
     end
 
     def image_for(size)
-      raw_artist[:image].find { |image_info| image_info[:size] == size.to_s }[:content]
+      raw_artist[:image].find { |image_info| image_info[:size] == size.to_s }.with_indifferent_access[:content]
     end
   end
 end

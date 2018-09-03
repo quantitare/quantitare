@@ -34,7 +34,7 @@ module Aux
 
       def fetch_by_title_and_artist(title, artist_name, adapter:)
         cached = where(service: adapter.service)
-          .where("data->>'title' = ? AND data->>'artist_name' = ?", title, artist_name)
+          .where("data->>'title' = ? AND data->>'artist_name' = ?", title, artist_name).first
 
         return cached if cached.present? && !cached.expired?
 
@@ -42,6 +42,18 @@ module Aux
         new_cache.save!
         new_cache
       end
+    end
+
+    def mbid
+      data[:mbid]
+    end
+
+    def title
+      data[:title]
+    end
+
+    def artist_name
+      data[:artist_name]
     end
   end
 end

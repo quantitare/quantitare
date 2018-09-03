@@ -4,15 +4,15 @@
 #
 #
 class PointScrobble < Scrobble
-  before_validation :set_timestamps
+  validate :start_time_and_end_time_must_be_equal
 
   def timestamp
     @timestamp ||= init_timestamp
   end
 
   def timestamp=(value)
-    attribute_will_change!('timestamp') if timestamp != value
     @timestamp = value
+    set_timestamps
   end
 
   def timestamp_changed?
@@ -21,9 +21,11 @@ class PointScrobble < Scrobble
 
   private
 
-  def set_timestamps
-    return unless timestamp_changed?
+  def start_time_and_end_time_must_be_equal
+    errors[:base] << 'start time and end time must be equal to each other' unless start_time == end_time
+  end
 
+  def set_timestamps
     self.start_time = self.end_time = timestamp
   end
 

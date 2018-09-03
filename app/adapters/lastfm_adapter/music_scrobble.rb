@@ -2,7 +2,7 @@
 
 class LastfmAdapter
   ##
-  # A wrapper that generates a scrobble from raw scrobble data sent by the Last.fm API.
+  # A wrapper that generates a scrobble from raw scrobble data returned by the Last.fm API.
   #
   class MusicScrobble
     extend Memoist
@@ -57,12 +57,21 @@ class LastfmAdapter
         mbid: raw_scrobble[:artist][:mbid], name: raw_scrobble[:artist][:content], adapter: adapter
       )
     end
+    memoize :artist
 
     def album
+      Aux::MusicAlbum.fetch(
+        mbid: raw_scrobble[:album][:mbid],
+        title: raw_scrobble[:album][:content],
+        artist_name: raw_scrobble[:album][:artist] || raw_scrobble[:artist][:content],
+
+        adapter: adapter
+      )
     end
+    memoize :album
 
     def image_for(size)
-      raw_scrobble[:image].find { |image| image[:size] == size.to_s }
+      raw_scrobble[:image].find { |image| image.with_indifferent_access[:size] == size.to_s }
     end
 
     def timestamp

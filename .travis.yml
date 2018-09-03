@@ -1,18 +1,19 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.5.1
+- 2.5.1
 addons:
-  postgresql: "9.6"
+  postgresql: '9.6'
 services:
-  - postgresql
-  - redis-server
+- postgresql
+- redis-server
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-  - RAILS_ENV=test bundle exec rake db:setup
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
+- RAILS_ENV=test bundle exec rake db:setup
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 notifications:
-   slack: $SLACK_NOTIFICATION_CREDENTIALS
+  slack:
+    secure: Zi5HVPmtkqagTzv2JNpHUXR4gSyUcw+yx0yiKRZCnAlhK3PmjelzRDW9ilCWguJji4m3zD39JB4RUENlen+uKgIgVljYYjBe7jfaUjLbs4wTiSG8i/gLerG6AGWDt+EBzvHRZpq5LX3J8WH7qONmbWfRr737kchxoXki1+b4Eqt6gqQGXPQfj6E1mwopf9K0zcP/XeFF1UqOKmj9N7/BL/hePry8+zg7MOfD0d27BPFamTW8CgsGb3z10Dpux4TjOaqpldgltsYLSz4LoQDwyj8XTx1i3uKP827u+Op+4sqCYOThVqKjmAuAJtufBm2wSsA4ZdAgOhGTiP5sicb5H00vVSC7grMVLKperC1Ev+bsJKcXsVAC67oUb2JgMnvgIb7OoIvbcr0JiiAFDJiKRvDIX3eLx/TKVTejKzkwfRUfEUrM5kSCxLy1ppDDFz+MDQqTVIpx2c+JabRHifZf2w176vwnhfWkPPTqhlNeq3zpP4ZLgB9BmekRz+CW5fGwLcijpDg3r3Ez3mVsOjiOwZLflllLIlgu2IsuohMXx4jGBiO7R3s0q+eFaFLffGw5fg/5P55gMJ/oQS7X/jnaypN68YSo+ghapgzCeNoUfPEpdsbDi1eR0E3jE/H+TF5LdddoEyecVDfZpLOuAVW5Po7N5Is3djh6aItQdnYt54Q=

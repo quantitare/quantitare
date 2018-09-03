@@ -14,3 +14,5 @@ before_script:
   - RAILS_ENV=test bundle exec rake db:setup
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+notifications:
+   slack: $SLACK_NOTIFICATION_CREDENTIALS

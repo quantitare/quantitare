@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:quantitare/quantitare-categories.git
+  remote: https://github.com/quantitare/quantitare-categories.git
   revision: a1326aec7f854a833f292de0837a0412b38c1270
   specs:
     quantitare-categories (0.1.0)

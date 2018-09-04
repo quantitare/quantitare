@@ -41,7 +41,7 @@ class ServiceCache
     end
 
     def merge_fresh_and_cached!(fresh, cached)
-      unless cached.present?
+      if cached.blank?
         fresh.save!
         return fresh
       end

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Serviceable
+  ##
+  # A data object containing the data for a result of a service object.
+  #
   class Result
     attr_writer :errors
 

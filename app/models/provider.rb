@@ -10,14 +10,12 @@ class Provider
   class << self
     attr_reader :registry
 
+    delegate :[], to: :registry
+
     def register(provider_name, *args)
       instance = new(provider_name, *args)
       registry[provider_name] = instance
       instance.process!
-    end
-
-    def [](provider_name)
-      registry[provider_name]
     end
   end
 

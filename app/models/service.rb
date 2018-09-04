@@ -5,7 +5,7 @@
 #
 class Service < ApplicationRecord
   belongs_to :user, inverse_of: :services
-  has_many :scrobblers, inverse_of: :service
+  has_many :scrobblers, inverse_of: :service, dependent: :destroy
 
   validates :user_id, presence: true
   validates :provider, presence: true
@@ -36,7 +36,7 @@ class Service < ApplicationRecord
           secret: omniauth[:credentials][:secret],
           name: options[:name],
           refresh_token: omniauth[:credentials][:refresh_token],
-          expires_at: omniauth[:credentials][:expires_at] && Time.at(omniauth[:credentials][:expires_at]),
+          expires_at: omniauth[:credentials][:expires_at] && Time.zone.at(omniauth[:credentials][:expires_at]),
           options: options
         )
       end

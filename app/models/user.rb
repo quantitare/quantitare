@@ -13,5 +13,6 @@ class User < ApplicationRecord
   has_many :location_scrobbles, dependent: :destroy
   has_many :places, dependent: :destroy
 
-  has_many :available_services, ->(user) { available_to_user(user) }, class_name: 'Service'
+  has_many :available_services, ->(user) { available_to_user(user) },
+    class_name: 'Service', inverse_of: :user
 end

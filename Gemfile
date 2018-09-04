@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "git@github.com:#{repo}.git" }
 
 ruby '2.5.1'
 
@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.0'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
+
+gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
 
 # Front-end core
 gem 'haml'

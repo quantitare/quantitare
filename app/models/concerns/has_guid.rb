@@ -13,6 +13,6 @@ module HasGuid
   protected
 
   def generate_guid
-    self.guid = SecureRandom.uuid unless guid.present?
+    self.guid = SecureRandom.uuid if guid.blank?
   end
 end

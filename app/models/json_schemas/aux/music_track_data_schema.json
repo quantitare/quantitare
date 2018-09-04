@@ -20,6 +20,11 @@
       "type": "integer"
     },
 
+    "album_rank": {
+      "description": "The ordering of the track in the album in which it appears",
+      "type": "integer"
+    },
+
     "artist_name": {
       "description": "The name of artist associated with the track",
       "type": "string"

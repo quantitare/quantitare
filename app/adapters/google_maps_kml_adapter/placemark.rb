@@ -71,11 +71,11 @@ class GoogleMapsKmlAdapter
     end
 
     def start_time
-      value_from_path('TimeSpan begin').to_time
+      Time.zone.parse(value_from_path('TimeSpan begin'))
     end
 
     def end_time
-      value_from_path('TimeSpan end').to_time
+      Time.zone.parse(value_from_path('TimeSpan end'))
     end
 
     private

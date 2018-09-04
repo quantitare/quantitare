@@ -39,6 +39,6 @@ class ServiceCache < ApplicationRecord
   end
 
   def expired?
-    expires_at.present? && expires_at < Time.now
+    expires_at.present? && expires_at < Time.current
   end
 end

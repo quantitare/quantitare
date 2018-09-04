@@ -32,15 +32,15 @@ class LastfmAdapter
 
     def data
       {
-        track: track.to_json,
-        artist: artist.to_json,
-        album: album.to_json,
+        track: track.to_scrobble_data,
+        artist: artist.to_scrobble_data,
+        album: album.to_scrobble_data,
 
         image: {
           small: image_for(:small),
-          medium: image_for(:medium),
-          large: image_for(:large),
-          original: image_for(:extralarge)
+          medium: image_for(:medium) || image_for(:small),
+          large: image_for(:large) || image_for(:medium) || image_for(:small),
+          original: image_for(:extralarge) || image_for(:large) || image_for(:medium) || image_for(:small)
         }
       }
     end
@@ -75,7 +75,7 @@ class LastfmAdapter
     end
 
     def timestamp
-      Time.at(raw_scrobble[:date][:uts].to_i)
+      Time.zone.at(raw_scrobble[:date][:uts].to_i)
     end
   end
 end

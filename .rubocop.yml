@@ -7,6 +7,9 @@ AllCops:
     - 'config/**/*'
     - '**/*.haml'
 
+Rails:
+  Enabled: true
+
 # Metrics
 
 Metrics/LineLength:

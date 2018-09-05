@@ -6,7 +6,7 @@
 module ScrobblerHelper
   def scrobbler_type_select_options
     Rails.cache.fetch(__method__) do
-      Scrobbler.types.map { |type| [humanize_type(type.name), type] }
+      Scrobbler.types.map { |type| [humanize_type(type.name), type.name] }.sort_by { |item| item[0] }
     end
   end
 

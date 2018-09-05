@@ -10,6 +10,7 @@ gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 
+# Quantitare modules
 gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
 
 # Front-end core

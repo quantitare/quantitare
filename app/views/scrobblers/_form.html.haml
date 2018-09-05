@@ -13,7 +13,8 @@
         - if @scrobbler.new_record?
           .row.form-group
             = f.label :type
-            = f.select :type, options_for_select(scrobbler_type_select_options, @scrobbler.type), {}, class: 'form-control', autofocus: true, 'v-on:change': 'typeChanged'
+            %choices{ 'v-on:input': 'typeChanged', id: 'scrobbler_type', name: 'scrobbler[type]', 'v-bind:options': scrobbler_type_select_options, 'v-bind:value': 'scrobbler.type', 'v-bind:params': {}.to_json }
+            =# f.select :type, options_for_select(scrobbler_type_select_options, @scrobbler.type), {}, class: 'form-control', autofocus: true, 'v-on:change': 'typeChanged'
 
         .scrobbler-options{ 'v-if': 'scrobblerMetadata.ready' }
           .row.form-group

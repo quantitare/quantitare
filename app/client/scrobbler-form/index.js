@@ -5,10 +5,8 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import VueResource from 'vue-resource';
 import VueDataScooper from 'vue-data-scooper';
 
-import * as Choices from 'choices.js/assets/scripts/dist/choices.min';
-import 'choices.js/assets/styles/scss/choices';
-
-import './styles/scrobbler-form'
+import './styles/scrobbler-form';
+import choices from '../shared/components/choices';
 
 Vue.use(VueResource);
 Vue.use(TurbolinksAdapter);
@@ -24,6 +22,8 @@ document.addEventListener('turbolinks:load', () => {
   window.scrobblerForm = new Vue({
     el,
 
+    components: { choices },
+
     data: {
       errors: [],
 
@@ -33,7 +33,8 @@ document.addEventListener('turbolinks:load', () => {
     },
 
     methods: {
-      typeChanged(event) {
+      typeChanged(value) {
+        this.scrobbler.type = value;
         this.loadTypeOptions(this.scrobbler.type);
       },
 
@@ -52,16 +53,6 @@ document.addEventListener('turbolinks:load', () => {
 
     mounted() {
       this.loadTypeOptions(this.scrobbler.type);
-    }
-  });
-
-  const typeChoices = new Choices('#scrobbler_type', {
-    itemSelectText: '',
-    placeholder: true,
-
-    classNames: {
-      containerOuter: 'choices',
-      containerInner: 'form-control',
     }
   });
 });

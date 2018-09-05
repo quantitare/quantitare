@@ -13,5 +13,6 @@ class LocationScrobblesController < AuthenticatedController
 
   def edit
     @location_scrobble = current_user.location_scrobbles.find(params[:id]).decorate
+    @place = @location_scrobble.place || Place.new(location_scrobbles: [@location_scrobble])
   end
 end

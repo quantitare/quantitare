@@ -1,0 +1,24 @@
+<% content_for :title, 'Locations' %>
+
+<div class="row border-bottom pb-2">
+  <h2>Locations</h2>
+</div>
+
+<div class="row py-4">
+  <%= link_to 'Import', new_location_import_path, class: 'btn btn-primary' %>
+</div>
+
+<div class="row pb-4">
+  <%= render 'shared/timeline' %>
+</div>
+
+<div class="row pb-4">
+  <ul>
+    <% @location_scrobbles.each do |location_scrobble| %>
+      <li>
+        <%= location_scrobble.name %>
+        <%= link_to 'Edit', edit_location_scrobble_path(location_scrobble) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

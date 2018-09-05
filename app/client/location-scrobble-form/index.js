@@ -5,7 +5,7 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import VueResource from 'vue-resource';
 import VueDataScooper from 'vue-data-scooper';
 
-// import './styles/location-scrobble-form'
+import choices from '../shared/components/choices';
 
 Vue.use(VueResource);
 Vue.use(TurbolinksAdapter);
@@ -21,12 +21,11 @@ document.addEventListener('turbolinks:load', () => {
   window.locationScrobbleForm = new Vue({
     el,
 
+    components: { choices },
+
     data: {
       errors: [],
-
-      locationScrobbleMetadata: {
-
-      }
+      locationScrobbleMetadata: {}
     }
   });
 });

@@ -1,0 +1,56 @@
+<% content_for :head do %>
+  <%= javascript_pack_tag 'scrobbler-form', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'scrobbler-form', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<div id="scrobbler-form">
+  <%=
+    vue_form_with model: @scrobbler,
+      scope: 'scrobbler',
+      url: @scrobbler.new_record? ? scrobblers_path : scrobbler_path(@scrobbler) do |f|
+  %>
+    <div class="row">
+      <div class="col-md-6 pr-5">
+        <%= render 'shared/vue_errors' %>
+
+        <% if @scrobbler.new_record? %>
+          <div class="row form-group">
+            <%= f.label :type %>
+            <choices
+              id="scrobbler_type"
+              name="scrobbler[type]"
+              v-bind:options="<%= scrobbler_type_select_options %>"
+              v-bind:params="<%= {}.to_json %> "
+              v-bind:value="scrobbler.type"
+              v-on:input="typeChanged"
+            ></choices>
+          </div>
+        <% end %>
+
+        <div class="scrobbler-options" v-if="scrobblerMetadata.ready">
+          <div class="row form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+
+          <div class="row form-group" v-if="scrobblerMetadata.requiresProvider">
+            <%= f.label :service_id %>
+            <%=
+              f.select :service_id,
+                options_for_select(@scrobbler.valid_services_for(current_user)),
+                { include_blank: true },
+                class: 'form-control',
+                'v-html': 'scrobblerMetadata.providerOptions'
+            %>
+          </div>
+
+          <div class="row">
+            <%= f.submit 'Save', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 pl-5"></div>
+    </div>
+  <% end %>
+</div>

@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .choices {
   display: block;
   width: 100%;

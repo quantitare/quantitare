@@ -1,0 +1,33 @@
+<% content_for :title, 'Location Data Import' %>
+
+<div class="row border-bottom pb-2">
+  <h2>Location Data Import</h2>
+</div>
+
+<div class="row justify-content-sm-center py-4">
+  <div class="col-md-8">
+    <%= form_for @location_import, multipart: true do |f| %>
+      <%= errors_for(@location_import) %>
+
+      <div class="form-group row">
+        <%= f.label :import_file, 'File to import', class: 'col-sm-3 col-form-label text-right' %>
+        <div class="col-sm-9">
+          <%= f.file_field :import_file, required: true %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :adapter, class: 'col-sm-3 col-form-label text-right' %>
+        <div class="col-sm-9">
+          <%= f.select :adapter, options_for_select(LocationImport.adapters.map { |adapter| [adapter.importer_label, adapter.name] }), {}, required: true, include_blank: true, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row my-4">
+        <div class="offset-sm-3 col-sm-9">
+          <%= submit_tag 'Import', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

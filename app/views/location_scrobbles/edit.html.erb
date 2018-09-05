@@ -1,0 +1,22 @@
+<% content_for :title, 'Edit location scrobble' %>
+
+<div class="row border-bottom pb-2">
+  <h2>
+    <%= @location_scrobble.icon_tag(class: 'mr-1') %>
+    <%= @location_scrobble.name %>
+
+    <small class="text-muted">
+      <% if @location_scrobble.transit? %>
+        <%= @location_scrobble.distance %>
+      <% end %>
+      <i>from</i>
+      <%= @location_scrobble.start_time %>
+      <i>to</i>
+      <%= @location_scrobble.end_time %>
+    </small>
+  </h2>
+</div>
+
+<div class="row py-4">
+  <%= render 'form' %>
+</div>

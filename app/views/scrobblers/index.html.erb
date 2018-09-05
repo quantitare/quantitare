@@ -1,0 +1,44 @@
+<% content_for :title, 'Scrobblers' %>
+
+<div class="row border-bottom pb-2">
+  <h2>Scrobblers</h2>
+</div>
+
+<div class="row pt-4">
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Last scrobbled at</th>
+        <th scope="col">Scrobble count</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @scrobblers.each do |scrobbler| %>
+        <tr>
+          <th scope="row">
+            <%= scrobbler.name %>
+          </th>
+          <td>
+            <%= time_ago_in_words scrobbler.created_at %>
+          </td>
+          <td>
+            <%= time_ago_in_words scrobbler.last_scrobbled_at if scrobbler.last_scrobbled_at.present? %>
+          </td>
+          <td>
+            <%= scrobbler.scrobbles.size %>
+          </td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <div class="btn-group">
+    <%= link_to icon_tag('fas fa-plus') + ' New Scrobbler', new_scrobbler_path, class: 'btn btn-sm btn-outline-dark' %>
+  </div>
+</div>

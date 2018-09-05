@@ -5,7 +5,6 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import VueResource from 'vue-resource';
 import VueDataScooper from 'vue-data-scooper';
 
-import './styles/scrobbler-form';
 import choices from '../shared/components/choices';
 
 Vue.use(VueResource);

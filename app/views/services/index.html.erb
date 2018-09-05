@@ -1,0 +1,41 @@
+<% content_for :title, 'Services' %>
+
+<div class="row border-bottom pb-2">
+  <h2>Services</h2>
+</div>
+
+<div class="row border-bottom py-4">
+  <% Devise.omniauth_providers.each do |provider| %>
+    <%= omniauth_button(provider) %>
+  <% end %>
+</div>
+
+<div class="row py-4">
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Provider</th>
+        <th scope="col">Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @services.each do |service| %>
+        <tr>
+          <th scope="row">
+            <%= omniauth_provider_name(service.provider) %>
+          </th>
+
+          <td>
+            <%= service.name %>
+          </td>
+
+          <td>
+            <%= link_to 'Delete', service, method: :delete, class: 'btn btn-sm btn-danger py-0' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

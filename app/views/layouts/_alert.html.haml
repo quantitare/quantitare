@@ -1,7 +1,0 @@
-- unless flash.empty?
-  - flash.each do |level, content|
-    - level = level == 'notice' ? 'primary' : level
-    %div{ class: "alert alert-#{level} alert-dismissable fade show", role: 'alert' }
-      = content
-      %button{ type: "button", class: "close", "data-dismiss": "alert", "aria-label": "Close" }
-        %span{ "aria-hidden": "true" } &times;

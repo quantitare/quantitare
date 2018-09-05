@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= content_for?(:title) ? yield(:title) + ' - Quantitare' : 'Quantitare' %>
+    </title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= content_for(:head) %>
+  </head>
+
+  <body>
+    <%= render 'layouts/nav' %>
+
+    <div class="container py-5">
+      <%= render 'layouts/alert' %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

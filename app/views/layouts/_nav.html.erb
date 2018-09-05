@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <%= link_to 'Quantitare', root_path, class: 'navbar-brand' %>
+
+    <button aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-nav" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-nav">
+      <% if user_signed_in? %>
+        <%= render 'layouts/signed_in_nav_items' %>
+      <% else %>
+        <%= render 'layouts/signed_out_nav_items' %>
+      <% end %>
+    </div>
+  </div>
+</nav>

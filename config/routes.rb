@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'omniauth_callbacks'
     }
 
-  resources :services, only: [:index, :destroy]
+  resources :services, only: [:index, :update, :destroy]
   resources :scrobblers, only: [:index, :new, :create] do
     collection do
       resource :type_data, only: [:show], as: 'scrobbler_type_data', controller: 'scrobblers/type_data'

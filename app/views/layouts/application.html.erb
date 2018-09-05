@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>
@@ -18,10 +19,10 @@
   <body>
     <%= render 'layouts/nav' %>
 
-    <div class="container py-5">
+    <%= content_tag :div, id: 'app', class: 'container py-5', data: { alerts: available_alerts.to_json } do %>
       <%= render 'layouts/alert' %>
 
       <%= yield %>
-    </div>
+    <% end %>
   </body>
 </html>

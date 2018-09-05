@@ -36,35 +36,7 @@
       </div>
 
       <% if @location_scrobble.place? %>
-        <h3 class="border-bottom pb-2 my-2">Place info</h3>
-
-        <div class="form-group row">
-          <%= f.label :place_id, 'Private place', class: 'col-sm-3 col-form-label text-right' %>
-          <div class="col-sm-7">
-            <% place_options = current_user.places.map { |place| [place.name, place.id] } %>
-            <choices id="location_scrobble_place_id" name="location_scrobble[place_id]" v-bind:options="<%= place_options %>" v-bind:params="{}" v-bind:value="location_scrobble.place_id"></choices>
-          </div>
-          <div class="col-sm-2">
-            <%= link_to icon_tag('fas fa-plus'), '#', class: 'btn btn-success form-control' %>
-          </div>
-        </div>
-
-        <%= f.fields_for :place, @place do |place_f| %>
-          <div class="form-group row">
-            <%= place_f.label :name, class: 'col-sm-3 col-form-label text-right' %>
-            <div class="col-sm-9">
-              <%= place_f.text_field :name, class: 'form-control-plaintext', readonly: true %>
-            </div>
-          </div>
-
-          <div class="form-group row" v-if="location_scrobble.place_attributes.address1">
-            <%= place_f.label :address1, 'Address' %>
-            <div class="col-sm-9">
-              <%= place_f.text_field :address1, class: 'form-control-plaintext', readonly: true %>
-              <%= place_f.text_field :address2, class: 'form-control-plaintext', readonly: true %>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'place_fields', f: f, place: @place %>
       <% end %>
     <% end %>
   </div>

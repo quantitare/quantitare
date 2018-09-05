@@ -4,6 +4,18 @@
 # Helper methods for controllers & views.
 #
 module ApplicationHelper
+  def available_alerts
+    flash.map do |level, content|
+      level = level == 'notice' ? 'primary' : level
+
+      {
+        id: SecureRandom.hex,
+        level: level,
+        content: content.capitalize
+      }
+    end
+  end
+
   def friendly_format_time(time)
     time.strftime('%-d %b %Y %l:%M:%S%P')
   end

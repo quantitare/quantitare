@@ -6,6 +6,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - '**/*.haml'
+    - '**/*.js.erb'
 
 Rails:
   Enabled: true

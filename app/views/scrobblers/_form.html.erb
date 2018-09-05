@@ -1,9 +1,7 @@
-<% content_for :head do %>
-  <%= javascript_pack_tag 'scrobbler-form', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag 'scrobbler-form', 'data-turbolinks-track': 'reload' %>
-<% end %>
-
-<div id="scrobbler-form">
+<scrobbler-form
+  v-bind:scrobbler="scrobbler"
+  inline-template
+>
   <%=
     vue_form_with model: @scrobbler,
       scope: 'scrobbler',
@@ -11,7 +9,7 @@
   %>
     <div class="row">
       <div class="col-md-6 pr-5">
-        <%= render 'shared/vue_model_errors' %>
+        <model-errors v-bind:errors="scrobbler.errors"></model-errors>
 
         <% if @scrobbler.new_record? %>
           <div class="row form-group">
@@ -53,4 +51,4 @@
       <div class="col-md-6 pl-5"></div>
     </div>
   <% end %>
-</div>
+</scrobbler-form>

@@ -24,7 +24,7 @@ export default {
 
   methods: {
     close() {
-      this.$emit('close', this.id);
+      this.$emit('close', this.index);
     }
   }
 }

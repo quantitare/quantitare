@@ -1,2 +1,2 @@
-var validationErrors = "<%= j @scrobbler.errors.full_messages.to_json.html_safe %>";
-window.scrobblerForm.errors = JSON.parse(validationErrors);
+var validationErrors = <%= raw @scrobbler.errors.full_messages.to_json %>;
+window.app.$set(window.app.scrobbler, 'errors', validationErrors);

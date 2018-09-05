@@ -1,5 +1,5 @@
 <template>
-  <div data-behavior="form">
+  <div>
     <slot></slot>
   </div>
 </template>

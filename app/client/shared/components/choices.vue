@@ -45,7 +45,7 @@ export default {
       }
     };
 
-    const mergedParams = _.merge(defaultParams, this.params);
+    let mergedParams = _.merge(defaultParams, this.params);
     this.choices = new Choices(`#${this.id}`, mergedParams);
 
     this.$emit('input', this.value);

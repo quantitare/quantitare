@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :places, only: [:show] do
+    collection do
+      get :search
+    end
+  end
+
   resources :locations, controller: 'location_scrobbles', only: [:index] do
     collection do
       resources :scrobbles, only: [:edit, :update], as: 'location_scrobbles', controller: 'location_scrobbles'

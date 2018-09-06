@@ -45,6 +45,9 @@ Style/DoubleNegation:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+Style/Lambda:
+  EnforcedStyle: literal
+
 Style/LambdaCall:
   EnforcedStyle: braces
 

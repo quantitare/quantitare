@@ -12,9 +12,9 @@ class ServicesController < AuthenticatedController
     @service = current_user.services.find(params[:id]).decorate
 
     if @service.update(service_params)
-      flash.now[:success] = "#{@service.model_name} successfully saved!"
+      flash.now[:success] = "#{@service.friendly_model_name} successfully saved!"
     else
-      flash.now[:danger] = "There were some errors saving #{@service.model_name}"
+      flash.now[:danger] = "There were some errors saving #{@service.friendly_model_name}"
     end
   end
 

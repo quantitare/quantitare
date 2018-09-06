@@ -13,7 +13,6 @@ export default {
 
   props: {
     scrobbler: Object,
-    modelErrors: Array
   },
 
   data() {

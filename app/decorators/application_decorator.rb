@@ -5,7 +5,7 @@
 # Helpers are accessed through `helpers` (aka `h`).
 #
 class ApplicationDecorator < Draper::Decorator
-  def model_name
+  def friendly_model_name
     model.class.name.split('::').last.underscore.humanize.downcase
   end
 end

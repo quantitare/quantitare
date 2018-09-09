@@ -1,5 +1,5 @@
 <template>
-  <select v-bind:id="id" v-bind:name="name" v-on:change="selectionChanged"></select>
+  <select :id="id" :name="name" :disabled="disabled" @change="selectionChanged"></select>
 </template>
 
 <script>
@@ -9,7 +9,13 @@ import 'choices.js/assets/styles/scss/choices';
 
 export default {
   name: 'choices',
-  props: { id: String, name: String, params: Object, value: String, options: Array },
+  props: { id: String, name: String, params: Object, value: String, options: Array, disabled: Boolean },
+
+  data() {
+    return {
+      choices: null
+    };
+  },
 
   computed: {
     choicesOptions() {
@@ -29,6 +35,16 @@ export default {
   methods: {
     selectionChanged(event) {
       this.$emit('input', event.detail.value);
+    }
+  },
+
+  watch: {
+    disabled(newValue) {
+      if (newValue) {
+        this.choices.disable();
+      } else {
+        this.choices.enable();
+      }
     }
   },
 

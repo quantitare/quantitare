@@ -5,6 +5,7 @@ import 'bootstrap';
 
 import '@fortawesome/fontawesome-free/js/all';
 import '@fortawesome/fontawesome-free/css/all';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import _ from 'lodash';
 
@@ -17,7 +18,7 @@ import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
 import * as ActiveStorage from 'activestorage';
 
-import './styles/application';
+import 'styles/application';
 
 Rails.start();
 Turbolinks.start();
@@ -27,15 +28,24 @@ Vue.use(VueResource);
 Vue.use(TurbolinksAdapter);
 Vue.use(VueDataScooper);
 
+function registerRequiredComponents(requireComponent, componentNameOutput = '$1') {
+  requireComponent.keys().forEach((filename) => {
+    const componentConfig = requireComponent(filename);
+    const componentName = _.upperFirst(_.camelCase(filename.replace(/^\.\/(.*)\.\w+$/, componentNameOutput)));
+
+    Vue.component(componentName, componentConfig.default || componentConfig)
+  });
+}
+
 // Set up global components
-const requireComponent = require.context('./components', false, /.+\.(vue|js)/);
+const baseComponent = require.context('components', false, /.+\.(vue|js)/);
+registerRequiredComponents(baseComponent);
+const uiComponent = require.context('components/ui', true, /.+\.(vue|js)/);
+registerRequiredComponents(uiComponent);
+const viewComponent = require.context('views', true, /.+\.(vue|js)/);
+registerRequiredComponents(viewComponent, '$1-view');
 
-requireComponent.keys().forEach((filename) => {
-  const componentConfig = requireComponent(filename)
-  const componentName = _.upperFirst(_.camelCase(filename.replace(/^\.\/(.*)\.\w+$/, '$1')))
-
-  Vue.component(componentName, componentConfig.default || componentConfig)
-});
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 document.addEventListener('turbolinks:load', () => {
   // Set a CSRF token header in every Vue HTTP request.
@@ -44,12 +54,13 @@ document.addEventListener('turbolinks:load', () => {
   const el = document.getElementById('app');
 
   if (el) {
-    let alerts = JSON.parse(el.dataset.alerts);
+    let data = el.dataset;
+    el.querySelectorAll('.vue-data').forEach((element) => data = _.merge(data, element.dataset));
+    data = _.mapValues(data, (value) => JSON.parse(value));
 
     window.app = new Vue({
       el,
-
-      data: { alerts },
+      data,
 
       mounted() {
         // Allow fontawesome SVG icons to be loaded with Turbolinks.

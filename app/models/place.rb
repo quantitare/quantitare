@@ -29,6 +29,10 @@ class Place < ApplicationRecord
     obj.country = geo.country
   end
 
+  def custom?
+    service_id.nil?
+  end
+
   def full_address
     full_address_values.compact.join(', ')
   end

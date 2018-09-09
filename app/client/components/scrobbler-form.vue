@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import choices from '../../shared/components/choices';
-import modelErrors from '../../shared/components/model-errors';
+import choices from 'components/choices';
+import modelErrors from 'components/model-errors';
 
 export default {
   components: { choices, modelErrors },

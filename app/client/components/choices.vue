@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import * as Choices from 'choices.js/assets/scripts/dist/choices.min';
+import * as Choices from 'choices.js/assets/scripts/dist/choices';
 import _ from 'lodash';
 import 'choices.js/assets/styles/scss/choices';
 

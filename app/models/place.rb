@@ -24,13 +24,14 @@ class Place < ApplicationRecord
   geocoded_by :full_address
   reverse_geocoded_by :longitude, :latitude do |obj, results|
     geo = results.first
-    return unless geo
 
-    obj.street_1 = "#{geo.data['address']} #{geo.data['text']}".strip
-    obj.city = geo.city
-    obj.state = geo.state_code
-    obj.zip = geo.postal_code
-    obj.country = geo.country
+    if geo
+      obj.street_1 = "#{geo.data['address']} #{geo.data['text']}".strip
+      obj.city = geo.city
+      obj.state = geo.state_code
+      obj.zip = geo.postal_code
+      obj.country = geo.country
+    end
   end
 
   def custom?

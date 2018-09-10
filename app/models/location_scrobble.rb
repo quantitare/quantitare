@@ -24,4 +24,18 @@ class LocationScrobble < ApplicationRecord
   def friendly_type
     raise NotImplementedError
   end
+
+  def average_latitude
+    trackpoint_average(:latitude)
+  end
+
+  def average_longitude
+    trackpoint_average(:longitude)
+  end
+
+  private
+
+  def trackpoint_average(attribute)
+    trackpoints.map { |trackpoint| trackpoint.with_indifferent_access[attribute] }.sum / trackpoints.length
+  end
 end

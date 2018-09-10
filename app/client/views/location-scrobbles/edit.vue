@@ -17,7 +17,7 @@
           :errors="errors"
           :place-edit="placeEdit"
 
-          @toggle-place-edit="placeEdit = $event"
+          @toggle-place-edit="togglePlaceEdit"
         >
         </location-scrobble-form>
 
@@ -39,6 +39,22 @@ export default {
     return {
       placeEdit: false
     };
+  },
+
+  methods: {
+    togglePlaceEdit(val) {
+      if (val) this.fillPlaceFields();
+
+      this.placeEdit = val;
+    },
+
+    fillPlaceFields() {
+      if (!this.locationScrobble.place.isNewRecord) return;
+
+      this.locationScrobble.place.name = this.locationScrobble.name;
+      this.locationScrobble.place.latitude = this.locationScrobble.averageLatitude;
+      this.locationScrobble.place.longitude = this.locationScrobble.averageLongitude;
+    }
   }
 };
 </script>

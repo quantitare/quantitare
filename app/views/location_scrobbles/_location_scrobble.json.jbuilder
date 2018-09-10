@@ -2,13 +2,20 @@
 
 json.key_format! camelize: :lower
 
-json.extract! @location_scrobble, :name, :type, :category, :distance, :place_id, :start_time, :end_time
+json.extract! @location_scrobble,
+  :name, :type, :category,
+  :distance, :trackpoints,
+  :place_id,
+  :start_time, :end_time
+
+json.average_latitude @location_scrobble.average_latitude
+json.average_longitude @location_scrobble.average_longitude
 
 json.is_transit @location_scrobble.transit?
 json.is_place @location_scrobble.place?
 
 json.url location_scrobble_path(@location_scrobble)
-
+json.isNewRecord @location_scrobble.new_record?
 json.errors @location_scrobble.errors.messages
 
 json.place do
@@ -30,6 +37,6 @@ json.place do
   json.isCustom @location_scrobble.place.try(:custom?)
 
   json.url location_scrobble_place_path(@location_scrobble)
-
+  json.isNewRecord @location_scrobble.place.try(:new_record?)
   json.errors @location_scrobble.place.try(:errors).try(:messages) || {}
 end

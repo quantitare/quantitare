@@ -15,11 +15,21 @@ export default {
     },
 
     fieldClass() {
+      const classes = [];
+
       if (this.readonly) {
-        return 'form-control-plaintext'
+        classes.push('form-control-plaintext');
       } else {
-        return 'form-control'
+        classes.push('form-control');
       }
+
+      if (this.model.errors && this.model.errors[this.attribute]) classes.push('is-invalid');
+
+      return _.join(classes, ' ');
+    },
+
+    attributeErrors() {
+      return this.model.errors && this.model.errors[this.attribute];
     }
   }
 };

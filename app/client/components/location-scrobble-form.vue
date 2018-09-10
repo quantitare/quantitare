@@ -3,43 +3,21 @@
     <template slot-scope="{ scope, model }">
       <page-subheader-1>Basic info</page-subheader-1>
 
-      <model-form-group
-        attribute="name"
-        :scope="scope"
-        :model="model"
-
-        :readonly="true"
-      >
+      <model-form-group attribute="name" :scope="scope" :model="model" :readonly="true">
         Name
       </model-form-group>
 
-      <model-form-group
-        attribute="type"
-        :scope="scope"
-        :model="model"
-
-        :readonly="true"
-      >
+      <model-form-group attribute="type" :scope="scope" :model="model" :readonly="true">
         Type
       </model-form-group>
 
-      <model-form-group
-        attribute="category"
-        :scope="scope"
-        :model="model"
-
-        :readonly="true"
-      >
+      <model-form-group attribute="category" :scope="scope" :model="model" :readonly="true">
         Category
       </model-form-group>
 
       <page-subheader-1>Place info</page-subheader-1>
 
-      <model-form-group
-        attribute="placeId"
-        :scope="scope"
-        :model="model"
-      >
+      <model-form-group attribute="placeId" :scope="scope" :model="model">
         Choose a place
 
         <template slot="fields">

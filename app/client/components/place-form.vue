@@ -1,36 +1,19 @@
 <template>
   <model-form :model="place" scope="place">
     <template slot-scope="{ scope, model }">
-      <model-form-group
-        attribute="name"
-        :scope="scope"
-        :model="model"
-      >
+      <model-form-group attribute="name" :scope="scope" :model="model">
         Name
       </model-form-group>
 
-      <model-form-group
-        attribute="name"
-        :scope="scope"
-        :model="model"
-      >
+      <model-form-group attribute="category" :scope="scope" :model="model">
         Category
       </model-form-group>
 
-      <model-form-group
-        :attribute="null"
-        :scope="scope"
-        :model="model"
-      >
+      <model-form-group :attribute="null" :scope="scope" :model="model">
         Locate by
 
         <template slot="fields">
-          <option-toggle
-            :options="entryModes"
-            :active="entryMode"
-
-            @select="setEntryMode"
-          >
+          <option-toggle :options="entryModes" :active="entryMode" @select="setEntryMode">
           </option-toggle>
         </template>
       </model-form-group>
@@ -41,21 +24,11 @@
       <coordinates-fields v-if="entryMode === 'Coordinates'" :scope="scope" :model="model">
       </coordinates-fields>
 
-      <model-form-group
-        :attribute="null"
-        :scope="scope"
-        :model="model"
-      >
+      <model-form-group :attribute="null" :scope="scope" :model="model">
         Options
 
         <template slot="fields">
-          <model-form-check-box
-            class="custom-control-inline"
-
-            attribute="global"
-            :scope="scope"
-            :model="model"
-          >
+          <model-form-check-box class="custom-control-inline" attribute="global" :scope="scope" :model="model">
             Global
           </model-form-check-box>
         </template>
@@ -64,14 +37,7 @@
       <place-match-options>
       </place-match-options>
 
-      <model-form-group
-        :attribute="null"
-        :scope="scope"
-        :model="model"
-
-        :label="false"
-      >
-
+      <model-form-group :attribute="null" :scope="scope" :model="model" :label="false">
         <template slot="fields">
           <model-form-submit value="Save">
           </model-form-submit>
@@ -99,6 +65,10 @@ export default {
     setEntryMode(option) {
       this.entryMode = option;
     }
+  },
+
+  created() {
+    if (this.place.latitude || this.place.longitude) this.entryMode = ENTRY_MODE_COORDINATES;
   }
 };
 </script>

@@ -17,6 +17,8 @@
           :readonly="readonly"
         ></model-form-input>
       </slot>
+
+      <div v-for="error in attributeErrors" class="invalid-feedback">{{ error }}</div>
     </div>
   </div>
 </template>

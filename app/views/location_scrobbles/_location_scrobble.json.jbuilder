@@ -7,12 +7,16 @@ json.extract! @location_scrobble, :name, :type, :category, :distance, :place_id,
 json.is_transit @location_scrobble.transit?
 json.is_place @location_scrobble.place?
 
+json.url location_scrobble_path(@location_scrobble)
+
+json.errors @location_scrobble.errors.messages
+
 json.place do
   json.name @location_scrobble.place.try(:name)
   json.category @location_scrobble.place.try(:category)
 
-  json.address1 @location_scrobble.place.try(:address1)
-  json.address2 @location_scrobble.place.try(:address2)
+  json.street_1 @location_scrobble.place.try(:street_1)
+  json.street_2 @location_scrobble.place.try(:street_2)
   json.city @location_scrobble.place.try(:city)
   json.state @location_scrobble.place.try(:state)
   json.zip @location_scrobble.place.try(:zip)
@@ -24,4 +28,8 @@ json.place do
   json.global @location_scrobble.place.try(:global)
 
   json.isCustom @location_scrobble.place.try(:custom?)
+
+  json.url location_scrobble_place_path(@location_scrobble)
+
+  json.errors @location_scrobble.place.try(:errors).try(:messages) || {}
 end

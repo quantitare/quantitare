@@ -1,7 +1,7 @@
 <template>
   <div>
     <model-form-group
-      attribute="address1"
+      attribute="street1"
       :scope="scope"
       :model="model"
     >
@@ -9,7 +9,7 @@
 
       <template slot="fields">
         <model-form-input
-          attribute="address1"
+          attribute="street1"
           :scope="scope"
           :model="model"
 
@@ -19,7 +19,7 @@
     </model-form-group>
 
     <model-form-group
-      attribute="address2"
+      attribute="street2"
       :scope="scope"
       :model="model"
 
@@ -28,7 +28,7 @@
 
       <template slot="fields">
         <model-form-input
-          attribute="address2"
+          attribute="street2"
           :scope="scope"
           :model="model"
 

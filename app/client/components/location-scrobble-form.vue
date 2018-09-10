@@ -58,20 +58,27 @@
             </div>
 
             <div class="col-sm-3">
-              <button class="btn btn-outline-success form-control" v-if="!placeEdit" @click.prevent="newCustomPlace">
+              <button
+                v-if="!placeEdit"
+                class="btn btn-outline-success form-control"
+
+                @click.prevent="$emit('toggle-place-edit', true)"
+              >
                 <font-awesome-icon icon="plus"></font-awesome-icon>
               </button>
 
-              <button class="btn btn-outline-danger form-control" v-else @click.prevent="cancelCustomPlace">
+              <button
+                v-else
+                class="btn btn-outline-danger form-control"
+
+                @click.prevent="$emit('toggle-place-edit', false)"
+              >
                 <font-awesome-icon icon="times"></font-awesome-icon>
               </button>
             </div>
           </div>
         </template>
       </model-form-group>
-
-      <place-form :place="locationScrobble.place" :errors="[]" v-if="placeEdit">
-      </place-form>
     </template>
   </model-form>
 </template>
@@ -85,28 +92,8 @@ export default {
 
   props: {
     locationScrobble: Object,
-    errors: Array
-  },
-
-  data() {
-    return {
-      placeEdit: false,
-    };
-  },
-
-  methods: {
-    newCustomPlace() {
-      this.placeEdit = true;
-      this.copyLocationScrobbleDataToPlaceAttributes();
-    },
-
-    cancelCustomPlace() {
-      this.placeEdit= false;
-    },
-
-    copyLocationScrobbleDataToPlaceAttributes() {
-      // this.location_scrobble.place_attributes.name = this.location_scrobble.name;
-    }
+    errors: Array,
+    placeEdit: Boolean
   }
 };
 </script>

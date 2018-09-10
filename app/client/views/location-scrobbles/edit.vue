@@ -12,8 +12,17 @@
 
     <page-body>
       <body-section width="9">
-        <location-scrobble-form :location-scrobble="locationScrobble" :errors="errors">
+        <location-scrobble-form
+          :location-scrobble="locationScrobble"
+          :errors="errors"
+          :place-edit="placeEdit"
+
+          @toggle-place-edit="placeEdit = $event"
+        >
         </location-scrobble-form>
+
+        <place-form :place="locationScrobble.place" :errors="[]" v-if="placeEdit">
+        </place-form>
       </body-section width="9">
     </page-body>
   </div>
@@ -25,6 +34,12 @@ export default {
     locationScrobble: Object,
     errors: Array
   },
+
+  data() {
+    return {
+      placeEdit: false
+    };
+  }
 };
 </script>
 

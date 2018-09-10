@@ -61,7 +61,22 @@
         </template>
       </model-form-group>
 
-      <page-subheader-2>Match options</page-subheader-2>
+      <place-match-options>
+      </place-match-options>
+
+      <model-form-group
+        :attribute="null"
+        :scope="scope"
+        :model="model"
+
+        :label="false"
+      >
+
+        <template slot="fields">
+          <model-form-submit value="Save">
+          </model-form-submit>
+        </template>
+      </model-form-group>
     </template>
   </model-form>
 </template>

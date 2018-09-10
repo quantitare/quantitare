@@ -1,5 +1,6 @@
 <template>
-  <form action="#" method="post">
+  <form :id="formId" :action="formAction" method="post" accept-charset="UTF-8" :data-remote="remote">
+    <csrf></csrf>
     <slot :scope="scope" :model="model"></slot>
   </form>
 </template>
@@ -8,7 +9,24 @@
 export default {
   props: {
     model: Object,
-    scope: String
+    scope: String,
+
+    action: String,
+
+    remote: {
+      type: Boolean,
+      default: true
+    }
+  },
+
+  computed: {
+    formAction() {
+      return this.action || this.model.url || '#'
+    },
+
+    formId() {
+      return `${_.snakeCase(this.scope)}_form`
+    }
   }
 };
 </script>

@@ -7,7 +7,7 @@ class Place < ApplicationRecord
   include HasGuid
 
   FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :country].freeze
-  COORDINATES_ATTRS = [:latitude, :longitude].freeze
+  COORDINATES_ATTRS = [:longitude, :latitude].freeze
 
   has_many :location_scrobbles, dependent: :nullify
   belongs_to :user, optional: true
@@ -22,11 +22,11 @@ class Place < ApplicationRecord
   scope :available_to_user, ->(user) { where(global: true).or(where(user: user)) }
 
   geocoded_by :full_address
-  reverse_geocoded_by :latitude, :longitude do |obj, results|
+  reverse_geocoded_by :longitude, :latitude do |obj, results|
     geo = results.first
     return unless geo
 
-    obj.street_1 = geo.street
+    obj.street_1 = "#{geo.data['address']} #{geo.data['text']}".strip
     obj.city = geo.city
     obj.state = geo.state_code
     obj.zip = geo.postal_code

@@ -15,7 +15,7 @@
             :model="model"
 
             path="/locations/categories"
-            :pathDataFormatter="(category) => { return { value: category.name, label: category.name }; }"
+            :pathDataFormatter="pathDataFormatter"
           ></model-form-choices>
         </template>
       </model-form-group>
@@ -69,6 +69,13 @@ export default {
     return {
       entryModes: [ENTRY_MODE_ADDRESS, ENTRY_MODE_COORDINATES],
       entryMode: ENTRY_MODE_ADDRESS,
+
+      pathDataFormatter(category) {
+        return {
+          value: category.name,
+          label: `<i class="fas fa-${category.icon}" style="margin-right: 4px;"></i> ${category.name}`
+        };
+      }
     };
   },
 

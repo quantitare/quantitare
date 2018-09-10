@@ -13,7 +13,7 @@ class PlacesController < AuthenticatedController
 
   def create
     @location_scrobble = LocationScrobble.find_by(id: params[:location_scrobble_id]).try(:decorate)
-    @place = Place.new(place_params).decorate
+    @place = current_user.places.new(place_params).decorate
 
     @place.location_scrobbles << @location_scrobble if @location_scrobble
 

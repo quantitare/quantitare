@@ -87,6 +87,10 @@ export default {
       } else {
         this.choices.enable();
       }
+    },
+
+    value(newValue) {
+      this.choices.setValueByChoice(newValue);
     }
   },
 

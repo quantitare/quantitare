@@ -7,7 +7,9 @@
 
     :params="params"
     :options="options"
-    :value="value"
+
+    :path="path"
+    :pathDataFormatter="pathDataFormatter"
 
     :disabled="disabled"
   >
@@ -20,7 +22,25 @@ import railsFormField from 'mixins/rails-form-field';
 export default {
   mixins: [railsFormField],
 
-  props: { params: Object, options: Array, disabled: Boolean },
+  props: {
+    path: String,
+    pathDataFormatter: Function,
+
+    params: {
+      type: Object,
+      default() { return {}; },
+    },
+
+    options: {
+      type: Array,
+      default() { return []; },
+    },
+
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
 
   computed: {
     value() {

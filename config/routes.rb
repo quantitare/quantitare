@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       end
 
       resources :imports, except: [:index, :destroy], as: 'location_imports', controller: 'location_imports'
+      resources :categories, only: [:index], as: 'location_categories', controller: 'location_categories'
     end
   end
 end

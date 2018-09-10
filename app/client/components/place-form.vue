@@ -7,6 +7,17 @@
 
       <model-form-group attribute="category" :scope="scope" :model="model">
         Category
+
+        <template slot="fields">
+          <model-form-choices
+            attribute="category"
+            :scope="scope"
+            :model="model"
+
+            path="/locations/categories"
+            :pathDataFormatter="(category) => { return { value: category.name, label: category.name }; }"
+          ></model-form-choices>
+        </template>
       </model-form-group>
 
       <model-form-group :attribute="null" :scope="scope" :model="model">
@@ -57,7 +68,7 @@ export default {
   data() {
     return {
       entryModes: [ENTRY_MODE_ADDRESS, ENTRY_MODE_COORDINATES],
-      entryMode: ENTRY_MODE_ADDRESS
+      entryMode: ENTRY_MODE_ADDRESS,
     };
   },
 

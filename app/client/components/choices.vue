@@ -9,20 +9,45 @@ import 'choices.js/assets/styles/scss/choices';
 
 export default {
   name: 'choices',
-  props: { id: String, name: String, params: Object, value: String, options: Array, disabled: Boolean },
+  props: {
+    id: String,
+    name: String,
+    value: String,
+
+    params: {
+      type: Object,
+      default() { return {}; }
+    },
+
+    path: String,
+    pathDataFormatter: {
+      type: Function,
+      default(obj) { return obj; }
+    },
+
+    options: {
+      type: Array,
+      default() { return []; }
+    },
+
+    disabled: Boolean
+  },
 
   data() {
     return {
-      choices: null
+      choices: null,
+
+      placeholderOption: [{ value: null, label: 'Please make a selection', selected: this.value, disabled: true }]
     };
   },
 
   computed: {
     choicesOptions() {
-      const vm = this;
-      const placeholder = [{ value: null, label: 'Please make a selection', selected: !vm.value, disabled: true }];
+      if (this.path) return [];
 
-      return placeholder.concat(this.options.map((pair) => {
+      const vm = this;
+
+      return this.placeholderOption.concat(this.options.map((pair) => {
         return {
           value: pair[1],
           label: pair[0],
@@ -35,6 +60,23 @@ export default {
   methods: {
     selectionChanged(event) {
       this.$emit('input', event.detail.value);
+    },
+
+    fetchOptionsFromPath() {
+      const vm = this;
+
+      this.choices.ajax(function(callback) {
+        fetch(vm.path)
+          .then(function(response) {
+            response.json().then(function(data) {
+              const formattedData = _.map(data, vm.pathDataFormatter);
+              callback(formattedData, 'value', 'label');
+            });
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      });
     }
   },
 
@@ -63,6 +105,8 @@ export default {
 
     let mergedParams = _.merge(defaultParams, this.params);
     this.choices = new Choices(`#${this.id}`, mergedParams);
+
+    if (this.path) this.fetchOptionsFromPath();
 
     this.$emit('input', this.value);
   }

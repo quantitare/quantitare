@@ -5,7 +5,11 @@
 # different from a typical scrobble.
 #
 class LocationScrobble < ApplicationRecord
+  include HasGuid
   include Periodable
+
+  validates :start_time, presence: true
+  validates :end_time, presence: true
 
   belongs_to :user
   belongs_to :place, optional: true
@@ -54,6 +58,7 @@ class LocationScrobble < ApplicationRecord
   private
 
   def trackpoint_average(attribute)
+    return nil unless trackpoints.length.positive?
     trackpoints.map { |trackpoint| trackpoint.with_indifferent_access[attribute] }.sum / trackpoints.length
   end
 end

@@ -71,6 +71,7 @@ export default {
             response.json().then(function(data) {
               const formattedData = _.map(data, vm.pathDataFormatter);
               callback(formattedData, 'value', 'label');
+              if (!_.isNil(vm.value)) vm.choices.setValueByChoice(vm.value);
             });
           })
           .catch(function(error) {

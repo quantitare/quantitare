@@ -4,9 +4,13 @@
 # Representation of time spent at a place.
 #
 class PlaceScrobble < LocationScrobble
-  accepts_nested_attributes_for :place
+  CATEGORY_KLASS = PlaceCategory
 
   def friendly_type
     'Place'
+  end
+
+  def category_info
+    place_id.present? ? category_klass.find(place.category) : super
   end
 end

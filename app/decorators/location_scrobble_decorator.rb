@@ -10,15 +10,19 @@ class LocationScrobbleDecorator < ApplicationDecorator
     h.icon_tag(icon_class, options)
   end
 
-  def icon_class
-    object.place? ? 'fas fa-map-marker-alt' : 'fas fa-car'
+  def icon
+    object.category_info.icon
   end
 
-  def start_time
+  def icon_class
+    "fas fa-#{icon}"
+  end
+
+  def friendly_start_time
     h.friendly_format_time(object.start_time)
   end
 
-  def end_time
+  def friendly_end_time
     h.friendly_format_time(object.end_time)
   end
 

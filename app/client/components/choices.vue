@@ -12,7 +12,7 @@ export default {
   props: {
     id: String,
     name: String,
-    value: String,
+    value: null,
 
     params: {
       type: Object,
@@ -88,10 +88,6 @@ export default {
         this.choices.enable();
       }
     },
-
-    value(newValue) {
-      this.choices.setValueByChoice(newValue);
-    }
   },
 
   mounted() {

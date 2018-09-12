@@ -3,10 +3,15 @@
 json.key_format! camelize: :lower
 
 json.extract! @location_scrobble,
-  :name, :type, :category,
+  :name,
   :distance, :trackpoints,
   :place_id,
-  :start_time, :end_time
+  :start_time, :end_time,
+  :icon
+
+json.type @location_scrobble.friendly_type
+
+json.category @location_scrobble.category_name
 
 json.average_latitude @location_scrobble.average_latitude
 json.average_longitude @location_scrobble.average_longitude

@@ -1,19 +1,23 @@
 <template>
   <div>
     <page-header>
-      <header-icon icon="map-marker-alt" />
-      {{ locationScrobble.name }}
-
-      <small class="text-muted">
-        <span v-if="locationScrobble.isTransit">{{ locationScrobble.distance }}</span>
-        <i>from</i> {{ locationScrobble.startTime }} <i>to</i> {{ locationScrobble.endTime }}
-      </small>
+      <header-icon :icon="model.icon || 'map-marker-alt'" />
+      {{ model.name }}
+      <small class="text-muted">{{ model.category }}</small>
     </page-header>
 
     <page-body>
       <body-section width="9">
+        <div class="row">
+          <p>
+            <span v-if="model.isTransit">{{ model.distance }} <i>from</i></span>
+            {{ model.startAtDisplay }} <i class="text-muted">to</i> {{ model.endAtDisplay }}
+            &middot; {{ model.durationDisplay }}
+          </p>
+        </div>
+
         <location-scrobble-form
-          :location-scrobble="locationScrobble"
+          :location-scrobble="model"
           :errors="errors"
           :place-edit="placeEdit"
 
@@ -21,7 +25,7 @@
         >
         </location-scrobble-form>
 
-        <place-form :place="locationScrobble.place" :errors="[]" v-if="placeEdit">
+        <place-form :place="model.place" :errors="[]" v-if="placeEdit">
         </place-form>
       </body-section width="9">
     </page-body>
@@ -29,6 +33,8 @@
 </template>
 
 <script>
+import LocationScrobble from 'models/location-scrobble';
+
 export default {
   props: {
     locationScrobble: Object,
@@ -41,6 +47,12 @@ export default {
     };
   },
 
+  computed: {
+    model() {
+      return _.extend(new LocationScrobble, this.locationScrobble);
+    }
+  },
+
   methods: {
     togglePlaceEdit(val) {
       if (val) this.fillPlaceFields();
@@ -49,11 +61,11 @@ export default {
     },
 
     fillPlaceFields() {
-      if (!this.locationScrobble.place.isNewRecord) return;
+      if (!this.model.place.isNewRecord) return;
 
-      this.locationScrobble.place.name = this.locationScrobble.name;
-      this.locationScrobble.place.latitude = this.locationScrobble.averageLatitude;
-      this.locationScrobble.place.longitude = this.locationScrobble.averageLongitude;
+      this.model.place.name = this.model.name;
+      this.model.place.latitude = this.model.averageLatitude;
+      this.model.place.longitude = this.model.averageLongitude;
     }
   }
 };

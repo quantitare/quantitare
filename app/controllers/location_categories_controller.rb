@@ -5,6 +5,6 @@
 #
 class LocationCategoriesController < AuthenticatedController
   def index
-    render json: LocationCategory.all.map(&:to_h)
+    render json: PlaceCategory.all.map(&:to_h)
   end
 end

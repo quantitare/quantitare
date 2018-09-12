@@ -112,6 +112,7 @@ GEM
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (>= 1.0, < 4.0.0)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -374,6 +375,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   foursquare2
+  geocoder (~> 1.5.0)
   haml
   jbuilder (~> 2.5)
   json_schemer (~> 0.1.7)

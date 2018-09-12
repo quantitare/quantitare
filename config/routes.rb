@@ -22,13 +22,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :locations, controller: 'location_scrobbles', only: [:index] do
+  resources :places, only: [:show] do
     collection do
-      resources :scrobbles, only: [:edit, :update], as: 'location_scrobbles', controller: 'location_scrobbles'
-      resources :transit_scrobbles, only: [:edit, :update], as: 'transit_scrobbles', controller: 'location_scrobbles'
-      resources :place_scrobbles, only: [:edit, :update], as: 'place_scrobbles', controller: 'location_scrobbles'
+      get :search
+    end
+  end
+
+  resources :locations, controller: 'location_scrobbles', only: [:index] do
+
+    collection do
+      resources :scrobbles, only: [:edit, :update], as: 'location_scrobbles', controller: 'location_scrobbles' do
+        resource :place, only: [:create, :update], params: :location_scrobble_id
+      end
 
       resources :imports, except: [:index, :destroy], as: 'location_imports', controller: 'location_imports'
+      resources :categories, only: [:index], as: 'location_categories', controller: 'location_categories'
     end
   end
 end

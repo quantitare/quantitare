@@ -16,6 +16,14 @@ module ApplicationHelper
     end
   end
 
+  def json_partial(partial_name)
+    render partial: partial_name, formats: [:json]
+  end
+
+  def default_vue_data
+    { alerts: available_alerts }
+  end
+
   def friendly_format_time(time)
     time.strftime('%-d %b %Y %l:%M:%S%P')
   end

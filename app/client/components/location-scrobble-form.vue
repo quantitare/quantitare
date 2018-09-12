@@ -15,6 +15,7 @@
                 :model="model"
 
                 path="/places/search.json"
+                :pathDataFormatter="placesPathDataFormatter"
 
                 :disabled="placeEdit"
               >
@@ -58,6 +59,15 @@ export default {
     locationScrobble: Object,
     errors: Array,
     placeEdit: Boolean
+  },
+
+  methods: {
+    placesPathDataFormatter(place) {
+      return {
+        value: place.id,
+        label: `<i class="fas fa-${place.icon}" style="margin-right: 4px;"></i> ${place.name}`
+      };
+    }
   }
 };
 </script>

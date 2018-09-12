@@ -14,9 +14,9 @@
                 :scope="scope"
                 :model="model"
 
+                path="/places/search.json"
+
                 :disabled="placeEdit"
-                :options="[]"
-                :params="{}"
               >
               </model-form-choices>
             </div>

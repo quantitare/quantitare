@@ -7,6 +7,7 @@
 class LocationScrobble < ApplicationRecord
   include HasGuid
   include Periodable
+  include Categorizable
 
   validates :start_time, presence: true
   validates :end_time, presence: true
@@ -16,12 +17,6 @@ class LocationScrobble < ApplicationRecord
   belongs_to :source, polymorphic: true
 
   default_scope -> { order(start_time: :asc) }
-
-  class << self
-    def category_klass
-      const_get('CATEGORY_KLASS')
-    end
-  end
 
   def place?
     is_a? PlaceScrobble
@@ -33,18 +28,6 @@ class LocationScrobble < ApplicationRecord
 
   def friendly_type
     raise NotImplementedError
-  end
-
-  def category_klass
-    self.class.category_klass
-  end
-
-  def category_info
-    category_klass.find(category) || category_klass.default
-  end
-
-  def category_name
-    category_info.name
   end
 
   def average_latitude

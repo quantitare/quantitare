@@ -28,8 +28,8 @@ module Categorizable
     end
 
     def category_attribute(attr_name = nil)
-      ivar_name = '@@_category_attribute'
-      attr_name.present? ? class_variable_set(ivar_name, attr_name.to_sym) : class_variable_get(ivar_name)
+      cvar_name = '@@_category_attribute'
+      attr_name.present? ? class_variable_set(cvar_name, attr_name.to_sym) : class_variable_get(cvar_name)
     end
   end
 

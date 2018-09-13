@@ -6138,9 +6138,13 @@ vue-turbolinks@^2.0.3:
   dependencies:
     vue "^2.2.4"
 
-vue@^2.2.4, vue@^2.5.16:
+vue@^2.2.4:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
+
+vue@^2.5.17:
+  version "2.5.17"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 
 watchpack@^1.4.0:
   version "1.6.0"

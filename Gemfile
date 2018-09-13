@@ -14,7 +14,6 @@ gem 'puma', '~> 3.11'
 gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
 
 # Front-end core
-gem 'haml'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'

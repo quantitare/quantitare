@@ -120,6 +120,10 @@ export default {
   width: 100%;
 }
 
+.choices__list .choices__list--single {
+  padding: 0 16px;
+}
+
 .is-open .choices__list--dropdown {
   margin-top: 3px;
 

@@ -8,14 +8,8 @@
 
     <div class="col-sm-8">
       <slot name="fields" :model="model">
-        <model-form-input
-          :model="model"
-          :scope="scope"
-          :attribute="attribute"
-
-          :disabled="disabled"
-          :readonly="readonly"
-        ></model-form-input>
+        <model-form-input :attribute="attribute" :disabled="disabled" :readonly="readonly">
+        </model-form-input>
       </slot>
 
       <div v-for="error in attributeErrors" class="invalid-feedback">{{ error }}</div>

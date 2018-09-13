@@ -1,11 +1,17 @@
 export default {
   props: {
     attribute: String,
-    scope: String,
-    model: Object
   },
 
   computed: {
+    scope() {
+      return this.$parent.scope;
+    },
+
+    model() {
+      return this.$parent.model;
+    },
+
     fieldId() {
       return `${_.snakeCase(this.scope)}_${_.snakeCase(this.attribute)}`;
     },

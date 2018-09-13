@@ -1,26 +1,20 @@
 <template>
   <model-form :model="place" scope="place">
     <template slot-scope="{ scope, model }">
-      <model-form-group attribute="name" :scope="scope" :model="model">
+      <model-form-group attribute="name">
         Name
       </model-form-group>
 
-      <model-form-group attribute="category" :scope="scope" :model="model">
+      <model-form-group attribute="category">
         Category
 
         <template slot="fields">
-          <model-form-choices
-            attribute="category"
-            :scope="scope"
-            :model="model"
-
-            path="/locations/categories"
-            :pathDataFormatter="pathDataFormatter"
-          ></model-form-choices>
+          <model-form-choices attribute="category" path="/locations/categories" :pathDataFormatter="pathDataFormatter">
+          </model-form-choices>
         </template>
       </model-form-group>
 
-      <model-form-group :attribute="null" :scope="scope" :model="model">
+      <model-form-group :attribute="null">
         Locate by
 
         <template slot="fields">
@@ -29,17 +23,17 @@
         </template>
       </model-form-group>
 
-      <address-fields v-if="entryMode === 'Address'" :scope="scope" :model="model">
+      <address-fields v-if="entryMode === 'Address'">
       </address-fields>
 
-      <coordinates-fields v-if="entryMode === 'Coordinates'" :scope="scope" :model="model">
+      <coordinates-fields v-if="entryMode === 'Coordinates'">
       </coordinates-fields>
 
-      <model-form-group :attribute="null" :scope="scope" :model="model">
+      <model-form-group :attribute="null">
         Options
 
         <template slot="fields">
-          <model-form-check-box class="custom-control-inline" attribute="global" :scope="scope" :model="model">
+          <model-form-check-box class="custom-control-inline" attribute="global">
             Global
           </model-form-check-box>
         </template>
@@ -48,7 +42,7 @@
       <place-match-options>
       </place-match-options>
 
-      <model-form-group :attribute="null" :scope="scope" :model="model" :label="false">
+      <model-form-group :attribute="null" :label="false">
         <template slot="fields">
           <model-form-submit value="Save">
           </model-form-submit>

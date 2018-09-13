@@ -3,7 +3,7 @@
     <template slot-scope="{ scope, model }">
       <page-subheader-1>Place info</page-subheader-1>
 
-      <model-form-group attribute="placeId" :scope="scope" :model="model">
+      <model-form-group attribute="placeId">
         Choose a place
 
         <template slot="fields">
@@ -11,8 +11,6 @@
             <div class="col-sm-9">
               <model-form-choices
                 attribute="placeId"
-                :scope="scope"
-                :model="model"
 
                 path="/places/search.json"
                 :pathDataFormatter="placesPathDataFormatter"

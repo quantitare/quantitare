@@ -1,31 +1,15 @@
 <template>
-  <model-form-group
-    attribute="latitude"
-    :scope="scope"
-    :model="model"
-  >
+  <model-form-group attribute="latitude">
     Coordinates
 
     <template slot="fields">
       <div class="row">
         <div class="col-sm-6">
-          <model-form-input
-            attribute="latitude"
-            :scope="scope"
-            :model="model"
-
-            placeholder="Latitude"
-          />
+          <model-form-input attribute="latitude" placeholder="Latitude" />
         </div>
 
         <div class="col-sm-6">
-          <model-form-input
-            attribute="longitude"
-            :scope="scope"
-            :model="model"
-
-            placeholder="Longitude"
-          />
+          <model-form-input attribute="longitude" placeholder="Longitude" />
         </div>
       </div>
     </template>
@@ -33,7 +17,9 @@
 </template>
 
 <script>
+import railsFormField from 'mixins/rails-form-field';
+
 export default {
-  props: { scope: String, model: Object }
+  mixins: [railsFormField]
 };
 </script>

@@ -44,7 +44,7 @@ gem 'rack-cors', '~> 1.0.2'
 gem 'responders', '~> 2.4.0'
 
 # Authentication
-gem 'devise', '~> 4.4.3'
+gem 'devise', '~> 4.5.0'
 gem 'omniauth', '~> 1.8.1'
 
 # Omniauth strategies

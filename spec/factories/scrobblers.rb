@@ -5,6 +5,6 @@ FactoryBot.define do
     user
 
     name { Faker::Lorem.words(1) }
-    type 'Scrobblers::DummyScrobbler'
+    type { 'Scrobblers::DummyScrobbler' }
   end
 end

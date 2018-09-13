@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :location_import do
     user
-    adapter 'GoogleMapsKmlAdapter'
+    adapter { 'GoogleMapsKmlAdapter' }
   end
 end

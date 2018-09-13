@@ -4,7 +4,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/vue-fontawesome": "^0.1.1",
     "@rails/webpacker": "3.5.5",
-    "activestorage": "^5.2.0",
+    "activestorage": "^5.2.1",
     "bootstrap": "^4.1.1",
     "choices.js": "^3.0.4",
     "jquery": "^3.3.1",

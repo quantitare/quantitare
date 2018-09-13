@@ -1,5 +1,5 @@
 <template>
-  <model-form :model="locationScrobble" scope="locationScrobble">
+  <model-form :model="model" scope="locationScrobble">
     <template slot-scope="{ scope, model }">
       <page-subheader-1>Place info</page-subheader-1>
 
@@ -15,15 +15,13 @@
                 path="/places/search.json"
                 :pathDataFormatter="placesPathDataFormatter"
                 :disabled="placeEditMode !== 'closed'"
-
-                @input="placeIdChanged"
               >
               </model-form-choices>
             </div>
 
             <div class="col-sm-3">
               <button
-                v-if="placeEditMode === 'closed' && !locationScrobble.placeId"
+                v-if="placeEditMode === 'closed' && !model.placeId"
                 class="btn btn-outline-success form-control"
 
                 @click.prevent="$emit('place-edit-mode-set', 'new')"
@@ -67,15 +65,12 @@
 </template>
 
 <script>
-import choices from 'components/choices';
-import modelErrors from 'components/model-errors';
-
 export default {
-  components: { choices, modelErrors },
-
   props: {
-    locationScrobble: Object,
-    errors: Array,
+    model: Object,
+
+    placeId: String,
+
     placeEditMode: String
   },
 
@@ -86,10 +81,6 @@ export default {
         label: `<i class="fas fa-${place.icon}" style="margin-right: 4px;"></i> ${place.name}`
       };
     },
-
-    placeIdChanged(placeId) {
-      console.log(placeId);
-    }
   }
 };
 </script>

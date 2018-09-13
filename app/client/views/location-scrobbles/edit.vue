@@ -17,8 +17,8 @@
         </div>
 
         <location-scrobble-form
-          :location-scrobble="locationScrobble"
-          :errors="errors"
+          v-bind.sync="locationScrobble"
+          :model="model"
           :place-edit-mode="placeEditMode"
 
           @place-edit-mode-set="setPlaceEditMode"

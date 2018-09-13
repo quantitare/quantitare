@@ -1,7 +1,7 @@
 <template>
   <choices
     :value="model[attribute]"
-    @input="newValue"
+    @input="handleInput"
 
     :id="fieldId"
     :name="fieldName"
@@ -50,8 +50,9 @@ export default {
   },
 
   methods: {
-    newValue(value) {
-      this.model[this.attribute] = value;
+    handleInput(val) {
+      console.log(val);
+      this.$emit(`update:${this.attribute}`, val);
     }
   }
 };

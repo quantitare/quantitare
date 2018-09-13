@@ -14,27 +14,47 @@
 
                 path="/places/search.json"
                 :pathDataFormatter="placesPathDataFormatter"
+                :disabled="placeEditMode !== 'closed'"
 
-                :disabled="placeEdit"
+                @input="placeIdChanged"
               >
               </model-form-choices>
             </div>
 
             <div class="col-sm-3">
               <button
-                v-if="!placeEdit"
+                v-if="placeEditMode === 'closed' && !locationScrobble.placeId"
                 class="btn btn-outline-success form-control"
 
-                @click.prevent="$emit('toggle-place-edit', true)"
+                @click.prevent="$emit('place-edit-mode-set', 'new')"
               >
                 <font-awesome-icon icon="plus"></font-awesome-icon>
               </button>
+
+              <div v-else-if="placeEditMode === 'closed'" class="btn-group" role="group" aria-label="Place edit options">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+
+                  @click.prevent="$emit('place-edit-mode-set', 'edit')"
+                >
+                  <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+
+                  @click.prevent="$emit('place-edit-mode-set', 'new')"
+                >
+                  <font-awesome-icon icon="plus"></font-awesome-icon>
+                </button>
+              </div>
 
               <button
                 v-else
                 class="btn btn-outline-danger form-control"
 
-                @click.prevent="$emit('toggle-place-edit', false)"
+                @click.prevent="$emit('place-edit-mode-set', 'closed')"
               >
                 <font-awesome-icon icon="times"></font-awesome-icon>
               </button>
@@ -56,7 +76,7 @@ export default {
   props: {
     locationScrobble: Object,
     errors: Array,
-    placeEdit: Boolean
+    placeEditMode: String
   },
 
   methods: {
@@ -65,7 +85,21 @@ export default {
         value: place.id,
         label: `<i class="fas fa-${place.icon}" style="margin-right: 4px;"></i> ${place.name}`
       };
+    },
+
+    placeIdChanged(placeId) {
+      console.log(placeId);
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.btn-group {
+  width: 100%;
+
+  .btn {
+    width: 50%;
+  }
+}
+</style>

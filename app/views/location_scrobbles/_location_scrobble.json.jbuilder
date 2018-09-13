@@ -5,7 +5,6 @@ json.key_format! camelize: :lower
 json.extract! @location_scrobble,
   :name,
   :distance, :trackpoints,
-  :place_id,
   :start_time, :end_time,
   :icon
 
@@ -22,6 +21,8 @@ json.is_place @location_scrobble.place?
 json.url location_scrobble_path(@location_scrobble)
 json.isNewRecord @location_scrobble.new_record?
 json.errors @location_scrobble.errors.messages
+
+json.place_id @location_scrobble.place_id.to_s
 
 json.place do
   json.name @location_scrobble.place.try(:name)

@@ -1,6 +1,7 @@
 <template>
   <choices
-    v-model="model[attribute]"
+    :value="model[attribute]"
+    @input="newValue"
 
     :id="fieldId"
     :name="fieldName"
@@ -45,6 +46,12 @@ export default {
   computed: {
     value() {
       this.model[this.attribute]
+    }
+  },
+
+  methods: {
+    newValue(value) {
+      this.model[this.attribute] = value;
     }
   }
 };

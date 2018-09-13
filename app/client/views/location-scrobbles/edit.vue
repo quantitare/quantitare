@@ -17,15 +17,15 @@
         </div>
 
         <location-scrobble-form
-          :location-scrobble="model"
+          :location-scrobble="locationScrobble"
           :errors="errors"
-          :place-edit="placeEdit"
+          :place-edit-mode="placeEditMode"
 
-          @toggle-place-edit="togglePlaceEdit"
+          @place-edit-mode-set="setPlaceEditMode"
         >
         </location-scrobble-form>
 
-        <place-form :place="model.place" :errors="[]" v-if="placeEdit">
+        <place-form :place="locationScrobble.place" :errors="[]" v-if="placeEditMode !== 'closed'">
         </place-form>
       </body-section width="9">
     </page-body>
@@ -35,6 +35,13 @@
 <script>
 import LocationScrobble from 'models/location-scrobble';
 
+const PE_CLOSED = 'closed';
+const PE_NEW = 'new';
+const PE_EDIT = 'edit';
+const PE_CHANGE = 'change';
+
+const PLACE_EDIT_MODES = [PE_CLOSED, PE_NEW, PE_EDIT, PE_CHANGE];
+
 export default {
   props: {
     locationScrobble: Object,
@@ -43,7 +50,7 @@ export default {
 
   data() {
     return {
-      placeEdit: false
+      placeEditMode: PE_CLOSED
     };
   },
 
@@ -53,14 +60,40 @@ export default {
     }
   },
 
-  methods: {
-    togglePlaceEdit(val) {
-      if (val) this.fillPlaceFields();
+  watch: {
+    placeId(val) {
+      const path = val ? `/places/${val}` : '/places/new';
 
-      this.placeEdit = val;
+      this.fetchPlace(path);
+    }
+  },
+
+  methods: {
+    fetchPlace(path) {
+      const vm = this;
+
+      this.$http.get(path).then((response) => {
+        this.place = response.body;
+      }, (response) => {
+        console.log('oops'); // TODO
+      });
     },
 
-    fillPlaceFields() {
+    setPlaceEditMode(val) {
+      switch (val) {
+        case PE_CLOSED:
+          break;
+        case PE_NEW:
+          this.fillNewPlaceFields();
+          break;
+        case PE_EDIT:
+          break;
+      }
+
+      this.placeEditMode = val;
+    },
+
+    fillNewPlaceFields() {
       if (!this.model.place.isNewRecord) return;
 
       this.model.place.name = this.model.name;

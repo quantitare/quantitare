@@ -24,7 +24,7 @@
         >
         </location-scrobble-form>
 
-        <place-form v-if="placeEditMode !== 'closed'" :place="locationScrobble.place">
+        <place-form v-if="placeEditMode !== 'closed'" :place="place">
         </place-form>
       </body-section width="9">
     </page-body>
@@ -48,6 +48,7 @@ export default {
 
   data() {
     return {
+      place: {},
       placeEditMode: PE_CLOSED
     };
   },
@@ -59,14 +60,19 @@ export default {
   },
 
   watch: {
-    placeId(val) {
-      const path = val ? `/places/${val}` : '/places/new';
-
-      this.fetchPlace(path);
+    'locationScrobble.placeId'(newVal, oldVal) {
+      this.initPlace()
     }
   },
 
   methods: {
+    initPlace() {
+      const val = this.locationScrobble.placeId;
+      const path = val ? `/places/${val}.json` : '/places/new.json';
+
+      this.fetchPlace(path);
+    },
+
     fetchPlace(path) {
       const vm = this;
 
@@ -98,6 +104,10 @@ export default {
       this.model.place.latitude = this.model.averageLatitude;
       this.model.place.longitude = this.model.averageLongitude;
     }
+  },
+
+  created() {
+    this.initPlace();
   }
 };
 </script>

@@ -79,7 +79,7 @@ export default {
         label: `<i class="fas fa-${place.icon}" style="margin-right: 4px;"></i> ${place.name}`
       };
     },
-  }
+  },
 };
 </script>
 

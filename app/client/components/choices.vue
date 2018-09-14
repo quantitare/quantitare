@@ -1,5 +1,5 @@
 <template>
-  <select :id="id" :name="name" :disabled="disabled" @change="selectionChanged"></select>
+  <select :id="id" :name="name" :disabled="disabled" @change="$emit('input', $event.detail.value)"></select>
 </template>
 
 <script>
@@ -108,8 +108,6 @@ export default {
     this.choices = new Choices(`#${this.id}`, mergedParams);
 
     if (this.path) this.fetchOptionsFromPath();
-
-    this.$emit('input', this.value);
   }
 };
 </script>
@@ -120,8 +118,8 @@ export default {
   width: 100%;
 }
 
-.choices__list .choices__list--single {
-  padding: 0 16px;
+.choices__list.choices__list--single {
+  padding: 0px;
 }
 
 .is-open .choices__list--dropdown {

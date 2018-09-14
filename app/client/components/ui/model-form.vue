@@ -6,12 +6,19 @@
       <div v-for="error in model.errors.base" class="alert alert-danger">{{ error }}</div>
     </div>
 
-    <slot :scope="scope" :model="model"></slot>
+    <slot></slot>
   </form>
 </template>
 
 <script>
 export default {
+  provide() {
+    return {
+      model: this.model,
+      scope: this.scope
+    };
+  },
+
   props: {
     model: Object,
     scope: String,

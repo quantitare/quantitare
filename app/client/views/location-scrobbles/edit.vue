@@ -17,15 +17,14 @@
         </div>
 
         <location-scrobble-form
-          :location-scrobble="locationScrobble"
-          :errors="errors"
+          :model="locationScrobble"
           :place-edit-mode="placeEditMode"
 
           @place-edit-mode-set="setPlaceEditMode"
         >
         </location-scrobble-form>
 
-        <place-form :place="locationScrobble.place" :errors="[]" v-if="placeEditMode !== 'closed'">
+        <place-form v-if="placeEditMode !== 'closed'" :place="locationScrobble.place">
         </place-form>
       </body-section width="9">
     </page-body>
@@ -45,7 +44,6 @@ const PLACE_EDIT_MODES = [PE_CLOSED, PE_NEW, PE_EDIT, PE_CHANGE];
 export default {
   props: {
     locationScrobble: Object,
-    errors: Array
   },
 
   data() {

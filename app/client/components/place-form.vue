@@ -1,54 +1,52 @@
 <template>
   <model-form :model="place" scope="place">
-    <template slot-scope="{ scope, model }">
-      <model-form-group attribute="name">
-        Name
-      </model-form-group>
+    <model-form-group attribute="name">
+      Name
+    </model-form-group>
 
-      <model-form-group attribute="category">
-        Category
+    <model-form-group attribute="category">
+      Category
 
-        <template slot="fields">
-          <model-form-choices attribute="category" path="/locations/categories" :pathDataFormatter="pathDataFormatter">
-          </model-form-choices>
-        </template>
-      </model-form-group>
+      <template slot="fields">
+        <model-form-choices attribute="category" path="/locations/categories" :pathDataFormatter="pathDataFormatter">
+        </model-form-choices>
+      </template>
+    </model-form-group>
 
-      <model-form-group :attribute="null">
-        Locate by
+    <model-form-group :attribute="null">
+      Locate by
 
-        <template slot="fields">
-          <option-toggle :options="entryModes" :active="entryMode" @select="setEntryMode">
-          </option-toggle>
-        </template>
-      </model-form-group>
+      <template slot="fields">
+        <option-toggle :options="entryModes" :active="entryMode" @select="setEntryMode">
+        </option-toggle>
+      </template>
+    </model-form-group>
 
-      <address-fields v-if="entryMode === 'Address'">
-      </address-fields>
+    <address-fields v-if="entryMode === 'Address'">
+    </address-fields>
 
-      <coordinates-fields v-if="entryMode === 'Coordinates'">
-      </coordinates-fields>
+    <coordinates-fields v-if="entryMode === 'Coordinates'">
+    </coordinates-fields>
 
-      <model-form-group :attribute="null">
-        Options
+    <model-form-group :attribute="null">
+      Options
 
-        <template slot="fields">
-          <model-form-check-box class="custom-control-inline" attribute="global">
-            Global
-          </model-form-check-box>
-        </template>
-      </model-form-group>
+      <template slot="fields">
+        <model-form-check-box class="custom-control-inline" attribute="global">
+          Global
+        </model-form-check-box>
+      </template>
+    </model-form-group>
 
-      <place-match-options>
-      </place-match-options>
+    <place-match-options>
+    </place-match-options>
 
-      <model-form-group :attribute="null" :label="false">
-        <template slot="fields">
-          <model-form-submit value="Save">
-          </model-form-submit>
-        </template>
-      </model-form-group>
-    </template>
+    <model-form-group :attribute="null" :label="false">
+      <template slot="fields">
+        <model-form-submit value="Save">
+        </model-form-submit>
+      </template>
+    </model-form-group>
   </model-form>
 </template>
 

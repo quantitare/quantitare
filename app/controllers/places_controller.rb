@@ -8,7 +8,12 @@ class PlacesController < AuthenticatedController
     @places = Place.available_to_user(current_user)
   end
 
+  def show
+    @place = current_user.places.find(params[:id])
+  end
+
   def new
+    @place = current_user.places.new.decorate
   end
 
   def create

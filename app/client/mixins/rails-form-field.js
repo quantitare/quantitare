@@ -1,4 +1,6 @@
 export default {
+  inject: ['model', 'scope'],
+
   props: {
     attribute: String,
   },

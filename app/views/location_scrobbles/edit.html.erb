@@ -1,8 +1,5 @@
 <% content_for :title, 'Edit location scrobble' %>
 <%= vue_data_tag data: { location_scrobble: json_partial('location_scrobble') } %>
 
-<location-scrobbles-edit-view
-  :location-scrobble="locationScrobble"
-  :errors="<%= @location_scrobble.errors.full_messages %>"
->
+<location-scrobbles-edit-view :location-scrobble="locationScrobble">
 </location-scrobbles-edit-view>

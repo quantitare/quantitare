@@ -1,7 +1,6 @@
 <template>
   <choices
-    :value="model[attribute]"
-    @input="handleInput"
+    v-model="model[attribute]"
 
     :id="fieldId"
     :name="fieldName"
@@ -40,19 +39,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    }
-  },
-
-  computed: {
-    value() {
-      this.model[this.attribute]
-    }
-  },
-
-  methods: {
-    handleInput(val) {
-      console.log(val);
-      this.$emit(`update:${this.attribute}`, val);
     }
   }
 };

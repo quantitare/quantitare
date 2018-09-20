@@ -1,5 +1,5 @@
 <template>
-  <model-form :model="place" scope="place">
+  <model-form namespace='locationScrobblesEdit' :model="place" scope="place">
     <model-form-group attribute="name">
       Name
     </model-form-group>
@@ -51,11 +51,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 const ENTRY_MODE_ADDRESS = 'Address';
 const ENTRY_MODE_COORDINATES = 'Coordinates';
 
 export default {
-  props: { place: Object },
 
   data() {
     return {
@@ -69,6 +70,10 @@ export default {
         };
       }
     };
+  },
+
+  computed: {
+    ...mapState('locationScrobblesEdit', ['place'])
   },
 
   methods: {

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :places, only: [:show] do
+  resources :places, only: [:show, :new, :create, :update] do
     collection do
       get :search
     end

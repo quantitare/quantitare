@@ -1,17 +1,17 @@
+import _ from 'lodash';
+import { mapActions } from 'vuex';
+
 export default {
-  inject: ['model', 'scope'],
+  inject: ['namespace', 'model', 'scope'],
 
   props: {
     attribute: String,
   },
 
   computed: {
-    scope() {
-      return this.$parent.scope;
-    },
-
-    model() {
-      return this.$parent.model;
+    updateActionName() {
+      const prefix = this.namespace ? `${this.namespace}/` : ''
+      return `${prefix}update${_.upperFirst(this.attribute)}`;
     },
 
     fieldId() {
@@ -38,6 +38,12 @@ export default {
 
     attributeErrors() {
       return this.model.errors && this.model.errors[this.attribute];
+    }
+  },
+
+  methods: {
+    updateAttribute(value) {
+      this.$store.dispatch(this.updateActionName, value);
     }
   }
 };

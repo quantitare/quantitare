@@ -1,5 +1,5 @@
 <template>
-  <model-form :model="model" scope="locationScrobble">
+  <model-form :namespace="namespace" :model="model" scope="locationScrobble">
     <div v-if="model.isPlace">
       <page-subheader-1>Place info</page-subheader-1>
 
@@ -24,7 +24,7 @@
                 v-if="placeEditMode === 'closed' && !model.placeId"
                 class="btn btn-outline-success form-control"
 
-                @click.prevent="$emit('place-edit-mode-set', 'new')"
+                @click.prevent="setPlaceEditMode('new')"
               >
                 <font-awesome-icon icon="plus"></font-awesome-icon>
               </button>
@@ -34,7 +34,7 @@
                   type="button"
                   class="btn btn-outline-primary"
 
-                  @click.prevent="$emit('place-edit-mode-set', 'edit')"
+                  @click.prevent="setPlaceEditMode('edit')"
                 >
                   <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                 </button>
@@ -42,7 +42,7 @@
                   type="button"
                   class="btn btn-outline-success"
 
-                  @click.prevent="$emit('place-edit-mode-set', 'new')"
+                  @click.prevent="setPlaceEditMode('new')"
                 >
                   <font-awesome-icon icon="plus"></font-awesome-icon>
                 </button>
@@ -52,7 +52,7 @@
                 v-else
                 class="btn btn-outline-danger form-control"
 
-                @click.prevent="$emit('place-edit-mode-set', 'closed')"
+                @click.prevent="setPlaceEditMode('closed')"
               >
                 <font-awesome-icon icon="times"></font-awesome-icon>
               </button>
@@ -65,11 +65,16 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   props: {
     model: Object,
+    namespace: String
+  },
 
-    placeEditMode: String
+  computed: {
+    ...mapState('locationScrobblesEdit', ['placeEditMode'])
   },
 
   methods: {
@@ -79,6 +84,8 @@ export default {
         label: `<i class="fas fa-${place.icon}" style="margin-right: 4px;"></i> ${place.name}`
       };
     },
+
+    ...mapActions('locationScrobblesEdit', ['setPlaceEditMode'])
   },
 };
 </script>

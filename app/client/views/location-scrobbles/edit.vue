@@ -17,14 +17,13 @@
         </div>
 
         <location-scrobble-form
+          namespace="locationScrobblesEdit"
           :model="locationScrobble"
-          :place-edit-mode="placeEditMode"
-
-          @place-edit-mode-set="setPlaceEditMode"
+          scope="locationScrobble"
         >
         </location-scrobble-form>
 
-        <place-form v-if="placeEditMode !== 'closed'" :place="place">
+        <place-form v-if="placeEditMode !== 'closed'">
         </place-form>
       </body-section width="9">
     </page-body>
@@ -32,6 +31,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex';
 import LocationScrobble from 'models/location-scrobble';
 
 const PE_CLOSED = 'closed';
@@ -42,27 +42,12 @@ const PE_CHANGE = 'change';
 const PLACE_EDIT_MODES = [PE_CLOSED, PE_NEW, PE_EDIT, PE_CHANGE];
 
 export default {
-  props: {
-    locationScrobble: Object,
-  },
-
-  data() {
-    return {
-      place: {},
-      placeEditMode: PE_CLOSED
-    };
-  },
-
   computed: {
-    model() {
-      return _.extend(new LocationScrobble, this.locationScrobble);
-    }
-  },
+    ...mapState('locationScrobblesEdit', ['placeEditMode', 'locationScrobble', 'place']),
 
-  watch: {
-    'locationScrobble.placeId'(newVal, oldVal) {
-      this.initPlace()
-    }
+    ...mapGetters('locationScrobblesEdit', {
+      model: 'locationScrobbleModel'
+    })
   },
 
   methods: {
@@ -73,37 +58,7 @@ export default {
       this.fetchPlace(path);
     },
 
-    fetchPlace(path) {
-      const vm = this;
-
-      this.$http.get(path).then((response) => {
-        this.place = response.body;
-      }, (response) => {
-        console.log('oops'); // TODO
-      });
-    },
-
-    setPlaceEditMode(val) {
-      switch (val) {
-        case PE_CLOSED:
-          break;
-        case PE_NEW:
-          this.fillNewPlaceFields();
-          break;
-        case PE_EDIT:
-          break;
-      }
-
-      this.placeEditMode = val;
-    },
-
-    fillNewPlaceFields() {
-      if (!this.model.place.isNewRecord) return;
-
-      this.model.place.name = this.model.name;
-      this.model.place.latitude = this.model.averageLatitude;
-      this.model.place.longitude = this.model.averageLongitude;
-    }
+    ...mapActions('locationScrobblesEdit', ['setPlaceEditMode', 'fetchPlace'])
   },
 
   created() {

@@ -10,3 +10,7 @@ json.extract! place,
   :longitude, :latitude
 
 json.icon place.category_icon
+
+json.url url_for(place)
+json.isNewRecord place.new_record?
+json.errors place.errors.messages

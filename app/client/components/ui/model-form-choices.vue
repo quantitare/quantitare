@@ -1,6 +1,7 @@
 <template>
   <choices
-    v-model="model[attribute]"
+    :value="model[attribute]"
+    @input="updateAttribute"
 
     :id="fieldId"
     :name="fieldName"

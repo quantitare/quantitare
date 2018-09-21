@@ -1,8 +1,7 @@
 import _ from 'lodash';
-import { mapActions } from 'vuex';
 
 export default {
-  inject: ['namespace', 'model', 'scope'],
+  inject: ['model', 'scope'],
 
   props: {
     attribute: String,
@@ -10,8 +9,7 @@ export default {
 
   computed: {
     updateActionName() {
-      const prefix = this.namespace ? `${this.namespace}/` : ''
-      return `${prefix}update${_.upperFirst(this.attribute)}`;
+      return `update${_.upperFirst(this.scope)}`;
     },
 
     fieldId() {
@@ -43,7 +41,7 @@ export default {
 
   methods: {
     updateAttribute(value) {
-      this.$store.dispatch(this.updateActionName, value);
+      this.$store.dispatch(this.updateActionName, { [this.attribute]: value });
     }
   }
 };

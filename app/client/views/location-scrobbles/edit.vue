@@ -17,7 +17,6 @@
         </div>
 
         <location-scrobble-form
-          namespace="locationScrobblesEdit"
           :model="locationScrobble"
           scope="locationScrobble"
         >
@@ -43,11 +42,9 @@ const PLACE_EDIT_MODES = [PE_CLOSED, PE_NEW, PE_EDIT, PE_CHANGE];
 
 export default {
   computed: {
-    ...mapState('locationScrobblesEdit', ['placeEditMode', 'locationScrobble', 'place']),
+    ...mapState(['placeEditMode', 'locationScrobble', 'place']),
 
-    ...mapGetters('locationScrobblesEdit', {
-      model: 'locationScrobbleModel'
-    })
+    ...mapGetters('locationScrobble', ['model'])
   },
 
   methods: {
@@ -58,7 +55,7 @@ export default {
       this.fetchPlace(path);
     },
 
-    ...mapActions('locationScrobblesEdit', ['setPlaceEditMode', 'fetchPlace'])
+    ...mapActions(['setPlaceEditMode', 'fetchPlace'])
   },
 
   created() {

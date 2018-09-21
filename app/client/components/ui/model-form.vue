@@ -14,14 +14,12 @@
 export default {
   provide() {
     return {
-      namespace: this.namespace,
       model: this.model,
       scope: this.scope
     };
   },
 
   props: {
-    namespace: String,
     model: Object,
     scope: String,
 

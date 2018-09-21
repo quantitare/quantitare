@@ -23,7 +23,7 @@ import Turbolinks from 'turbolinks';
 import * as ActiveStorage from 'activestorage';
 
 import registerRequiredComponents from 'utilities/register-required-components';
-import vuexModuleLoader from 'utilities/vuex-module-loader';
+import loadVuexData from 'utilities/load-vuex-data';
 
 import 'styles/application';
 
@@ -35,6 +35,9 @@ Vue.use(TurbolinksAdapter);
 Vue.use(VueResource);
 Vue.use(Vuex);
 Vue.use(VueDataScooper);
+
+const storeComponents = require.context('stores', true, /.+\.js/);
+const moduleComponents = require.context('vuex-modules', true, /.+\.js/);
 
 // Set up global components
 const baseComponent = require.context('components', false, /.+\.(vue|js)/);
@@ -58,7 +61,9 @@ document.addEventListener('turbolinks:load', () => {
     let moduleNames;
     let moduleStates;
 
-    const moduleElements = document.querySelectorAll('.vuex-module');
+    let storeNames;
+
+    const moduleElements = el.querySelectorAll('.vuex-module');
     const moduleMap = _.map(moduleElements, (element) => element.dataset);
 
     moduleNames = _.flatMap(moduleMap, (e) => _.values(e));
@@ -68,14 +73,24 @@ document.addEventListener('turbolinks:load', () => {
     moduleStates = _.mapValues(moduleStates, (value) => JSON.parse(value));
     moduleNames = moduleNames.concat(_.keys(moduleStates));
 
-    const modules = _.pick(vuexModuleLoader(), moduleNames);
+    const availableModules = loadVuexData(moduleComponents);
+    const modules = _.pick(availableModules, moduleNames);
 
     _.keys(modules).forEach((key) => {
       modules[key].state = modules[key].state || {};
       _.merge(modules[key].state, moduleStates[key]);
     });
 
-    const store = new Vuex.Store({ modules });
+    const availableStoreData = loadVuexData(storeComponents);
+    const storeElements = el.querySelectorAll('.vuex-store');
+    const storeMap = _.map(storeElements, (element) => element.dataset);
+
+    storeNames = _.flatMap(storeMap, (e) => _.values(e));
+    const storeData = _.map(storeNames, (name) => availableStoreData[name]);
+
+    const finalStore = _.merge({ modules }, ...storeData);
+
+    const store = new Vuex.Store(finalStore);
 
     window.app = new Vue({
       el,

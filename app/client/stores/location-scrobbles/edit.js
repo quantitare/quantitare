@@ -1,5 +1,4 @@
 import Vue from 'vue/dist/vue.esm';
-import LocationScrobble from 'models/location-scrobble';
 
 const PE_CLOSED = 'closed';
 const PE_NEW = 'new';
@@ -9,18 +8,8 @@ const PE_CHANGE = 'change';
 const PLACE_EDIT_MODES = [PE_CLOSED, PE_NEW, PE_EDIT, PE_CHANGE];
 
 export default {
-  namespaced: true,
-
   state: {
-    locationScrobble: {},
-    place: {},
     placeEditMode: PE_CLOSED
-  },
-
-  getters: {
-    locationScrobbleModel(state) {
-      return _.extend(new LocationScrobble, state.locationScrobble);
-    },
   },
 
   mutations: {
@@ -30,10 +19,6 @@ export default {
 
     setPlace(state, newPlace) {
       state.place = newPlace;
-    },
-
-    setCategory(state, newCategory) {
-      state.place.category = newCategory;
     },
 
     setPlaceEditMode(state, newMode) {
@@ -50,6 +35,10 @@ export default {
   },
 
   actions: {
+    updatePlace({ dispatch }, payload) {
+      dispatch('place/update', payload);
+    },
+
     updatePlaceId({ dispatch, commit }, placeId) {
       const path = placeId ? `/places/${placeId}.json` : '/places/new.json';
 
@@ -58,14 +47,10 @@ export default {
       });
     },
 
-    updateCategory({ commit }, category) {
-      commit('setCategory', category);
-    },
-
-    fetchPlace({ commit }, path) {
+    fetchPlace({ dispatch }, path) {
       return new Promise((resolve, reject) => {
         Vue.http.get(path).then((response) => {
-          commit('setPlace', response.body);
+          dispatch('updatePlace', response.body);
           resolve();
         }, () => {
           reject();

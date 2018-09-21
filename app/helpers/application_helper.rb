@@ -16,8 +16,9 @@ module ApplicationHelper
     end
   end
 
-  def json_partial(partial_name)
-    render partial: partial_name, formats: [:json]
+  def json_partial(partial_name, opts = {})
+    opts = { partial: partial_name, formats: [:json] }.merge(opts)
+    render opts
   end
 
   def default_vue_data

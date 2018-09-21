@@ -1,5 +1,5 @@
 <template>
-  <model-form :namespace="namespace" :model="model" scope="locationScrobble">
+  <model-form :model="model" scope="locationScrobble">
     <div v-if="model.isPlace">
       <page-subheader-1>Place info</page-subheader-1>
 
@@ -70,11 +70,10 @@ import { mapState, mapActions } from 'vuex';
 export default {
   props: {
     model: Object,
-    namespace: String
   },
 
   computed: {
-    ...mapState('locationScrobblesEdit', ['placeEditMode'])
+    ...mapState(['placeEditMode'])
   },
 
   methods: {
@@ -85,7 +84,7 @@ export default {
       };
     },
 
-    ...mapActions('locationScrobblesEdit', ['setPlaceEditMode'])
+    ...mapActions(['setPlaceEditMode'])
   },
 };
 </script>

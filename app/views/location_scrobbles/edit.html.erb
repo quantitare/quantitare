@@ -1,7 +1,15 @@
 <% content_for :title, 'Edit location scrobble' %>
 
-<%= vuex_module_tag :location_scrobbles_edit %>
-<%= vue_data_tag data: { location_scrobbles_edit: { locationScrobble: JSON.parse(json_partial('location_scrobble')) } } %>
+<%= vuex_store_tag :location_scrobbles_edit %>
+<%= vue_data_tag data: { location_scrobble: json_partial('location_scrobble') } %>
+<%=
+  vue_data_tag data: {
+    place: json_partial(
+      'places/place',
+      locals: { place: @location_scrobble.place.try(:decorate) || current_user.places.build.decorate }
+    )
+  }
+%>
 
 <location-scrobbles-edit-view>
 </location-scrobbles-edit-view>

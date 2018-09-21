@@ -1,5 +1,5 @@
 <template>
-  <model-form namespace='locationScrobblesEdit' :model="place" scope="place">
+  <model-form :model="place" scope="place">
     <model-form-group attribute="name">
       Name
     </model-form-group>
@@ -73,7 +73,7 @@ export default {
   },
 
   computed: {
-    ...mapState('locationScrobblesEdit', ['place'])
+    ...mapState(['place'])
   },
 
   methods: {

@@ -14,7 +14,7 @@
 
                 path="/places/search.json"
                 :pathDataFormatter="placesPathDataFormatter"
-                :disabled="placeEditMode !== 'closed'"
+                :disabled="placeEditMode !== 'closed' && placeEditMode !== 'change'"
               >
               </model-form-choices>
             </div>
@@ -47,6 +47,15 @@
                   <font-awesome-icon icon="plus"></font-awesome-icon>
                 </button>
               </div>
+
+              <button
+                v-else-if="placeEditMode === 'change'"
+                class="btn btn-outline-success form-control"
+
+                @click.prevent="console.log('hello')"
+              >
+                <font-awesome-icon icon="check"></font-awesome-icon>
+              </button>
 
               <button
                 v-else

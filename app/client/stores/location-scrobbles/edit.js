@@ -67,6 +67,11 @@ export default {
               resolve();
             }).catch(() => reject());
             break;
+          case PE_CLOSED:
+            dispatch('processPlaceId');
+            resolve();
+          case PE_CHANGE:
+            resolve();
           default:
             resolve();
         }

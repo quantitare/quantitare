@@ -48,18 +48,17 @@ export default {
   },
 
   methods: {
-    initPlace() {
-      const val = this.locationScrobble.placeId;
-      const path = val ? `/places/${val}.json` : '/places/new.json';
+    ...mapActions(['setPlaceEditMode', 'processPlaceId'])
+  },
 
-      this.fetchPlace(path);
-    },
-
-    ...mapActions(['setPlaceEditMode', 'fetchPlace'])
+  watch: {
+    'locationScrobble.placeId'() {
+      this.processPlaceId();
+    }
   },
 
   created() {
-    this.initPlace();
+    this.processPlaceId();
   }
 };
 </script>

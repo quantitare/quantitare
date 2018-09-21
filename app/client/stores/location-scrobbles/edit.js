@@ -24,14 +24,6 @@ export default {
     setPlaceEditMode(state, newMode) {
       state.placeEditMode = newMode;
     },
-
-    fillNewPlaceFields(state) {
-      if (!state.place.isNewRecord) return;
-
-      state.place.name = state.locationScrobble.name;
-      state.place.latitude = state.locationScrobble.averageLatitude;
-      state.place.longitude = state.locationScrobble.averageLongitude;
-    }
   },
 
   actions: {
@@ -39,12 +31,14 @@ export default {
       dispatch('place/update', payload);
     },
 
-    updatePlaceId({ dispatch, commit }, placeId) {
-      const path = placeId ? `/places/${placeId}.json` : '/places/new.json';
+    updateLocationScrobble({ dispatch }, payload) {
+      dispatch('locationScrobble/update', payload);
+    },
 
-      dispatch('fetchPlace', path).then(() => {
-        commit('setPlaceId', placeId);
-      });
+    processPlaceId({ dispatch, state }) {
+      const pth = state.locationScrobble.placeId ? `/places/${state.locationScrobble.placeId}.json` : '/places/new.json';
+
+      dispatch('fetchPlace', pth);
     },
 
     fetchPlace({ dispatch }, path) {
@@ -79,8 +73,14 @@ export default {
       });
     },
 
-    fillNewPlaceFields({ commit }) {
-      commit('fillNewPlaceFields');
+    fillNewPlaceFields({ dispatch, state }) {
+      if (!state.place.isNewRecord) return;
+
+      dispatch('updatePlace', {
+        name: state.locationScrobble.name,
+        longitude: state.locationScrobble.averageLongitude,
+        latitude: state.locationScrobble.averageLatitude
+      });
     }
   }
 };

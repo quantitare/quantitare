@@ -50,9 +50,8 @@
 
               <button
                 v-else-if="placeEditMode === 'change'"
+                type="submit"
                 class="btn btn-outline-success form-control"
-
-                @click.prevent="console.log('hello')"
               >
                 <font-awesome-icon icon="check"></font-awesome-icon>
               </button>

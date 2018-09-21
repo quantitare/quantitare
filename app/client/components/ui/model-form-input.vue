@@ -1,6 +1,7 @@
 <template>
   <input
-    v-model="model[attribute]"
+    :value="model[attribute]"
+    @input="updateAttribute($event.target.value)"
 
     :name="fieldName"
     :id="fieldId"

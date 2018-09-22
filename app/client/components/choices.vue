@@ -1,5 +1,9 @@
 <template>
-  <select :id="id" :name="name" :disabled="disabled" @change="$emit('input', $event.detail.value)"></select>
+  <select :id="id" :name="name" :disabled="disabled">
+    <slot>
+      <option value="" placeholder>Make a selection...</option>
+    </slot>
+  </select>
 </template>
 
 <script>
@@ -35,9 +39,7 @@ export default {
 
   data() {
     return {
-      choices: null,
-
-      placeholderOption: [{ value: null, label: 'Please make a selection', selected: this.value, disabled: true }]
+      choices: null
     };
   },
 
@@ -47,13 +49,13 @@ export default {
 
       const vm = this;
 
-      return this.placeholderOption.concat(this.options.map((pair) => {
+      return this.options.map((pair) => {
         return {
           value: pair[1],
           label: pair[0],
           selected: pair[1] === vm.value
         };
-      }));
+      });
     }
   },
 
@@ -70,14 +72,20 @@ export default {
           .then(function(response) {
             response.json().then(function(data) {
               const formattedData = _.map(data, vm.pathDataFormatter);
+
               callback(formattedData, 'value', 'label');
               if (!_.isNil(vm.value)) vm.choices.setValueByChoice(vm.value);
             });
           })
           .catch(function(error) {
-            console.log(error);
+            console.log(error); // TODO
           });
       });
+    },
+
+    changed(event) {
+      const value = event.detail.value ? event.detail.value : null
+      this.$emit('input', value);
     }
   },
 
@@ -88,13 +96,14 @@ export default {
       } else {
         this.choices.enable();
       }
-    },
+    }
   },
 
   mounted() {
     const defaultParams = {
       itemSelectText: '',
       placeholder: true,
+      removeItemButton: true,
 
       choices: this.choicesOptions,
 
@@ -105,7 +114,9 @@ export default {
     };
 
     let mergedParams = _.merge(defaultParams, this.params);
-    this.choices = new Choices(`#${this.id}`, mergedParams);
+    const el = document.getElementById(this.id);
+    this.choices = new Choices(el, mergedParams);
+    el.addEventListener('addItem', this.changed);
 
     if (this.path) this.fetchOptionsFromPath();
   }

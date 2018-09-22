@@ -21,20 +21,20 @@
 
             <div class="col-sm-3">
               <button
-                v-if="!placeEdit && !model.placeId"
+                v-if="canSubmit"
+                type="submit"
+                class="btn btn-outline-success form-control"
+              >
+                <font-awesome-icon icon="check"></font-awesome-icon>
+              </button>
+
+              <button
+                v-else-if="!placeEdit && !model.placeId"
                 class="btn btn-outline-success form-control"
 
                 @click.prevent="openPlaceEdit('new')"
               >
                 <font-awesome-icon icon="plus"></font-awesome-icon>
-              </button>
-
-              <button
-                v-else-if="canSubmit"
-                type="submit"
-                class="btn btn-outline-success form-control"
-              >
-                <font-awesome-icon icon="check"></font-awesome-icon>
               </button>
 
               <div v-else-if="!placeEdit" class="btn-group" role="group" aria-label="Place edit options">

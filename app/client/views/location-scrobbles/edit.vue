@@ -23,6 +23,9 @@
         </location-scrobble-form>
 
         <place-form v-if="placeEdit">
+          <template slot="additional-fields">
+            <input type="hidden" name="location_scrobble_id" :value="locationScrobble.id" />
+          </template>
         </place-form>
       </body-section width="9">
     </page-body>

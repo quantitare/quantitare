@@ -1,5 +1,7 @@
 <template>
   <model-form :model="place" scope="place">
+    <slot name="additional-fields"></slot>
+
     <model-form-group attribute="name">
       Name
     </model-form-group>

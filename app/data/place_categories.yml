@@ -4,3 +4,5 @@
   icon: home
 - name: Restaurant
   icon: utensils
+- name: Office
+  icon: building

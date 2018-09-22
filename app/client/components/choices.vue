@@ -74,7 +74,7 @@ export default {
               const formattedData = _.map(data, vm.pathDataFormatter);
 
               callback(formattedData, 'value', 'label');
-              if (!_.isNil(vm.value)) vm.choices.setValueByChoice(vm.value);
+              vm.choices.setValueByChoice(vm.value);
             });
           })
           .catch(function(error) {
@@ -84,7 +84,7 @@ export default {
     },
 
     changed(event) {
-      const value = event.detail.value ? event.detail.value : null
+      const value = event.detail.value
       this.$emit('input', value);
     }
   },

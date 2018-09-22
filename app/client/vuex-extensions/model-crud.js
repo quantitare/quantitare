@@ -9,7 +9,10 @@ export default {
 
   actions: {
     update({ commit }, payload) {
-      commit('update', payload);
+      return new Promise((resolve, reject) => {
+        commit('update', payload);
+        resolve();
+      });
     }
   }
 };

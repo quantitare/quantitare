@@ -22,7 +22,7 @@
         >
         </location-scrobble-form>
 
-        <place-form v-if="placeEditMode !== 'closed' && placeEditMode !== 'change'">
+        <place-form v-if="placeEdit">
         </place-form>
       </body-section width="9">
     </page-body>
@@ -42,33 +42,25 @@ const PLACE_EDIT_MODES = [PE_CLOSED, PE_NEW, PE_EDIT, PE_CHANGE];
 
 export default {
   computed: {
-    ...mapState(['placeEditMode', 'locationScrobble', 'place']),
+    ...mapState(['placeEdit', 'locationScrobble', 'place']),
 
+    ...mapGetters(['placeEditMode']),
     ...mapGetters('locationScrobble', ['model'])
   },
 
   methods: {
-    ...mapActions(['setPlaceEditMode', 'processPlaceId']),
-
-    cacheOriginalModel() {
-      this._originalModel = Object.assign({}, this.locationScrobble);
-    }
+    ...mapActions(['setPlaceEdit', 'cacheOriginals', 'processPlaceId']),
   },
 
   watch: {
     'locationScrobble.placeId'() {
       this.processPlaceId();
-      if (this.model.placeId !== this._originalModel.placeId) {
-        this.setPlaceEditMode('change');
-      } else {
-        this.setPlaceEditMode('closed');
-      }
     }
   },
 
   created() {
     this.processPlaceId();
-    this.cacheOriginalModel();
+    this.cacheOriginals();
   }
 };
 </script>

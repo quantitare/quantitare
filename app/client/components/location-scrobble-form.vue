@@ -14,27 +14,35 @@
 
                 path="/places/search.json"
                 :pathDataFormatter="placesPathDataFormatter"
-                :disabled="placeEditMode !== 'closed' && placeEditMode !== 'change'"
+                :disabled="placeEdit"
               >
               </model-form-choices>
             </div>
 
             <div class="col-sm-3">
               <button
-                v-if="placeEditMode === 'closed' && !model.placeId"
+                v-if="!placeEdit && !model.placeId"
                 class="btn btn-outline-success form-control"
 
-                @click.prevent="setPlaceEditMode('new')"
+                @click.prevent="openPlaceEdit('new')"
               >
                 <font-awesome-icon icon="plus"></font-awesome-icon>
               </button>
 
-              <div v-else-if="placeEditMode === 'closed'" class="btn-group" role="group" aria-label="Place edit options">
+              <button
+                v-else-if="canSubmit"
+                type="submit"
+                class="btn btn-outline-success form-control"
+              >
+                <font-awesome-icon icon="check"></font-awesome-icon>
+              </button>
+
+              <div v-else-if="!placeEdit" class="btn-group" role="group" aria-label="Place edit options">
                 <button
                   type="button"
                   class="btn btn-outline-primary"
 
-                  @click.prevent="setPlaceEditMode('edit')"
+                  @click.prevent="openPlaceEdit('edit')"
                 >
                   <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                 </button>
@@ -42,25 +50,17 @@
                   type="button"
                   class="btn btn-outline-success"
 
-                  @click.prevent="setPlaceEditMode('new')"
+                  @click.prevent="openPlaceEdit('new')"
                 >
                   <font-awesome-icon icon="plus"></font-awesome-icon>
                 </button>
               </div>
 
               <button
-                v-else-if="placeEditMode === 'change'"
-                type="submit"
-                class="btn btn-outline-success form-control"
-              >
-                <font-awesome-icon icon="check"></font-awesome-icon>
-              </button>
-
-              <button
                 v-else
                 class="btn btn-outline-danger form-control"
 
-                @click.prevent="setPlaceEditMode('closed')"
+                @click.prevent="closePlaceEdit"
               >
                 <font-awesome-icon icon="times"></font-awesome-icon>
               </button>
@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   props: {
@@ -81,6 +81,11 @@ export default {
   },
 
   computed: {
+    canSubmit() {
+      return !this.placeEdit && this.model.placeId !== this.model._original.placeId;
+    },
+
+    ...mapState(['placeEdit']),
     ...mapState(['placeEditMode'])
   },
 
@@ -92,7 +97,7 @@ export default {
       };
     },
 
-    ...mapActions(['setPlaceEditMode'])
+    ...mapActions(['openPlaceEdit', 'closePlaceEdit'])
   },
 };
 </script>

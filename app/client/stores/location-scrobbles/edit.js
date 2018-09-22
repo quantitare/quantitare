@@ -9,36 +9,67 @@ const PLACE_EDIT_MODES = [PE_CLOSED, PE_NEW, PE_EDIT, PE_CHANGE];
 
 export default {
   state: {
-    placeEditMode: PE_CLOSED
+    placeEdit: false,
+  },
+
+  getters: {
+    placeEditMode(state) {
+      return PE_CLOSED;
+    }
   },
 
   mutations: {
-    setPlaceId(state, newPlaceId) {
-      state.locationScrobble.placeId = newPlaceId;
+    cacheOriginals(state) {
+      Vue.set(state.locationScrobble, '_original', Object.assign({}, state.locationScrobble));
+      Vue.set(state.place, '_original', Object.assign({}, state.place));
     },
 
     setPlace(state, newPlace) {
       state.place = newPlace;
     },
 
-    setPlaceEditMode(state, newMode) {
-      state.placeEditMode = newMode;
+    setPlaceEdit(state, newState) {
+      state.placeEdit = newState;
     },
   },
 
   actions: {
+    cacheOriginals({ commit }) {
+      commit('cacheOriginals');
+    },
+
+    refreshPlace({ dispatch }, payload) {
+      dispatch('updatePlace', payload)
+        .then(() => dispatch('cacheOriginals'));
+    },
+
     updatePlace({ dispatch }, payload) {
-      dispatch('place/update', payload);
+      return new Promise((resolve, reject) => {
+        dispatch('place/update', payload)
+          .then(() => resolve());
+      });
+    },
+
+    refreshLocationScrobble({ dispatch }, payload) {
+      dispatch('updateLocationScrobble', payload)
+        .then(() => dispatch('cacheOriginals'));
     },
 
     updateLocationScrobble({ dispatch }, payload) {
-      dispatch('locationScrobble/update', payload);
+      return new Promise((resolve, reject) => {
+        dispatch('locationScrobble/update', payload)
+          .then(() => resolve());
+      });
     },
 
     processPlaceId({ dispatch, state }) {
       const pth = state.locationScrobble.placeId ? `/places/${state.locationScrobble.placeId}.json` : '/places/new.json';
 
-      dispatch('fetchPlace', pth);
+      return new Promise((resolve, reject) => {
+        dispatch('fetchPlace', pth)
+          .then(() => resolve())
+          .catch(() => reject());
+      });
     },
 
     fetchPlace({ dispatch }, path) {
@@ -52,9 +83,38 @@ export default {
       });
     },
 
-    setPlaceEditMode({ dispatch, commit }, newMode) {
-      dispatch('processPlaceEditMode', newMode).then(() => {
-        commit('setPlaceEditMode', newMode);
+    closePlaceEdit({ dispatch }) {
+      dispatch('processPlaceId')
+        .then(() => dispatch('setPlaceEdit', false));
+    },
+
+    openPlaceEdit({ dispatch }, mode) {
+      dispatch('processPlaceOpenMode', mode)
+        .then(() => dispatch('setPlaceEdit', true));
+    },
+
+    setPlaceEdit({ dispatch, commit }, newState) {
+      dispatch('processPlaceEditMode', newState).then(() => {
+        commit('setPlaceEdit', newState);
+      });
+    },
+
+    processPlaceOpenMode({ dispatch }, mode) {
+      return new Promise((resolve, reject) => {
+        switch (mode) {
+          case PE_NEW:
+            dispatch('fetchPlace', '/places/new.json')
+              .then(() => {
+                dispatch('fillNewPlaceFields');
+                resolve();
+              })
+              .catch(() => reject());
+            break;
+          case PE_EDIT:
+            resolve();
+          default:
+            reject();
+        }
       });
     },
 

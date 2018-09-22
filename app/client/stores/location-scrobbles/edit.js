@@ -94,9 +94,7 @@ export default {
     },
 
     setPlaceEdit({ dispatch, commit }, newState) {
-      dispatch('processPlaceEditMode', newState).then(() => {
-        commit('setPlaceEdit', newState);
-      });
+      commit('setPlaceEdit', newState);
     },
 
     processPlaceOpenMode({ dispatch }, mode) {
@@ -114,26 +112,6 @@ export default {
             resolve();
           default:
             reject();
-        }
-      });
-    },
-
-    processPlaceEditMode({ state, dispatch }, mode) {
-      return new Promise((resolve, reject) => {
-        switch (mode) {
-          case PE_NEW:
-            dispatch('fetchPlace', '/places/new.json').then(() => {
-              dispatch('fillNewPlaceFields');
-              resolve();
-            }).catch(() => reject());
-            break;
-          case PE_CLOSED:
-            dispatch('processPlaceId');
-            resolve();
-          case PE_CHANGE:
-            resolve();
-          default:
-            resolve();
         }
       });
     },

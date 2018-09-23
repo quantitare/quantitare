@@ -8,7 +8,7 @@
 
         <template slot="fields">
           <model-form-check-box :reactive="true" attribute="singular" class="custom-control-inline">
-            This is a one-time stop (e.g. stuck in traffic)
+            This is a one-time stop (e.g. "Stuck in traffic")
           </model-form-check-box>
         </template>
       </model-form-group>

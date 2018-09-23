@@ -19,11 +19,6 @@ export default {
   },
 
   mutations: {
-    cacheOriginals(state) {
-      Vue.set(state.locationScrobble, '_original', Object.assign({}, state.locationScrobble));
-      Vue.set(state.place, '_original', Object.assign({}, state.place));
-    },
-
     setPlace(state, newPlace) {
       state.place = newPlace;
     },
@@ -34,8 +29,12 @@ export default {
   },
 
   actions: {
-    cacheOriginals({ commit }) {
-      commit('cacheOriginals');
+    cacheOriginals({ dispatch }) {
+      return new Promise((resolve, reject) => {
+        dispatch('locationScrobble/cacheOriginal')
+          .then(() => dispatch('place/cacheOriginal'))
+          .then(() => resolve());
+      });
     },
 
     refreshPlace({ dispatch }, payload) {

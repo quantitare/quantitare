@@ -29,6 +29,7 @@ gem 'sidekiq', '~> 5.0'
 
 # Utilities
 gem 'bcrypt', '~> 3.1.7'
+gem 'carmen', '~> 1.1.1'
 gem 'geocoder', '~> 1.5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.1.7'

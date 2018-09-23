@@ -6,6 +6,10 @@
 class LocationScrobbleDecorator < ApplicationDecorator
   delegate_all
 
+  def name
+    object.place.try(:name) || object.name
+  end
+
   def icon_tag(options = {})
     h.icon_tag(icon_class, options)
   end

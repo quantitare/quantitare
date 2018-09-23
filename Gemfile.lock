@@ -66,6 +66,8 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
+    carmen (1.1.1)
+      activesupport (>= 3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.2)
@@ -368,6 +370,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
+  carmen (~> 1.1.1)
   devise (~> 4.5.0)
   dotenv-rails
   draper (~> 3.0.1)

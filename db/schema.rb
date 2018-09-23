@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_09_220503) do
+ActiveRecord::Schema.define(version: 2018_09_23_062212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_09_09_220503) do
     t.tsrange "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "singular", default: false, null: false
     t.index ["end_time"], name: "index_location_scrobbles_on_end_time"
     t.index ["guid"], name: "index_location_scrobbles_on_guid"
     t.index ["period"], name: "index_location_scrobbles_on_period", using: :gist

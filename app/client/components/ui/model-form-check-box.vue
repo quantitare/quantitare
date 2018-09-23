@@ -1,8 +1,10 @@
 <template>
   <div class="form-control-plaintext custom-control custom-checkbox">
+    <input type="hidden" :name="fieldName" :value="false" />
     <input
+      :checked="model[attribute]"
       :value="model[attribute]"
-      @input="updateAttribute($event.target.checked)"
+      @input="handleInput"
 
       type="checkbox"
       class="custom-control-input"
@@ -18,8 +20,29 @@
 
 <script>
 import railsFormField from 'mixins/rails-form-field';
+import reactiveFormField from 'mixins/reactive-form-field';
 
 export default {
-  mixins: [railsFormField]
+  mixins: [railsFormField, reactiveFormField],
+
+  props: {
+    reactive: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  methods: {
+    handleInput(event) {
+      const vm = this;
+
+      this.updateAttribute(event.target.checked)
+        .then(() => {
+          vm.$nextTick(() => {
+            if (vm.reactive) vm.submitField();
+          });
+        });
+    }
+  }
 };
 </script>

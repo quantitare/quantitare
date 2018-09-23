@@ -41,7 +41,7 @@ export default {
 
   methods: {
     updateAttribute(value) {
-      this.$store.dispatch(this.updateActionName, { [this.attribute]: value });
+      return this.$store.dispatch(this.updateActionName, { [this.attribute]: value });
     }
   }
 };

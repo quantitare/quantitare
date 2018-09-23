@@ -6,7 +6,8 @@ json.extract! @location_scrobble,
   :id, :name,
   :distance, :trackpoints,
   :start_time, :end_time,
-  :icon
+  :icon,
+  :singular
 
 json.type @location_scrobble.friendly_type
 

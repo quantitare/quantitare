@@ -1,5 +1,19 @@
 <template>
   <model-form :model="model" scope="locationScrobble">
+    <div>
+      <page-subheader-1>Options</page-subheader-1>
+
+      <model-form-group>
+        &nbsp;
+
+        <template slot="fields">
+          <model-form-check-box :reactive="true" attribute="singular" class="custom-control-inline">
+            This is a one-time stop (e.g. stuck in traffic)
+          </model-form-check-box>
+        </template>
+      </model-form-group>
+    </div>
+
     <div v-if="model.isPlace">
       <page-subheader-1>Place info</page-subheader-1>
 

@@ -24,6 +24,6 @@ class LocationScrobblesController < AuthenticatedController
   private
 
   def location_scrobble_params
-    params.require(:location_scrobble).permit(:place_id)
+    params.require(:location_scrobble).permit(:place_id, :singular)
   end
 end

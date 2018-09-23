@@ -29,12 +29,15 @@ Rails.application.routes.draw do
   end
 
   resources :locations, controller: 'location_scrobbles', only: [:index] do
-
     collection do
       resources :scrobbles, only: [:edit, :update], as: 'location_scrobbles', controller: 'location_scrobbles'
 
       resources :imports, except: [:index, :destroy], as: 'location_imports', controller: 'location_imports'
       resources :categories, only: [:index], as: 'location_categories', controller: 'location_categories'
     end
+  end
+
+  namespace :aux do
+    resources :countries, only: [:index]
   end
 end

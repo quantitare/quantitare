@@ -39,7 +39,7 @@ export default {
 
     refreshPlace({ dispatch }, payload) {
       dispatch('updatePlace', payload)
-        .then(() => dispatch('cacheOriginals'));
+        .then(() => dispatch('place/cacheOriginal'));
     },
 
     updatePlace({ dispatch }, payload) {
@@ -51,7 +51,7 @@ export default {
 
     refreshLocationScrobble({ dispatch }, payload) {
       dispatch('updateLocationScrobble', payload)
-        .then(() => dispatch('cacheOriginals'));
+        .then(() => dispatch('locationScrobble/cacheOriginal'));
     },
 
     updateLocationScrobble({ dispatch }, payload) {

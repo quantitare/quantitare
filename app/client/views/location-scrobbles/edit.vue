@@ -10,7 +10,7 @@
           <model-form-input attribute="name"></model-form-input>
 
           <div class="input-group-append">
-            <button class="btn btn-outline-success" type="button">
+            <button class="btn btn-outline-success" type="submit" @click="closeNameEdit">
               <font-awesome-icon icon="check" />
             </button>
             <button class="btn btn-outline-danger" type="button" @click="cancelNameEdit">
@@ -90,11 +90,17 @@ export default {
       this.nameEdit = true;
     },
 
-    cancelNameEdit() {
+    closeNameEdit() {
       this.nameEdit = false;
     },
 
+    cancelNameEdit() {
+      this.restoreOriginal({ name: true });
+      this.closeNameEdit();
+    },
+
     ...mapActions(['setPlaceEdit', 'cacheOriginals', 'processPlaceId']),
+    ...mapActions('locationScrobble', ['restoreOriginal'])
   },
 
   watch: {

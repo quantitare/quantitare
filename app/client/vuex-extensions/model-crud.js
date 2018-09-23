@@ -10,6 +10,16 @@ export default {
 
     cacheOriginal(state) {
       Vue.set(state, '_original', Object.assign({}, state));
+    },
+
+    restoreOriginal(state, propsToRestore) {
+      if (propsToRestore) {
+        _.keys(propsToRestore).forEach((prop) => state[prop] = state._original[prop]);
+      } else {
+        _.keys(state._original).forEach((prop) => {
+          if (prop !== '_original') state[prop] = state._original[prop];
+        });
+      }
     }
   },
 
@@ -24,6 +34,13 @@ export default {
     cacheOriginal({ commit }) {
       return new Promise((resolve, reject) => {
         commit('cacheOriginal');
+        resolve();
+      });
+    },
+
+    restoreOriginal({ commit }, propsToRestore) {
+      return new Promise((resolve, reject) => {
+        commit('restoreOriginal', propsToRestore);
         resolve();
       });
     }

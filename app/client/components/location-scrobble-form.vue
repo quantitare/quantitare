@@ -14,7 +14,7 @@
       </model-form-group>
     </div>
 
-    <div v-if="model.isPlace">
+    <div v-if="placeable">
       <page-subheader-1>Place info</page-subheader-1>
 
       <model-form-group attribute="placeId">
@@ -92,6 +92,10 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
   props: {
     model: Object,
+    placeable: {
+      type: Boolean,
+      default: false
+    }
   },
 
   computed: {

@@ -40,6 +40,7 @@
 
         <location-scrobble-form
           :model="locationScrobble"
+          :placeable="placeable"
           scope="locationScrobble"
         >
         </location-scrobble-form>
@@ -75,6 +76,10 @@ export default {
   computed: {
     canEditName() {
       return this.model.singular;
+    },
+
+    placeable() {
+      return this.model.isPlace && !this.model.singular;
     },
 
     ...mapState(['placeEdit', 'locationScrobble', 'place']),

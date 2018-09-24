@@ -8,4 +8,6 @@ class PlaceMatch < ApplicationRecord
   belongs_to :user
   belongs_to :source, polymorphic: true
   belongs_to :place
+
+  serialize :source_fields, HashSerializer
 end

@@ -9,7 +9,7 @@ export default {
 
   computed: {
     value() {
-      return _.get(this.model, this.attribute);
+      return  _.get(this.model, this.attribute);
     },
 
     updateActionName() {

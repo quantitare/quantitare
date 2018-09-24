@@ -4,6 +4,8 @@
 # Base controller for {LocationScrobble}-related actions.
 #
 class LocationScrobblesController < AuthenticatedController
+  include PlaceMatchable
+
   def index
     @from = params[:from] || Date.current.beginning_of_day
     @to = params[:to] || Date.current.end_of_day
@@ -18,7 +20,9 @@ class LocationScrobblesController < AuthenticatedController
   def update
     @location_scrobble = current_user.location_scrobbles.find(params[:id]).decorate
 
-    @location_scrobble.update(location_scrobble_params)
+    if @location_scrobble.update(location_scrobble_params)
+      process_place_match!(source: @location_scrobble.source, place: @location_scrobble.place)
+    end
   end
 
   private

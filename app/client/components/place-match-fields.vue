@@ -27,9 +27,9 @@
           </span>
         </model-form-check-box>
 
-        <model-form-hidden v-if="placeMatch.matchName" attribute="sourceFields.name" />
-        <model-form-hidden v-if="placeMatch.matchCoordinates" attribute="sourceFields.longitude" />
-        <model-form-hidden v-if="placeMatch.matchCoordinates" attribute="sourceFields.latitude" />
+        <model-form-hidden v-if="placeMatch.matchName" :value="sourceFields" attribute="sourceFields.name" />
+        <model-form-hidden v-if="placeMatch.matchCoordinates" :value="sourceFields" attribute="sourceFields.longitude" />
+        <model-form-hidden v-if="placeMatch.matchCoordinates" :value="sourceFields" attribute="sourceFields.latitude" />
       </template>
     </model-form-group>
   </model-form-fields>

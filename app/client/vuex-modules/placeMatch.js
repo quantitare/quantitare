@@ -13,8 +13,8 @@ export default _.merge({
     sourceFields(state, getters, rootState) {
       return {
         name: rootState.locationScrobble.name,
-        longitude: rootState.locationScrobble.longitude,
-        latitude: rootState.locationScrobble.latitude
+        longitude: rootState.locationScrobble.averageLongitude,
+        latitude: rootState.locationScrobble.averageLatitude
       };
     }
   }

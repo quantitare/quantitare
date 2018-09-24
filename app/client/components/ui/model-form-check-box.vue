@@ -41,7 +41,7 @@ export default {
           vm.$nextTick(() => {
             if (vm.reactive) vm.submitField();
           });
-        });
+        })
     }
   }
 };

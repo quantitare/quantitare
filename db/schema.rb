@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_062212) do
+ActiveRecord::Schema.define(version: 2018_09_23_191521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,20 @@ ActiveRecord::Schema.define(version: 2018_09_23_062212) do
     t.index ["trackpoints"], name: "index_location_scrobbles_on_trackpoints", using: :gin
     t.index ["type", "category"], name: "index_location_scrobbles_on_type_and_category"
     t.index ["user_id"], name: "index_location_scrobbles_on_user_id"
+  end
+
+  create_table "place_matches", force: :cascade do |t|
+    t.jsonb "source_fields", default: {}, null: false
+    t.string "source_type"
+    t.bigint "source_id"
+    t.bigint "place_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_place_matches_on_place_id"
+    t.index ["source_fields"], name: "index_place_matches_on_source_fields", using: :gin
+    t.index ["source_type", "source_id"], name: "index_place_matches_on_source_type_and_source_id"
+    t.index ["user_id"], name: "index_place_matches_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -222,6 +236,8 @@ ActiveRecord::Schema.define(version: 2018_09_23_062212) do
   add_foreign_key "location_imports", "users"
   add_foreign_key "location_scrobbles", "places"
   add_foreign_key "location_scrobbles", "users"
+  add_foreign_key "place_matches", "places"
+  add_foreign_key "place_matches", "users"
   add_foreign_key "places", "services"
   add_foreign_key "places", "users"
   add_foreign_key "scrobblers", "services"

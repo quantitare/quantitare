@@ -8,6 +8,10 @@ export default {
   },
 
   computed: {
+    value() {
+      return _.get(this.model, this.attribute);
+    },
+
     updateActionName() {
       return `update${_.upperFirst(this.scope)}`;
     },
@@ -17,7 +21,7 @@ export default {
     },
 
     fieldName() {
-      return `${_.snakeCase(this.scope)}[${_.snakeCase(this.attribute)}]`
+      return `${_.snakeCase(this.scope)}${this.attributeNesting}`
     },
 
     fieldClass() {
@@ -36,6 +40,12 @@ export default {
 
     attributeErrors() {
       return this.model.errors && this.model.errors[this.attribute];
+    },
+
+    attributeNesting() {
+      const nestings = this.attribute.split('.');
+
+      return nestings.map((node) => `[${_.snakeCase(node)}]`).join('');
     }
   },
 

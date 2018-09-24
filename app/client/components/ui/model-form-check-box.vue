@@ -2,8 +2,8 @@
   <div class="form-control-plaintext custom-control custom-checkbox">
     <input type="hidden" :name="fieldName" :value="false" />
     <input
-      :checked="model[attribute]"
-      :value="model[attribute]"
+      :checked="value"
+      :value="value"
       @input="handleInput"
 
       type="checkbox"

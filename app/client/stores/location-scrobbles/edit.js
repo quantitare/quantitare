@@ -33,6 +33,7 @@ export default {
       return new Promise((resolve, reject) => {
         dispatch('locationScrobble/cacheOriginal')
           .then(() => dispatch('place/cacheOriginal'))
+          .then(() => dispatch('placeMatch/cacheOriginal'))
           .then(() => resolve());
       });
     },
@@ -57,6 +58,20 @@ export default {
     updateLocationScrobble({ dispatch }, payload) {
       return new Promise((resolve, reject) => {
         dispatch('locationScrobble/update', payload)
+          .then(() => resolve());
+      });
+    },
+
+    refreshPlaceMatch({ dispatch }, payload) {
+      return new Promise((resolve, reject) => {
+        dispatch('placeMatch/update', payload)
+          .then(() => resolve());
+      });
+    },
+
+    updatePlaceMatch({ dispatch }, payload) {
+      return new Promise((resolve, reject) => {
+        dispatch('placeMatch/update', payload)
           .then(() => resolve());
       });
     },

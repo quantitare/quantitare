@@ -40,8 +40,8 @@
       </template>
     </model-form-group>
 
-    <place-match-options>
-    </place-match-options>
+    <place-match-fields>
+    </place-match-fields>
 
     <model-form-group :attribute="null" :label="false">
       <template slot="fields">

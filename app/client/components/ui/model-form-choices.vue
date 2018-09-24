@@ -1,6 +1,6 @@
 <template>
   <choices
-    :value="model[attribute]"
+    :value="value"
     @input="updateAttribute"
 
     :id="fieldId"

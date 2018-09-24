@@ -82,6 +82,8 @@
           </div>
         </template>
       </model-form-group>
+
+      <place-match-fields v-if="isChanged('placeId')"></place-match-fields>
     </div>
   </model-form>
 </template>
@@ -113,6 +115,10 @@ export default {
         value: place.id,
         label: `<i class="fas fa-${place.icon}" style="margin-right: 4px;"></i> ${place.name}`
       };
+    },
+
+    isChanged(attribute) {
+      return this.model[attribute] !== this.model._original[attribute];
     },
 
     ...mapActions(['openPlaceEdit', 'closePlaceEdit'])

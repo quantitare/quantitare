@@ -12,8 +12,9 @@ class Place < ApplicationRecord
   FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :country].freeze
   COORDINATES_ATTRS = [:longitude, :latitude].freeze
 
-  has_many :location_scrobbles, dependent: :nullify
   belongs_to :user, optional: true
+  has_many :location_scrobbles, dependent: :nullify
+  has_many :place_matches, dependent: :nullify
 
   validates :name, presence: true
   validates :category, presence: true

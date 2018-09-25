@@ -16,4 +16,8 @@ class Scrobbler < ApplicationRecord
   validates :name, presence: true
 
   load_types_in 'Scrobblers'
+
+  def source_identifier
+    "#{type}_#{id}"
+  end
 end

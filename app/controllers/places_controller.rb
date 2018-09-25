@@ -4,6 +4,8 @@
 # Handles requests related to {Place}s
 #
 class PlacesController < AuthenticatedController
+  include PlaceMatchable
+
   def search
     @places = Place.available_to_user(current_user)
   end
@@ -22,7 +24,7 @@ class PlacesController < AuthenticatedController
 
     @place.location_scrobbles << @location_scrobble if @location_scrobble
 
-    @place.save
+    process_place_match!(source: @location_scrobble.source, place: @place) if @place.save && @location_scrobble.present?
   end
 
   private

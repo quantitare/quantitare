@@ -9,6 +9,8 @@ module PlaceMatchable
   private
 
   def process_place_match!(source:, place:)
+    return if params[:place_match].blank? || !params[:place_match][:enabled].to_bool
+
     @place_match = current_user.place_matches.new({ source: source, place: place }.merge(place_match_params))
     @place_match.save
   end

@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_191521) do
 
   create_table "place_matches", force: :cascade do |t|
     t.jsonb "source_fields", default: {}, null: false
+    t.string "source_identifier"
     t.string "source_type"
     t.bigint "source_id"
     t.bigint "place_id"
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_191521) do
     t.datetime "updated_at", null: false
     t.index ["place_id"], name: "index_place_matches_on_place_id"
     t.index ["source_fields"], name: "index_place_matches_on_source_fields", using: :gin
+    t.index ["source_identifier"], name: "index_place_matches_on_source_identifier"
     t.index ["source_type", "source_id"], name: "index_place_matches_on_source_type_and_source_id"
     t.index ["user_id"], name: "index_place_matches_on_user_id"
   end

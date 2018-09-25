@@ -23,6 +23,10 @@ class LocationImport < ApplicationRecord
     end
   end
 
+  def source_identifier
+    adapter
+  end
+
   def interval
     [
       location_scrobbles.min_by(&:start_time).start_time,
@@ -39,7 +43,7 @@ class LocationImport < ApplicationRecord
   end
 
   def adapter_klass
-    adapter.nil? ? nil : Object.const_get(adapter)
+    adapter.nil? ? nil : adapter.constantize
   end
 
   add_adapter GoogleMapsKmlAdapter

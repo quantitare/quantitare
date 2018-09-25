@@ -9,12 +9,14 @@ class LocationScrobble < ApplicationRecord
   include Periodable
   include Categorizable
 
-  validates :start_time, presence: true
-  validates :end_time, presence: true
-
   belongs_to :user
   belongs_to :place, optional: true
   belongs_to :source, polymorphic: true
+
+  validates :start_time, presence: true
+  validates :end_time, presence: true
+
+  before_save :compute_coordinates, if: :trackpoints_changed?
 
   default_scope -> { order(start_time: :asc) }
 
@@ -30,18 +32,24 @@ class LocationScrobble < ApplicationRecord
     raise NotImplementedError
   end
 
-  def average_latitude
-    trackpoint_average(:latitude)
+  private
+
+  def compute_coordinates
+    self.longitude = average_longitude
+    self.latitude = average_latitude
   end
 
   def average_longitude
     trackpoint_average(:longitude)
   end
 
-  private
+  def average_latitude
+    trackpoint_average(:latitude)
+  end
 
   def trackpoint_average(attribute)
     return nil unless trackpoints.length.positive?
+
     trackpoints.map { |trackpoint| trackpoint.with_indifferent_access[attribute] }.sum / trackpoints.length
   end
 end

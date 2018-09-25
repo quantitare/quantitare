@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_191521) do
+ActiveRecord::Schema.define(version: 2018_09_25_073501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,8 +64,12 @@ ActiveRecord::Schema.define(version: 2018_09_23_191521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "singular", default: false, null: false
+    t.decimal "longitude"
+    t.decimal "latitude"
     t.index ["end_time"], name: "index_location_scrobbles_on_end_time"
     t.index ["guid"], name: "index_location_scrobbles_on_guid"
+    t.index ["latitude"], name: "index_location_scrobbles_on_latitude"
+    t.index ["longitude"], name: "index_location_scrobbles_on_longitude"
     t.index ["period"], name: "index_location_scrobbles_on_period", using: :gist
     t.index ["place_id"], name: "index_location_scrobbles_on_place_id"
     t.index ["source_type", "source_id"], name: "index_location_scrobbles_on_source_type_and_source_id"

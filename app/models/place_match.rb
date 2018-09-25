@@ -18,6 +18,10 @@ class PlaceMatch < ApplicationRecord
 
   before_validation :set_source_identifier
 
+  def matching_location_scrobbles
+    LocationScrobbles::MatchingPlaceMatchQuery.(place_match: self)
+  end
+
   private
 
   def set_source_identifier

@@ -18,8 +18,8 @@ class ProcessLocationScrobble
   end
 
   def call
-    step(:match_place)
-    step(:save_scrobble)
+    step :match_place
+    step :save_scrobble
 
     result.set(location_scrobble: location_scrobble, options: options)
   end

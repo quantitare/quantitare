@@ -27,6 +27,10 @@ class LocationImport < ApplicationRecord
     adapter
   end
 
+  def source_match_condition
+    { self.class.table_name => { adapter: adapter } }
+  end
+
   def interval
     [
       location_scrobbles.min_by(&:start_time).start_time,

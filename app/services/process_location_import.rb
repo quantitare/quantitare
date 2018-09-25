@@ -16,8 +16,8 @@ class ProcessLocationImport
   end
 
   def call
-    step(:process_scrobbles)
-    step(:save_location_import)
+    step :process_scrobbles
+    step :save_location_import
 
     result.set(location_import: location_import, options: options)
   end

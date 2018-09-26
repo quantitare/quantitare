@@ -16,7 +16,7 @@ class LocationScrobble < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
 
-  before_save :compute_coordinates, if: :trackpoints_changed?
+  after_validation :compute_coordinates, if: :trackpoints_changed?
 
   default_scope -> { order(start_time: :asc) }
 

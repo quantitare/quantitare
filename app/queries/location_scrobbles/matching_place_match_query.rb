@@ -6,6 +6,7 @@ module LocationScrobbles
   #
   class MatchingPlaceMatchQuery
     include Callable
+    include PolymorphicJoinable
 
     attr_reader :relation, :place_match
 
@@ -17,8 +18,8 @@ module LocationScrobbles
     def call
       @relation = relation
         .joins(joins)
-        .where(place_match_pairs)
         .where(source_match_pairs)
+        .where(place_match_pairs)
 
       relation
     end
@@ -26,14 +27,7 @@ module LocationScrobbles
     private
 
     def joins
-      table_name = place_match.source.class.table_name
-      type = place_match.source.class.name
-
-      <<~SQL.squish
-        INNER JOIN #{table_name}
-          ON location_scrobbles.source_id = #{table_name}.id
-          AND location_scrobbles.source_type = '#{type}'
-      SQL
+      polymorphic_joins(place_match.source)
     end
 
     def place_match_pairs

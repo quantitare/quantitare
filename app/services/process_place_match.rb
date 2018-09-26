@@ -8,8 +8,6 @@ class ProcessPlaceMatch
 
   attr_reader :place_match, :options
 
-  transactional!
-
   def initialize(place_match, options = {})
     @place_match = place_match
     @options = options
@@ -18,6 +16,8 @@ class ProcessPlaceMatch
   def call
     step :save_place_match
     step :process_existing_location_scrobbles
+
+    result.set(place_match: place_match)
   end
 
   private
@@ -27,8 +27,6 @@ class ProcessPlaceMatch
   end
 
   def process_existing_location_scrobbles
-    place_match.matching_location_scrobbles.each do |location_scrobble|
-      location_scrobble.update(place: place_match.place)
-    end
+    MatchLocationScrobblesToPlaceMatchJob.perform_later(place_match)
   end
 end

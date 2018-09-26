@@ -18,8 +18,8 @@ class ProcessLocationScrobble
   end
 
   def call
-    step :match_place
     step :save_scrobble
+    step :match_place
 
     result.set(location_scrobble: location_scrobble, options: options)
   end
@@ -29,12 +29,12 @@ class ProcessLocationScrobble
   def match_place
     return unless location_scrobble.place?
 
-    # TODO
+    MatchPlaceToLocationScrobbleJob.perform_now(location_scrobble)
   end
 
   def save_scrobble
-    return unless options[:save]
+    options[:save] ? location_scrobble.save : location_scrobble.validate
 
-    result.errors += location_scrobble.errors.full_messages unless location_scrobble.save
+    result.errors += location_scrobble.errors.full_messages
   end
 end

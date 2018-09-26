@@ -16,7 +16,7 @@ module PlaceMatchable
   end
 
   def place_match_ready?
-    params[:place_match].blank? || !params[:place_match][:enabled].to_bool
+    params[:place_match].present? && params[:place_match][:enabled].to_bool
   end
 
   def place_match_params

@@ -28,6 +28,7 @@ module Quantitare
     # the framework and any gems in your application.
 
     config.autoload_paths << config.root.join('app', 'queries')
+    config.autoload_paths << config.root.join('app', 'queries', 'concerns')
 
     # Don't generate system test files.
     config.generators.system_tests = nil

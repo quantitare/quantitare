@@ -13,8 +13,8 @@ json.type @location_scrobble.friendly_type
 
 json.category @location_scrobble.category_name
 
-json.average_latitude @location_scrobble.average_latitude
-json.average_longitude @location_scrobble.average_longitude
+json.average_latitude @location_scrobble.latitude
+json.average_longitude @location_scrobble.longitude
 
 json.is_transit @location_scrobble.transit?
 json.is_place @location_scrobble.place?

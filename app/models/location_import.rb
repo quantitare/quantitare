@@ -28,7 +28,7 @@ class LocationImport < ApplicationRecord
   end
 
   def source_match_condition
-    { self.class.table_name => { adapter: adapter } }
+    { self.class.table_name.to_sym => { adapter: adapter } }
   end
 
   def interval

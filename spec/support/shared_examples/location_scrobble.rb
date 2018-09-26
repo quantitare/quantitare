@@ -11,14 +11,14 @@ shared_examples_for LocationScrobble do
   describe '#longitude' do
     it 'returns a number when trackpoints are present' do
       subject.trackpoints = [{ latitude: 1, longitude: 1 }]
-      subject.save!
+      subject.validate
 
       expect(subject.longitude).to be_a(Numeric)
     end
 
     it 'returns nil when trackpoints are not present' do
       subject.trackpoints = []
-      subject.save!
+      subject.validate
 
       expect(subject.longitude).to be_nil
     end
@@ -27,14 +27,14 @@ shared_examples_for LocationScrobble do
   describe '#latitude' do
     it 'returns a number when trackpoints are present' do
       subject.trackpoints = [{ latitude: 1, longitude: 1 }]
-      subject.save!
+      subject.validate
 
       expect(subject.latitude).to be_a(Numeric)
     end
 
     it 'returns nil when trackpoints are not present' do
       subject.trackpoints = []
-      subject.save!
+      subject.validate
 
       expect(subject.latitude).to be_nil
     end

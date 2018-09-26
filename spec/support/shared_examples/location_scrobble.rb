@@ -8,31 +8,35 @@ shared_examples_for LocationScrobble do
   it { should validate_presence_of :start_time }
   it { should validate_presence_of :end_time }
 
-  describe '#average_longitude' do
+  describe '#longitude' do
     it 'returns a number when trackpoints are present' do
       subject.trackpoints = [{ latitude: 1, longitude: 1 }]
+      subject.save!
 
-      expect(subject.average_longitude).to be_a(Numeric)
+      expect(subject.longitude).to be_a(Numeric)
     end
 
     it 'returns nil when trackpoints are not present' do
       subject.trackpoints = []
+      subject.save!
 
-      expect(subject.average_longitude).to be_nil
+      expect(subject.longitude).to be_nil
     end
   end
 
-  describe '#average_latitude' do
+  describe '#latitude' do
     it 'returns a number when trackpoints are present' do
       subject.trackpoints = [{ latitude: 1, longitude: 1 }]
+      subject.save!
 
-      expect(subject.average_latitude).to be_a(Numeric)
+      expect(subject.latitude).to be_a(Numeric)
     end
 
     it 'returns nil when trackpoints are not present' do
       subject.trackpoints = []
+      subject.save!
 
-      expect(subject.average_latitude).to be_nil
+      expect(subject.latitude).to be_nil
     end
   end
 end

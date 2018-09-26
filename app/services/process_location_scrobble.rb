@@ -29,7 +29,7 @@ class ProcessLocationScrobble
   def match_place
     return unless location_scrobble.place?
 
-    MatchPlaceToLocationScrobbleJob.perform_now(location_scrobble)
+    MatchPlaceToLocationScrobble.(location_scrobble)
   end
 
   def save_scrobble

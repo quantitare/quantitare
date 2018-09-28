@@ -10,8 +10,9 @@ class PlaceMatch < ApplicationRecord
   belongs_to :place
 
   validates :source_fields,
+    presence: true,
     uniqueness: {
-      scope: :source_identifier, message: 'cannot have two place assignments per source'
+      scope: [:user_id, :source_identifier], message: 'cannot have two place assignments per source'
     }
 
   serialize :source_fields, HashSerializer

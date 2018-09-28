@@ -5,15 +5,15 @@ require 'rails_helper'
 RSpec.describe Place, :vcr do
   subject { build :place }
 
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:category) }
+  it { should have_db_index :user_id }
 
   it { should belong_to(:user) }
   it { should belong_to(:service) }
   it { should have_many(:location_scrobbles) }
   it { should have_many(:place_matches) }
 
-  it { should have_db_index :user_id }
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:category) }
 
   it_behaves_like HasGuid
   it_behaves_like Categorizable

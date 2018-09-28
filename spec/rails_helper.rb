@@ -49,6 +49,8 @@ VCR.configure do |config|
   config.filter_sensitive_data('LASTFM_OAUTH_SECRET') { ENV['LASTFM_OAUTH_SECRET'] }
   config.filter_sensitive_data('LASTFM_TEST_USER_UID') { ENV['LASTFM_TEST_USER_UID'] }
   config.filter_sensitive_data('LASTFM_TEST_USER_TOKEN') { ENV['LASTFM_TEST_USER_TOKEN'] }
+
+  config.filter_sensitive_data('MAPBOX_API_KEY') { ENV['MAPBOX_API_KEY'] }
 end
 
 RSpec.configure do |config|

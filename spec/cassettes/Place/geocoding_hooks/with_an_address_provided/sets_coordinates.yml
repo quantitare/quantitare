@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.mapbox.com/geocoding/v5/mapbox.places/1+Frank+H+Ogawa+Plaza,+Oakland,+CA,+94612,+United+States.json?access_token=MAPBOX_API_KEY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.geo+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 28 Sep 2018 04:20:45 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - x-rate-limit-interval,x-rate-limit-limit,x-rate-limit-remaining,x-rate-limit-reset
+      Cache-Control:
+      - max-age=604800
+      X-Rate-Limit-Limit:
+      - '600'
+      X-Rate-Limit-Interval:
+      - '60'
+      X-Rate-Limit-Reset:
+      - '1538108505'
+      Last-Modified:
+      - Fri, 21 Sep 2018 20:38:26 GMT
+      Etag:
+      - '"d7b30e0ec70cfc8089c9637c19b6b6b5"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 4491423cc0ea94bb70fcfbc7ad85f8ff.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - gsvrxW1cTu2Dx5QVV8EF2waAoPmt7um7IFYKqiPBzrJfH_jheZAXCQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0eXBlIjoiRmVhdHVyZUNvbGxlY3Rpb24iLCJxdWVyeSI6WyIxIiwiZnJhbmsiLCJoIiwib2dhd2EiLCJwbGF6YSIsIm9ha2xhbmQiLCJjYSIsIjk0NjEyIiwidW5pdGVkIiwic3RhdGVzIl0sImZlYXR1cmVzIjpbeyJpZCI6ImFkZHJlc3MuODc0NDUxMzQyMjA3MzE3OCIsInR5cGUiOiJGZWF0dXJlIiwicGxhY2VfdHlwZSI6WyJhZGRyZXNzIl0sInJlbGV2YW5jZSI6MC44OTk5OTk5OTk5OTk5OTk5LCJwcm9wZXJ0aWVzIjp7fSwidGV4dCI6IkZyYW5rIEggT2dhd2EgUGxhemEiLCJwbGFjZV9uYW1lIjoiMSBGcmFuayBIIE9nYXdhIFBsYXphLCBPYWtsYW5kLCBDYWxpZm9ybmlhIDk0NjEyLCBVbml0ZWQgU3RhdGVzIiwiY2VudGVyIjpbLTEyMi4yNzI3OCwzNy44MDUzOTddLCJnZW9tZXRyeSI6eyJ0eXBlIjoiUG9pbnQiLCJjb29yZGluYXRlcyI6Wy0xMjIuMjcyNzgsMzcuODA1Mzk3XX0sImFkZHJlc3MiOiIxIiwiY29udGV4dCI6W3siaWQiOiJuZWlnaGJvcmhvb2QuMjkyOTE5IiwidGV4dCI6IkRvd250b3duIn0seyJpZCI6InBvc3Rjb2RlLjY2MTEwNDc4Mzg4MzQ2MCIsInRleHQiOiI5NDYxMiJ9LHsiaWQiOiJwbGFjZS45NjYxNjIxNTM1OTczOTcwIiwid2lraWRhdGEiOiJRMTcwNDIiLCJ0ZXh0IjoiT2FrbGFuZCJ9LHsiaWQiOiJyZWdpb24uMzU5MSIsInNob3J0X2NvZGUiOiJVUy1DQSIsIndpa2lkYXRhIjoiUTk5IiwidGV4dCI6IkNhbGlmb3JuaWEifSx7ImlkIjoiY291bnRyeS4zMTQ1Iiwic2hvcnRfY29kZSI6InVzIiwid2lraWRhdGEiOiJRMzAiLCJ0ZXh0IjoiVW5pdGVkIFN0YXRlcyJ9XX0seyJpZCI6InBsYWNlLjk2NjE2MjE1MzU5NzM5NzAiLCJ0eXBlIjoiRmVhdHVyZSIsInBsYWNlX3R5cGUiOlsicGxhY2UiXSwicmVsZXZhbmNlIjowLjYwMDAwMDAwMDAwMDAwMDEsInByb3BlcnRpZXMiOnsid2lraWRhdGEiOiJRMTcwNDIifSwidGV4dCI6Ik9ha2xhbmQiLCJwbGFjZV9uYW1lIjoiT2FrbGFuZCwgQ2FsaWZvcm5pYSwgVW5pdGVkIFN0YXRlcyIsImJib3giOlstMTIyLjM0NjY4NDAxNjMzMSwzNy42OTUzOTE5ODU5NDQzLC0xMjIuMDc0MTY2OTgwMjg0LDM3Ljg2ODM3Njk2NjIwOTNdLCJjZW50ZXIiOlstMTIyLjI3MTQsMzcuODA0NV0sImdlb21ldHJ5Ijp7InR5cGUiOiJQb2ludCIsImNvb3JkaW5hdGVzIjpbLTEyMi4yNzE0LDM3LjgwNDVdfSwiY29udGV4dCI6W3siaWQiOiJyZWdpb24uMzU5MSIsInNob3J0X2NvZGUiOiJVUy1DQSIsIndpa2lkYXRhIjoiUTk5IiwidGV4dCI6IkNhbGlmb3JuaWEifSx7ImlkIjoiY291bnRyeS4zMTQ1Iiwic2hvcnRfY29kZSI6InVzIiwid2lraWRhdGEiOiJRMzAiLCJ0ZXh0IjoiVW5pdGVkIFN0YXRlcyJ9XX0seyJpZCI6InBvc3Rjb2RlLjY2MTEwNDc4Mzg4MzQ2MCIsInR5cGUiOiJGZWF0dXJlIiwicGxhY2VfdHlwZSI6WyJwb3N0Y29kZSJdLCJyZWxldmFuY2UiOjAuNTksInByb3BlcnRpZXMiOnt9LCJ0ZXh0IjoiOTQ2MTIiLCJwbGFjZV9uYW1lIjoiT2FrbGFuZCwgQ2FsaWZvcm5pYSA5NDYxMiwgVW5pdGVkIFN0YXRlcyIsImJib3giOlstMTIyLjI4MDM2NDUwMDUxMSwzNy43OTg0NjYwMTg5MzkzLC0xMjIuMjQ5MTQ2MDYwOTksMzcuODE5MTM2OTgxNTM5MV0sImNlbnRlciI6Wy0xMjIuMjcsMzcuODFdLCJnZW9tZXRyeSI6eyJ0eXBlIjoiUG9pbnQiLCJjb29yZGluYXRlcyI6Wy0xMjIuMjcsMzcuODFdfSwiY29udGV4dCI6W3siaWQiOiJwbGFjZS45NjYxNjIxNTM1OTczOTcwIiwid2lraWRhdGEiOiJRMTcwNDIiLCJ0ZXh0IjoiT2FrbGFuZCJ9LHsiaWQiOiJyZWdpb24uMzU5MSIsInNob3J0X2NvZGUiOiJVUy1DQSIsIndpa2lkYXRhIjoiUTk5IiwidGV4dCI6IkNhbGlmb3JuaWEifSx7ImlkIjoiY291bnRyeS4zMTQ1Iiwic2hvcnRfY29kZSI6InVzIiwid2lraWRhdGEiOiJRMzAiLCJ0ZXh0IjoiVW5pdGVkIFN0YXRlcyJ9XX0seyJpZCI6InBsYWNlLjQ0OTA5ODkzMzg5NzM5NzAiLCJ0eXBlIjoiRmVhdHVyZSIsInBsYWNlX3R5cGUiOlsicGxhY2UiXSwicmVsZXZhbmNlIjowLjQsInByb3BlcnRpZXMiOnsid2lraWRhdGEiOiJRNzk1Mzk2In0sInRleHQiOiJPYWtsYW5kIiwicGxhY2VfbmFtZSI6Ik9ha2xhbmQsIE5ldyBKZXJzZXksIFVuaXRlZCBTdGF0ZXMiLCJiYm94IjpbLTc0LjI3MjIyNTUzMDc2ODUsNDAuOTkyMTAwMDU0NzYwNywtNzQuMjAwNTA4NzAzNzIyNCw0MS4wNjM2MTUwNDE3MzJdLCJjZW50ZXIiOlstNzQuMjQzMSw0MS4wMjJdLCJnZW9tZXRyeSI6eyJ0eXBlIjoiUG9pbnQiLCJjb29yZGluYXRlcyI6Wy03NC4yNDMxLDQxLjAyMl19LCJjb250ZXh0IjpbeyJpZCI6InJlZ2lvbi4yMTQwMTgiLCJzaG9ydF9jb2RlIjoiVVMtTkoiLCJ3aWtpZGF0YSI6IlExNDA4IiwidGV4dCI6Ik5ldyBKZXJzZXkifSx7ImlkIjoiY291bnRyeS4zMTQ1Iiwic2hvcnRfY29kZSI6InVzIiwid2lraWRhdGEiOiJRMzAiLCJ0ZXh0IjoiVW5pdGVkIFN0YXRlcyJ9XX0seyJpZCI6InBsYWNlLjExNzEwMTE4MjYxOTczOTcwIiwidHlwZSI6IkZlYXR1cmUiLCJwbGFjZV90eXBlIjpbInBsYWNlIl0sInJlbGV2YW5jZSI6MC40LCJwcm9wZXJ0aWVzIjp7Indpa2lkYXRhIjoiUTQ5ODAyNCJ9LCJ0ZXh0IjoiT2FrbGFuZCIsInBsYWNlX25hbWUiOiJPYWtsYW5kLCBNaWNoaWdhbiwgVW5pdGVkIFN0YXRlcyIsImJib3giOlstODMuMjE3MDEzMDE4NzY2NSw0Mi43Mzg4NjEyNzA2MzIxLC04My4wOTc2Mjc1Mjk0MzYsNDIuODAwNTUwNTAxMTk0MV0sImNlbnRlciI6Wy04My4xNyw0Mi43OV0sImdlb21ldHJ5Ijp7InR5cGUiOiJQb2ludCIsImNvb3JkaW5hdGVzIjpbLTgzLjE3LDQyLjc5XX0sImNvbnRleHQiOlt7ImlkIjoicmVnaW9uLjIxOTExMiIsInNob3J0X2NvZGUiOiJVUy1NSSIsIndpa2lkYXRhIjoiUTExNjYiLCJ0ZXh0IjoiTWljaGlnYW4ifSx7ImlkIjoiY291bnRyeS4zMTQ1Iiwic2hvcnRfY29kZSI6InVzIiwid2lraWRhdGEiOiJRMzAiLCJ0ZXh0IjoiVW5pdGVkIFN0YXRlcyJ9XX1dLCJhdHRyaWJ1dGlvbiI6Ik5PVElDRTogwqkgMjAxOCBNYXBib3ggYW5kIGl0cyBzdXBwbGllcnMuIEFsbCByaWdodHMgcmVzZXJ2ZWQuIFVzZSBvZiB0aGlzIGRhdGEgaXMgc3ViamVjdCB0byB0aGUgTWFwYm94IFRlcm1zIG9mIFNlcnZpY2UgKGh0dHBzOi8vd3d3Lm1hcGJveC5jb20vYWJvdXQvbWFwcy8pLiBUaGlzIHJlc3BvbnNlIGFuZCB0aGUgaW5mb3JtYXRpb24gaXQgY29udGFpbnMgbWF5IG5vdCBiZSByZXRhaW5lZC4ifQ==
+    http_version: 
+  recorded_at: Fri, 28 Sep 2018 04:20:45 GMT
+recorded_with: VCR 4.0.0

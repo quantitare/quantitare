@@ -9,16 +9,18 @@ class Place < ApplicationRecord
 
   CATEGORY_KLASS = PlaceCategory
 
-  FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :country].freeze
+  FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :zip, :country].freeze
   COORDINATES_ATTRS = [:longitude, :latitude].freeze
 
   belongs_to :user, optional: true
+  belongs_to :service, optional: true
   has_many :location_scrobbles, dependent: :nullify
   has_many :place_matches, dependent: :nullify
 
   validates :name, presence: true
   validates :category, presence: true
   validate :address_or_coordinates_must_be_present
+  validate :all_coordinates_must_be_present_if_present
 
   after_validation :geocode, if: ->(obj) { obj.requires_geocode? }
   after_validation :reverse_geocode, if: ->(obj) { obj.requires_reverse_geocode? }
@@ -76,8 +78,18 @@ class Place < ApplicationRecord
     errors[:base] << 'Address or coordinates must be present' unless address_or_coordinates_present?
   end
 
+  def all_coordinates_must_be_present_if_present
+    return if both_coordinate_values_present? || coordinates.compact.blank?
+
+    errors[:base] << 'Both latitude and longitude (or neither) must be present'
+  end
+
   def address_or_coordinates_present?
     full_address.present? || coordinates.reject(&:blank?).present?
+  end
+
+  def both_coordinate_values_present?
+    longitude.present? && latitude.present?
   end
 
   def attributes_from_set(attr_names)

@@ -22,12 +22,7 @@ module PlaceMatches
       @relation = relation
         .joins(joins)
         .where(source_match_pairs)
-        .where(
-          where,
-          name: location_scrobble.name,
-          longitude: location_scrobble.longitude,
-          latitude: location_scrobble.latitude
-        )
+        .where(where, *where_params)
 
       relation
     end
@@ -44,10 +39,16 @@ module PlaceMatches
 
     def where
       <<~SQL.squish
-        place_matches.source_fields->>'name' = :name
-          OR ((place_matches.source_fields->>'longitude')::numeric = :longitude
-            AND (place_matches.source_fields->>'latitude')::numeric = :latitude)
+        place_matches.source_fields @> :name::jsonb
+          OR place_matches.source_fields @> :coordinates::jsonb
       SQL
+    end
+
+    def where_params
+      [
+        name: { name: location_scrobble.name }.to_json,
+        coordinates: { longitude: location_scrobble.longitude, latitude: location_scrobble.latitude }.to_json
+      ]
     end
   end
 end

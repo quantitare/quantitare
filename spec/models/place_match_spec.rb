@@ -20,6 +20,10 @@ RSpec.describe PlaceMatch, :vcr do
         .with_message('cannot have two place assignments per source')
       )
     end
+
+    it 'is invalid if coordinates are not provided' do
+      expect(build :place_match, source_fields: { name: 'foo', longitude: nil, latitude: nil }).to be_invalid
+    end
   end
 
   describe '#source_identifier' do
@@ -37,51 +41,12 @@ RSpec.describe PlaceMatch, :vcr do
   end
 
   describe '#matching_location_scrobbles' do
-    let(:name) { Faker::Lorem.words(2).join(' ') }
-    let(:source_fields) { { name: name } }
+    let(:query) { double 'query' }
 
-    let!(:matching_location_scrobble_1) { create :place_scrobble, name: name }
-    let!(:non_matching_location_scrobble_1) { create :place_scrobble, name: 'This should not match' }
+    it 'delegates to the query' do
+      expect(query).to receive(:call).with(hash_including(place_match: subject))
 
-    subject { build :place_match, source_fields: source_fields }
-
-    it 'matches only the one that matches' do
-      expect(subject.matching_location_scrobbles).to include(matching_location_scrobble_1)
-    end
-
-    it 'does not match the one that does not match' do
-      expect(subject.matching_location_scrobbles).to_not include(non_matching_location_scrobble_1)
-    end
-
-    context 'with more than one match' do
-      let!(:matching_location_scrobble_2) { create :place_scrobble, name: name }
-
-      it 'matches with all matches' do
-        expect(
-          subject.matching_location_scrobbles).to include(matching_location_scrobble_1, matching_location_scrobble_2
-        )
-      end
-    end
-
-    context 'with more complex matching conditions' do
-      let(:longitude) { 1 }
-      let(:latitude) { 2 }
-      let(:source_fields) { { name: name, longitude: longitude, latitude: latitude } }
-
-      let!(:matching_location_scrobble_1) do
-        create :place_scrobble, name: name, longitude: longitude, latitude: latitude
-      end
-      let!(:non_matching_location_scrobble_1) do
-        create :place_scrobble, name: name, longitude: longitude, latitude: latitude + 1
-      end
-
-      it 'matches only the one that matches' do
-        expect(subject.matching_location_scrobbles).to include(matching_location_scrobble_1)
-      end
-
-      it 'does not match the one that does not match' do
-        expect(subject.matching_location_scrobbles).to_not include(non_matching_location_scrobble_1)
-      end
+      subject.matching_location_scrobbles(query)
     end
   end
 end

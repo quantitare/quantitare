@@ -6,6 +6,6 @@ FactoryBot.define do
     source { create :location_import }
     place
 
-    source_fields { { name: Faker::Lorem.words(2).join(' ') } }
+    source_fields { { longitude: Faker::Address.longitude, latitude: Faker::Address.latitude } }
   end
 end

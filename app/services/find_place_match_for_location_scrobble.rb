@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 ##
-# Identifies the best location
+# Identifies the best {PlaceMatch} for a given location scrobble. It filters in two stages. First, it selects the
+# matches that are a full match--that is, all traits listed in its +source_fields+ match the associated attributes
+# on the scrobble. Second, it selects the match with the highest "specificity," which is defined on {PlaceMatch}.
 #
 class FindPlaceMatchForLocationScrobble
   include Callable
@@ -12,15 +14,8 @@ class FindPlaceMatchForLocationScrobble
     @location_scrobble = location_scrobble
   end
 
-  def call
-    PlaceMatches::MatchingLocationScrobbleQuery.(location_scrobble: location_scrobble).find do |place_match|
-      fully_matches_place_match?(place_match)
-    end
-  end
-
-  private
-
-  def fully_matches_place_match?(place_match)
-    place_match.source_fields.all? { |name, val| location_scrobble[name].to_s == val.to_s }
+  def call(query = PlaceMatches::MatchingLocationScrobbleQuery)
+    query.(location_scrobble: location_scrobble)
+      .max_by(&:specificity)
   end
 end

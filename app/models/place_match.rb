@@ -20,6 +20,10 @@ class PlaceMatch < ApplicationRecord
 
   before_validation :set_source_identifier
 
+  def specificity
+    source_fields.keys.length
+  end
+
   def matching_location_scrobbles(query = LocationScrobbles::MatchingPlaceMatchQuery)
     query.(place_match: self)
   end

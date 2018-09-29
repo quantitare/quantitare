@@ -7,12 +7,13 @@
 class MatchPlaceToLocationScrobble
   include Serviceable
 
-  attr_reader :location_scrobble
+  attr_reader :location_scrobble, :query
 
   transactional!
 
-  def perform(location_scrobble)
+  def initialize(location_scrobble, query: FindPlaceMatchForLocationScrobble)
     @location_scrobble = location_scrobble
+    @query = query
   end
 
   def call
@@ -32,6 +33,6 @@ class MatchPlaceToLocationScrobble
   end
 
   def matching_place_match
-    @matching_place_match ||= FindPlaceMatchForLocationScrobble.(location_scrobble)
+    @matching_place_match ||= query.(location_scrobble)
   end
 end

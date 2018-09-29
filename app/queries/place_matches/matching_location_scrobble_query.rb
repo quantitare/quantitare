@@ -2,10 +2,8 @@
 
 module PlaceMatches
   ##
-  # This returns a "fuzzy match" of {PlaceMatch}es whose specified +source_fields+ match the given {LocationScrobble}'s
-  # attributes. The results need to be narrowed down since query only matches on an +OR+ condition across all of
-  # the scrobble's attributes. This may produce matches whose, for example, name might match the scrobble's but whose
-  # coordinates might not.
+  # This returns all {PlaceMatch}es whose specified +source_fields+ match the given {LocationScrobble}'s associated
+  # attributes.
   #
   class MatchingLocationScrobbleQuery
     include Callable
@@ -39,8 +37,11 @@ module PlaceMatches
 
     def where
       <<~SQL.squish
-        place_matches.source_fields @> :name::jsonb
-          OR place_matches.source_fields @> :coordinates::jsonb
+        (NOT (place_matches.source_fields ? 'name') OR place_matches.source_fields @> :name::jsonb)
+          AND (
+            NOT (place_matches.source_fields ?& array['longitude', 'latitude'])
+              OR place_matches.source_fields @> :coordinates::jsonb
+          )
       SQL
     end
 

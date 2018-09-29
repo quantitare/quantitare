@@ -6,7 +6,10 @@
 class ProcessLocationScrobble
   include Serviceable
 
-  DEFAULT_OPTIONS = { save: true }.freeze
+  DEFAULT_OPTIONS = {
+    save: true,
+    matcher: MatchPlaceToLocationScrobble
+  }.with_indifferent_access.freeze
 
   attr_reader :location_scrobble, :options
 
@@ -14,7 +17,7 @@ class ProcessLocationScrobble
 
   def initialize(location_scrobble, options = {})
     @location_scrobble = location_scrobble
-    @options = options.reverse_merge(DEFAULT_OPTIONS)
+    @options = options.with_indifferent_access.reverse_merge(DEFAULT_OPTIONS)
   end
 
   def call
@@ -26,15 +29,17 @@ class ProcessLocationScrobble
 
   private
 
-  def match_place
-    return unless location_scrobble.place?
-
-    MatchPlaceToLocationScrobble.(location_scrobble)
-  end
-
   def save_scrobble
     options[:save] ? location_scrobble.save : location_scrobble.validate
 
     result.errors += location_scrobble.errors.full_messages
+  end
+
+  def match_place
+    return unless location_scrobble.place?
+
+    match_result = options[:matcher].(location_scrobble)
+
+    result.errors += match_result.errors
   end
 end

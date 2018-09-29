@@ -20,6 +20,7 @@ module Serviceable
     end
 
     alias ok? success?
+    alias successful? success?
 
     def failure?
       !success?

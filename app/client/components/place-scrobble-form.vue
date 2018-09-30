@@ -3,7 +3,7 @@
     <div>
       <page-subheader-1>Options</page-subheader-1>
 
-      <model-form-group v-if="model.isPlace">
+      <model-form-group v-if="!model.placeId">
         &nbsp;
 
         <template slot="fields">

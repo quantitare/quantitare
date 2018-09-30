@@ -1,2 +1,33 @@
-- name: Driving
+- name: Walking
+  icon: walking
+- name: Wheelchair
+  icon: wheelchair
+- name: Running
+  icon: walking
+- name: Hiking
+  icon: walking
+- name: Cycling
+  icon: bicycle
+- name: Car
   icon: car
+- name: Taxi or Rideshare
+  icon: taxi
+- name: Motorcycle
+  icon: motorcycle
+- name: Bus
+  icon: bus
+- name: Train
+  icon: train
+- name: Subway
+  icon: subway
+- name: Flying
+  icon: plane
+- name: Boating
+  icon: ship
+- name: Ferry
+  icon: ship
+- name: Swimming
+  icon: swimmer
+- name: Horse
+  icon: frog # sorry...
+

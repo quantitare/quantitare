@@ -2,7 +2,38 @@
   icon: home
 - name: Residence
   icon: home
-- name: Restaurant
-  icon: utensils
+
 - name: Office
   icon: building
+
+- name: Transit stop
+  icon: bus
+
+- name: Restaurant
+  icon: utensils
+- name: Café
+  icon: coffee
+- name: Bar
+  icon: beer
+
+- name: School
+  icon: school
+- name: College
+  icon: graduation-cap
+- name: Classroom
+  icon: chalkboard-teacher
+
+- name: Grocery
+  icon: apple-alt
+- name: Shop
+  icon: shopping-cart
+- name: Hospital
+  icon: hospital
+- name: Hotel
+  icon: hotel
+- name: Place of worship
+  icon: place-of-worship
+- name: Wellness
+  icon: spa
+- name: Park
+  icon: tree

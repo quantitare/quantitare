@@ -11,6 +11,4 @@ json.extract! place,
 
 json.icon place.category_icon
 
-json.url url_for(place)
-json.isNewRecord place.new_record?
-json.errors place.errors.messages
+json.partial! 'shared/model_props', model: place

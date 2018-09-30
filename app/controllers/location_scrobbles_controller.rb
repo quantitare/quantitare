@@ -13,6 +13,7 @@ class LocationScrobblesController < AuthenticatedController
     @location_scrobbles = current_user.location_scrobbles
       .overlapping_range(@from, @to)
       .order(start_time: :asc)
+      .includes(:place)
       .map(&:decorate)
   end
 

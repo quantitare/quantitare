@@ -6,6 +6,9 @@
 class GoogleMapsKmlAdapter
   include LocationImportable
 
+  TRANSIT_CATEGORY_PATH = File.join(__dir__, 'google_maps_kml_adapter', 'transit_category_mappings.yml').freeze
+  TRANSIT_CATEGORY_MAPPINGS = YAML.load_file(TRANSIT_CATEGORY_PATH).freeze
+
   class << self
     def importer_label
       'Google Maps KML'

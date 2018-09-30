@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_dependency 'google_maps_kml_adapter'
+
 class GoogleMapsKmlAdapter
   ##
   # Converts a single placemark XML node from a KML document to a {LocationScrobble}.
@@ -24,7 +26,6 @@ class GoogleMapsKmlAdapter
         description: description,
 
         trackpoints: trackpoints.map(&:to_h),
-        place: place,
 
         start_time: start_time,
         end_time: end_time
@@ -42,7 +43,7 @@ class GoogleMapsKmlAdapter
     end
 
     def category
-      value_from_path('ExtendedData Data[name="Category"] value')
+      process_input_category(raw_category)
     end
 
     def distance
@@ -65,11 +66,6 @@ class GoogleMapsKmlAdapter
       end
     end
 
-    # TODO
-    def place
-      nil
-    end
-
     def start_time
       Time.zone.parse(value_from_path('TimeSpan begin'))
     end
@@ -86,6 +82,18 @@ class GoogleMapsKmlAdapter
 
     def value_from_path(css_selector)
       xml_node.at_css(css_selector).text
+    end
+
+    def raw_category
+      value_from_path('ExtendedData Data[name="Category"] value')
+    end
+
+    def process_input_category(input_category)
+      if type == PlaceScrobble.name
+        input_category
+      else
+        TRANSIT_CATEGORY_MAPPINGS[input_category.downcase]
+      end
     end
   end
 end

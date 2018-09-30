@@ -11,6 +11,8 @@
 
       :id="fieldId"
       :name="fieldName"
+
+      :disabled="disabled"
     />
     <label class="custom-control-label" :for="fieldId">
       <slot>{{ attribute }}</slot>
@@ -27,6 +29,11 @@ export default {
 
   props: {
     reactive: {
+      type: Boolean,
+      default: false
+    },
+
+    disabled: {
       type: Boolean,
       default: false
     }

@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: 'pages#index'
+
+  mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users,
     path: 'auth',
@@ -36,6 +40,8 @@ Rails.application.routes.draw do
       resources :categories, only: [:index], as: 'location_categories', controller: 'location_categories'
     end
   end
+
+  resources :place_matches, only: [:create, :update]
 
   namespace :aux do
     resources :countries, only: [:index]

@@ -10,7 +10,9 @@
     )
   }
 %>
-<%= vue_data_tag data: { place_match: {}.to_json } %>
+<%=
+  vue_data_tag data: { place_match: json_partial('place_matches/place_match', locals: { place_match: @place_match }) }
+%>
 
 <location-scrobbles-edit-view>
 </location-scrobbles-edit-view>

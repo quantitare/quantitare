@@ -2,13 +2,6 @@ import modelCrud from 'vuex-extensions/model-crud';
 import _ from 'lodash';
 
 export default _.merge({
-  state: {
-    enabled: false,
-
-    matchName: true,
-    matchCoordinates: true
-  },
-
   getters: {
     sourceFields(state, getters, rootState) {
       return {

@@ -8,13 +8,14 @@
 class FindPlaceMatchForLocationScrobble
   include Callable
 
-  attr_reader :location_scrobble
+  attr_reader :location_scrobble, :query
 
-  def initialize(location_scrobble)
+  def initialize(location_scrobble, query: PlaceMatches::MatchingLocationScrobbleQuery)
     @location_scrobble = location_scrobble
+    @query = query
   end
 
-  def call(query = PlaceMatches::MatchingLocationScrobbleQuery)
+  def call
     query.(location_scrobble: location_scrobble)
       .max_by(&:specificity)
   end

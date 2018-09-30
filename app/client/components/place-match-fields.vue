@@ -6,21 +6,21 @@
       &nbsp;
 
       <template slot="fields">
-        <model-form-check-box attribute="enabled">
+        <model-form-check-box attribute="enabled" :disabled="!placeMatch.isNewRecord">
           Match similar location scrobbles from this source to this place
         </model-form-check-box>
       </template>
     </model-form-group>
 
-    <model-form-group v-if="placeMatch.enabled">
+    <model-form-group v-if="placeMatch.enabled && placeMatch.isNewRecord">
       Match attributes
 
       <template slot="fields">
         <model-form-check-box attribute="matchName">
-          Name <span class="text-muted">«{{ locationScrobble.name }}»</span>
+          Name <span class="text-muted">«{{ locationScrobble.originalName }}»</span>
         </model-form-check-box>
 
-        <model-form-check-box attribute="matchCoordinates">
+        <model-form-check-box attribute="matchCoordinates" :disabled="true">
           Coordinates
           <span class="text-muted">
             «{{ locationScrobble.averageLongitude }}, {{ locationScrobble.averageLatitude }}»
@@ -34,13 +34,11 @@
         />
 
         <model-form-hidden
-          v-if="placeMatch.matchCoordinates"
           :value="sourceFields.longitude"
           attribute="sourceFields.longitude"
         />
 
         <model-form-hidden
-          v-if="placeMatch.matchCoordinates"
           :value="sourceFields.latitude"
           attribute="sourceFields.latitude"
         />

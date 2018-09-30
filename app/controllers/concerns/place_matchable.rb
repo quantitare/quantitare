@@ -1,12 +1,18 @@
 # frozen_string_literal: true
 
 ##
-# Adds helpers for dealing with {PlaceMatch} creation.
+# Adds helpers for dealing with {PlaceMatch} creation and processing.
 #
 module PlaceMatchable
   extend ActiveSupport::Concern
 
   private
+
+  def find_place_match!(location_scrobble:)
+    place_match = FindPlaceMatchForLocationScrobble.(location_scrobble).try(:decorate)
+
+    @place_match = place_match.presence || current_user.place_matches.new(source: location_scrobble.source).decorate
+  end
 
   def process_place_match!(source:, place:)
     return unless place_match_ready?

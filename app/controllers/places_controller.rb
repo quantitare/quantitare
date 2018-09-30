@@ -19,12 +19,19 @@ class PlacesController < AuthenticatedController
   end
 
   def create
-    @location_scrobble = LocationScrobble.find_by(id: params[:location_scrobble_id]).try(:decorate)
+    @location_scrobble = current_user.location_scrobbles.find_by(id: params[:location_scrobble_id]).try(:decorate)
     @place = current_user.places.new(place_params).decorate
 
     @place.location_scrobbles << @location_scrobble if @location_scrobble
 
     process_place_match!(source: @location_scrobble.source, place: @place) if @place.save && @location_scrobble.present?
+  end
+
+  def update
+    @location_scrobble = current_user.location_scrobbles.find_by(id: params[:location_scrobble_id]).try(:decorate)
+    @place = current_user.places.find(params[:id]).decorate
+
+    @place.update(place_params)
   end
 
   private

@@ -6,7 +6,9 @@
 class Place < ApplicationRecord
   include HasGuid
   include Categorizable
+  include ServiceFetchable
 
+  FETCHER_KLASS = Place::Fetcher
   CATEGORY_KLASS = PlaceCategory
 
   FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :zip, :country].freeze
@@ -39,6 +41,8 @@ class Place < ApplicationRecord
       obj.country = geo.country
     end
   end
+
+  fetcher :service_identifier, [:service_identifier]
 
   def custom?
     service_id.nil?

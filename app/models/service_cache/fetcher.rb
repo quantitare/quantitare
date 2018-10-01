@@ -2,7 +2,7 @@
 
 class ServiceCache
   ##
-  # Stores the necessary data for fetching a {ServiceCache} record.
+  # Fetches, caches, and retrieves the necessary data for fetching a {ServiceCache} record.
   #
   class Fetcher
     attr_reader :name, :keywords
@@ -33,9 +33,9 @@ class ServiceCache
     private
 
     def find_cached(cache_klass, service, opts = {})
-      relation = cache_klass.where(service: service)
-
-      keywords.each { |keyword| relation = cache_klass.where("data->>'#{keyword}' = ?", opts[keyword]) }
+      relation = cache_klass
+        .where(service: service)
+        .where('data @> ?::jsonb', keyword_attributes(opts).to_json)
 
       relation.first
     end
@@ -46,10 +46,18 @@ class ServiceCache
         return fresh
       end
 
-      attrs = fresh.attributes.with_indifferent_access.slice(:data, :expires_at, :tag_list)
+      attrs = fresh.attributes.with_indifferent_access.slice(*merge_attributes)
       cached.update!(attrs)
 
       cached
+    end
+
+    def merge_attributes
+      [:data, :expires_at, :tag_list]
+    end
+
+    def keyword_attributes(opts)
+      Hash[keywords.map { |keyword| [keyword, opts[keyword]] }]
     end
   end
 end

@@ -2,6 +2,10 @@
   <%= nav_link 'Scrobblers', scrobblers_path %>
   <%= nav_link 'Locations', locations_path %>
   <%= nav_link 'Services', services_path %>
+
+  <% if current_user.admin? %>
+    <%= nav_link 'Admin', admin_settings_path %>
+  <% end %>
 </div>
 
 <div class="navbar-nav">

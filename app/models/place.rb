@@ -28,6 +28,7 @@ class Place < ApplicationRecord
   after_validation :reverse_geocode, if: ->(obj) { obj.requires_reverse_geocode? }
 
   scope :available_to_user, ->(user) { where(global: true).or(where(user: user)) }
+  scope :custom, -> { where(service: nil) }
 
   geocoded_by :full_address
   reverse_geocoded_by :longitude, :latitude do |obj, results|
@@ -43,6 +44,17 @@ class Place < ApplicationRecord
   end
 
   fetcher :service_identifier, [:service_identifier]
+
+  class << self
+    def metadata_service
+      service_id = Setting.place_service_id
+      Service.find_by(id: service_id)
+    end
+
+    def metadata_adapter
+      FoursquareAdapter.new(metadata_service)
+    end
+  end
 
   def custom?
     service_id.nil?

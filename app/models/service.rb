@@ -13,6 +13,7 @@ class Service < ApplicationRecord
   validates :token, presence: true
 
   scope :available_to_user, ->(user) { where(user_id: user.id) }
+  scope :for_place_metadata, -> { where(provider: 'foursquare', global: true) }
 
   @available_providers = {}.with_indifferent_access
 

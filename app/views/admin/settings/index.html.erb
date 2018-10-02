@@ -1,0 +1,7 @@
+<%= content_for :title, 'Settings' %>
+
+<%= vuex_store_tag :admin_settings_index %>
+<%= vue_data_tag data: { settings: @settings } %>
+
+<admin-settings-index-view>
+</admin-settings-index-view>

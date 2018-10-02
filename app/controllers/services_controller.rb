@@ -4,6 +4,14 @@
 # CRUD for external services.
 #
 class ServicesController < AuthenticatedController
+  has_scope :for_place_metadata, type: :boolean
+
+  def search
+    @services = apply_scopes(Service.available_to_user(current_user)).all
+
+    respond_to { |format| format.json }
+  end
+
   def index
     @services = current_user.services.order(provider: :asc)
   end

@@ -4,6 +4,8 @@
 # A user.
 #
 class User < ApplicationRecord
+  include RailsSettings::Extend
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :services, dependent: :destroy

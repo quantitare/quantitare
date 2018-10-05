@@ -4,16 +4,11 @@ module LocationScrobbles
   ##
   # A query that matches location scrobbles against the provided place match's specified source fields.
   #
-  class MatchingPlaceMatchQuery
-    include Callable
+  class MatchingPlaceMatchQuery < ApplicationQuery
     include PolymorphicJoinable
 
-    attr_reader :relation, :place_match
-
-    def initialize(relation = PlaceScrobble, place_match:)
-      @relation = relation
-      @place_match = place_match
-    end
+    relation PlaceScrobble
+    params :place_match
 
     def call
       @relation = relation

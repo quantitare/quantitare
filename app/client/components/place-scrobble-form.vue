@@ -26,9 +26,11 @@
               <model-form-choices
                 attribute="placeId"
 
-                path="/places/search.json"
+                :path="placesSearchPath"
                 :pathDataFormatter="placesPathDataFormatter"
                 :disabled="placeEdit"
+
+                @search="searchPlaces"
               >
               </model-form-choices>
             </div>
@@ -90,10 +92,12 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
+import queryString from 'query-string';
 
 export default {
   props: {
     model: Object,
+
     placeable: {
       type: Boolean,
       default: false
@@ -105,15 +109,31 @@ export default {
       return !this.placeEdit && this.model.placeId !== this.model._original.placeId;
     },
 
+    placesSearchParams() {
+      return { latitude: this.model.averageLongitude, longitude: this.model.averageLatitude };
+    },
+
+    placesSearchPath() {
+      return `/places/search.json?${this.placesSearchQuery}`;
+    },
+
+    placesSearchQuery() {
+      return queryString.stringify(this.placesSearchParams);
+    },
+
     ...mapState(['placeEdit']),
     ...mapState(['placeEditMode'])
   },
 
   methods: {
+    searchPlaces(event) {
+      this.placesSearchParams.q = event.detail.value;
+    },
+
     placesPathDataFormatter(place) {
       return {
         value: place.id,
-        label: `<i class="fas fa-${place.icon}" style="margin-right: 4px;"></i> ${place.name}`
+        label: `<i class="fas fa-${place.icon.name}" style="margin-right: 4px;"></i> ${place.name}`
       };
     },
 

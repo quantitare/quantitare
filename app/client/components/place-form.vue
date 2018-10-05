@@ -68,7 +68,7 @@ export default {
       pathDataFormatter(category) {
         return {
           value: category.name,
-          label: `<i class="fas fa-${category.icon}" style="margin-right: 4px;"></i> ${category.name}`
+          label: `<i class="fas fa-${category.icon.name}" style="margin-right: 4px;"></i> ${category.name}`
         };
       }
     };

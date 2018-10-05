@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_dependency 'place'
+
 class FoursquareAdapter
   ##
   # Translates data for a place returned by the Foursquare API into a {Place} model.
@@ -23,7 +25,7 @@ class FoursquareAdapter
         global: true,
 
         name: raw_place[:name],
-        category: raw_place[:categories].first.dig(:id),
+        category: category_id,
 
         longitude: raw_place[:location][:lng],
         latitude: raw_place[:location][:lat],
@@ -38,5 +40,11 @@ class FoursquareAdapter
       )
     end
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+
+    private
+
+    def category_id
+      raw_place[:categories].find { |category| category[:primary] }.try(:dig, :id)
+    end
   end
 end

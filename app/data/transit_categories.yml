@@ -1,33 +1,69 @@
 - name: Walking
-  icon: walking
+  icon:
+    type: fa
+    name: walking
 - name: Wheelchair
-  icon: wheelchair
+  icon:
+    type: fa
+    name: wheelchair
 - name: Running
-  icon: walking
+  icon:
+    type: fa
+    name: walking
 - name: Hiking
-  icon: walking
+  icon:
+    type: fa
+    name: walking
 - name: Cycling
-  icon: bicycle
+  icon:
+    type: fa
+    name: bicycle
+
 - name: Car
-  icon: car
+  icon:
+    type: fa
+    name: car
 - name: Taxi or Rideshare
-  icon: taxi
+  icon:
+    type: fa
+    name: taxi
 - name: Motorcycle
-  icon: motorcycle
+  icon:
+    type: fa
+    name: motorcycle
+
 - name: Bus
-  icon: bus
+  icon:
+    type: fa
+    name: bus
 - name: Train
-  icon: train
+  icon:
+    type: fa
+    name: train
 - name: Subway
-  icon: subway
+  icon:
+    type: fa
+    name: subway
 - name: Flying
-  icon: plane
+  icon:
+    type: fa
+    name: plane
+
 - name: Boating
-  icon: ship
+  icon:
+    type: fa
+    name: ship
 - name: Ferry
-  icon: ship
+  icon:
+    type: fa
+    name: ship
+
 - name: Swimming
-  icon: swimmer
+  icon:
+    type: fa
+    name: swimmer
 - name: Horse
-  icon: frog # sorry...
+  icon:
+    type: fa
+    name: frog # sorry...
 

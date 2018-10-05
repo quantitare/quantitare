@@ -23,7 +23,7 @@ class LocationScrobbleDecorator < ApplicationDecorator
   end
 
   def icon_class
-    "fas fa-#{icon}"
+    "fas fa-#{icon.try(:name)}"
   end
 
   def friendly_start_time

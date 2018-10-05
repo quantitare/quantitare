@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Place
+require_dependency 'service_cache/fetcher'
+
+class Place < ApplicationRecord
   ##
   # {ServiceCache::Fetcher} variant for places. Exhibits slightly different behavior from a normal {ServiceCache}, but
   # the idea is the same.

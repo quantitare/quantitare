@@ -7,7 +7,8 @@ class PlacesController < AuthenticatedController
   include PlaceMatchable
 
   def search
-    @places = Place.available_to_user(current_user)
+    # @places = Place.available_to_user(current_user)
+    @places = Place.fetch_find(place_search_params.to_h.symbolize_keys)
   end
 
   def show
@@ -43,5 +44,9 @@ class PlacesController < AuthenticatedController
       :latitude, :longitude,
       :global
     )
+  end
+
+  def place_search_params
+    params.permit(:longitude, :latitude)
   end
 end

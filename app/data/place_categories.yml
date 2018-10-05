@@ -1,39 +1,73 @@
 - name: Home
-  icon: home
+  icon:
+    type: fa
+    name: home
 - name: Residence
-  icon: home
+  icon:
+    type: fa
+    name: home
 
 - name: Office
-  icon: building
+  icon:
+    type: fa
+    name: building
 
 - name: Transit stop
-  icon: bus
+  icon:
+    type: fa
+    name: bus
 
 - name: Restaurant
-  icon: utensils
+  icon:
+    type: fa
+    name: utensils
 - name: Café
-  icon: coffee
+  icon:
+    type: fa
+    name: coffee
 - name: Bar
-  icon: beer
+  icon:
+    type: fa
+    name: beer
 
 - name: School
-  icon: school
+  icon:
+    type: fa
+    name: school
 - name: College
-  icon: graduation-cap
+  icon:
+    type: fa
+    name: graduation-cap
 - name: Classroom
-  icon: chalkboard-teacher
+  icon:
+    type: fa
+    name: chalkboard-teacher
 
 - name: Grocery
-  icon: apple-alt
+  icon:
+    type: fa
+    name: apple-alt
 - name: Shop
-  icon: shopping-cart
+  icon:
+    type: fa
+    name: shopping-cart
 - name: Hospital
-  icon: hospital
+  icon:
+    type: fa
+    name: hospital
 - name: Hotel
-  icon: hotel
+  icon:
+    type: fa
+    name: hotel
 - name: Place of worship
-  icon: place-of-worship
+  icon:
+    type: fa
+    name: place-of-worship
 - name: Wellness
-  icon: spa
+  icon:
+    type: fa
+    name: spa
 - name: Park
-  icon: tree
+  icon:
+    type: fa
+    name: tree

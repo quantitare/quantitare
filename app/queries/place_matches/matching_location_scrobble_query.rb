@@ -5,16 +5,11 @@ module PlaceMatches
   # This returns all {PlaceMatch}es whose specified +source_fields+ match the given {LocationScrobble}'s associated
   # attributes.
   #
-  class MatchingLocationScrobbleQuery
-    include Callable
+  class MatchingLocationScrobbleQuery < ApplicationQuery
     include PolymorphicJoinable
 
-    attr_reader :relation, :location_scrobble
-
-    def initialize(relation = PlaceMatch, location_scrobble:)
-      @relation = relation
-      @location_scrobble = location_scrobble
-    end
+    relation PlaceMatch
+    params :location_scrobble
 
     def call
       @relation = relation

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_dependency 'place/fetcher'
+
 ##
 # A place
 #
@@ -54,10 +56,18 @@ class Place < ApplicationRecord
     def metadata_adapter
       FoursquareAdapter.new(metadata_service)
     end
+
+    def fetch_find(params = {})
+      metadata_adapter.find_places(params)
+    end
   end
 
   def custom?
     service_id.nil?
+  end
+
+  def category_klass
+    service_id.present? ? Aux::PlaceCategory : super
   end
 
   def full_address
@@ -85,7 +95,7 @@ class Place < ApplicationRecord
   end
 
   def requires_reverse_geocode?
-    coordinates_changed? && (coordinates_changed? && !full_address_changed?)
+    coordinates_changed? && !full_address_changed?
   end
 
   private

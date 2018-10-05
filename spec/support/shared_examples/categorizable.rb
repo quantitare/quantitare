@@ -35,8 +35,8 @@ shared_examples_for Categorizable do
   end
 
   describe '#category_icon' do
-    it 'returns a string' do
-      expect(subject.category_icon).to be_a(String)
+    it 'returns a hash' do
+      expect(subject.category_icon).to be_a(Hash)
     end
   end
 end

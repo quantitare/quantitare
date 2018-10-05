@@ -1,5 +1,5 @@
 <template>
-  <font-awesome-icon :icon="icon" class="mr-1"></font-awesome-icon>
+  <icon :icon="icon" variant="xl" class="mr-1"></icon>
 </template>
 
 <script>

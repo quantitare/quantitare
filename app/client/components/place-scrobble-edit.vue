@@ -4,7 +4,7 @@
       <model-form :model="locationScrobble" scope="locationScrobble">
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
-            <span class="input-group-text"><font-awesome-icon :icon="model.icon || 'map-marker-alt'" /></span>
+            <span class="input-group-text"><icon :icon="model.icon" /></span>
           </div>
 
           <model-form-input attribute="name"></model-form-input>
@@ -22,7 +22,7 @@
     </page-header>
 
     <page-header v-else>
-      <header-icon :icon="model.icon || 'map-marker-alt'" />
+      <header-icon :icon="model.icon" />
 
       <span @click="startNameEdit">{{ model.name }}</span>
       <small class="text-muted">{{ model.category }}</small>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ServiceCache
+class ServiceCache < ApplicationRecord
   ##
   # Fetches, caches, and retrieves the necessary data for fetching a {ServiceCache} record.
   #
@@ -24,7 +24,10 @@ class ServiceCache
       cached = find_cached(cache_klass, adapter.service, opts)
       return cached if cached.present? && !cached.expired?
 
-      fresh = adapter.public_send(cache_klass.adapter_method, opts)
+      fresh = adapter.public_send(cache_klass.fetch_adapter_method, opts)
+
+      return nil if fresh.blank?
+
       result = merge_fresh_and_cached!(fresh, cached)
 
       result
@@ -35,7 +38,7 @@ class ServiceCache
     def find_cached(cache_klass, service, opts = {})
       relation = cache_klass
         .where(service: service)
-        .where('data @> ?::jsonb', keyword_attributes(opts).to_json)
+        .where("#{cache_klass.table_name}.data @> ?::jsonb", keyword_attributes(opts).to_json)
 
       relation.first
     end

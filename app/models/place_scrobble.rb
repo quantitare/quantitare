@@ -13,7 +13,7 @@ class PlaceScrobble < LocationScrobble
   end
 
   def category_info
-    place_id.present? ? category_klass.find(place.category) : super
+    place_id.present? ? category_klass.get(place.category) : super
   end
 
   private

@@ -9,7 +9,7 @@ class LocationCategory
       all_hash.values
     end
 
-    def find(name)
+    def get(name)
       all_hash[name]
     end
 

@@ -1,5 +1,5 @@
 <template>
-  <select :id="id" :name="name" :disabled="disabled">
+  <select :id="id" :name="name" :disabled="disabled" @search="$emit('search', $event)">
     <slot>
       <option value="" placeholder>Make a selection...</option>
     </slot>
@@ -104,6 +104,7 @@ export default {
       itemSelectText: '',
       placeholder: true,
       removeItemButton: true,
+      duplicateItems: false,
 
       choices: this.choicesOptions,
 

@@ -3,7 +3,7 @@
 ##
 # Shared logic for models that point to a category with some metadata.
 #
-# 1. Set a constant called +CATEGORY_KLASS+. This class must respond to +.find+ and +.default+.
+# 1. Set a constant called +CATEGORY_KLASS+. This class must respond to +.get+ and +.default+.
 # 2. Optionally, use the +category_attribute+ macro to set the name of the attribute with which you wish to use to
 #    lookup category data.
 #
@@ -38,7 +38,7 @@ module Categorizable
   end
 
   def category_info
-    category_klass.find(send(category_attribute)) || category_klass.default
+    category_klass.get(send(category_attribute)) || category_klass.default
   end
 
   def category_name

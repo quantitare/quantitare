@@ -1,7 +1,7 @@
 <template>
   <div>
     <page-header>
-      <header-icon :icon="model.icon || 'map-marker-alt'" />
+      <header-icon :icon="model.icon" />
 
       <span>{{ model.category }}</span>
     </page-header>

@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_dependency 'service_cache/fetcher'
+require_dependency 'service_cache/searcher'
+
 ##
 # Shared logic for a class that can fetch and cache resources from a web API.
 #
@@ -8,13 +11,30 @@ module ServiceFetchable
 
   FETCHER_KLASS = ServiceCache::Fetcher
 
-  class_methods do
+  ##
+  # Mixed in as class methods
+  #
+  module ClassMethods
     def fetchers
       @fetchers ||= []
     end
 
     def fetcher(fetcher_name, fetcher_keywords)
       fetchers << fetcher_klass.new(fetcher_name, fetcher_keywords)
+    end
+
+    def searcher(*searcher_keywords, **searcher_keywords_with_defaults)
+      searchers << searcher_klass.new(searcher_keywords, searcher_keywords_with_defaults)
+    end
+
+    def search(opts = {})
+      searchers.each do |searcher|
+        next unless searcher.can_search?(opts)
+
+        return searcher.search(self, opts)
+      end
+
+      []
     end
 
     def fetch(opts = {})
@@ -27,10 +47,20 @@ module ServiceFetchable
       nil
     end
 
-    def adapter_method
+    def fetch_adapter_method
       underscore = name.split('::').last.underscore
 
       "fetch_#{underscore}"
+    end
+
+    def search_adapter_method
+      underscore = name.split('::').last.pluralize.underscore
+
+      "search_#{underscore}"
+    end
+
+    def search_cache_method
+      'cache_search'
     end
 
     private

@@ -6,7 +6,7 @@
       <slot></slot>
     </select>
 
-    <input type="submit" value="Submit" class="d-none" />
+    <input type="submit" value="Submit" class="d-none" ref="submitButton" />
   </form>
 </template>
 
@@ -29,8 +29,8 @@ export default {
   },
 
   methods: {
-    submit(e) {
-      e.target.closest('form').querySelector('input[type="submit"]').click();
+    submit() {
+      this.$refs.submitButton.click();
     }
   }
 };

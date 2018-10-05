@@ -16,7 +16,7 @@
   <ul>
     <% @location_scrobbles.each do |location_scrobble| %>
       <li>
-        <i class="fas fa-<%= location_scrobble.icon %>"></i>
+        <i class="<%= location_scrobble.icon_class %>"></i>
         <%= location_scrobble.name %>
         <%= link_to 'Edit', edit_location_scrobble_path(location_scrobble) %>
       </li>

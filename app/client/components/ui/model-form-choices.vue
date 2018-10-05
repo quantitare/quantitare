@@ -2,6 +2,7 @@
   <choices
     :value="value"
     @input="updateAttribute"
+    @search="$emit('search', $event)"
 
     :id="fieldId"
     :name="fieldName"

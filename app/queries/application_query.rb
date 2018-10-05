@@ -63,6 +63,8 @@ class ApplicationQuery
   attr_reader :relation
 
   class << self
+    attr_writer :required_params
+
     def params(*new_required_params, **new_params_with_defaults)
       attr_reader(*new_required_params)
       self.required_params += new_required_params

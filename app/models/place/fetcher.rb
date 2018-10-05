@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-require_dependency 'service_cache/fetcher'
-
-class Place < ApplicationRecord
+class Place
   ##
-  # {ServiceCache::Fetcher} variant for places. Exhibits slightly different behavior from a normal {ServiceCache}, but
-  # the idea is the same.
+  # {ServiceFetchable::Fetcher} variant for places. Exhibits slightly different behavior from a normal
+  # {ServiceFetchable}, but the idea is the same.
   #
-  class Fetcher < ServiceCache::Fetcher
+  class Fetcher < ServiceFetchable::Fetcher
     private
 
     def find_cached(cache_klass, service, opts = {})

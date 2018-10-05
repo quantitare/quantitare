@@ -8,7 +8,7 @@ class PlacesController < AuthenticatedController
 
   def search
     # @places = Place.available_to_user(current_user)
-    @places = Place.fetch_find(place_search_params.to_h.symbolize_keys)
+    @places = Place.search(place_search_params.to_h.merge(adapter: Place.metadata_adapter))
   end
 
   def show

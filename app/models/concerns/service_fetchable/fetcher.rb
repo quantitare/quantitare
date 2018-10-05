@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class ServiceCache < ApplicationRecord
+module ServiceFetchable
   ##
-  # Fetches, caches, and retrieves the necessary data for fetching a {ServiceCache} record.
+  # Fetches, caches, and retrieves the necessary data for fetching a {ServiceFetchable} record.
   #
   class Fetcher
     attr_reader :name, :keywords

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_dependency 'place/fetcher'
-
 ##
 # A place
 #
@@ -10,7 +8,7 @@ class Place < ApplicationRecord
   include Categorizable
   include ServiceFetchable
 
-  FETCHER_KLASS = Place::Fetcher
+  FETCHER_KLASS = Fetcher
   CATEGORY_KLASS = PlaceCategory
 
   FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :zip, :country].freeze
@@ -46,6 +44,7 @@ class Place < ApplicationRecord
   end
 
   fetcher :service_identifier, [:service_identifier]
+  searcher :latitude, :longitude, query: '', radius: 250, limit: 25
 
   class << self
     def metadata_service
@@ -55,10 +54,6 @@ class Place < ApplicationRecord
 
     def metadata_adapter
       FoursquareAdapter.new(metadata_service)
-    end
-
-    def fetch_find(params = {})
-      metadata_adapter.find_places(params)
     end
   end
 
@@ -126,3 +121,5 @@ class Place < ApplicationRecord
     attr_names.any? { |attr_name| send("#{attr_name}_changed?") }
   end
 end
+
+require_dependency 'place/fetcher'

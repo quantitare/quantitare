@@ -23,7 +23,7 @@ class FoursquareAdapter
     @client ||= Foursquare2::Client.new(oauth_token: service.token, api_version: API_VERSION)
   end
 
-  def search_places(longitude:, latitude:, query: '', radius: 250, limit: 25)
+  def search_places(longitude:, latitude:, query:, radius:, limit:)
     results = client.search_venues(
       ll: "#{latitude},#{longitude}",
       query: query,

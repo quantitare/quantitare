@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_dependency 'service_cache/fetcher'
-require_dependency 'service_cache/searcher'
+require_dependency 'service_fetchable/fetcher'
+require_dependency 'service_fetchable/searcher'
 
 ##
 # Shared logic for a class that can fetch and cache resources from a web API.
@@ -9,7 +9,8 @@ require_dependency 'service_cache/searcher'
 module ServiceFetchable
   extend ActiveSupport::Concern
 
-  FETCHER_KLASS = ServiceCache::Fetcher
+  FETCHER_KLASS = ServiceFetchable::Fetcher
+  SEARCHER_KLASS = ServiceFetchable::Searcher
 
   ##
   # Mixed in as class methods
@@ -19,12 +20,16 @@ module ServiceFetchable
       @fetchers ||= []
     end
 
+    def searchers
+      @searchers ||= []
+    end
+
     def fetcher(fetcher_name, fetcher_keywords)
       fetchers << fetcher_klass.new(fetcher_name, fetcher_keywords)
     end
 
     def searcher(*searcher_keywords, **searcher_keywords_with_defaults)
-      searchers << searcher_klass.new(searcher_keywords, searcher_keywords_with_defaults)
+      searchers << searcher_klass.new(*searcher_keywords, searcher_keywords_with_defaults)
     end
 
     def search(opts = {})
@@ -67,6 +72,10 @@ module ServiceFetchable
 
     def fetcher_klass
       const_defined?('FETCHER_KLASS') ? const_get('FETCHER_KLASS') : FETCHER_KLASS
+    end
+
+    def searcher_klass
+      const_defined?('SEARCHER_KLASS') ? const_get('SEARCHER_KLASS') : SEARCHER_KLASS
     end
   end
 

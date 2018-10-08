@@ -22,7 +22,7 @@ module Aux
   # +fa+ icons must have a +name+ attribute pointing to the name of the icon being used.
   #
   class PlaceCategory < ServiceCache
-    store_accessor :data, :id, :icon, :name, :plural_name, :provider
+    store_accessor :data, :icon, :name, :plural_name, :provider
 
     fetcher :id, [:id]
 

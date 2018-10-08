@@ -15,11 +15,18 @@ class LastfmAdapter
     def to_aux
       Aux::MusicTrack.new(
         service: service,
+        service_identifier: service_identifier,
         data: data,
         tag_list: tag_list,
 
         expires_at: 1.month.from_now
       )
+    end
+
+    private
+
+    def service_identifier
+      raw_track[:mbid]
     end
 
     # rubocop:disable Metrics/AbcSize

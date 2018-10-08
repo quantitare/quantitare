@@ -15,6 +15,7 @@ class LastfmAdapter
     def to_aux
       Aux::MusicArtist.new(
         service: service,
+        service_identifier: service_identifier,
         data: data,
         tag_list: tag_list,
 
@@ -23,6 +24,10 @@ class LastfmAdapter
     end
 
     private
+
+    def service_identifier
+      raw_artist[:mbid]
+    end
 
     # rubocop:disable Metrics/AbcSize
     def data

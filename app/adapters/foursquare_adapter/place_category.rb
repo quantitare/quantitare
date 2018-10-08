@@ -15,6 +15,7 @@ class FoursquareAdapter
     def to_aux
       Aux::PlaceCategory.new(
         service: service,
+        service_identifier: service_identifier,
         data: data,
 
         expires_at: 1.week.from_now
@@ -22,6 +23,10 @@ class FoursquareAdapter
     end
 
     private
+
+    def service_identifier
+      raw_category[:id]
+    end
 
     def data
       { provider: service.provider }.merge(category_params)

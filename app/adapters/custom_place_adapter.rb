@@ -10,12 +10,12 @@ class CustomPlaceAdapter
     @service = service
   end
 
-  def find_places(longitude:, latitude:, query:, radius:, limit:)
+  def search_places(latitude:, longitude:, query: '', radius: 500, limit: 50)
     km_radius = radius / 1_000.0
 
     results = ::Place
       .custom
-      .near([longitude, latitude], km_radius, units: :km)
+      .near([latitude, longitude], km_radius, units: :km)
       .limit(limit)
 
     query.present? ? results.where('places.name LIKE ?', query) : results

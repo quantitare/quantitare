@@ -29,6 +29,7 @@
                 :path="placesSearchPath"
                 :pathDataFormatter="placesPathDataFormatter"
                 :disabled="placeEdit"
+                :params="{ shouldSort: false }"
 
                 @search="searchPlaces"
               >
@@ -130,10 +131,17 @@ export default {
       this.placesSearchParams.q = event.detail.value;
     },
 
-    placesPathDataFormatter(place) {
+    placesPathDataFormatter(group) {
       return {
-        value: place.id,
-        label: `<i class="fas fa-${place.icon.name}" style="margin-right: 4px;"></i> ${place.name}`
+        label: group.label,
+        id: group.id,
+        disabled: false,
+        choices: group.places.map((place) => {
+          return {
+            value: place.id,
+            label: `<i class="fas fa-${place.icon.name}" style="margin-right: 4px;"></i> ${place.name}`
+          };
+        })
       };
     },
 

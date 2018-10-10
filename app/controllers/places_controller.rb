@@ -7,7 +7,9 @@ class PlacesController < AuthenticatedController
   include PlaceMatchable
 
   def search
-    @custom_places = Place.search(place_search_params_with_adapter(Place.custom_metadata_adapter))
+    # TODO: figure out a better API
+    @custom_places = CustomPlaceAdapter.new.search_places(place_search_params.to_h.symbolize_keys)
+      .available_to_user(current_user)
     @global_places = Place.search(place_search_params_with_adapter(Place.metadata_adapter))
   end
 

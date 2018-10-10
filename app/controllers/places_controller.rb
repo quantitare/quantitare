@@ -7,8 +7,8 @@ class PlacesController < AuthenticatedController
   include PlaceMatchable
 
   def search
-    # @places = Place.available_to_user(current_user)
-    @places = Place.search(place_search_params.to_h.merge(adapter: Place.metadata_adapter))
+    @custom_places = Place.search(place_search_params_with_adapter(Place.custom_metadata_adapter))
+    @global_places = Place.search(place_search_params_with_adapter(Place.metadata_adapter))
   end
 
   def show
@@ -48,5 +48,9 @@ class PlacesController < AuthenticatedController
 
   def place_search_params
     params.permit(:longitude, :latitude)
+  end
+
+  def place_search_params_with_adapter(adapter)
+    place_search_params.to_h.merge(adapter: adapter)
   end
 end

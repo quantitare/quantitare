@@ -7,27 +7,35 @@
 class MatchPlaceToLocationScrobble
   include Serviceable
 
-  attr_reader :location_scrobble, :query
+  attr_reader :location_scrobble, :query, :save
 
   transactional!
 
-  def initialize(location_scrobble, query: FindPlaceMatchForLocationScrobble)
+  def initialize(location_scrobble, query: FindPlaceMatchForLocationScrobble, save: true)
     @location_scrobble = location_scrobble
     @query = query
+    @save = save
   end
 
   def call
-    step :process_place_match
+    step :set_place_match
+    step :save_location_scrobble
 
     result.set(location_scrobble: location_scrobble)
   end
 
   private
 
-  def process_place_match
+  def set_place_match
     return if matching_place_match.blank?
 
-    location_scrobble.update(place: matching_place_match.place)
+    location_scrobble.place = matching_place_match.place
+  end
+
+  def save_location_scrobble
+    return unless save
+
+    location_scrobble.save
 
     result.errors += location_scrobble.errors.full_messages
   end

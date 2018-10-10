@@ -17,7 +17,7 @@ class Place < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :service, optional: true
   has_many :location_scrobbles, dependent: :nullify
-  has_many :place_matches, dependent: :nullify
+  has_many :place_matches, dependent: :destroy
 
   validates :name, presence: true
   validates :category, presence: true
@@ -44,7 +44,7 @@ class Place < ApplicationRecord
   end
 
   fetcher :service_identifier, [:service_identifier]
-  searcher :latitude, :longitude, query: '', radius: 250, limit: 25
+  searcher :latitude, :longitude, query: '', radius: 500, limit: 50
 
   class << self
     def metadata_service
@@ -54,6 +54,10 @@ class Place < ApplicationRecord
 
     def metadata_adapter
       FoursquareAdapter.new(metadata_service)
+    end
+
+    def custom_metadata_adapter
+      CustomPlaceAdapter.new
     end
   end
 

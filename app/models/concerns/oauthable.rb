@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ##
-# A mixin that provides functionality to connect
+# A mixin that provides functionality to link a model to a provider.
 #
 module Oauthable
   extend ActiveSupport::Concern

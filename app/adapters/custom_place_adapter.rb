@@ -10,12 +10,15 @@ class CustomPlaceAdapter
     @service = service
   end
 
-  def find_places(longitude:, latitude:, query: '', radius: 0.5, limit: 25)
-    results = ::Place.custom.near([longitude, latitude], radius, units: :km)
+  def find_places(longitude:, latitude:, query:, radius:, limit:)
+    km_radius = radius / 1_000.0
 
-    results = query.present? ? results.where('places.name LIKE ?', query) : results
+    results = ::Place
+      .custom
+      .near([longitude, latitude], km_radius, units: :km)
+      .limit(limit)
 
-    results.sort_by(&:distance).first(limit)
+    query.present? ? results.where('places.name LIKE ?', query) : results
   end
 
   def fetch_place(opts)

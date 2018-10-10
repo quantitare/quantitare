@@ -59,6 +59,10 @@
   icon:
     type: fa
     name: hotel
+- name: Movie theater
+  icon:
+    type: fa
+    name: film
 - name: Place of worship
   icon:
     type: fa
@@ -71,3 +75,7 @@
   icon:
     type: fa
     name: tree
+- name: Parking lot
+  icon:
+    type: fa
+    name: parking

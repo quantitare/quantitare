@@ -16,6 +16,10 @@ class PlaceScrobble < LocationScrobble
     place_id.present? ? category_klass.get(place.category) : super
   end
 
+  def category_klass
+    place.try(:service_id).present? ? Aux::PlaceCategory : super
+  end
+
   private
 
   def singular_scrobbles_cannot_have_a_place

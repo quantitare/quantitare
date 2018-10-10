@@ -18,6 +18,7 @@
       <li>
         <i class="<%= location_scrobble.icon_class %>"></i>
         <%= location_scrobble.name %>
+        <small class="text-muted"><%= location_scrobble.start_time %> - <%= location_scrobble.end_time %></small>
         <%= link_to 'Edit', edit_location_scrobble_path(location_scrobble) %>
       </li>
     <% end %>

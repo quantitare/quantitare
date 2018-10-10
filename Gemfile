@@ -36,7 +36,7 @@ gem 'json_schemer', '~> 0.1.7'
 gem 'nokogiri', '~> 1.8.4'
 
 # Extensions
-gem 'activerecord-import', '~> 0.26.0'
+gem 'activerecord-import', '~> 0.27.0'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'draper', '~> 3.0.1'
 gem 'has_scope', '~> 0.7.2'

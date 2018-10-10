@@ -30,6 +30,9 @@ class ProcessLocationScrobble
   private
 
   def save_scrobble
+    # TODO: set an option for this overwrite logic
+    LocationScrobble.overlapping_range(location_scrobble.start_time, location_scrobble.end_time).destroy_all
+
     options[:save] ? location_scrobble.save : location_scrobble.validate
 
     result.errors += location_scrobble.errors.full_messages
@@ -38,7 +41,7 @@ class ProcessLocationScrobble
   def match_place
     return unless location_scrobble.place?
 
-    match_result = options[:matcher].(location_scrobble)
+    match_result = options[:matcher].(location_scrobble, save: options[:save])
 
     result.errors += match_result.errors
   end

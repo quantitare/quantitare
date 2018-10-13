@@ -63,6 +63,79 @@ RSpec.describe LocationScrobblesController, :vcr do
       it 'does not create a new place_match by default' do
         expect { action }.to_not change(PlaceMatch, :count)
       end
+
+      context 'when creating a place_match' do
+        let(:params) do
+          {
+            id: location_scrobble.id,
+            location_scrobble: { place_id: new_place.id },
+            place_match: {
+              enabled: true,
+              source_fields: {
+                name: location_scrobble.name,
+                latitude: location_scrobble.latitude,
+                longitude: location_scrobble.longitude
+              }
+            },
+            format: :js
+          }
+        end
+
+        it 'creates a new place_match' do
+          expect { action }.to change(PlaceMatch, :count).by(1)
+        end
+      end
+
+      context 'with an existing place match' do
+        let(:enabled) { true }
+        let(:delete) { false }
+        let(:source_fields) do
+          {
+            name: location_scrobble.name,
+            latitude: location_scrobble.latitude,
+            longitude: location_scrobble.longitude
+          }
+        end
+
+        let(:params) do
+          {
+            id: location_scrobble.id,
+            location_scrobble: { place_id: new_place.id },
+            place_match: {
+              enabled: enabled,
+              delete: delete,
+              source_fields: source_fields
+            },
+            format: :js
+          }
+        end
+
+        let!(:existing_place_match) do
+          create :place_match, place: old_place, source_fields: source_fields, user: location_scrobble.user
+        end
+
+        it 'does not create a new place_match' do
+          expect { action }.to_not change(PlaceMatch, :count)
+        end
+
+        it 'updates the existing place_match' do
+          action
+
+          expect(existing_place_match.reload.place).to eq(new_place)
+        end
+
+        context 'when place_match is disabled' do
+          let(:enabled) { false }
+
+          it 'does not create a new place_match' do
+            expect { action }.to_not change(PlaceMatch, :count)
+          end
+
+          it 'does not change the existing place_match' do
+            expect { action }.to_not change { existing_place_match.reload.place }
+          end
+        end
+      end
     end
   end
 end

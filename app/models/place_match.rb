@@ -11,14 +11,23 @@ class PlaceMatch < ApplicationRecord
 
   validates :source_fields,
     presence: true,
-    uniqueness: {
-      scope: [:user_id, :source_identifier], message: 'cannot have two place assignments per source'
-    }
-  validate :coordinates_must_be_specified_in_source_field
+    uniqueness: { scope: [:user_id, :source_identifier], message: 'cannot have two place assignments per source' }
+
+  json_schema :source_fields, Rails.root.join('app', 'models', 'json_schemas', 'place_match_source_fields_schema.json')
 
   serialize :source_fields, HashSerializer
 
   before_validation :set_source_identifier
+
+  attr_accessor :enabled, :delete
+
+  def enabled?
+    enabled.to_bool
+  end
+
+  def delete?
+    delete.to_bool
+  end
 
   def specificity
     source_fields.keys.length
@@ -29,12 +38,6 @@ class PlaceMatch < ApplicationRecord
   end
 
   private
-
-  def coordinates_must_be_specified_in_source_field
-    return if source_fields[:longitude].present? && source_fields[:latitude].present?
-
-    errors[:source_fields] << 'must include coordinates'
-  end
 
   def set_source_identifier
     self.source_identifier = source.try(:source_identifier) if source_identifier.blank?

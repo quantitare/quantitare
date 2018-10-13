@@ -27,6 +27,6 @@ module PlaceMatchable
   end
 
   def place_match_params
-    params.require('place_match').permit(source_fields: [:name, :longitude, :latitude])
+    params.require('place_match').permit(:enabled, :delete, source_fields: [:name, :longitude, :latitude])
   end
 end

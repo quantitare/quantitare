@@ -3,9 +3,9 @@
 FactoryBot.define do
   factory :place_scrobble do
     user
-    category { Faker::Lorem.words(1) }
+    category { Faker::Lorem.words(1).join(' ') }
     source { create :location_import }
-    trackpoints { [{ latitude: 1, longitude: 1, timestamp: Time.current }] }
+    trackpoints { [{ latitude: 1.0, longitude: 1.0, timestamp: Time.current }] }
 
     start_time { 2.hours.ago }
     end_time { 1.hour.ago }

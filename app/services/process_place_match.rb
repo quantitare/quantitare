@@ -14,13 +14,21 @@ class ProcessPlaceMatch
   end
 
   def call
-    step :save_place_match
-    step :process_existing_location_scrobbles
+    if place_match.delete
+      step :destroy_place_match
+    else
+      step :save_place_match
+      step :process_existing_location_scrobbles
+    end
 
     result.set(place_match: place_match)
   end
 
   private
+
+  def destroy_place_match
+    place_match.destroy!
+  end
 
   def save_place_match
     place_match.save!

@@ -19,7 +19,7 @@ RSpec.describe ProcessLocationScrobble do
     end
 
     it 'runs the matcher when the location_scrobble is a place' do
-      expect(matcher).to receive(:call).with(location_scrobble)
+      expect(matcher).to receive(:call).with(location_scrobble, kind_of(Hash))
 
       action
     end

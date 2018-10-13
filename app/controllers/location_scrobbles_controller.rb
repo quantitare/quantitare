@@ -13,7 +13,7 @@ class LocationScrobblesController < AuthenticatedController
     @location_scrobbles = current_user.location_scrobbles
       .overlapping_range(@from, @to)
       .order(start_time: :asc)
-      .includes(:place)
+      .includes(place: :service)
       .map(&:decorate)
   end
 
@@ -23,12 +23,14 @@ class LocationScrobblesController < AuthenticatedController
     find_place_match!(location_scrobble: @location_scrobble)
 
     @location_scrobble = @location_scrobble.decorate
+    @place_match = @place_match.decorate
   end
 
   def update
     @location_scrobble = current_user.location_scrobbles.find(params[:id])
 
     if @location_scrobble.update(location_scrobble_params)
+      find_place_match!(location_scrobble: @location_scrobble)
       process_place_match!(source: @location_scrobble.source, place: @location_scrobble.place)
     end
 

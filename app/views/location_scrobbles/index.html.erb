@@ -1,15 +1,17 @@
 <% content_for :title, 'Locations' %>
 
-<div class="row border-bottom pb-2">
-  <h2>Locations</h2>
-</div>
+<%= vuex_store_tag :location_scrobbles_index %>
+<%=
+  vue_data_tag data: {
+    location_scrobbles: json_partial('location_scrobbles', locals: { location_scrobbles: @location_scrobbles })
+  }
+%>
+
+<location-scrobbles-index-view>
+</location-scrobbles-index-view>
 
 <div class="row py-4">
   <%= link_to 'Import', new_location_import_path, class: 'btn btn-primary' %>
-</div>
-
-<div class="row pb-4">
-  <%= render 'shared/timeline' %>
 </div>
 
 <div class="row pb-4">

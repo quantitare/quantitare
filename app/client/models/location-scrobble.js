@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 
 export default class LocationScrobble {
   get startAt() {
@@ -29,5 +29,25 @@ export default class LocationScrobble {
     if (this.duration.minutes) components.push(`${Math.round(this.duration.minutes)} min`);
 
     return _.join(components, ' ');
+  }
+
+  get interval() {
+    return Interval.fromDateTimes(this.startAt, this.endAt);
+  }
+
+  get daysSpanned() {
+    const dates = [];
+
+    let currentDateTime = this.startAt;
+    while (currentDateTime.startOf('day') <= this.endAt.startOf('day')) {
+      dates.push(currentDateTime.startOf('day'));
+      currentDateTime = currentDateTime.plus({ days: 1 });
+    }
+
+    return dates;
+  }
+
+  get daySplitSegments() {
+    return this.interval.splitAt(...this.daysSpanned.splice(1, this.daysSpanned.length - 1));
   }
 }

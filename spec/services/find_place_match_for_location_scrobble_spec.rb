@@ -14,19 +14,27 @@ RSpec.describe FindPlaceMatchForLocationScrobble, :vcr do
     let(:location_scrobble) { build :place_scrobble, name: name, longitude: longitude, latitude: latitude }
 
     let!(:full_match_place_match) do
-      create :place_match, source_fields: { name: name, longitude: longitude, latitude: latitude }
+      create :place_match,
+        source_fields: { name: name, longitude: longitude, latitude: latitude },
+        user: location_scrobble.user
     end
 
     let!(:less_specific_matching_place_match) do
-      create :place_match, source_fields: { longitude: longitude, latitude: latitude }
+      create :place_match,
+        source_fields: { longitude: longitude, latitude: latitude },
+        user: location_scrobble.user
     end
 
     let!(:different_name_matching_place_match) do
-      create :place_match, source_fields: { name: other_name, longitude: longitude, latitude: latitude }
+      create :place_match,
+        source_fields: { name: other_name, longitude: longitude, latitude: latitude },
+        user: location_scrobble.user
     end
 
     let!(:non_matching_place_match) do
-      create :place_match, source_fields: { longitude: 'hello', latitude: 'world' }
+      create :place_match,
+        source_fields: { longitude: 'hello', latitude: 'world' },
+        user: location_scrobble.user
     end
 
     it 'returns the most specific match' do

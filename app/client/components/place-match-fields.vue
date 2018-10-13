@@ -6,13 +6,13 @@
       &nbsp;
 
       <template slot="fields">
-        <model-form-check-box attribute="enabled" :disabled="!placeMatch.isNewRecord">
+        <model-form-check-box attribute="enabled" :disabled="!canSetPlaceMatchOptions">
           Match similar location scrobbles from this source to this place
         </model-form-check-box>
       </template>
     </model-form-group>
 
-    <model-form-group v-if="placeMatch.enabled && placeMatch.isNewRecord">
+    <model-form-group v-if="placeMatch.enabled && canSetPlaceMatchOptions">
       Match attributes
 
       <template slot="fields">
@@ -52,6 +52,10 @@ import { mapState, mapGetters } from 'vuex';
 
 export default {
   computed: {
+    canSetPlaceMatchOptions() {
+      return this.placeMatch.isNewRecord || this.locationScrobble.placeId != this.locationScrobble._original.placeId;
+    },
+
     ...mapState(['placeMatch', 'locationScrobble']),
     ...mapGetters('placeMatch', ['sourceFields'])
   }

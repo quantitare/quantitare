@@ -33,6 +33,9 @@ Layout/IndentHash:
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
 # Style
 
 Style/ClassAndModuleChildren:

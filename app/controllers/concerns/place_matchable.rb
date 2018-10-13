@@ -9,15 +9,16 @@ module PlaceMatchable
   private
 
   def find_place_match!(location_scrobble:)
-    place_match = FindPlaceMatchForLocationScrobble.(location_scrobble).try(:decorate)
-
-    @place_match = place_match.presence || current_user.place_matches.new(source: location_scrobble.source).decorate
+    @place_match = FindPlaceMatchForLocationScrobble.(location_scrobble) ||
+      current_user.place_matches.new(source: location_scrobble.source)
   end
 
   def process_place_match!(source:, place:)
     return unless place_match_ready?
 
-    @place_match = current_user.place_matches.new({ source: source, place: place }.merge(place_match_params))
+    @place_match ||= current_user.place_matches.new(source: source)
+    @place_match.assign_attributes({ place: place }.merge(place_match_params))
+
     ProcessPlaceMatch.(@place_match)
   end
 

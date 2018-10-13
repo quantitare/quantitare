@@ -16,7 +16,7 @@ class FindPlaceMatchForLocationScrobble
   end
 
   def call
-    query.(location_scrobble: location_scrobble)
+    query.(location_scrobble.user.place_matches, location_scrobble: location_scrobble)
       .max_by(&:specificity)
   end
 end

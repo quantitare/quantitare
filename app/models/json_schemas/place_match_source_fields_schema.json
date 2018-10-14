@@ -4,21 +4,21 @@
   "description": "Source fields for a PlaceMatch model",
 
   "type": "object",
-  "properties" : {
+  "properties": {
     "name": {
       "description": "The name of the location scrobble being matched",
-      "type": "string"
+      "type": ["string", "null"]
     },
 
     "latitude": {
       "description": "The latitude of the location scrobble being matched",
-      "type": "string"
+      "type": ["string", "number"]
     },
 
     "longitude": {
       "description": "The longitude of the location scrobble being matched",
-      "type": "string"
-    },
+      "type": ["string", "number"]
+    }
   },
   "required": ["latitude", "longitude"]
 }

@@ -14,8 +14,9 @@ module PlaceMatches
     def call
       @relation = relation
         .joins(joins)
+        .where(user: location_scrobble.user)
         .where(source_match_pairs)
-        .where(where, *where_params)
+        .where(where_str, *where_params)
 
       relation
     end
@@ -30,7 +31,7 @@ module PlaceMatches
       location_scrobble.source.source_match_condition
     end
 
-    def where
+    def where_str
       <<~SQL.squish
         (NOT (place_matches.source_fields ? 'name') OR place_matches.source_fields @> :name::jsonb)
           AND (

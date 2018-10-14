@@ -10,9 +10,9 @@ module PolymorphicJoinable
     type = target_klass.name
 
     <<~SQL.squish
-      INNER JOIN #{table_name}
-        ON #{_base_table}.source_id = #{table_name}.id
-        AND #{_base_table}.source_type = '#{type}'
+      INNER JOIN "#{table_name}"
+        ON "#{_base_table}"."source_id" = "#{table_name}"."id"
+        AND "#{_base_table}"."source_type" = '#{type}'
     SQL
   end
 

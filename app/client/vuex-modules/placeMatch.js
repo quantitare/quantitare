@@ -5,7 +5,7 @@ export default _.merge({
   getters: {
     sourceFields(state, getters, rootState) {
       return {
-        name: rootState.locationScrobble.name,
+        name: rootState.locationScrobble.originalName,
         longitude: rootState.locationScrobble.averageLongitude,
         latitude: rootState.locationScrobble.averageLatitude
       };

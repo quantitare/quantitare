@@ -19,14 +19,14 @@ class PlaceMatch < ApplicationRecord
 
   before_validation :set_source_identifier
 
-  attr_accessor :enabled, :delete
+  attr_accessor :enabled, :to_delete
 
   def enabled?
     enabled.to_bool
   end
 
-  def delete?
-    delete.to_bool
+  def to_delete?
+    to_delete.to_bool
   end
 
   def specificity

@@ -6,8 +6,13 @@
       &nbsp;
 
       <template slot="fields">
-        <model-form-check-box attribute="enabled" :disabled="!canSetPlaceMatchOptions">
-          Match similar location scrobbles from this source to this place
+        <model-form-check-box v-if="!placeMatch.isNewRecord && !locationScrobble.placeId" attribute="toDelete">
+          Clear match rules for this source
+        </model-form-check-box>
+
+        <model-form-check-box v-else attribute="enabled" :disabled="!canSetPlaceMatchOptions">
+          <span v-if="placeMatch.isNewRecord">Match similar location scrobbles from this source to this place</span>
+          <span v-else>Update existing match rules for this source</span>
         </model-form-check-box>
       </template>
     </model-form-group>
@@ -53,7 +58,8 @@ import { mapState, mapGetters } from 'vuex';
 export default {
   computed: {
     canSetPlaceMatchOptions() {
-      return this.placeMatch.isNewRecord || this.locationScrobble.placeId != this.locationScrobble._original.placeId;
+      return this.placeMatch.isNewRecord ||
+        (this.locationScrobble.placeId && this.locationScrobble.placeId != this.locationScrobble._original.placeId);
     },
 
     ...mapState(['placeMatch', 'locationScrobble']),

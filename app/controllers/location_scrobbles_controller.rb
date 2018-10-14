@@ -35,6 +35,7 @@ class LocationScrobblesController < AuthenticatedController
     end
 
     @location_scrobble = @location_scrobble.decorate
+    @place_match = @place_match.decorate
   end
 
   private

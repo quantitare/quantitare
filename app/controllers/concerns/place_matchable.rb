@@ -23,10 +23,11 @@ module PlaceMatchable
   end
 
   def place_match_ready?
-    params[:place_match].present? && params[:place_match][:enabled].to_bool
+    params[:place_match].present? &&
+      (params[:place_match][:enabled].to_bool || params[:place_match][:to_delete].to_bool)
   end
 
   def place_match_params
-    params.require('place_match').permit(:enabled, :delete, source_fields: [:name, :longitude, :latitude])
+    params.require('place_match').permit(:enabled, :to_delete, source_fields: [:name, :longitude, :latitude])
   end
 end

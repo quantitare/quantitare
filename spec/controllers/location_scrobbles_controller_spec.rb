@@ -88,7 +88,7 @@ RSpec.describe LocationScrobblesController, :vcr do
 
       context 'with an existing place match' do
         let(:enabled) { true }
-        let(:delete) { false }
+        let(:to_delete) { false }
         let(:source_fields) do
           {
             name: location_scrobble.name,
@@ -103,7 +103,7 @@ RSpec.describe LocationScrobblesController, :vcr do
             location_scrobble: { place_id: new_place.id },
             place_match: {
               enabled: enabled,
-              delete: delete,
+              to_delete: to_delete,
               source_fields: source_fields
             },
             format: :js

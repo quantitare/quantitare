@@ -14,7 +14,7 @@ class ProcessPlaceMatch
   end
 
   def call
-    if place_match.delete
+    if place_match.to_delete?
       step :destroy_place_match
     else
       step :save_place_match

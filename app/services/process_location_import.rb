@@ -12,7 +12,7 @@ class ProcessLocationImport
 
   def initialize(location_import, options = {})
     @location_import = location_import
-    @options = options
+    @options = options.to_h.with_indifferent_access
   end
 
   def call
@@ -31,7 +31,7 @@ class ProcessLocationImport
       location_import.location_scrobbles << scrobble
       scrobble.assign_attributes(user: location_import.user)
 
-      result.errors += ProcessLocationScrobble.(scrobble, save: false).errors
+      result.errors += ProcessLocationScrobble.(scrobble, location_scrobble_processor_options).errors
     end
   end
 
@@ -49,7 +49,7 @@ class ProcessLocationImport
     location_import.prepared_adapter
   end
 
-  def process_import_result(import_result)
-    result.errors << 'There was a problem importing the file you uploaded' if import_result.failed_instances.present?
+  def location_scrobble_processor_options
+    { save: false, collision_mode: options[:collision_mode] }
   end
 end

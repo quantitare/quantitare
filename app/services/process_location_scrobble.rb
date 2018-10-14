@@ -12,15 +12,19 @@ class ProcessLocationScrobble
   }.with_indifferent_access.freeze
 
   attr_reader :location_scrobble, :options
+  attr_accessor :skip
 
   transactional!
 
   def initialize(location_scrobble, options = {})
     @location_scrobble = location_scrobble
-    @options = options.with_indifferent_access.reverse_merge(DEFAULT_OPTIONS)
+    @options = options.to_h.with_indifferent_access.reverse_merge(DEFAULT_OPTIONS)
   end
 
+  alias skip? skip
+
   def call
+    step :handle_collisions
     step :save_scrobble
     step :match_place
 
@@ -29,9 +33,17 @@ class ProcessLocationScrobble
 
   private
 
+  def handle_collisions
+    case options[:collision_mode].to_sym
+    when :overwrite
+      LocationScrobble.overlapping_range(location_scrobble.start_time, location_scrobble.end_time).destroy_all
+    when :skip
+      self.skip = true
+    end
+  end
+
   def save_scrobble
-    # TODO: set an option for this overwrite logic
-    LocationScrobble.overlapping_range(location_scrobble.start_time, location_scrobble.end_time).destroy_all
+    return if skip?
 
     options[:save] ? location_scrobble.save : location_scrobble.validate
 
@@ -39,6 +51,7 @@ class ProcessLocationScrobble
   end
 
   def match_place
+    return if skip?
     return unless location_scrobble.place?
 
     match_result = options[:matcher].(location_scrobble, save: options[:save])

@@ -6,6 +6,11 @@
 class LocationImport < ApplicationRecord
   include HasGuid
 
+  Options = Struct.new(:collision_mode)
+
+  COLLISION_MODES = [:overwrite, :skip, :keep_both].freeze
+  DEFAULT_COLLISION_MODE = :overwrite
+
   belongs_to :user
   has_many :location_scrobbles, as: :source, dependent: :destroy
   has_many :place_matches, as: :source, dependent: :destroy
@@ -38,6 +43,10 @@ class LocationImport < ApplicationRecord
       location_scrobbles.min_by(&:start_time).start_time,
       location_scrobbles.max_by(&:end_time).end_time
     ]
+  end
+
+  def options
+    Options.new(DEFAULT_COLLISION_MODE)
   end
 
   def prepared_adapter

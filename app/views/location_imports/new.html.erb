@@ -19,9 +19,28 @@
       <div class="form-group row">
         <%= f.label :adapter, class: 'col-sm-3 col-form-label text-right' %>
         <div class="col-sm-9">
-          <%= f.select :adapter, options_for_select(LocationImport.adapters.map { |adapter| [adapter.importer_label, adapter.name] }), {}, required: true, include_blank: true, class: 'form-control' %>
+          <%=
+            f.select :adapter,
+              options_for_select(LocationImport.adapters.map { |adapter| [adapter.importer_label, adapter.name] }),
+              {},
+              required: true, include_blank: true, class: 'form-control'
+          %>
         </div>
       </div>
+
+      <%= fields_for :options, @location_import.options do |options_f| %>
+        <div class="form-group row">
+          <%= options_f.label :collision_mode, class: 'col-sm-3 col-form-label text-right' %>
+          <div class="col-sm-9">
+            <% LocationImport::COLLISION_MODES.each do |mode| %>
+              <div class="custom-control custom-radio">
+                <%= options_f.radio_button :collision_mode, mode, class: 'custom-control-input' %>
+                <%= options_f.label :collision_mode, mode.to_s.humanize, value: mode, class: 'custom-control-label' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
       <div class="row my-4">
         <div class="offset-sm-3 col-sm-9">
@@ -31,3 +50,5 @@
     <% end %>
   </div>
 </div>
+
+<%= console %>

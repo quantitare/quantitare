@@ -14,7 +14,6 @@ module PlaceMatches
     def call
       @relation = relation
         .joins(joins)
-        .where(user: location_scrobble.user)
         .where(source_match_pairs)
         .where(where_str, *where_params)
 

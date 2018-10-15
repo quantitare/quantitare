@@ -79,3 +79,12 @@
   icon:
     type: fa
     name: parking
+
+- name: City
+  icon:
+    type: fa
+    name: city
+- name: Campground
+  icon:
+    type: fa
+    name: campground

@@ -10,5 +10,6 @@ json.extract! place,
   :longitude, :latitude, :global
 
 json.icon place.category_icon
+json.isCustom place.custom?
 
 json.partial! 'shared/model_props', model: place

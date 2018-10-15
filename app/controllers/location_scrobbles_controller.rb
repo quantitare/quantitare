@@ -32,6 +32,10 @@ class LocationScrobblesController < AuthenticatedController
     if @location_scrobble.update(location_scrobble_params)
       find_place_match!(location_scrobble: @location_scrobble)
       process_place_match!(source: @location_scrobble.source, place: @location_scrobble.place)
+
+      flash.now[:success] = 'Successfully updated!'
+    else
+      flash.now[:danger] = 'Something went wrong while trying to save this location scrobble'
     end
 
     @location_scrobble = @location_scrobble.decorate

@@ -1,6 +1,7 @@
 <% if @location_scrobble %>
   window.app.$store.dispatch(
-    'refreshLocationScrobble', JSON.parse('<%= j raw(json_partial('location_scrobbles/location_scrobble')) %>')
+    'refreshLocationScrobble',
+    JSON.parse('<%= j raw(json_partial('location_scrobbles/location_scrobble', locals: { location_scrobble: @location_scrobble })) %>')
   );
 <% end %>
 

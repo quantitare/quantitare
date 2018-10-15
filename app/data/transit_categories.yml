@@ -9,11 +9,11 @@
 - name: Running
   icon:
     type: fa
-    name: walking
+    name: running
 - name: Hiking
   icon:
     type: fa
-    name: walking
+    name: hiking
 - name: Cycling
   icon:
     type: fa
@@ -65,5 +65,5 @@
 - name: Horse
   icon:
     type: fa
-    name: frog # sorry...
+    name: horse
 

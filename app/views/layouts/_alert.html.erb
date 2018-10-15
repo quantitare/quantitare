@@ -1,10 +1,1 @@
-<alert
-  v-for="(alert, index) in alerts"
-  v-bind:key="alert.id"
-
-  v-bind:index="index"
-  v-bind:level="alert.level"
-  v-bind:content="alert.content"
-
-  v-on:close="alerts.splice(index, 1)"
-></alert>
+<alerts></alerts>

@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.4.1",
+    "@fortawesome/fontawesome-free": "^5.4.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.6",
     "@fortawesome/vue-fontawesome": "^0.1.1",
     "@rails/webpacker": "3.5.5",

@@ -8,6 +8,7 @@ class Scrobbler < ApplicationRecord
   include HasGuid
   include Typeable
   include Oauthable
+  include Optionable
 
   has_many :scrobbles, as: :source, dependent: :destroy
   belongs_to :user
@@ -16,6 +17,7 @@ class Scrobbler < ApplicationRecord
   validates :name, presence: true
 
   load_types_in 'Scrobblers'
+  options_attribute :options
 
   def source_identifier
     "#{type}_#{id}"

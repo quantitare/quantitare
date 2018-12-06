@@ -13,10 +13,6 @@ class GoogleMapsKmlAdapter
     def importer_label
       'Google Maps KML'
     end
-
-    def load_file_contents(contents)
-      new(contents)
-    end
   end
 
   attr_reader :kml_file

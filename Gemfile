@@ -47,7 +47,7 @@ gem 'responders', '~> 2.4.0'
 
 # Authentication
 gem 'devise', '~> 4.5.0'
-gem 'omniauth', '~> 1.8.1'
+gem 'omniauth', '~> 1.9.0'
 
 # Omniauth strategies
 gem 'omniauth-foursquare', '~> 1.0'

@@ -33,7 +33,7 @@ gem 'carmen', '~> 1.1.1'
 gem 'geocoder', '~> 1.5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.1.7'
-gem 'nokogiri', '~> 1.8.4'
+gem 'nokogiri', '~> 1.9.1'
 
 # Extensions
 gem 'activerecord-import', '~> 0.27.0'

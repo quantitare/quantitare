@@ -11,7 +11,7 @@
     "css-loader": "^0.28.11",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
-    "luxon": "^1.8.2",
+    "luxon": "^1.8.3",
     "popper.js": "^1.14.4",
     "rails-erb-loader": "^5.5.0",
     "rails-ujs": "^5.2.2",

@@ -170,7 +170,7 @@ GEM
     multipart-post (2.0.0)
     netrc (0.11.0)
     nio4r (2.3.1)
-    nokogiri (1.9.1)
+    nokogiri (1.10.0)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.4)
     oauth2 (1.4.0)
@@ -389,7 +389,7 @@ DEPENDENCIES
   lastfm
   listen (>= 3.0.5, < 3.2)
   memoist
-  nokogiri (~> 1.9.1)
+  nokogiri (~> 1.10.0)
   omniauth (~> 1.9.0)
   omniauth-foursquare (~> 1.0)
   omniauth-lastfm (~> 0.0.7)

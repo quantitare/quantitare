@@ -35,6 +35,7 @@
 # noting that since options created by this module aren't indexable, so keep that in mind when designing your table.
 #
 # == Mass Assignment
+#
 # +Optionable+ is compatible with mass assignment, albeit with slightly different behavior. Say we're using +Thing+ from
 # the above example. We can mass-assign +options+ using a key called +options+:
 #

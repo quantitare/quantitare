@@ -34,6 +34,7 @@ gem 'geocoder', '~> 1.5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.1.7'
 gem 'nokogiri', '~> 1.10.0'
+gem 'virtus'
 
 # Extensions
 gem 'activerecord-import', '~> 0.28.0'

@@ -32,7 +32,7 @@ class ArcGPXAdapter
       end
 
       def from_xml_node(xml_node)
-        new(attributes: ArcGPXAdapter::XMLNodeAttributes(xml_node))
+        new(attributes: ArcGPXAdapter::XMLNodeAttributes.new(xml_node))
       end
     end
 

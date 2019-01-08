@@ -26,6 +26,7 @@ class ArcGPXAdapter
     end
 
     def compile
+      ArcGPXAdapter::BundledAttributes.new(self)
     end
 
     private

@@ -6,6 +6,9 @@
 class ArcGPXAdapter
   include LocationImportable
 
+  TRANSIT_CATEGORY_PATH = File.join(__dir__, 'arc_gpx_adapter', 'transit_category_mappings.yml').freeze
+  TRANSIT_CATEGORY_MAPPINGS = YAML.load_file(TRANSIT_CATEGORY_PATH).freeze
+
   class << self
     def importer_label
       'Arc App GPX'

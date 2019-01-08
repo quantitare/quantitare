@@ -2,7 +2,7 @@
 
 class ArcGPXAdapter
   ##
-  # Extracts attributes from a GPX XML node
+  # Extracts attributes from a GPX XML node.
   #
   class XMLNodeAttributes
     attr_reader :xml_node
@@ -14,9 +14,9 @@ class ArcGPXAdapter
     def type
       case xml_node.name
       when 'wpt'
-        T_PLACE
+        ArcGPXAdapter::Placemark::T_PLACE
       when 'trk'
-        T_TRANSIT
+        ArcGPXAdapter::Placemark::T_TRANSIT
       end
     end
 
@@ -26,17 +26,21 @@ class ArcGPXAdapter
 
     def category
       case type
-      when T_PLACE
+      when ArcGPXAdapter::Placemark::T_PLACE
         nil
-      when T_TRANSIT
-        process_input_category(raw_category)
+      when ArcGPXAdapter::Placemark::T_TRANSIT
+        _category
       end
     end
 
     private
 
     def value_from_path(css_selector)
-      xml_node.at_css(css_selector).text
+      xml_node.at_css(css_selector).try(:text)
+    end
+
+    def _category
+      TRANSIT_CATEGORY_MAPPINGS[raw_category]
     end
 
     def raw_category

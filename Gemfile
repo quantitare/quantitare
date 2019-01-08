@@ -33,10 +33,10 @@ gem 'carmen', '~> 1.1.1'
 gem 'geocoder', '~> 1.5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.1.7'
-gem 'nokogiri', '~> 1.8.4'
+gem 'nokogiri', '~> 1.10.0'
 
 # Extensions
-gem 'activerecord-import', '~> 0.27.0'
+gem 'activerecord-import', '~> 0.28.0'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'draper', '~> 3.0.1'
 gem 'has_scope', '~> 0.7.2'
@@ -47,7 +47,7 @@ gem 'responders', '~> 2.4.0'
 
 # Authentication
 gem 'devise', '~> 4.5.0'
-gem 'omniauth', '~> 1.8.1'
+gem 'omniauth', '~> 1.9.0'
 
 # Omniauth strategies
 gem 'omniauth-foursquare', '~> 1.0'

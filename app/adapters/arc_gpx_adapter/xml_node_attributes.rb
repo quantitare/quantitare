@@ -41,7 +41,6 @@ class ArcGPXAdapter
     def distance
       return 0 if trackpoints.length.zero? || type == ArcGPXAdapter::Placemark::T_PLACE
 
-      binding.pry
       interlinked_trackpoint_pairs.sum do |pair|
         Util.distance_between_trackpoints(*pair)
       end

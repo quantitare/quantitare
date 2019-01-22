@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
+require_dependency 'arc_gpx_adapter/placemark'
+require_dependency 'arc_gpx_adapter/trackpoint'
+
 class ArcGPXAdapter
   ##
   # Extracts attributes from a GPX XML node.
   #
   class XMLNodeAttributes
+    include Util::XMLNodeTools
+
     attr_reader :xml_node
 
     def initialize(xml_node)
@@ -21,7 +26,7 @@ class ArcGPXAdapter
     end
 
     def name
-      value_from_path('name')
+      value_from_xml_path(xml_node, 'name')
     end
 
     def category
@@ -33,18 +38,41 @@ class ArcGPXAdapter
       end
     end
 
-    private
+    def distance
+      return 0 if trackpoints.length.zero? || type == ArcGPXAdapter::Placemark::T_PLACE
 
-    def value_from_path(css_selector)
-      xml_node.at_css(css_selector).try(:text)
+      binding.pry
+      interlinked_trackpoint_pairs.sum do |pair|
+        Util.distance_between_trackpoints(*pair)
+      end
     end
+
+    def trackpoints(trackpoint_klass = ArcGPXAdapter::Trackpoint)
+      case type
+      when ArcGPXAdapter::Placemark::T_PLACE
+        [trackpoint_klass.from_xml_node(xml_node)]
+      when ArcGPXAdapter::Placemark::T_TRANSIT
+        xml_node.css('trkseg trkpt').map { |trkpt_node| trackpoint_klass.from_xml_node(trkpt_node) }
+      end
+    end
+
+    private
 
     def _category
       TRANSIT_CATEGORY_MAPPINGS[raw_category]
     end
 
     def raw_category
-      value_from_path('type')
+      value_from_xml_path(xml_node, 'type')
+    end
+
+    def interlinked_trackpoint_pairs
+      trackpoints.map.with_index do |trackpoint1, idx|
+        trackpoint2 = trackpoints[idx + 1]
+        return nil if trackpoint2.blank?
+
+        [trackpoint1, trackpoint2]
+      end.compact
     end
   end
 end

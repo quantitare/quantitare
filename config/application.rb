@@ -29,7 +29,6 @@ module Quantitare
 
     config.autoload_paths << config.root.join('app', 'queries')
     config.autoload_paths << config.root.join('app', 'queries', 'concerns')
-    config.autoload_paths << config.root.join('lib')
 
     # Don't generate system test files.
     config.generators.system_tests = nil

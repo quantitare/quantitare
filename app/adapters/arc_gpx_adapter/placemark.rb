@@ -21,7 +21,7 @@ class ArcGPXAdapter
           placemark = from_xml_node(xml_node)
 
           unless current_bundle.can_absorb?(placemark)
-            final << new(attributes: current_bundle.compile)
+            final << current_bundle.compile
             current_bundle = ArcGPXAdapter::Bundle.new
           end
 

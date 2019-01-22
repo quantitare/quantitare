@@ -7,6 +7,8 @@ class GoogleMapsKmlAdapter
   # Converts a single placemark XML node from a KML document to a {LocationScrobble}.
   #
   class Placemark
+    include Util::XMLNodeTools
+
     attr_reader :xml_node
 
     def initialize(xml_node)
@@ -39,7 +41,7 @@ class GoogleMapsKmlAdapter
     end
 
     def name
-      value_from_path('name')
+      value_from_xml_path(xml_node, 'name')
     end
 
     def category
@@ -47,11 +49,11 @@ class GoogleMapsKmlAdapter
     end
 
     def distance
-      value_from_path('ExtendedData Data[name="Distance"] value').to_f
+      value_from_xml_path(xml_node, 'ExtendedData Data[name="Distance"] value').to_f
     end
 
     def description
-      value_from_path('description')
+      value_from_xml_path(xml_node, 'description')
     end
 
     def trackpoints
@@ -59,33 +61,29 @@ class GoogleMapsKmlAdapter
     end
 
     def raw_trackpoints
-      if value_exists?('Point coordinates')
-        value_from_path('Point coordinates')
+      if xml_value_exists?(xml_node, 'Point coordinates')
+        value_from_xml_path(xml_node, 'Point coordinates')
       else
-        value_from_path('LineString coordinates')
+        value_from_xml_path(xml_node, 'LineString coordinates')
       end
     end
 
     def start_time
-      Time.zone.parse(value_from_path('TimeSpan begin'))
+      Time.zone.parse(value_from_xml_path(xml_node, 'TimeSpan begin'))
     end
 
     def end_time
-      Time.zone.parse(value_from_path('TimeSpan end'))
+      Time.zone.parse(value_from_xml_path(xml_node, 'TimeSpan end'))
     end
 
     private
 
-    def value_exists?(css_selector)
+    def xml_value_exists?(xml_node, css_selector)
       xml_node.at_css(css_selector).present?
     end
 
-    def value_from_path(css_selector)
-      xml_node.at_css(css_selector).text
-    end
-
     def raw_category
-      value_from_path('ExtendedData Data[name="Category"] value')
+      value_from_xml_path(xml_node, 'ExtendedData Data[name="Category"] value')
     end
 
     def process_input_category(input_category)

@@ -19,10 +19,11 @@ class ArcGPXAdapter
     alias absorb push
 
     def can_absorb?(placemark)
-      empty? ||
-        placemarks.none?(&:place?) ||
+      placemarks.none?(&:place?) && (
+        empty? ||
         stationary_placemark?(placemark) ||
         placemarks.all? { |existing| stationary_placemark?(existing) || existing.category == placemark.category }
+      )
     end
 
     def compile
@@ -32,7 +33,7 @@ class ArcGPXAdapter
     private
 
     def stationary_placemark?(placemark)
-      placemark.category.nil? || placemark.categroy.casecmp('stationary').zero?
+      placemark.category.nil? || placemark.category.casecmp('stationary').zero?
     end
   end
 end

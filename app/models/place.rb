@@ -62,7 +62,7 @@ class Place < ApplicationRecord
   end
 
   def custom?
-    service_id.nil?
+    service.blank?
   end
 
   def category_klass

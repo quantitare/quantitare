@@ -37,7 +37,7 @@ gem 'nokogiri', '~> 1.10.0'
 gem 'virtus'
 
 # Extensions
-gem 'activerecord-import', '~> 0.28.0'
+gem 'activerecord-import', '~> 1.0.0'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'draper', '~> 3.0.1'
 gem 'has_scope', '~> 0.7.2'

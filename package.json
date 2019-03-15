@@ -14,7 +14,7 @@
     "luxon": "^1.10.0",
     "popper.js": "^1.14.7",
     "query-string": "^6.2.0",
-    "rails-erb-loader": "^5.5.1",
+    "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.2",
     "turbolinks": "^5.2.0",
     "vue": "^2.5.22",

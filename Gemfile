@@ -39,7 +39,7 @@ gem 'virtus'
 # Extensions
 gem 'activerecord-import', '~> 1.0.0'
 gem 'acts-as-taggable-on', '~> 6.0'
-gem 'draper', '~> 3.0.1'
+gem 'draper', '~> 3.1.0'
 gem 'has_scope', '~> 0.7.2'
 gem 'memoist'
 gem 'rack-cors', '~> 1.0.2'

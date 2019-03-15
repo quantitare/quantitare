@@ -96,12 +96,12 @@ GEM
     dotenv-rails (2.7.1)
       dotenv (= 2.7.1)
       railties (>= 3.2, < 6.1)
-    draper (3.0.1)
-      actionpack (~> 5.0)
-      activemodel (~> 5.0)
-      activemodel-serializers-xml (~> 1.0)
-      activesupport (~> 5.0)
-      request_store (~> 1.0)
+    draper (3.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
     ecma-re-validator (0.2.0)
       regexp_parser (~> 1.2)
     equalizer (0.0.11)
@@ -396,7 +396,7 @@ DEPENDENCIES
   carmen (~> 1.1.1)
   devise (~> 4.6.1)
   dotenv-rails
-  draper (~> 3.0.1)
+  draper (~> 3.1.0)
   factory_bot_rails
   faker
   foursquare2

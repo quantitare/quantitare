@@ -15,7 +15,7 @@
     "popper.js": "^1.14.7",
     "query-string": "^6.2.0",
     "rails-erb-loader": "^5.5.2",
-    "rails-ujs": "^5.2.2",
+    "rails-ujs": "^5.2.3",
     "turbolinks": "^5.2.0",
     "vue": "^2.5.22",
     "vue-data-scooper": "^0.7.1",

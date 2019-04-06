@@ -2,7 +2,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
-    "@fortawesome/vue-fontawesome": "^0.1.5",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
     "@rails/webpacker": "3.5.5",
     "activestorage": "^5.2.3",
     "bootstrap": "^4.3.1",

@@ -12,7 +12,7 @@
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "luxon": "^1.12.1",
-    "popper.js": "^1.14.7",
+    "popper.js": "^1.15.0",
     "query-string": "^6.2.0",
     "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.3",

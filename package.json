@@ -13,7 +13,7 @@
     "lodash": "^4.17.11",
     "luxon": "^1.12.1",
     "popper.js": "^1.15.0",
-    "query-string": "^6.2.0",
+    "query-string": "^6.4.2",
     "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.3",
     "turbolinks": "^5.2.0",

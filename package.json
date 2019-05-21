@@ -9,7 +9,7 @@
     "caniuse-lite": "^1.0.30000904",
     "choices.js": "^3.0.4",
     "css-loader": "^0.28.11",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.1",
     "lodash": "^4.17.11",
     "luxon": "^1.15.0",
     "popper.js": "^1.15.0",

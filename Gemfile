@@ -43,7 +43,7 @@ gem 'draper', '~> 3.1.0'
 gem 'has_scope', '~> 0.7.2'
 gem 'memoist'
 gem 'rack-cors', '~> 1.0.2'
-gem 'rails-settings-cached', '~> 0.7.1'
+gem 'rails-settings-cached', '~> 2.0.3'
 gem 'responders', '~> 2.4.0'
 
 # Authentication

@@ -3,7 +3,7 @@
     "@fortawesome/fontawesome-free": "^5.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/vue-fontawesome": "^0.1.6",
-    "@rails/webpacker": "3.5.5",
+    "@rails/webpacker": "4.0.7",
     "activestorage": "^5.2.3",
     "bootstrap": "^4.3.1",
     "caniuse-lite": "^1.0.30000904",

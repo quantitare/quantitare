@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import * as Choices from 'choices.js/assets/scripts/dist/choices';
+import * as Choices from 'choices.js/public/assets/scripts/choices';
 import _ from 'lodash';
-import 'choices.js/assets/styles/scss/choices';
+import 'choices.js/public/assets/styles/choices';
 
 export default {
   name: 'choices',
@@ -74,7 +74,7 @@ export default {
               const formattedData = _.map(data, vm.pathDataFormatter);
 
               callback(formattedData, 'value', 'label');
-              vm.choices.setValueByChoice(vm.value);
+              vm.choices.setChoiceByValue(vm.value);
             });
           })
           .catch(function(error) {
@@ -104,7 +104,7 @@ export default {
       itemSelectText: '',
       placeholder: true,
       removeItemButton: true,
-      duplicateItems: false,
+      duplicateItemsAllowed: false,
 
       choices: this.choicesOptions,
 

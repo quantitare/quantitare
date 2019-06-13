@@ -7,8 +7,8 @@ RSpec.describe Place, :vcr do
 
   it { should have_db_index :user_id }
 
-  it { should belong_to(:user) }
-  it { should belong_to(:service) }
+  it { should belong_to(:user).optional }
+  it { should belong_to(:service).optional }
   it { should have_many(:location_scrobbles) }
   it { should have_many(:place_matches) }
 

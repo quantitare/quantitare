@@ -1,6 +1,5 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
-
 default: &default
   source_path: app/client
   source_entry_path: packs
@@ -18,7 +17,7 @@ default: &default
   cache_manifest: false
 
   # Extract and emit a css file
-  extract_css: true
+  extract_css: false
 
   static_assets_extensions:
     - .jpg
@@ -35,8 +34,6 @@ default: &default
     - .woff2
 
   extensions:
-    - .erb
-    - .vue
     - .mjs
     - .js
     - .sass
@@ -58,6 +55,7 @@ development:
   # Verifies that correct packages and versions are installed by inspecting package.json, yarn.lock, and node_modules
   check_yarn_integrity: true
 
+  # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
     https: false
     host: localhost
@@ -76,6 +74,7 @@ development:
     watch_options:
       ignored: '**/node_modules/**'
 
+
 test:
   <<: *default
   compile: true
@@ -89,8 +88,8 @@ production:
   # Production depends on precompilation of packs prior to booting for performance.
   compile: false
 
-  # Cache manifest.json for performance
-  cache_manifest: true
-
   # Extract and emit a css file
   extract_css: true
+
+  # Cache manifest.json for performance
+  cache_manifest: true

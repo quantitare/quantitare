@@ -11,7 +11,7 @@ class HashSerializer
     end
 
     def load(hash)
-      (hash || {}).with_indifferent_access
+      (hash.presence || {}).with_indifferent_access
     end
   end
 end

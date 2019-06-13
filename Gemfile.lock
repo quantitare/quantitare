@@ -351,7 +351,7 @@ GEM
     unf_ext (0.0.7.5)
     unicode-display_width (1.6.0)
     uri_template (0.7.0)
-    vcr (4.0.0)
+    vcr (5.0.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)

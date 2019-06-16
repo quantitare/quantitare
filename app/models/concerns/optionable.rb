@@ -82,8 +82,7 @@ module Optionable
     end
 
     def options_klass_for(attribute_name)
-      existing_type = options_attributes[attribute_name][:type]
-      existing_type ||= send("#{attribute_name}_type")
+      existing_type = options_attributes[attribute_name][:type] || send("#{attribute_name}_type")
       return existing_type if existing_type
 
       fq_klass_name = fq_options_klass_name_for(attribute_name)

@@ -39,15 +39,30 @@ class WebhooksController < ApplicationController
 
   def handle_web_response(web_response)
     web_response.headers.each { |k, v| response.headers[k] = v } if web_response.headers.present?
+    render_or_redirect_for_web_response(web_response)
+  end
 
+  def render_or_redirect_for_web_response(web_response)
     if web_response.redirect?
-      redirect_to web_response.content, status: web_response.status
+      handle_redirect(web_response)
     elsif web_response.text?
-      render plain: web_response.content, status: web_response.status, content_type: web_response.content_type
+      handle_text(web_response)
     elsif web_response.json?
-      render json: web_response.content, status: web_response.status
+      handle_json(web_response)
     else
       head(web_response.status)
     end
+  end
+
+  def handle_redirect(web_response)
+    redirect_to web_response.content, status: web_response.status
+  end
+
+  def handle_text(web_response)
+    render plain: web_response.content, status: web_response.status, content_type: web_response.content_type
+  end
+
+  def handle_json(web_response)
+    render json: web_response.content, status: web_response.status
   end
 end

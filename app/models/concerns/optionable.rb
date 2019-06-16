@@ -83,13 +83,7 @@ module Optionable
 
     def options_klass_for(attribute_name)
       existing_type = options_attributes[attribute_name][:type] || send("#{attribute_name}_type")
-      return existing_type if existing_type
-
-      fq_klass_name = fq_options_klass_name_for(attribute_name)
-      klass_name = options_klass_name_for(attribute_name)
-
-      const_set(klass_name, new_options_klass) unless const_defined?(fq_klass_name)
-      const_get(klass_name)
+      existing_type.presence || options_klass_constant_for(attribute_name)
     end
 
     private
@@ -114,6 +108,14 @@ module Optionable
       end
     end
     # rubocop:enable Lint/UselessAssignment
+
+    def options_klass_constant_for(attribute_name)
+      fq_klass_name = fq_options_klass_name_for(attribute_name)
+      klass_name = options_klass_name_for(attribute_name)
+
+      const_set(klass_name, new_options_klass) unless const_defined?(fq_klass_name)
+      const_get(klass_name)
+    end
 
     def define_methods_for_options_attribute(attribute_name)
       class_eval <<-RUBY, __FILE__, __LINE__ + 1

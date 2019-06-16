@@ -41,30 +41,36 @@
 #
 #   Thing.new({ foo: 'bar', options: { name: 'A cool name', description: 'A cool description' } })
 #
-# You can also change the type of object you can store in the options field by assigning a +type+ before setting its
-# attributes. Be sure to do this _before_ assigning its attributes:
-#
-#   Thing.new({ foo: 'bar', options_type: MyCustomOptionsKlass, options: { something_else: 'Here is something else' } })
-#
 module Optionable
   extend ActiveSupport::Concern
 
   included do
     validate :options_must_be_valid
+    class_attribute :options_attributes, default: {}.with_indifferent_access
   end
 
   # rubocop:disable Metrics/BlockLength
   class_methods do
-    def options_attributes
-      @options_attributes ||= {}.with_indifferent_access
+    def inherited(subklass)
+      super
+
+      options_attributes.each do |attribute_name, opts|
+        next if opts[:type].present?
+
+        new_klass = new_options_klass
+
+        subklass.const_set(options_klass_name_for(attribute_name), new_klass)
+        subklass.public_send("#{attribute_name}_type=", new_klass)
+      end
     end
 
     def options_attribute(attribute_name, opts = {})
       options_attributes[attribute_name] = opts.with_indifferent_access
+      class_attribute "#{attribute_name}_type".to_sym
       serialize attribute_name, options_klass_for(attribute_name)
       after_initialize -> { initialize_options_for(attribute_name) }
 
-      define_instance_methods_for_options_attribute(attribute_name)
+      define_methods_for_options_attribute(attribute_name)
     end
 
     def configure_options(options_attribute, &blk)
@@ -77,6 +83,7 @@ module Optionable
 
     def options_klass_for(attribute_name)
       existing_type = options_attributes[attribute_name][:type]
+      existing_type ||= send("#{attribute_name}_type")
       return existing_type if existing_type
 
       fq_klass_name = fq_options_klass_name_for(attribute_name)
@@ -101,14 +108,28 @@ module Optionable
       klass = Class.new do # Setting a local variable here so it doesn't mess up the bracket highlighter in my editor.
         include Virtus.model
         include ActiveModel::Validations
+
+        def inspect
+          attributes
+        end
       end
     end
     # rubocop:enable Lint/UselessAssignment
 
-    def define_instance_methods_for_options_attribute(attribute_name)
-      attr_reader "#{attribute_name}_type".to_sym
-
+    def define_methods_for_options_attribute(attribute_name)
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
+        class << self
+          def #{attribute_name}_type_with_setup=(value)
+            value = value.to_s.constantize
+
+            self.#{attribute_name}_type_without_setup = value
+            serialize #{attribute_name.inspect}, value
+          end
+
+          alias #{attribute_name}_type_without_setup= #{attribute_name}_type=
+          alias #{attribute_name}_type= #{attribute_name}_type_with_setup=
+        end
+
         def #{attribute_name}=(value)
           target_klass = options_klass_for('#{attribute_name}')
 
@@ -117,10 +138,6 @@ module Optionable
           else
             super(value)
           end
-        end
-
-        def #{attribute_name}_type=(value)
-          @#{attribute_name}_type = value.to_s.constantize
         end
       RUBY
     end

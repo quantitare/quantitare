@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_060702) do
+ActiveRecord::Schema.define(version: 2019_06_16_005345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_060702) do
   end
 
   create_table "scrobbles", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "type"
     t.string "category", null: false
     t.jsonb "data", default: {}, null: false
     t.string "guid", null: false

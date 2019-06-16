@@ -9,8 +9,10 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'vcr'
+
 require 'devise'
+require 'sidekiq/testing'
+require 'vcr'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -37,6 +39,8 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Sidekiq::Testing.fake!
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'

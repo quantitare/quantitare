@@ -47,3 +47,5 @@ module Quantitare
     config.active_job.queue_adapter = :sidekiq
   end
 end
+
+Categories = Quantitare::Categories

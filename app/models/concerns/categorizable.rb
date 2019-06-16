@@ -15,6 +15,14 @@
 #     category_attribute :my_custom_category_name
 #   end
 #
+# == Category classes
+#
+# A category class must implement the +.get+ method, which takes a string and returns an object that implements the
+# following methods:
+#
+# - +name+: This should be identical to the string used to retrieve via the +get+ method mentioned above.
+# - +icon+: This should return an {Icon} object that can be used to display an icon on the page.
+#
 module Categorizable
   extend ActiveSupport::Concern
 

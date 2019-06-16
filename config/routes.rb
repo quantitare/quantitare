@@ -55,4 +55,8 @@ Rails.application.routes.draw do
   namespace :aux do
     resources :countries, only: [:index]
   end
+
+  match '/users/:user_id/webhooks/:scrobbler_id/:token' => 'webhooks#handle',
+    as: 'webhooks',
+    via: [:get, :post, :put, :patch, :delete]
 end

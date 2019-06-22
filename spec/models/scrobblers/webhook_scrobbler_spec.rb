@@ -64,8 +64,18 @@ RSpec.describe Scrobblers::WebhookScrobbler do
       let(:scrobble_params) { { category: 'log', data: { '{{ field_1 }}' => '{{ field_2 }}' } }.to_json }
       let(:payload) { ActionController::Parameters.new(token: 'foobar', field_1: 'content', field_2: 'hello') }
 
+      it 'is valid' do
+        expect(scrobbler).to be_valid
+      end
+
       it 'returns 2xx' do
         expect(scrobbler.handle_webhook(request).status).to eq(200)
+      end
+
+      it 'sets the data properly' do
+        scrobbler.handle_webhook(request)
+
+        expect(Scrobble.last.data['content']).to eq('hello')
       end
     end
   end

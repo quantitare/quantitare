@@ -21,6 +21,9 @@ Metrics/MethodLength:
 
 # Layout
 
+Layout/AlignArguments:
+  EnforcedStyle: with_fixed_indentation
+
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 

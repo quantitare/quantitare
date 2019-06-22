@@ -191,6 +191,7 @@ GEM
     lastfm (1.27.3)
       httparty
       xml-simple
+    liquid (4.0.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -454,6 +455,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   json_schemer (~> 0.2.0)
   lastfm
+  liquid
   listen (>= 3.0.5, < 3.2)
   memoist
   nokogiri (~> 1.10.0)

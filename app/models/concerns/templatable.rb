@@ -39,7 +39,7 @@ module Templatable
       Rails.logger.warn("#{object} could not be interpolated with Liquid")
       yield
     else
-      object = object.respond_to?(:with_indifferent_access) ? object.with_indifferent_access : object
+      object = normalize_hash(object)
 
       begin
         template_context.environments.unshift(object.to_liquid)
@@ -74,5 +74,11 @@ module Templatable
   # @return [#[]] a hash-like object containing the templated values generated from the +template_output_generator+.
   def templated(root_object = nil)
     template_with(root_object) { template_object(instance_exec(&template_output_generator)) }
+  end
+
+  private
+
+  def normalize_hash(object)
+    object.respond_to?(:with_indifferent_access) ? object.with_indifferent_access : object
   end
 end

@@ -35,7 +35,7 @@ module Typeable
   end
 
   def valid_type?
-    types.include?(type.constantize)
+    type.present? && types.include?(type.constantize)
   end
 
   def types

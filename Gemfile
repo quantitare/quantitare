@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.2.0'
 gem 'liquid'
 gem 'nokogiri', '~> 1.10.0'
+gem 'sidekiq-scheduler'
 gem 'virtus'
 
 # Extensions

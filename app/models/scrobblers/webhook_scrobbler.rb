@@ -26,7 +26,7 @@ module Scrobblers
       end
     end
 
-    # @param [ActionDispatch::Request] the inbound webhook request object
+    # @param request [ActionDispatch::Request] the inbound webhook request object
     def handle_webhook(request)
       params, token, verb = prepare_webhook(request)
 

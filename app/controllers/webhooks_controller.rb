@@ -3,7 +3,7 @@
 ##
 # This controller is modeled after Huginn's +WebRequestsController+, and is designed to allow scrobblers to receive
 # inbound HTTP requests and process scrobbles from them. The scrobbler must implement the method +#handle_webhook+,
-# which takes an +ActionDispatch::Request+ object and should return a {WebhookResponse} object.
+# which takes an +ActionDispatch::Request+ object and should return a {WebResponse} object.
 #
 class WebhooksController < ApplicationController
   def handle

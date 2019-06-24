@@ -15,10 +15,7 @@ class LastfmAdapter
   end
 
   def client
-    client_instance = Lastfm.new(service.provider_key, service.provider_secret)
-    client_instance.session = service.token
-
-    client_instance
+    Lastfm.new(service.provider_key, service.provider_secret).tap { |instance| instance.session = service.token }
   end
   memoize :client
 

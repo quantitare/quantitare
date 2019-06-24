@@ -32,9 +32,11 @@ class LastfmAdapter
 
     def data
       {
-        track: track.to_scrobble_data,
-        artist: artist.to_scrobble_data,
-        album: album.to_scrobble_data,
+        service_source: 'lastfm', # TODO: to be changed when data services can be selected
+
+        track: track.to_music_scrobble_data,
+        artist: artist.to_music_scrobble_data,
+        album: album.to_music_scrobble_data,
 
         image: {
           small: image_for(:small),

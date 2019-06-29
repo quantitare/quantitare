@@ -45,7 +45,7 @@ gem 'has_scope', '~> 0.7.2'
 gem 'memoist'
 gem 'rack-cors', '~> 1.0.2'
 gem 'rails-settings-cached', '~> 0.7.1'
-gem 'responders', '~> 2.4.0'
+gem 'responders', '~> 3.0.0'
 
 # Authentication
 gem 'devise', '~> 4.6.1'

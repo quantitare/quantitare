@@ -8,5 +8,10 @@ FactoryBot.define do
     type { 'Scrobblers::DummyScrobbler' }
 
     factory :webhook_scrobbler, class: Scrobblers::WebhookScrobbler
+    factory :withings_scrobbler, class: Scrobblers::WithingsScrobbler do
+      type { 'Scrobblers::WithingsScrobbler' }
+      service { create :service, :withings2 }
+      options { { categories: Scrobblers::WithingsScrobbler::CATEGORIES } }
+    end
   end
 end

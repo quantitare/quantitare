@@ -40,11 +40,21 @@ class Scrobbler < ApplicationRecord
 
   scope :scheduled_for, ->(schedule) { Scrobblers::ScheduledForQuery.(all, schedule: schedule) }
 
+  class_attribute :fetch_in_chunks, instance_writer: false, default: false
+  class_attribute :request_cadence, instance_writer: false, default: 0.seconds
+  class_attribute :request_chunk_size, instance_writer: false, default: 1.week
+
   attribute :schedules, :json, default: DEFAULT_SCHEDULES
   attribute :earliest_data_at, :datetime, default: -> { 15.years.ago }
 
   load_types_in 'Scrobblers'
   options_attribute :options
+
+  class << self
+    def fetch_in_chunks!
+      self.fetch_in_chunks = true
+    end
+  end
 
   def source_identifier
     "#{type}_#{id}"
@@ -63,14 +73,12 @@ class Scrobbler < ApplicationRecord
   end
 
   def run_check(check)
-    fetch_scrobbles(*range_for_check(check))
+    range = range_for_check(check)
+    fetch_in_chunks? ? fetch_scrobbles_in_chunks(*range) : fetch_scrobbles(*range)
   end
 
-  def range_for_check(check)
-    start_time = Time.current
-    end_time = check == CHECK_FULL ? earliest_data_at : CHECK_DEPTHS[check].before(start_time)
-
-    [start_time, end_time]
+  def fetch_scrobbles_in_chunks(start_time, end_time)
+    chunks_for_times(start_time, end_time).each { |chunk_start, chunk_end| fetch_scrobbles(chunk_start, chunk_end) }
   end
 
   def fetch_scrobbles(_start_time, _end_time)
@@ -100,5 +108,31 @@ class Scrobbler < ApplicationRecord
 
   def handle_webhook(_request)
     WebResponse.new(content: 'not implemented', status: 404)
+  end
+
+  private
+
+  def range_for_check(check)
+    start_time = Time.current
+    end_time = check == CHECK_FULL ? earliest_data_at : CHECK_DEPTHS[check].before(start_time)
+
+    [start_time, end_time]
+  end
+
+  def chunks_for_times(start_time, end_time)
+    base_time = end_time - request_chunk_size
+    chunks = []
+
+    loop do
+      chunk_start = [base_time, start_time].max
+      chunk_end = [chunk_start + request_chunk_size, base_time + request_chunk_size].min
+      chunks << [chunk_start, chunk_end]
+
+      break if base_time <= start_time
+
+      base_time -= request_chunk_size
+    end
+
+    chunks
   end
 end

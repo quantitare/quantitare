@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_003324) do
+ActiveRecord::Schema.define(version: 2019_06_29_193812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,6 +197,8 @@ ActiveRecord::Schema.define(version: 2019_06_24_003324) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "global", default: false, null: false
+    t.jsonb "issues", default: []
+    t.index ["issues"], name: "index_services_on_issues", using: :gin
     t.index ["provider"], name: "index_services_on_provider"
     t.index ["uid"], name: "index_services_on_uid"
     t.index ["user_id"], name: "index_services_on_user_id"

@@ -30,6 +30,8 @@ gem 'sidekiq', '~> 5.0'
 # Utilities
 gem 'bcrypt', '~> 3.1.7'
 gem 'carmen', '~> 1.1.1'
+gem 'faraday'
+gem 'faraday_middleware'
 gem 'geocoder', '~> 1.5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.2.0'
@@ -55,6 +57,7 @@ gem 'omniauth', '~> 1.9.0'
 # Omniauth strategies
 gem 'omniauth-foursquare', '~> 1.0'
 gem 'omniauth-lastfm', '~> 0.0.7'
+gem 'omniauth-withings2'
 
 # API adapters
 gem 'foursquare2'

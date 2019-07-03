@@ -48,6 +48,30 @@ class Service < ApplicationRecord
     end
   end
 
+  def expired?
+    Time.current > expires_at
+  rescue ArgumentError
+    false
+  end
+
+  def issues?
+    issues.present?
+  end
+
+  def report_issue!(nature, message)
+    issues << new_issue(nature, message)
+    save!
+  end
+
+  def clear_issues!
+    issues.clear
+    save!
+  end
+
+  def new_issue(nature, message)
+    { nature: nature, message: message }
+  end
+
   def provider_data
     Provider[provider]
   end
@@ -66,5 +90,9 @@ class Service < ApplicationRecord
 
   register_provider(:foursquare) do |omniauth|
     { name: omniauth[:info][:email] }
+  end
+
+  register_provider(:withings2) do |_omniauth|
+    { name: 'Withings' }
   end
 end

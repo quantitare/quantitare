@@ -268,6 +268,7 @@ GEM
     public_suffix (3.1.0)
     puma (4.0.0)
       nio4r (~> 2.0)
+    raabro (1.1.6)
     rack (2.0.7)
     rack-cors (1.0.3)
     rack-protection (2.0.5)
@@ -514,4 +515,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   2.0.1
+   2.0.2

@@ -1,7 +1,14 @@
+require 'simplecov'
+
+SimpleCov.start 'rails'
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
+
+Rails.application.eager_load!
+
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
@@ -9,11 +16,6 @@ require 'rspec/rails'
 require 'devise'
 require 'sidekiq/testing'
 require 'vcr'
-
-require 'simplecov'
-
-SimpleCov.start 'rails'
-Rails.application.eager_load!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

@@ -80,6 +80,10 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'dotenv-rails'
+
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -88,10 +92,6 @@ group :development do
 
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
-  gem 'rubocop'
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
 end
 
 group :test do

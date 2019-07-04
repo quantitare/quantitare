@@ -16,4 +16,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'GPX'
   inflect.acronym 'KML'
   inflect.acronym 'XML'
+  inflect.acronym 'API'
 end

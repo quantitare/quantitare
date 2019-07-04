@@ -9,43 +9,17 @@ class Scrobbler < ApplicationRecord
   include Typeable
   include Oauthable
   include Optionable
-
-  # A list of checks, ordered by depth
-  CHECKS = [
-    CHECK_FULL = 'full',
-    CHECK_DEEP = 'deep',
-    CHECK_MEDIUM = 'medium',
-    CHECK_SHALLOW = 'shallow'
-  ].freeze
-
-  DEFAULT_SCHEDULES = {
-    CHECK_FULL => '7d',
-    CHECK_DEEP => '1d',
-    CHECK_MEDIUM => '6h',
-    CHECK_SHALLOW => '5m'
-  }.freeze
-
-  CHECK_DEPTHS = {
-    CHECK_DEEP => 1.month,
-    CHECK_MEDIUM => 1.week,
-    CHECK_SHALLOW => 1.day
-  }.freeze
+  include Schedulable
 
   has_many :scrobbles, as: :source, dependent: :destroy
   belongs_to :user
   belongs_to :service, optional: true
 
   validates :name, presence: true
-  validates :earliest_data_at, presence: true
-
-  scope :scheduled_for, ->(schedule) { Scrobblers::ScheduledForQuery.(all, schedule: schedule) }
 
   class_attribute :fetch_in_chunks, instance_writer: false, default: false
   class_attribute :request_cadence, instance_writer: false, default: 0.seconds
   class_attribute :request_chunk_size, instance_writer: false, default: 1.week
-
-  attribute :schedules, :json, default: DEFAULT_SCHEDULES
-  attribute :earliest_data_at, :datetime, default: -> { 15.years.ago }
 
   load_types_in 'Scrobblers'
   options_attribute :options
@@ -60,27 +34,66 @@ class Scrobbler < ApplicationRecord
     "#{type}_#{id}"
   end
 
-  # Looks up a registered check for a given schedule. If multiple checks are associated with the given schedule, returns
-  # the "deepest" such check.
-  #
-  # @param schedule [String] the schedule whose check you wish to retrieve
-  # @return [String, nil] the relevant check for the passed-in schedule, or nil if no such check exists
-  def relevant_check_for_schedule(schedule)
-    schedules
-      .select { |_, value| value == schedule.to_s }
-      .map(&:first)
-      .min_by { |check| CHECKS.index(check) }
-  end
-
-  def run_check(check)
+  def run_check(check, &handler)
     range = range_for_check(check)
-    fetch_in_chunks? ? fetch_scrobbles_in_chunks(*range) : fetch_scrobbles(*range)
+    fetch_in_chunks? ? collect_scrobbles_in_chunks(*range, &handler) : collect_scrobbles(*range, &handler)
   end
 
-  def fetch_scrobbles_in_chunks(start_time, end_time)
-    chunks_for_times(start_time, end_time).each { |chunk_start, chunk_end| fetch_scrobbles(chunk_start, chunk_end) }
+  def collect_scrobbles_in_chunks(start_time, end_time, &handler)
+    chunks_for_times(start_time, end_time).each do |chunk_start, chunk_end|
+      collect_scrobbles(chunk_start, chunk_end, &handler)
+    end
   end
 
+  # Fetches scrobbles from the service between the +start_time+ and +end_time+, handling the expected errors by storing
+  # them in the returned object. Yields to the block to handle the batch if given.
+  #
+  #   scrobbler.collect_scrobbles(2.hours.ago, Time.current) { |batch| puts 'yay' if batch.success? }
+  #
+  # @param start_time [Time] the beginning of the time range from which to fetch data
+  # @param end_time [Time] the end of the time rante from which to fetch data
+  # @return [ScrobbleBatch] the list of scrobbles fetched from the service, with additional metadata
+  # @yield [batch] provides an interface for handling the generated batch of scrobbles. Useful for collecting multiple
+  #   batches from a service
+  def collect_scrobbles(start_time, end_time)
+    scrobbles, error =
+      begin
+        [fetch_scrobbles(start_time, end_time), nil]
+      rescue Errors::ServiceError => e
+        [[], e]
+      end
+
+    batch = ScrobbleBatch.new(scrobbles: scrobbles, start_time: start_time, end_time: end_time, error: error)
+
+    yield(batch) if block_given?
+
+    batch
+  end
+
+  # Implement this in a subclass. This is the entrypoint through which the scrobbler will generate new scrobbles. The
+  # conventions listed in this doc describe how the method is expected to behave.
+  #
+  #   def fetch_scrobbles(start_time, end_time)
+  #     result = adapter.fetch_scrobbles(start_time, end_time)
+  #
+  #     case result.status
+  #     when 400..499
+  #       raise Errors::ServiceConfigError, 'There was a problem with your service', nature: :provider_credentials
+  #     when 500..599
+  #       raise Errors::ServiceAPIError
+  #     else
+  #       result.scrobbles
+  #     end
+  #   end
+  #
+  # @param start_time [Time] the beginning of the time range from which to fetch data
+  # @param end_time [Time] the end of the time rante from which to fetch data
+  # @return [Array<Scrobble>] a list of new, unsaved scrobble instances
+  # @raise [Errors::ServiceAPIError] if the service is experiencing temporary issues, such as rate limits or and API
+  #   outage
+  # @raise [Errors::ServiceConfigError] if there is an issue with the service's configuration, such as invalid
+  #   authentication credentials
+  # @raise [NotImplementedError] if the subclass has not implemented this method
   def fetch_scrobbles(_start_time, _end_time)
     raise NotImplementedError
   end
@@ -111,13 +124,6 @@ class Scrobbler < ApplicationRecord
   end
 
   private
-
-  def range_for_check(check)
-    start_time = Time.current
-    end_time = check == CHECK_FULL ? earliest_data_at : CHECK_DEPTHS[check].before(start_time)
-
-    [start_time, end_time]
-  end
 
   def chunks_for_times(start_time, end_time)
     base_time = end_time - request_chunk_size

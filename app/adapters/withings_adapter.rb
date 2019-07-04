@@ -5,7 +5,7 @@
 # requests as possible.
 #
 class WithingsAdapter
-  attr_reader :service
+  attr_reader :service, :refresher
 
   API_URL = 'https://wbsapi.withings.net/v2'
   ACCOUNT_URL = 'https://account.withings.com/oauth2/token'
@@ -20,8 +20,9 @@ class WithingsAdapter
 
   delegate :user, :token, to: :service
 
-  def initialize(service)
+  def initialize(service, refresher: WithingsAdapter::ServiceRefresh.new(service))
     @service = service
+    @refresher = refresher
   end
 
   # The pre-configured Faraday HTTP client. This cannot be memoized since the token might change throughout the
@@ -75,7 +76,7 @@ class WithingsAdapter
 
   def fetch(request)
     refresh_service! if service.expired?
-    return nil if service.issues?
+    raise Errors::ServiceConfigError.new(issue_reported: true) if service.issues?
 
     http_client.get("#{request.path}?#{request.params.to_query}")
   end
@@ -85,7 +86,7 @@ class WithingsAdapter
   end
 
   def refresh_service!
-    WithingsAdapter::ServiceRefresh.new(service).process!
+    refresher.process!
   end
 
   private

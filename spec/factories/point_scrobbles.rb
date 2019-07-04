@@ -3,9 +3,11 @@
 FactoryBot.define do
   factory :point_scrobble do
     user
-    category { Faker::Lorem.words(1) }
+    category { 'log' }
     source { create :scrobbler }
 
     timestamp { 1.hour.ago }
+
+    data { { content: Faker::Lorem.sentence } }
   end
 end

@@ -4,6 +4,14 @@
 # Stores credentials for an external service used to retrieve data from.
 #
 class Service < ApplicationRecord
+  ISSUE_NATURES = [
+    IN_REFRESH_TOKEN = 'refresh_token',
+    IN_USER_TOKEN = 'user_token',
+    IN_PROVIDER_CREDENTIALS = 'provider_credentials',
+    IN_REQUEST_FORMAT = 'request_format',
+    IN_GENERAL = 'general'
+  ].freeze
+
   belongs_to :user, inverse_of: :services
   has_many :scrobblers, inverse_of: :service, dependent: :destroy
 

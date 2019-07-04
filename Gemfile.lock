@@ -347,6 +347,9 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-rails (2.1.0)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
     rubocop-rspec (1.33.0)
       rubocop (>= 0.60.0)
     ruby-progressbar (1.10.1)
@@ -494,6 +497,7 @@ DEPENDENCIES
   responders (~> 3.0.0)
   rspec-rails
   rubocop
+  rubocop-rails
   rubocop-rspec
   sass-rails (~> 5.0)
   shoulda-matchers

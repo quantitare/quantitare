@@ -22,7 +22,7 @@ class WithingsAdapter
     end
 
     def generate
-      samples.flat_map(&:to_scrobble).compact
+      samples.compact.flat_map(&:to_scrobble).compact
     end
 
     def samples

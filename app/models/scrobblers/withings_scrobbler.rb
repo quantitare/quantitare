@@ -28,7 +28,7 @@ module Scrobblers
     delegate :categories, to: :options
 
     def adapter
-      @adapter ||= WithingsAdapter.new(service)
+      WithingsAdapter.new(service)
     end
 
     def fetch_scrobbles(start_time, end_time)

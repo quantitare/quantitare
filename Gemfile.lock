@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/quantitare/quantitare-categories.git
-  revision: d892c22eda7e703f4863f616b1a91a620e6092b4
+  revision: 7ad6b3c93dcd8be2e5281120067d4acf3456fe4d
   specs:
     quantitare-categories (0.1.0)
       activesupport
@@ -127,13 +127,13 @@ GEM
       dry-initializer (~> 3.0)
       dry-logic (~> 1.0)
       dry-types (~> 1.0)
-    dry-types (1.0.1)
+    dry-types (1.1.0)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.3)
       dry-core (~> 0.4, >= 0.4.4)
       dry-equalizer (~> 0.2, >= 0.2.2)
       dry-inflector (~> 0.1, >= 0.1.2)
-      dry-logic (~> 1.0)
+      dry-logic (~> 1.0, >= 1.0.2)
     ecma-re-validator (0.2.0)
       regexp_parser (~> 1.2)
     equalizer (0.0.11)

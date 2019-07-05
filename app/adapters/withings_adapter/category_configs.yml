@@ -42,7 +42,7 @@ active_calorie_burn:
   :response_config:
     :fields:
       - :key: kcal
-      - :value: calories
+        :value: calories
 floors_climbed:
 - :path: measure
   :params:
@@ -51,7 +51,7 @@ floors_climbed:
   :response_config:
     :fields:
       - :key: count
-      - :value: elevation
+        :value: elevation
 heart_rate:
 - :path: measure
   :params:
@@ -60,7 +60,7 @@ heart_rate:
   :response_config:
     :fields:
       - :key: bpm
-      - :value: heart_rate
+        :value: heart_rate
 - :path: sleep
   :params:
     :action: get
@@ -105,7 +105,7 @@ steps:
   :response_config:
     :fields:
       - :key: count
-      - :value: steps
+        :value: steps
 weight:
 - :path: "/measure"
   :params:

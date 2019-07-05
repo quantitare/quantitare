@@ -6,9 +6,11 @@ class WithingsAdapter
   #
   class SeriesSample < WithingsAdapter::Sample
     def data
-      config[:fields].map do |fields|
+      attributes = config[:fields].map do |fields|
         [fields[:key], response_data[fields[:value]]]
       end.to_h
+
+      attributes.any? { |_, value| value.blank? } ? nil : attributes
     end
   end
 end

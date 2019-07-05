@@ -15,6 +15,8 @@ class WithingsAdapter
     end
 
     def to_scrobble
+      return nil if data.nil?
+
       ::Scrobble.new(timestamp: timestamp, category: category, data: data)
     end
 

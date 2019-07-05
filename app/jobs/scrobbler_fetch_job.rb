@@ -9,7 +9,7 @@ class ScrobblerFetchJob < ApplicationJob
 
   discard_on(Errors::ServiceConfigError) do |job, error|
     unless error.issue_reported || job.service.blank?
-      job.service.report_issue! :general, <<~TEXT.squish
+      job.service.report_issue! error.nature, error.message.presence || <<~TEXT.squish
         An issue was found with this service. Please verify that the credentials you are using to authenticate with it
         are correct.
       TEXT
@@ -29,6 +29,8 @@ class ScrobblerFetchJob < ApplicationJob
     self.scrobbler = scrobbler
     start_time = Time.zone.at(start_time)
     end_time = Time.zone.at(end_time)
+
+    return if scrobbler.service_issues?
 
     scrobbles = scrobbler.fetch_scrobbles(start_time, end_time)
     batch = ScrobbleBatch.new(scrobbles, source: scrobbler, start_time: start_time, end_time: end_time)

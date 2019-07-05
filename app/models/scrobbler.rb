@@ -21,6 +21,8 @@ class Scrobbler < ApplicationRecord
   class_attribute :request_cadence, instance_writer: false, default: 0.seconds
   class_attribute :request_chunk_size, instance_writer: false, default: 1.week
 
+  delegate :issues?, to: :service, allow_nil: true, prefix: true
+
   load_types_in 'Scrobblers'
   options_attribute :options
 

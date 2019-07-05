@@ -27,6 +27,22 @@ RSpec.describe ScrobblerCheckJob do
       action
     end
 
+    context 'when the service is having issues' do
+      before do
+        allow(scrobbler).to receive(:service_issues?).and_return(true)
+      end
+
+      it 'does not run the check' do
+        expect(processor).to_not receive(:call)
+
+        action
+      end
+
+      it 'does not enqueue any jobs' do
+        expect { action }.to_not change(ScrobblerCheckJob._queue_adapter.enqueued_jobs, :size)
+      end
+    end
+
     context 'when the batch import fails' do
       let(:result) { double 'result', success?: false }
 
@@ -38,5 +54,6 @@ RSpec.describe ScrobblerCheckJob do
 
   describe 'interface contracts' do
     specify { expect(scrobbler).to respond_to(:run_check).with(1).argument }
+    specify { expect(scrobbler).to respond_to(:service_issues?) }
   end
 end

@@ -18,6 +18,8 @@ class ScrobblerCheckJob < ApplicationJob
     self.processor = processor
     self.scrobbler = scrobbler
 
+    return if scrobbler.service_issues?
+
     scrobbler.run_check(check) { |batch| process_batch(batch) }
   end
 

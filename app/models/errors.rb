@@ -6,11 +6,14 @@
 module Errors
   ##
   # Raise a subclass of this when a problem occurs with an external service, such as an API outage or a misconfigured
-  # configuration.
+  # configuration. Includes some metadata for reporting issues to the user.
   #
   class ServiceError < StandardError
     attr_reader :issue_reported, :nature
 
+    # @param message [String] the error message
+    # @param nature [#to_s] the nature of the issue to be reported
+    # @param issue_reported [Boolean] true if an issue that caused this error has been reported, false otherwise
     def initialize(message = nil, nature: :general, issue_reported: false)
       super(message)
 

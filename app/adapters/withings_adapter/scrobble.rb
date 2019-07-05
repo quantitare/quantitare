@@ -7,11 +7,20 @@ class WithingsAdapter
   class Scrobble
     class << self
       def from_api(response, request)
+        verify_response(response)
+
         request.categories.flat_map { |category| new(response, request, category).generate }
+      end
+
+      private
+
+      def verify_response(response)
+        WithingsAdapter::ResponseVerifier.new(response).process!
       end
     end
 
     delegate :endpoint_config, :endpoint, to: :request
+    delegate :body, to: :response
 
     attr_reader :response, :request, :category
 
@@ -39,10 +48,6 @@ class WithingsAdapter
     end
 
     private
-
-    def body
-      JSON.parse(response.body)
-    end
 
     def category_config
       WithingsAdapter::CategoryConfig.for_category_and_endpoint(category, endpoint)

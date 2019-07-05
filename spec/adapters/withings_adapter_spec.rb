@@ -14,7 +14,7 @@ RSpec.describe WithingsAdapter, :vcr do
 
     responses = requests.map { |request| subject.fetch(request) }
 
-    expect(responses.all? { |res| JSON.parse(res.body)['status'].zero? }).to be(true)
+    expect(responses.all? { |res| res.body['status'].zero? }).to be(true)
   end
 
   describe '#fetch_scrobbles' do
@@ -58,7 +58,9 @@ RSpec.describe WithingsAdapter, :vcr do
         endpoint: ['sleep', 'get']
     end
 
-    let(:response) { double 'response', body: file_fixture('withings_sleep_response_body.json').read }
+    let(:response) do
+      double 'response', body: JSON.parse(file_fixture('withings_sleep_response_body.json').read), success?: true
+    end
 
     it 'returns a list of Scrobble objects' do
       expect(subject.scrobbles_for_response(response, request).all? { |item| item.is_a?(::Scrobble) }).to be(true)
@@ -81,15 +83,11 @@ RSpec.describe WithingsAdapter, :vcr do
     end
 
     it 'has a status of 0 when everything is fine' do
-      body = JSON.parse(action.body)
-
-      expect(body['status']).to be_zero
+      expect(action.body['status']).to be_zero
     end
 
     it 'has content when everything is fine' do
-      body = JSON.parse(action.body)
-
-      expect(body['body']).to be_present
+      expect(action.body['body']).to be_present
     end
 
     context 'with invalid params' do
@@ -102,9 +100,7 @@ RSpec.describe WithingsAdapter, :vcr do
       end
 
       it 'has a nonzero status' do
-        body = JSON.parse(action.body)
-
-        expect(body['status']).to_not be_zero
+        expect(action.body['status']).to_not be_zero
       end
     end
 
@@ -112,9 +108,7 @@ RSpec.describe WithingsAdapter, :vcr do
       let(:service) { create :service, :withings2, token: 'some_nonsense' }
 
       it 'has a nonzero status' do
-        body = JSON.parse(action.body)
-
-        expect(body['status']).to_not be_zero
+        expect(action.body['status']).to_not be_zero
       end
 
       it 'is a successful response' do

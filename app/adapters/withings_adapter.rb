@@ -33,6 +33,8 @@ class WithingsAdapter
   def http_client
     Faraday.new(url: API_URL) do |conn|
       conn.request :oauth2, token, token_type: :bearer
+      conn.response :json
+
       conn.adapter Faraday.default_adapter
     end
   end
@@ -94,7 +96,7 @@ class WithingsAdapter
   def more_data_for_request?(request, response)
     return false if response.blank? || !response.success?
 
-    request.paged? && JSON.parse(response.body)['body']['more']
+    request.paged? && response.body.dig('body', 'more')
   end
 end
 

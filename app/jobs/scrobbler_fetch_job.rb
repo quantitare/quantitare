@@ -31,7 +31,7 @@ class ScrobblerFetchJob < ApplicationJob
     end_time = Time.zone.at(end_time)
 
     scrobbles = scrobbler.fetch_scrobbles(start_time, end_time)
-    batch = ScrobbleBatch.new(scrobbles: scrobbles, start_time: start_time, end_time: end_time)
+    batch = ScrobbleBatch.new(scrobbles, source: scrobbler, start_time: start_time, end_time: end_time)
     result = processor.(batch)
 
     raise Errors::ScrobbleBatchError, result.errors.join(', ') unless result.success?

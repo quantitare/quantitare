@@ -63,7 +63,7 @@ class Scrobbler < ApplicationRecord
         [[], e]
       end
 
-    batch = ScrobbleBatch.new(scrobbles: scrobbles, start_time: start_time, end_time: end_time, error: error)
+    batch = ScrobbleBatch.new(scrobbles, source: self, start_time: start_time, end_time: end_time, error: error)
 
     yield(batch) if block_given?
 

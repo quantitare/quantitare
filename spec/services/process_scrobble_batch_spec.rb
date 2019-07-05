@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ProcessScrobbleBatch do
   let(:source) { create :scrobbler }
   let(:scrobbles) { build_list :point_scrobble, 3, timestamp: 3.hours.ago, source: source }
-  let!(:batch) { ScrobbleBatch.new(scrobbles: scrobbles, start_time: 7.hours.ago, end_time: 1.hour.ago) }
+  let!(:batch) { ScrobbleBatch.new(scrobbles, source: source, start_time: 7.hours.ago, end_time: 1.hour.ago) }
 
   let!(:existing_overlapping_scrobble) { create :point_scrobble, timestamp: 4.hours.ago, source: source }
   let!(:existing_non_overlapping_scrobble) { create :point_scrobble, timestamp: 10.hours.ago, source: source }
@@ -68,11 +68,29 @@ RSpec.describe ProcessScrobbleBatch do
     expect(source.scrobbles_count).to eq(4)
   end
 
-  context 'when the batch is empty', :skip do # TODO
+  context 'when the batch is empty' do
     let(:scrobbles) { [] }
 
     it 'does not fail' do
       expect(ProcessScrobbleBatch.(batch)).to be_success
+    end
+
+    it 'removes the existing overlapping scrobbles' do
+      ProcessScrobbleBatch.(batch)
+
+      expect { existing_overlapping_scrobble.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'does not remove the existing overlapping scrobbles' do
+      ProcessScrobbleBatch.(batch)
+
+      expect { existing_non_overlapping_scrobble.reload }.to_not raise_error
+    end
+
+    it 'updates the counter cache' do
+      ProcessScrobbleBatch.(batch)
+
+      expect(source.scrobbles_count).to eq(1)
     end
   end
 

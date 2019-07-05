@@ -6,12 +6,16 @@
 class ScrobbleBatch
   include Enumerable
 
-  attr_reader :scrobbles, :start_time, :end_time, :error
+  attr_reader :scrobbles, :source, :start_time, :end_time, :error
 
-  def initialize(scrobbles: [], start_time:, end_time:, error: nil)
+  def initialize(scrobbles = [], source:, start_time:, end_time:, error: nil)
     @scrobbles = scrobbles
+
+    @source = source
+
     @start_time = start_time
     @end_time = end_time
+
     @error = error
   end
 

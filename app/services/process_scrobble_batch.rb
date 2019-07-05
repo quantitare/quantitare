@@ -6,7 +6,7 @@
 class ProcessScrobbleBatch
   include Serviceable
 
-  delegate :start_time, :end_time, to: :batch
+  delegate :source, :start_time, :end_time, to: :batch
 
   transactional!
 
@@ -33,10 +33,6 @@ class ProcessScrobbleBatch
 
   def sources
     batch.map(&:source)
-  end
-
-  def source
-    sources.first
   end
 
   # Steps

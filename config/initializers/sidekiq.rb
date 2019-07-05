@@ -5,3 +5,5 @@ Sidekiq.configure_server do |config|
     SidekiqScheduler::Scheduler.instance.reload_schedule!
   end
 end
+
+Sidekiq.default_worker_options = { 'backtrace' => true }

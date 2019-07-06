@@ -7,7 +7,7 @@ class RunSchedulesJob < ApplicationJob
   queue_as :schedule
 
   def perform(schedule)
-    Scrobbler.scheduled_for(schedule).each { |scrobbler| process_scrobbler(scrobbler, schedule) }
+    Scrobbler.enabled.scheduled_for(schedule).each { |scrobbler| process_scrobbler(scrobbler, schedule) }
   end
 
   def process_scrobbler(scrobbler, schedule)

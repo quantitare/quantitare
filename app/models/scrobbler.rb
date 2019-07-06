@@ -17,6 +17,8 @@ class Scrobbler < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :enabled, -> { where(disabled: false) }
+
   class_attribute :fetch_in_chunks, instance_writer: false, default: false
   class_attribute :request_cadence, instance_writer: false, default: 0.seconds
   class_attribute :request_chunk_size, instance_writer: false, default: 1.week
@@ -34,6 +36,14 @@ class Scrobbler < ApplicationRecord
 
   def source_identifier
     "#{type}_#{id}"
+  end
+
+  def enable!
+    update!(disabled: false)
+  end
+
+  def disable!
+    update!(disabled: true)
   end
 
   def run_check(check, &handler)

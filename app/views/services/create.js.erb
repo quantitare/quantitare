@@ -1,0 +1,9 @@
+<% if @service.persisted? %>
+  window.app.$store.dispatch('clearService')
+  Turbolinks.visit(window.location)
+<% else %>
+  window.app.$store.dispatch(
+    'refreshService',
+    JSON.parse('<%= j_json_partial('service', locals: { service: @service }) %>')
+  )
+<% end %>

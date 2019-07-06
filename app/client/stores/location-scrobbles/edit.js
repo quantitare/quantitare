@@ -124,6 +124,7 @@ export default {
             break;
           case PE_EDIT:
             resolve();
+            break;
           default:
             reject();
         }

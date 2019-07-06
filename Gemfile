@@ -62,6 +62,7 @@ gem 'omniauth-withings2'
 # API adapters
 gem 'foursquare2'
 gem 'lastfm'
+gem 'rescuetime', github: 'aastronautss/rescuetime'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

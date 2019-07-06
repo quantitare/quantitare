@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/aastronautss/rescuetime.git
+  revision: ab79cf65047ef3c236016f350fcd3f2128df05e9
+  specs:
+    rescuetime (1.0.1)
+
+GIT
   remote: https://github.com/quantitare/quantitare-categories.git
   revision: 7ad6b3c93dcd8be2e5281120067d4acf3456fe4d
   specs:
@@ -494,6 +500,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-settings-cached (~> 0.7.1)
   redis (~> 4.0)
+  rescuetime!
   responders (~> 3.0.0)
   rspec-rails
   rubocop

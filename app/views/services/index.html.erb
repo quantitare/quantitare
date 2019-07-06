@@ -1,5 +1,8 @@
 <% content_for :title, 'Services' %>
 
+<%= vuex_store_tag :services_new %>
+<%= vue_data_tag data: { service: {} } %>
+
 <div class="row border-bottom pb-2">
   <h2>Services</h2>
 </div>
@@ -8,7 +11,15 @@
   <% Devise.omniauth_providers.each do |provider| %>
     <%= omniauth_button(provider) %>
   <% end %>
+
+  <% Provider.non_oauth_provider_names.each do |provider| %>
+    <%= non_omniauth_provider_button(provider, remote: true) %>
+  <% end %>
+
 </div>
+
+<services-new-view>
+</services-new-view>
 
 <div class="row py-4">
   <table class="table table-sm table-hover">
@@ -45,7 +56,14 @@
               <% end %>
             </reactive-form>
           </td>
-          <td><%= link_to 'Delete', service, method: :delete, class: 'btn btn-sm btn-danger py-0' %></td>
+          <td>
+            <%=
+              link_to 'Delete', service,
+                method: :delete,
+                class: 'btn btn-sm btn-danger py-0',
+                data: { confirm: 'Are you sure?' }
+            %>
+          </td>
         </tr>
       <% end %>
     </tbody>

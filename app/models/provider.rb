@@ -17,6 +17,23 @@ class Provider
       registry[provider_name] = instance
       instance.process!
     end
+
+    def register_non_oauth(provider_name, *args)
+      instance = TokenProvider.new(provider_name, *args)
+      registry[provider_name] = instance
+    end
+
+    def oauth_providers
+      registry.values.select(&:oauth?)
+    end
+
+    def non_oauth_providers
+      registry.values.reject(&:oauth?)
+    end
+
+    def non_oauth_provider_names
+      registry.keys.reject { |key| self[key].oauth? }
+    end
   end
 
   attr_reader :name, :key, :secret, :oauth_opts
@@ -27,6 +44,12 @@ class Provider
     @secret = ENV[secret_env_var]
 
     @oauth_opts = opts
+  end
+
+  alias provider_options oauth_opts
+
+  def oauth?
+    true
   end
 
   def valid?
@@ -81,5 +104,14 @@ class Provider
     icon_css_class: 'fas fa-heartbeat',
     icon_text_color: '#fff',
     icon_bg_color: '#22ea9d'
+  )
+
+  Provider.register_non_oauth(
+    :rescuetime,
+    fields: { token: { as: :api_key } },
+
+    icon_css_class: 'far fa-clock',
+    icon_text_color: '#fff',
+    icon_bg_color: '#667b8b'
   )
 end

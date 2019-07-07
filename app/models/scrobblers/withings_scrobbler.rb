@@ -13,9 +13,8 @@ module Scrobblers
     self.request_cadence = Rails.env.test? ? 0.seconds : 1.5.seconds
     self.request_chunk_size = 24.hours
 
-    fetch_in_chunks!
-
     requires_provider :withings2
+    fetches_in_chunks!
 
     configure_options(:options) do
       attribute :categories, Array[String], display: { selection: CATEGORIES }

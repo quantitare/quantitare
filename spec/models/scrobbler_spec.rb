@@ -13,9 +13,74 @@ RSpec.describe Scrobbler do
     end
   end
 
+  describe '#scrobbles_in_interval' do
+    let!(:beginning_edge_scrobble) do
+      create(:point_scrobble, source: subject, timestamp: Time.parse('2019-07-07 01:02:03 UTC'))
+    end
+
+    let!(:end_edge_scrobble) do
+      create(:point_scrobble, source: subject, timestamp: Time.parse('2019-07-09 23:04:05 UTC'))
+    end
+
+    let!(:overlapping_scrobble) do
+      create(:point_scrobble, source: subject, timestamp: Time.parse('2019-07-08 12:01:04 UTC'))
+    end
+
+    let!(:non_overlapping_scrobble) do
+      create(:point_scrobble, source: subject, timestamp: Time.parse('2019-07-05 13:12:11 UTC'))
+    end
+
+    let(:action) do
+      subject.scrobbles_in_interval(Time.parse('2019-07-07 05:05:05 UTC'), Time.parse('2019-07-09 14:05:05 UTC'))
+    end
+
+    it 'includes the overlapping scrobble' do
+      expect(action).to include(overlapping_scrobble)
+    end
+
+    it 'does not include the non-overlapping scrobble' do
+      expect(action).to_not include(non_overlapping_scrobble)
+    end
+
+    it 'does not include the beginning edge even if the given range does not include it' do
+      expect(action).to_not include(beginning_edge_scrobble)
+    end
+
+    it 'does not include the end edge even if the given range does not include it' do
+      expect(action).to_not include(end_edge_scrobble)
+    end
+
+    context 'when the interval_batch_scale is :date' do
+      before do
+        @original_interval_batch_scale = subject.interval_batch_scale
+        subject.class.interval_batch_scale = :date
+      end
+
+      after do
+        subject.class.interval_batch_scale = @original_interval_batch_scale
+      end
+
+      it 'includes the overlapping scrobble' do
+        expect(action).to include(overlapping_scrobble)
+      end
+
+      it 'does not include the non-overlapping scrobble' do
+        expect(action).to_not include(non_overlapping_scrobble)
+      end
+
+      it 'includes the beginning edge even if the given range does not include it' do
+        expect(action).to include(beginning_edge_scrobble)
+      end
+
+      it 'includes the end edge even if the given range does not include it' do
+        expect(action).to include(end_edge_scrobble)
+      end
+    end
+  end
+
   describe '#run_check' do
-    context 'when the fetch_in_chunks flag is not set' do
-      before { allow(subject).to receive(:fetch_in_chunks?).and_return(false) }
+    context 'when the fetches_in_chunks flag is not set' do
+      before { allow(subject).to receive(:fetches_in_chunks?).and_return(false) }
 
       it 'fetches everything in a single batch' do
         expect(subject).to receive(:collect_scrobbles).once.and_call_original
@@ -32,8 +97,8 @@ RSpec.describe Scrobbler do
       end
     end
 
-    context 'when the fetch_in_chunks flag is set' do
-      before { allow(subject).to receive(:fetch_in_chunks?).and_return(true) }
+    context 'when the fetches_in_chunks flag is set' do
+      before { allow(subject).to receive(:fetches_in_chunks?).and_return(true) }
 
       it 'fetches everything in multiple batches' do
         expect(subject).to receive(:collect_scrobbles).at_least(:twice).and_call_original
@@ -163,5 +228,9 @@ RSpec.describe Scrobbler do
     it 'returns a 404 status' do
       expect(subject.handle_webhook(nil).status).to eq(404)
     end
+  end
+
+  describe 'interface contracts' do
+    specify { expect(subject).to respond_to(:interval_batch_scale).with(0).arguments }
   end
 end

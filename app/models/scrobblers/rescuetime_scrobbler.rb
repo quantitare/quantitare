@@ -12,7 +12,13 @@ module Scrobblers
 
     configure_options(:options) do
       attribute :time_zone, String,
-        display: { selection: TIME_ZONES, desc: 'The time zone you have selected in Rescuetime' }
+        display: {
+          selection: TIME_ZONES,
+          desc: <<~TEXT.squish
+            The time zone you have selected in Rescuetime. This will determine how the data retrieved from the service
+            is parsed.
+          TEXT
+        }
 
       validates :time_zone, presence: true, inclusion: { in: TIME_ZONES }
     end

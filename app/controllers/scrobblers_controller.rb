@@ -21,6 +21,6 @@ class ScrobblersController < AuthenticatedController
   private
 
   def scrobbler_params
-    params.require(:scrobbler).permit(:type, :name, :service_id)
+    params.require(:scrobbler).permit(:type, :name, :service_id, options: {})
   end
 end

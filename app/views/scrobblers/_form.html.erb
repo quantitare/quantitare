@@ -1,7 +1,4 @@
-<scrobbler-form
-  v-bind:scrobbler="scrobbler"
-  inline-template
->
+<scrobbler-form :scrobbler="scrobbler" inline-template>
   <%=
     vue_form_with model: @scrobbler,
       scope: 'scrobbler',
@@ -9,7 +6,7 @@
   %>
     <div class="row">
       <div class="col-md-6 pr-5">
-        <model-errors v-bind:errors="scrobbler.errors"></model-errors>
+        <model-errors :errors="scrobbler.errors"></model-errors>
 
         <% if @scrobbler.new_record? %>
           <div class="row form-group">
@@ -17,10 +14,10 @@
             <choices
               id="scrobbler_type"
               name="scrobbler[type]"
-              v-bind:options="<%= scrobbler_type_select_options %>"
-              v-bind:params="<%= {}.to_json %> "
-              v-bind:value="scrobbler.type"
-              v-on:input="typeChanged"
+              :options="<%= scrobbler_type_select_options %>"
+              :params="<%= {}.to_json %> "
+              :value="scrobbler.type"
+              @input="typeChanged"
             ></choices>
           </div>
         <% end %>
@@ -41,6 +38,16 @@
                 'v-html': 'scrobblerMetadata.providerOptions'
             %>
           </div>
+
+          <optionable-option-group
+            v-for="option in scrobblerMetadata.options"
+            :key="option.name"
+            :options="option"
+            attribute-name="options"
+            prefix="scrobbler"
+            :value="option.value"
+          >
+          </optionable-option-group>
 
           <div class="row">
             <%= f.submit 'Save', class: 'btn btn-primary' %>

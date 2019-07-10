@@ -102,6 +102,16 @@ module Optionable
         include Virtus.model
         include ActiveModel::Validations
 
+        class << self
+          def config
+            attribute_set.map do |attribute|
+              attribute.options
+                .slice(:name, :display, :default, :required)
+                .merge(type: attribute.type.primitive.name.underscore)
+            end
+          end
+        end
+
         def inspect
           attributes
         end
@@ -155,6 +165,10 @@ module Optionable
 
   def options_klass_for(attribute_name)
     send("#{attribute_name}_type") || self.class.options_klass_for(attribute_name)
+  end
+
+  def options_config_for(attribute_name)
+    options_klass_for(attribute_name).config
   end
 
   def options_must_be_valid

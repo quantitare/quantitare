@@ -1,5 +1,5 @@
 <template>
-  <select :id="id" :name="name" :disabled="disabled" @search="$emit('search', $event)">
+  <select :id="id" :name="name" :disabled="disabled" @search="$emit('search', $event)" :multiple="multiple">
     <slot>
       <option value="" placeholder>Make a selection...</option>
     </slot>
@@ -17,6 +17,7 @@ export default {
     id: String,
     name: String,
     value: null,
+    multiple: Boolean,
 
     params: {
       type: Object,
@@ -34,7 +35,7 @@ export default {
       default() { return []; }
     },
 
-    disabled: Boolean
+    disabled: Boolean,
   },
 
   data() {
@@ -142,5 +143,13 @@ export default {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+}
+
+.choices__input {
+  background-color: #fff;
+}
+
+[data-type="select-multiple"] .form-control {
+  padding-bottom: 0px;
 }
 </style>

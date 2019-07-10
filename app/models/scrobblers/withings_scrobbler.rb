@@ -31,9 +31,7 @@ module Scrobblers
     end
 
     def fetch_scrobbles(start_time, end_time)
-      scrobbles = adapter.fetch_scrobbles(start_time, end_time, categories: categories, cadence: request_cadence)
-
-      scrobbles.map { |scrobble| build_scrobble(scrobble) }
+      adapter.fetch_scrobbles(start_time, end_time, categories: categories, cadence: request_cadence)
     end
   end
 end

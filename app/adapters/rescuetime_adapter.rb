@@ -15,13 +15,41 @@ class RescuetimeAdapter
   end
 
   def fetch_scrobbles(start_time, end_time)
-    fetch_activities(start_time, end_time).map { |data| RescuetimeAdapter::Scrobble.from_api(data) }
+    raise Errors::ServiceConfigError, invalid_credentials_message, nature: :user_token unless client.valid_credentials?
+
+    fetch_activities(start_time, end_time)
+      .map { |data| RescuetimeAdapter::Scrobble.from_api(data) }
+      .select { |scrobble| (start_time..end_time).overlaps?(scrobble.start_time..scrobble.end_time) }
   end
 
   def fetch_activities(start_time, end_time)
-    client.activities
-      .from(start_time.to_s).to(end_time.to_s)
-      .order_by(:time, interval: :minute)
+    catch_api_errors { client.activities.from(start_time.to_s).to(end_time.to_s).order_by(:time, interval: :minute) }
+  end
+
+  private
+
+  def invalid_credentials_message
+    "Invalid credentials for service #{service.name}"
+  end
+
+  def missing_credentials_message
+    "Missing credentials for service #{service.name}"
+  end
+
+  def invalid_request_message
+    "#{self.class.name} made an invalid request to service #{service.name}"
+  end
+
+  def catch_api_errors
+    yield if block_given?
+  rescue Rescuetime::Errors::MissingCredentialsError
+    raise Errors::ServiceConfigError, missing_credentials_message, nature: :user_token
+  rescue Rescuetime::Errors::InvalidCredentialsError
+    raise Errors::ServiceConfigError, invalid_credentials_message, nature: :user_token
+  rescue Rescuetime::Errors::TooManyRequests, Rescuetime::Errors::ServerError
+    raise Errors::ServiceAPIError
+  rescue Rescuetime::Errors::InvalidQueryError, Rescuetime::Errors::InvalidFormatError, Rescuetime::Errors::ClientError
+    raise Errors::ServiceConfigError, invalid_request_message, nature: :request_format
   end
 end
 

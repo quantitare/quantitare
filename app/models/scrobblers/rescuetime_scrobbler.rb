@@ -7,6 +7,8 @@ module Scrobblers
   class RescuetimeScrobbler < Scrobbler
     TIME_ZONES = Time.zone.class.all.map(&:name)
 
+    delegate :fetch_scrobbles, to: :adapter
+
     requires_provider :rescuetime
     fetches_in_chunks!
 
@@ -27,13 +29,11 @@ module Scrobblers
       RescuetimeAdapter.new(service)
     end
 
-    def fetch_scrobbles(start_time, end_time)
+    def fetch_and_format_scrobbles(start_time, end_time)
       previous_time_zone = Time.zone
       Time.zone = options.time_zone
 
-      scrobbles = adapter.fetch_scrobbles(*normalize_times(start_time, end_time))
-
-      scrobbles.map { |scrobble| build_scrobble(scrobble) }
+      super
     ensure
       Time.zone = previous_time_zone
     end

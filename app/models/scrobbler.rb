@@ -96,7 +96,7 @@ class Scrobbler < ApplicationRecord
   def collect_scrobbles(start_time, end_time)
     scrobbles, error =
       begin
-        [fetch_scrobbles(start_time, end_time), nil]
+        [fetch_and_format_scrobbles(start_time, end_time), nil]
       rescue Errors::ServiceError => e
         [[], e]
       end
@@ -106,6 +106,14 @@ class Scrobbler < ApplicationRecord
     yield(batch) if block_given?
 
     batch
+  end
+
+  def fetch_and_format_scrobbles(start_time, end_time)
+    start_time, end_time = normalize_times(start_time, end_time)
+
+    scrobbles = fetch_scrobbles(start_time, end_time)
+
+    scrobbles.map { |scrobble| build_scrobble(scrobble) }
   end
 
   # Implement this in a subclass. This is the entrypoint through which the scrobbler will generate new scrobbles. The

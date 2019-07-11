@@ -43,7 +43,7 @@ module Intervalable
       denormalized_times
     end
 
-    def denormalize_time(time, day_target)
+    def denormalize_time(time, day_target = :beginning_of_day)
       interval_batch_scale == :date ? time.public_send(day_target) : time
     end
   end

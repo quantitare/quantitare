@@ -1,11 +1,14 @@
 require 'simplecov'
 
-SimpleCov.start
+SimpleCov.start 'rails'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
+
+Rails.application.eager_load!
+
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
@@ -53,6 +56,12 @@ VCR.configure do |config|
   config.filter_sensitive_data('LASTFM_TEST_USER_TOKEN') { ENV['LASTFM_TEST_USER_TOKEN'] }
 
   config.filter_sensitive_data('MAPBOX_API_KEY') { ENV['MAPBOX_API_KEY'] }
+
+  config.filter_sensitive_data('WITHINGS_OAUTH_KEY') { ENV['WITHINGS_OAUTH_KEY'] }
+  config.filter_sensitive_data('WITHINGS_OAUTH_SECRET') { ENV['WITHINGS_OAUTH_SECRET'] }
+  config.filter_sensitive_data('WITHINGS_TEST_USER_ID') { ENV['WITHINGS_TEST_USER_ID'] }
+  config.filter_sensitive_data('WITHINGS_TEST_USER_TOKEN') { ENV['WITHINGS_TEST_USER_TOKEN'] }
+  config.filter_sensitive_data('WITHINGS_TEST_USER_REFRESH_TOKEN') { ENV['WITHINGS_TEST_USER_REFRESH_TOKEN'] }
 end
 
 RSpec.configure do |config|

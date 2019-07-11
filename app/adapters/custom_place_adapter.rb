@@ -13,8 +13,7 @@ class CustomPlaceAdapter
   def search_places(latitude:, longitude:, query: '', radius: 500, limit: 50)
     km_radius = radius / 1_000.0
 
-    results = ::Place
-      .custom
+    results = ::Place.custom
       .near([latitude, longitude], km_radius, units: :km)
       .limit(limit)
 

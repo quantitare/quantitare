@@ -73,9 +73,11 @@ RSpec.describe ProcessLocationScrobble do
     end
 
     describe 'collision modes' do
-      let!(:overlapping_location_scrobble) { create :place_scrobble, start_time: 5.hours.ago, end_time: 4.hours.ago }
+      let!(:overlapping_location_scrobble) do
+        create :place_scrobble, user: location_scrobble.user, start_time: 5.hours.ago, end_time: 4.hours.ago
+      end
       let!(:non_overlapping_location_scrobble) do
-        create :place_scrobble, start_time: 9.hours.ago, end_time: 8.hours.ago
+        create :place_scrobble, user: location_scrobble.user, start_time: 9.hours.ago, end_time: 8.hours.ago
       end
       let(:location_scrobble) { build :place_scrobble, start_time: 5.5.hours.ago, end_time: 4.5.hours.ago }
 

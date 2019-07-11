@@ -36,7 +36,9 @@ class ProcessLocationScrobble
   def handle_collisions
     case options[:collision_mode].try(:to_sym)
     when :overwrite
-      LocationScrobble.overlapping_range(location_scrobble.start_time, location_scrobble.end_time).destroy_all
+      location_scrobble.user.location_scrobbles
+        .overlapping_range(location_scrobble.start_time, location_scrobble.end_time)
+        .destroy_all
     when :skip
       self.skip = true
     end

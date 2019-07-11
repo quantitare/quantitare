@@ -36,6 +36,7 @@ class LastfmAdapter
 
         title: raw_track[:name],
         duration: raw_track[:duration].to_i,
+        album_rank: raw_track[:rank].to_i,
 
         artist_name: raw_track[:artist][:name],
         artist_mbid: raw_track[:artist][:mbid],

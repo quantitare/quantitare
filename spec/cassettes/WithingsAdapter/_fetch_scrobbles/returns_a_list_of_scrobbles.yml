@@ -1,0 +1,366 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/measure?action=getmeas&category=1&enddate=1561921222&meastype=9&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:51 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Content-Length:
+      - '103'
+      Content-Type:
+      - text/plain;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"body":{"updatetime":1562128671,"timezone":"US\/Pacific","measuregrps":[]}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:51 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/measure?action=getmeas&category=1&enddate=1561921222&meastype=10&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:52 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Content-Length:
+      - '103'
+      Content-Type:
+      - text/plain;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"body":{"updatetime":1562128672,"timezone":"US\/Pacific","measuregrps":[]}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:52 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/measure?action=getmeas&category=1&enddate=1561921222&meastype=12&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:52 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Content-Length:
+      - '103'
+      Content-Type:
+      - text/plain;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"body":{"updatetime":1562128672,"timezone":"US\/Pacific","measuregrps":[]}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:52 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/measure?action=getmeas&category=1&enddate=1561921222&meastype=71&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:53 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Content-Length:
+      - '103'
+      Content-Type:
+      - text/plain;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"body":{"updatetime":1562128673,"timezone":"US\/Pacific","measuregrps":[]}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:53 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/measure?action=getmeas&category=1&enddate=1561921222&meastype=54&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:54 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Content-Length:
+      - '103'
+      Content-Type:
+      - text/plain;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"body":{"updatetime":1562128674,"timezone":"US\/Pacific","measuregrps":[]}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:54 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/measure?action=getmeas&category=1&enddate=1561921222&meastype=1&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:54 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Content-Length:
+      - '208'
+      Content-Type:
+      - text/plain;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"body":{"updatetime":1562128674,"timezone":"US\/Pacific","measuregrps":[{"grpid":1503355193,"attrib":2,"date":1561920872,"created":1561920874,"category":1,"deviceid":null,"measures":[{"value":63593,"type":1,"unit":-3,"algo":0,"fw":0,"fm":3}],"comment":null}]}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:55 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/v2/measure?action=getintradayactivity&data_fields=calories,elevation,heart_rate,steps&enddate=1561921222&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:55 GMT
+      Server:
+      - Apache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"status":0,"body":{"series":{"1561839300":{"steps":14,"elevation":0,"calories":0.397},"1561839360":{"steps":14,"elevation":0,"calories":0.397},"1561839420":{"steps":15,"elevation":0,"calories":0.426},"1561839480":{"steps":15,"elevation":0,"calories":0.426},"1561839540":{"steps":15,"elevation":0,"calories":0.426},"1561839600":{"steps":2,"elevation":0,"calories":0.056},"1561842600":{"steps":11,"elevation":0,"calories":0.312},"1561844700":{"steps":26,"elevation":0,"calories":0.739},"1561844760":{"steps":26,"elevation":0,"calories":0.739},"1561844820":{"steps":26,"elevation":0,"calories":0.739},"1561844880":{"steps":26,"elevation":0,"calories":0.739},"1561844940":{"steps":26,"elevation":0,"calories":0.739},"1561845000":{"steps":26,"elevation":0,"calories":0.739},"1561845060":{"steps":26,"elevation":0,"calories":0.739},"1561845120":{"steps":26,"elevation":0,"calories":0.739},"1561845180":{"steps":26,"elevation":0,"calories":0.739},"1561845240":{"steps":13,"elevation":0,"calories":0.369},"1561845360":{"steps":11,"elevation":0,"calories":0.312},"1561846920":{"steps":4,"elevation":0,"calories":0.113},"1561846980":{"steps":4,"elevation":0,"calories":0.113},"1561847040":{"steps":4,"elevation":0,"calories":0.113},"1561847100":{"steps":4,"elevation":0,"calories":0.113},"1561847160":{"steps":4,"elevation":0,"calories":0.113},"1561847220":{"steps":5,"elevation":0,"calories":0.142},"1561847280":{"steps":5,"elevation":0,"calories":0.142},"1561847340":{"steps":5,"elevation":0,"calories":0.142},"1561847400":{"steps":5,"elevation":0,"calories":0.142},"1561847460":{"steps":2,"elevation":0,"calories":0.056},"1561848180":{"steps":30,"elevation":0,"calories":0.852},"1561848240":{"steps":30,"elevation":0,"calories":0.852},"1561848300":{"steps":30,"elevation":0,"calories":0.852},"1561848360":{"steps":30,"elevation":0,"calories":0.852},"1561848420":{"steps":30,"elevation":0,"calories":0.852},"1561848480":{"steps":30,"elevation":0,"calories":0.852},"1561848540":{"steps":30,"elevation":0,"calories":0.852},"1561848600":{"steps":30,"elevation":0,"calories":0.852},"1561848660":{"steps":30,"elevation":0,"calories":0.852},"1561848720":{"steps":30,"elevation":0,"calories":0.852},"1561848780":{"steps":33,"elevation":0,"calories":0.938},"1561848840":{"steps":95,"elevation":0,"calories":2.7},"1561848900":{"steps":95,"elevation":0,"calories":2.7},"1561848960":{"steps":95,"elevation":0,"calories":2.7},"1561849020":{"steps":95,"elevation":0,"calories":2.7},"1561849080":{"steps":96,"elevation":0,"calories":2.728},"1561849140":{"steps":84,"elevation":0,"calories":2.387},"1561849740":{"steps":94,"elevation":0,"calories":2.671},"1561849800":{"steps":94,"elevation":0,"calories":2.671},"1561849860":{"steps":94,"elevation":0,"calories":2.671},"1561849920":{"steps":94,"elevation":0,"calories":2.671},"1561849980":{"steps":94,"elevation":0,"calories":2.671},"1561850040":{"steps":95,"elevation":0,"calories":2.7},"1561850100":{"steps":95,"elevation":0,"calories":2.7},"1561850160":{"steps":95,"elevation":0,"calories":2.7},"1561850220":{"steps":95,"elevation":0,"calories":2.7},"1561850280":{"steps":95,"elevation":0,"calories":2.7},"1561850340":{"steps":98,"elevation":0,"calories":2.785},"1561850400":{"steps":98,"elevation":0,"calories":2.785},"1561850460":{"steps":99,"elevation":0,"calories":2.814},"1561850520":{"steps":99,"elevation":0,"calories":2.814},"1561850580":{"steps":99,"elevation":0,"calories":2.814},"1561850640":{"steps":99,"elevation":0,"calories":2.814},"1561850700":{"steps":99,"elevation":0,"calories":2.814},"1561850760":{"steps":99,"elevation":0,"calories":2.814},"1561850820":{"steps":99,"elevation":0,"calories":2.814},"1561850880":{"steps":99,"elevation":0,"calories":2.814},"1561850940":{"steps":98,"elevation":0,"calories":2.785},"1561851000":{"steps":97,"elevation":0,"calories":2.757},"1561851060":{"steps":97,"elevation":0,"calories":2.757},"1561851120":{"steps":97,"elevation":0,"calories":2.757},"1561851180":{"steps":97,"elevation":0,"calories":2.757},"1561851240":{"steps":97,"elevation":0,"calories":2.757},"1561851300":{"steps":98,"elevation":0,"calories":2.785},"1561851360":{"steps":98,"elevation":0,"calories":2.785},"1561851420":{"steps":98,"elevation":0,"calories":2.785},"1561851480":{"steps":98,"elevation":0,"calories":2.785},"1561851540":{"steps":90,"elevation":0,"calories":2.558},"1561851600":{"steps":87,"elevation":0,"calories":2.472},"1561851660":{"steps":87,"elevation":0,"calories":2.472},"1561851720":{"steps":87,"elevation":0,"calories":2.472},"1561851780":{"steps":87,"elevation":0,"calories":2.472},"1561851840":{"steps":87,"elevation":0,"calories":2.472},"1561851900":{"steps":87,"elevation":0,"calories":2.472},"1561851960":{"steps":87,"elevation":0,"calories":2.472},"1561852020":{"steps":88,"elevation":0,"calories":2.501},"1561852080":{"steps":88,"elevation":0,"calories":2.501},"1561852140":{"steps":74,"elevation":0,"calories":2.103},"1561852200":{"steps":69,"elevation":0,"calories":1.961},"1561852260":{"steps":69,"elevation":0,"calories":1.961},"1561852320":{"steps":69,"elevation":0,"calories":1.961},"1561852380":{"steps":69,"elevation":0,"calories":1.961},"1561852440":{"steps":69,"elevation":0,"calories":1.961},"1561852500":{"steps":69,"elevation":0,"calories":1.961},"1561852560":{"steps":69,"elevation":0,"calories":1.961},"1561852620":{"steps":69,"elevation":0,"calories":1.961},"1561852680":{"steps":12,"elevation":0,"calories":0.341},"1561852920":{"steps":84,"elevation":0,"calories":2.387},"1561852980":{"steps":84,"elevation":0,"calories":2.387},"1561853040":{"steps":84,"elevation":0,"calories":2.387},"1561853100":{"steps":84,"elevation":0,"calories":2.387},"1561853160":{"steps":84,"elevation":0,"calories":2.387},"1561853220":{"steps":84,"elevation":0,"calories":2.387},"1561853280":{"steps":84,"elevation":0,"calories":2.387},"1561853340":{"steps":84,"elevation":0,"calories":2.387},"1561853400":{"steps":84,"elevation":0,"calories":2.387},"1561853460":{"steps":84,"elevation":0,"calories":2.387},"1561853520":{"steps":94,"elevation":0,"calories":2.671},"1561853580":{"steps":96,"elevation":0,"calories":2.728},"1561853640":{"steps":96,"elevation":0,"calories":2.728},"1561853700":{"steps":96,"elevation":0,"calories":2.728},"1561853760":{"steps":96,"elevation":0,"calories":2.728},"1561853820":{"steps":96,"elevation":0,"calories":2.728},"1561853880":{"steps":96,"elevation":0,"calories":2.728},"1561853940":{"steps":96,"elevation":0,"calories":2.728},"1561854000":{"steps":96,"elevation":0,"calories":2.728},"1561854060":{"steps":96,"elevation":0,"calories":2.728},"1561854120":{"steps":98,"elevation":0,"calories":2.785},"1561854180":{"steps":97,"elevation":0,"calories":2.757},"1561854240":{"steps":97,"elevation":0,"calories":2.757},"1561854300":{"steps":97,"elevation":0,"calories":2.757},"1561854360":{"steps":98,"elevation":0,"calories":2.785},"1561854420":{"steps":98,"elevation":0,"calories":2.785},"1561854480":{"steps":98,"elevation":0,"calories":2.785},"1561854540":{"steps":98,"elevation":0,"calories":2.785},"1561854600":{"steps":98,"elevation":0,"calories":2.785},"1561854660":{"steps":98,"elevation":0,"calories":2.785},"1561854720":{"steps":47,"elevation":0,"calories":1.335},"1561854780":{"steps":35,"elevation":0,"calories":0.994},"1561854840":{"steps":35,"elevation":0,"calories":0.994},"1561854900":{"steps":36,"elevation":0,"calories":1.023},"1561854960":{"steps":20,"elevation":0,"calories":0.568},"1561855980":{"steps":81,"elevation":0,"calories":2.302},"1561856040":{"steps":82,"elevation":0,"calories":2.33},"1561856100":{"steps":82,"elevation":0,"calories":2.33},"1561856160":{"steps":82,"elevation":0,"calories":2.33},"1561856220":{"steps":82,"elevation":0,"calories":2.33},"1561856280":{"steps":82,"elevation":0,"calories":2.33},"1561856340":{"steps":82,"elevation":0,"calories":2.33},"1561856400":{"steps":14,"elevation":0,"calories":0.397},"1561856940":{"steps":84,"elevation":0,"calories":2.387},"1561857000":{"steps":84,"elevation":0,"calories":2.387},"1561857060":{"steps":84,"elevation":0,"calories":2.387},"1561857120":{"steps":85,"elevation":0,"calories":2.416},"1561857180":{"steps":85,"elevation":0,"calories":2.416},"1561857240":{"steps":85,"elevation":0,"calories":2.416},"1561857300":{"steps":85,"elevation":0,"calories":2.416},"1561857360":{"steps":85,"elevation":0,"calories":2.416},"1561857420":{"steps":85,"elevation":0,"calories":2.416},"1561857480":{"steps":85,"elevation":0,"calories":2.416},"1561857540":{"steps":43,"elevation":0,"calories":1.222},"1561857600":{"steps":24,"elevation":0,"calories":0.682},"1561857660":{"steps":24,"elevation":0,"calories":0.682},"1561857720":{"steps":24,"elevation":0,"calories":0.682},"1561857780":{"steps":25,"elevation":0,"calories":0.71},"1561857840":{"steps":25,"elevation":0,"calories":0.71},"1561857900":{"steps":25,"elevation":0,"calories":0.71},"1561857960":{"steps":25,"elevation":0,"calories":0.71},"1561858020":{"steps":25,"elevation":0,"calories":0.71},"1561858080":{"steps":25,"elevation":0,"calories":0.71},"1561858140":{"steps":25,"elevation":0,"calories":0.71},"1561858200":{"steps":68,"elevation":0,"calories":1.932},"1561858260":{"steps":91,"elevation":0,"calories":2.586},"1561858320":{"steps":91,"elevation":0,"calories":2.586},"1561858380":{"steps":91,"elevation":0,"calories":2.586},"1561858440":{"steps":91,"elevation":0,"calories":2.586},"1561858500":{"steps":91,"elevation":0,"calories":2.586},"1561858560":{"steps":91,"elevation":0,"calories":2.586},"1561858620":{"steps":91,"elevation":0,"calories":2.586},"1561858680":{"steps":91,"elevation":0,"calories":2.586},"1561858740":{"steps":91,"elevation":0,"calories":2.586},"1561858800":{"steps":96,"elevation":0,"calories":2.728},"1561858860":{"steps":96,"elevation":0,"calories":2.728},"1561858920":{"steps":96,"elevation":0,"calories":2.728},"1561858980":{"steps":96,"elevation":0,"calories":2.728},"1561859040":{"steps":96,"elevation":0,"calories":2.728},"1561859100":{"steps":96,"elevation":0,"calories":2.728},"1561859160":{"steps":97,"elevation":0,"calories":2.757},"1561859220":{"steps":97,"elevation":0,"calories":2.757},"1561859280":{"steps":97,"elevation":0,"calories":2.757},"1561859340":{"steps":97,"elevation":0,"calories":2.757},"1561859400":{"steps":98,"elevation":0,"calories":2.785},"1561859460":{"steps":99,"elevation":0,"calories":2.814},"1561859520":{"steps":99,"elevation":0,"calories":2.814},"1561859580":{"steps":99,"elevation":0,"calories":2.814},"1561859640":{"steps":99,"elevation":0,"calories":2.814},"1561859700":{"steps":99,"elevation":0,"calories":2.814},"1561859760":{"steps":99,"elevation":0,"calories":2.814},"1561859820":{"steps":99,"elevation":0,"calories":2.814},"1561859880":{"steps":99,"elevation":0,"calories":2.814},"1561859940":{"steps":99,"elevation":0,"calories":2.814},"1561860000":{"steps":102,"elevation":0,"calories":2.899},"1561860060":{"steps":103,"elevation":0,"calories":2.927},"1561860120":{"steps":104,"elevation":0,"calories":2.956},"1561860180":{"steps":104,"elevation":0,"calories":2.956},"1561860240":{"steps":104,"elevation":0,"calories":2.956},"1561860300":{"steps":104,"elevation":0,"calories":2.956},"1561860360":{"steps":104,"elevation":0,"calories":2.956},"1561860420":{"steps":104,"elevation":0,"calories":2.956},"1561860480":{"steps":104,"elevation":0,"calories":2.956},"1561860540":{"steps":104,"elevation":0,"calories":2.956},"1561860600":{"steps":98,"elevation":0,"calories":2.785},"1561860660":{"steps":95,"elevation":0,"calories":2.7},"1561860720":{"steps":95,"elevation":0,"calories":2.7},"1561860780":{"steps":95,"elevation":0,"calories":2.7},"1561860840":{"steps":95,"elevation":0,"calories":2.7},"1561860900":{"steps":95,"elevation":0,"calories":2.7},"1561860960":{"steps":95,"elevation":0,"calories":2.7},"1561861020":{"steps":95,"elevation":0,"calories":2.7},"1561861080":{"steps":95,"elevation":0,"calories":2.7},"1561861140":{"steps":95,"elevation":0,"calories":2.7},"1561861200":{"steps":80,"elevation":0,"calories":2.273},"1561861260":{"steps":75,"elevation":0,"calories":2.131},"1561861320":{"steps":75,"elevation":0,"calories":2.131},"1561861380":{"steps":75,"elevation":0,"calories":2.131},"1561861440":{"steps":75,"elevation":0,"calories":2.131},"1561861500":{"steps":75,"elevation":0,"calories":2.131},"1561861560":{"steps":75,"elevation":0,"calories":2.131},"1561861620":{"steps":75,"elevation":0,"calories":2.131},"1561861680":{"steps":75,"elevation":0,"calories":2.131},"1561861740":{"steps":75,"elevation":0,"calories":2.131},"1561861800":{"steps":17,"elevation":0,"calories":0.483},"1561861860":{"steps":53,"elevation":0,"calories":1.506},"1561861920":{"steps":59,"elevation":0,"calories":1.677},"1561861980":{"steps":59,"elevation":0,"calories":1.677},"1561862040":{"steps":59,"elevation":0,"calories":1.677},"1561862100":{"steps":59,"elevation":0,"calories":1.677},"1561862160":{"steps":59,"elevation":0,"calories":1.677},"1561862220":{"steps":60,"elevation":0,"calories":1.705},"1561862280":{"steps":60,"elevation":0,"calories":1.705},"1561862340":{"steps":60,"elevation":0,"calories":1.705},"1561862400":{"steps":54,"elevation":0,"calories":1.534},"1561863360":{"steps":72,"elevation":0,"calories":2.046},"1561863420":{"steps":72,"elevation":0,"calories":2.046},"1561863480":{"steps":72,"elevation":0,"calories":2.046},"1561863540":{"steps":72,"elevation":0,"calories":2.046},"1561863600":{"steps":72,"elevation":0,"calories":2.046},"1561863660":{"steps":72,"elevation":0,"calories":2.046},"1561863720":{"steps":23,"elevation":0,"calories":0.653},"1561864320":{"steps":7,"elevation":0,"calories":0.198},"1561864380":{"steps":7,"elevation":0,"calories":0.198},"1561864440":{"steps":7,"elevation":0,"calories":0.198},"1561864500":{"steps":7,"elevation":0,"calories":0.198},"1561864560":{"steps":7,"elevation":0,"calories":0.198},"1561864620":{"steps":7,"elevation":0,"calories":0.198},"1561864680":{"steps":8,"elevation":0,"calories":0.227},"1561864740":{"steps":8,"elevation":0,"calories":0.227},"1561864800":{"steps":8,"elevation":0,"calories":0.227},"1561864860":{"steps":8,"elevation":0,"calories":0.227},"1561864920":{"steps":5,"elevation":0,"calories":0.142},"1561864980":{"steps":5,"elevation":0,"calories":0.142},"1561865040":{"steps":6,"elevation":0,"calories":0.17},"1561865100":{"steps":6,"elevation":0,"calories":0.17},"1561865160":{"steps":6,"elevation":0,"calories":0.17},"1561865220":{"steps":4,"elevation":0,"calories":0.113},"1561873140":{"steps":7,"elevation":0,"calories":0.198},"1561873920":{"steps":4,"elevation":0,"calories":0.113},"1561874700":{"steps":12,"elevation":0,"calories":0.341},"1561875600":{"steps":11,"elevation":0,"calories":0.312},"1561875660":{"steps":11,"elevation":0,"calories":0.312},"1561875720":{"steps":12,"elevation":0,"calories":0.341},"1561875780":{"steps":12,"elevation":0,"calories":0.341},"1561875840":{"steps":12,"elevation":0,"calories":0.341},"1561880040":{"steps":11,"elevation":0,"calories":0.312},"1561880880":{"steps":8,"elevation":0,"calories":0.227},"1561918620":{"steps":18,"elevation":0,"calories":0.511},"1561918680":{"steps":18,"elevation":0,"calories":0.511},"1561918740":{"steps":18,"elevation":0,"calories":0.511},"1561918800":{"steps":18,"elevation":0,"calories":0.511},"1561918860":{"steps":18,"elevation":0,"calories":0.511},"1561918920":{"steps":18,"elevation":0,"calories":0.511},"1561918980":{"steps":18,"elevation":0,"calories":0.511},"1561919040":{"steps":19,"elevation":0,"calories":0.54},"1561919100":{"steps":19,"elevation":0,"calories":0.54},"1561919160":{"steps":16,"elevation":0,"calories":0.454}}}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:56 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/v2/sleep?action=get&data_fields=hr,rr&enddate=1561921222&startdate=1561834822
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:57 GMT
+      Server:
+      - Apache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"status":0,"body":{"series":[{"startdate":1561873260,"state":0,"enddate":1561873380,"hr":{"1561873260":61,"1561873320":73},"rr":{"1561873260":16,"1561873320":14}},{"startdate":1561873860,"state":0,"enddate":1561873920,"hr":{"1561873860":62},"rr":{"1561873860":14}},{"startdate":1561884360,"state":1,"enddate":1561884960,"hr":{"1561884360":63,"1561884420":59,"1561884480":63,"1561884540":63,"1561884600":63,"1561884660":59,"1561884720":60,"1561884780":60,"1561884840":60,"1561884900":59},"rr":{"1561884360":11,"1561884420":12,"1561884480":12,"1561884540":12,"1561884600":13,"1561884660":13,"1561884720":12,"1561884780":14,"1561884840":12,"1561884900":13}},{"startdate":1561873920,"state":0,"enddate":1561873980,"hr":{"1561873920":70},"rr":{"1561873920":19}},{"startdate":1561884960,"state":1,"enddate":1561885560,"hr":{"1561884960":59,"1561885020":59,"1561885080":59,"1561885140":60,"1561885200":60,"1561885260":60,"1561885320":60,"1561885380":61,"1561885440":60,"1561885500":60},"rr":{"1561884960":11,"1561885020":13,"1561885080":12,"1561885140":13,"1561885200":12,"1561885260":12,"1561885320":12,"1561885380":12,"1561885440":13,"1561885500":12}},{"startdate":1561873980,"state":0,"enddate":1561874040,"hr":{"1561873980":64},"rr":{"1561873980":9}},{"startdate":1561885560,"state":1,"enddate":1561886160,"hr":{"1561885560":61,"1561885620":61,"1561885680":57,"1561885740":60,"1561885800":61,"1561885860":59,"1561885920":60,"1561885980":61,"1561886040":59,"1561886100":60},"rr":{"1561885560":12,"1561885620":11,"1561885680":13,"1561885740":11,"1561885800":12,"1561885860":11,"1561885920":15,"1561885980":12,"1561886040":13,"1561886100":12}},{"startdate":1561874040,"state":0,"enddate":1561874100,"hr":{"1561874040":69},"rr":{"1561874040":15}},{"startdate":1561886160,"state":1,"enddate":1561886760,"hr":{"1561886160":61,"1561886220":61,"1561886280":60,"1561886340":60,"1561886400":59,"1561886460":61,"1561886520":59,"1561886580":60,"1561886640":64,"1561886700":62},"rr":{"1561886160":12,"1561886220":11,"1561886280":12,"1561886340":12,"1561886400":12,"1561886460":11,"1561886520":11,"1561886580":11,"1561886640":12,"1561886700":10}},{"startdate":1561874100,"state":0,"enddate":1561874160,"hr":{"1561874100":61},"rr":{"1561874100":17}},{"startdate":1561886760,"state":1,"enddate":1561887360,"hr":{"1561886760":62,"1561886820":63,"1561886880":61,"1561886940":61,"1561887000":63,"1561887060":60,"1561887120":61,"1561887180":63,"1561887240":63,"1561887300":65},"rr":{"1561886760":11,"1561886820":11,"1561886880":11,"1561886940":10,"1561887000":11,"1561887060":10,"1561887120":11,"1561887180":11,"1561887240":10,"1561887300":12}},{"startdate":1561874160,"state":0,"enddate":1561874220,"hr":{"1561874160":66},"rr":{"1561874160":17}},{"startdate":1561887360,"state":1,"enddate":1561887960,"hr":{"1561887360":64,"1561887420":61,"1561887480":61,"1561887540":60,"1561887600":61,"1561887660":61,"1561887720":60,"1561887780":59,"1561887840":59,"1561887900":61},"rr":{"1561887360":10,"1561887420":11,"1561887480":11,"1561887540":10,"1561887600":10,"1561887660":10,"1561887720":10,"1561887780":11,"1561887840":10,"1561887900":11}},{"startdate":1561874220,"state":0,"enddate":1561874280,"hr":{"1561874220":55},"rr":{"1561874220":14}},{"startdate":1561887960,"state":1,"enddate":1561888560,"hr":{"1561887960":60,"1561888020":61,"1561888080":60,"1561888140":61,"1561888200":60,"1561888260":60,"1561888320":61,"1561888380":61,"1561888440":61,"1561888500":60},"rr":{"1561887960":11,"1561888020":10,"1561888080":10,"1561888140":11,"1561888200":10,"1561888260":10,"1561888320":11,"1561888380":11,"1561888440":11,"1561888500":11}},{"startdate":1561874280,"state":0,"enddate":1561874340,"hr":{"1561874280":52},"rr":{"1561874280":17}},{"startdate":1561888560,"state":1,"enddate":1561888800,"hr":{"1561888560":60,"1561888620":60,"1561888680":60,"1561888740":60},"rr":{"1561888560":11,"1561888620":12,"1561888680":12,"1561888740":12}},{"startdate":1561888800,"state":2,"enddate":1561889160,"hr":{"1561888800":60,"1561888860":60,"1561888920":60,"1561888980":59,"1561889040":59,"1561889100":59},"rr":{"1561888800":12,"1561888860":11,"1561888920":12,"1561888980":12,"1561889040":11,"1561889100":12}},{"startdate":1561874340,"state":0,"enddate":1561874400,"hr":{"1561874340":72},"rr":{"1561874340":10}},{"startdate":1561889160,"state":2,"enddate":1561889760,"hr":{"1561889160":59,"1561889220":59,"1561889280":59,"1561889340":60,"1561889400":60,"1561889460":59,"1561889520":59,"1561889580":60,"1561889640":57,"1561889700":57},"rr":{"1561889160":12,"1561889220":11,"1561889280":11,"1561889340":11,"1561889400":12,"1561889460":12,"1561889520":12,"1561889580":11,"1561889640":12,"1561889700":12}},{"startdate":1561874400,"state":0,"enddate":1561874460,"hr":{"1561874400":71},"rr":{"1561874400":16}},{"startdate":1561889760,"state":1,"enddate":1561890360,"hr":{"1561889760":57,"1561889820":58,"1561889880":57,"1561889940":58,"1561890000":58,"1561890060":59,"1561890120":59,"1561890180":59,"1561890240":59,"1561890300":58},"rr":{"1561889760":12,"1561889820":11,"1561889880":11,"1561889940":12,"1561890000":12,"1561890060":12,"1561890120":12,"1561890180":12,"1561890240":12,"1561890300":12}},{"startdate":1561873380,"state":0,"enddate":1561873440,"hr":{"1561873380":65},"rr":{"1561873380":14}},{"startdate":1561874460,"state":0,"enddate":1561874520,"hr":{"1561874460":60},"rr":{"1561874460":9}},{"startdate":1561890360,"state":1,"enddate":1561890960,"hr":{"1561890360":59,"1561890420":59,"1561890480":59,"1561890540":59,"1561890600":58,"1561890660":59,"1561890720":59,"1561890780":59,"1561890840":59,"1561890900":59},"rr":{"1561890360":13,"1561890420":12,"1561890480":13,"1561890540":11,"1561890600":12,"1561890660":12,"1561890720":12,"1561890780":12,"1561890840":12,"1561890900":13}},{"startdate":1561874520,"state":0,"enddate":1561874580,"hr":{"1561874520":55},"rr":{"1561874520":12}},{"startdate":1561890960,"state":1,"enddate":1561891560,"hr":{"1561890960":56,"1561891020":58,"1561891080":57,"1561891140":56,"1561891200":57,"1561891260":58,"1561891320":58,"1561891380":58,"1561891440":58,"1561891500":57},"rr":{"1561890960":17,"1561891020":11,"1561891080":11,"1561891140":11,"1561891200":11,"1561891260":12,"1561891320":11,"1561891380":11,"1561891440":13,"1561891500":13}},{"startdate":1561874580,"state":0,"enddate":1561874640,"hr":{"1561874580":66},"rr":{"1561874580":11}},{"startdate":1561891560,"state":1,"enddate":1561892160,"hr":{"1561891560":57,"1561891620":57,"1561891680":55,"1561891740":57,"1561891800":58,"1561891860":58,"1561891920":58,"1561891980":58,"1561892040":55,"1561892100":57},"rr":{"1561891560":13,"1561891620":12,"1561891680":14,"1561891740":12,"1561891800":13,"1561891860":12,"1561891920":13,"1561891980":11,"1561892040":11,"1561892100":11}},{"startdate":1561874640,"state":0,"enddate":1561874700,"hr":{"1561874640":62},"rr":{"1561874640":17}},{"startdate":1561892160,"state":1,"enddate":1561892760,"hr":{"1561892160":57,"1561892220":57,"1561892280":58,"1561892340":57,"1561892400":58,"1561892460":60,"1561892520":59,"1561892580":59,"1561892640":59,"1561892700":59},"rr":{"1561892160":13,"1561892220":13,"1561892280":12,"1561892340":13,"1561892400":15,"1561892460":16,"1561892520":11,"1561892580":12,"1561892640":12,"1561892700":12}},{"startdate":1561874700,"state":0,"enddate":1561874760,"hr":{"1561874700":66},"rr":{"1561874700":15}},{"startdate":1561892760,"state":1,"enddate":1561893360,"hr":{"1561892760":58,"1561892820":60,"1561892880":59,"1561892940":58,"1561893000":60,"1561893060":58,"1561893120":58,"1561893180":57,"1561893240":57,"1561893300":58},"rr":{"1561892760":11,"1561892820":12,"1561892880":12,"1561892940":15,"1561893000":11,"1561893060":17,"1561893120":11,"1561893180":19,"1561893240":11,"1561893300":11}},{"startdate":1561874760,"state":0,"enddate":1561874820,"hr":{"1561874760":62},"rr":{"1561874760":13}},{"startdate":1561893360,"state":1,"enddate":1561893960,"hr":{"1561893360":58,"1561893420":59,"1561893480":59,"1561893540":60,"1561893600":60,"1561893660":60,"1561893720":58,"1561893780":59,"1561893840":58,"1561893900":59},"rr":{"1561893360":11,"1561893420":10,"1561893480":11,"1561893540":11,"1561893600":11,"1561893660":11,"1561893720":11,"1561893780":11,"1561893840":21,"1561893900":11}},{"startdate":1561874820,"state":0,"enddate":1561874880,"hr":{"1561874820":69},"rr":{"1561874820":11}},{"startdate":1561893960,"state":1,"enddate":1561894380,"hr":{"1561893960":58,"1561894020":58,"1561894080":59,"1561894140":60,"1561894200":59,"1561894260":59,"1561894320":59},"rr":{"1561893960":11,"1561894020":14,"1561894080":11,"1561894140":14,"1561894200":13,"1561894260":13,"1561894320":14}},{"startdate":1561894380,"state":0,"enddate":1561894560,"hr":{"1561894380":60,"1561894440":60,"1561894500":59},"rr":{"1561894380":12,"1561894440":13,"1561894500":12}},{"startdate":1561874880,"state":0,"enddate":1561874940,"hr":{"1561874880":56},"rr":{"1561874880":16}},{"startdate":1561894560,"state":0,"enddate":1561894800,"hr":{"1561894560":58,"1561894620":59,"1561894680":57,"1561894740":55},"rr":{"1561894560":15,"1561894620":13,"1561894680":13,"1561894740":12}},{"startdate":1561894800,"state":1,"enddate":1561895160,"hr":{"1561894800":57,"1561894860":59,"1561894920":62,"1561894980":61,"1561895040":63,"1561895100":66},"rr":{"1561894800":12,"1561894860":13,"1561894920":13,"1561894980":14,"1561895040":13,"1561895100":13}},{"startdate":1561874940,"state":0,"enddate":1561875000,"hr":{"1561874940":66},"rr":{"1561874940":18}},{"startdate":1561895160,"state":1,"enddate":1561895760,"hr":{"1561895160":66,"1561895220":65,"1561895280":58,"1561895340":62,"1561895400":58,"1561895460":57,"1561895520":60,"1561895580":58,"1561895640":62,"1561895700":57},"rr":{"1561895160":14,"1561895220":13,"1561895280":10,"1561895340":10,"1561895400":10,"1561895460":11,"1561895520":13,"1561895580":9,"1561895640":10,"1561895700":11}},{"startdate":1561875000,"state":0,"enddate":1561875060,"hr":{"1561875000":68},"rr":{"1561875000":16}},{"startdate":1561895760,"state":1,"enddate":1561896360,"hr":{"1561895760":57,"1561895820":58,"1561895880":59,"1561895940":60,"1561896000":58,"1561896060":59,"1561896120":60,"1561896180":61,"1561896240":57,"1561896300":59},"rr":{"1561895760":10,"1561895820":12,"1561895880":10,"1561895940":13,"1561896000":12,"1561896060":11,"1561896120":10,"1561896180":10,"1561896240":11,"1561896300":10}},{"startdate":1561873440,"state":0,"enddate":1561873500,"hr":{"1561873440":64},"rr":{"1561873440":14}},{"startdate":1561875060,"state":0,"enddate":1561875120,"hr":{"1561875060":62},"rr":{"1561875060":16}},{"startdate":1561896360,"state":1,"enddate":1561896720,"hr":{"1561896360":58,"1561896420":60,"1561896480":58,"1561896540":55,"1561896600":59,"1561896660":60},"rr":{"1561896360":11,"1561896420":12,"1561896480":12,"1561896540":9,"1561896600":13,"1561896660":12}},{"startdate":1561896720,"state":3,"enddate":1561896960,"hr":{"1561896720":61,"1561896780":58,"1561896840":58,"1561896900":60},"rr":{"1561896720":9,"1561896780":12,"1561896840":13,"1561896900":9}},{"startdate":1561875120,"state":0,"enddate":1561875180,"hr":{"1561875120":66},"rr":{"1561875120":17}},{"startdate":1561896960,"state":3,"enddate":1561897320,"hr":{"1561896960":58,"1561897020":57,"1561897080":57,"1561897140":58,"1561897200":58,"1561897260":58},"rr":{"1561896960":11,"1561897020":11,"1561897080":11,"1561897140":11,"1561897200":12,"1561897260":12}},{"startdate":1561897320,"state":1,"enddate":1561897560,"hr":{"1561897320":57,"1561897380":57,"1561897440":57,"1561897500":58},"rr":{"1561897320":11,"1561897380":11,"1561897440":10,"1561897500":12}},{"startdate":1561875180,"state":0,"enddate":1561875240,"hr":{"1561875180":68},"rr":{"1561875180":17}},{"startdate":1561897560,"state":1,"enddate":1561898160,"hr":{"1561897560":58,"1561897620":57,"1561897680":58,"1561897740":57,"1561897800":58,"1561897860":57,"1561897920":58,"1561897980":58,"1561898040":58,"1561898100":57},"rr":{"1561897560":10,"1561897620":12,"1561897680":11,"1561897740":11,"1561897800":11,"1561897860":10,"1561897920":13,"1561897980":12,"1561898040":13,"1561898100":12}},{"startdate":1561875240,"state":0,"enddate":1561875300,"hr":{"1561875240":68},"rr":{"1561875240":18}},{"startdate":1561898160,"state":1,"enddate":1561898760,"hr":{"1561898160":58,"1561898220":57,"1561898280":57,"1561898340":56,"1561898400":57,"1561898460":57,"1561898520":55,"1561898580":56,"1561898640":58,"1561898700":59},"rr":{"1561898160":13,"1561898220":11,"1561898280":12,"1561898340":11,"1561898400":12,"1561898460":11,"1561898520":11,"1561898580":11,"1561898640":11,"1561898700":12}},{"startdate":1561875300,"state":0,"enddate":1561875360,"hr":{"1561875300":67},"rr":{"1561875300":9}},{"startdate":1561898760,"state":1,"enddate":1561899060,"hr":{"1561898760":60,"1561898820":60,"1561898880":60,"1561898940":59,"1561899000":59},"rr":{"1561898760":12,"1561898820":12,"1561898880":12,"1561898940":12,"1561899000":12}},{"startdate":1561899060,"state":2,"enddate":1561899360,"hr":{"1561899060":59,"1561899120":59,"1561899180":59,"1561899240":59,"1561899300":59},"rr":{"1561899060":12,"1561899120":13,"1561899180":12,"1561899240":13,"1561899300":13}},{"startdate":1561875360,"state":0,"enddate":1561875420,"hr":{"1561875360":66},"rr":{"1561875360":10}},{"startdate":1561899360,"state":2,"enddate":1561899540,"hr":{"1561899360":60,"1561899420":58,"1561899480":59},"rr":{"1561899360":13,"1561899420":12,"1561899480":11}},{"startdate":1561899540,"state":1,"enddate":1561899960,"hr":{"1561899540":58,"1561899600":58,"1561899660":59,"1561899720":57,"1561899780":58,"1561899840":58,"1561899900":58},"rr":{"1561899540":11,"1561899600":12,"1561899660":12,"1561899720":12,"1561899780":11,"1561899840":12,"1561899900":11}},{"startdate":1561875420,"state":0,"enddate":1561875480,"hr":{"1561875420":68},"rr":{"1561875420":15}},{"startdate":1561899960,"state":1,"enddate":1561900560,"hr":{"1561899960":59,"1561900020":59,"1561900080":60,"1561900140":60,"1561900200":57,"1561900260":58,"1561900320":59,"1561900380":59,"1561900440":59,"1561900500":58},"rr":{"1561899960":11,"1561900020":12,"1561900080":11,"1561900140":13,"1561900200":12,"1561900260":12,"1561900320":11,"1561900380":12,"1561900440":13,"1561900500":13}},{"startdate":1561875480,"state":0,"enddate":1561875540,"hr":{"1561875480":68},"rr":{"1561875480":12}},{"startdate":1561900560,"state":1,"enddate":1561901160,"hr":{"1561900560":61,"1561900620":62,"1561900680":61,"1561900740":59,"1561900800":62,"1561900860":64,"1561900920":62,"1561900980":57,"1561901040":60,"1561901100":61},"rr":{"1561900560":10,"1561900620":12,"1561900680":13,"1561900740":12,"1561900800":13,"1561900860":13,"1561900920":11,"1561900980":11,"1561901040":11,"1561901100":10}},{"startdate":1561875540,"state":0,"enddate":1561875600,"hr":{"1561875540":67},"rr":{"1561875540":15}},{"startdate":1561901160,"state":1,"enddate":1561901340,"hr":{"1561901160":63,"1561901220":61,"1561901280":61},"rr":{"1561901160":11,"1561901220":10,"1561901280":14}},{"startdate":1561901340,"state":3,"enddate":1561901760,"hr":{"1561901340":60,"1561901400":61,"1561901460":62,"1561901520":61,"1561901580":62,"1561901640":59,"1561901700":57},"rr":{"1561901340":14,"1561901400":12,"1561901460":11,"1561901520":11,"1561901580":10,"1561901640":11,"1561901700":11}},{"startdate":1561880100,"state":0,"enddate":1561880160,"hr":{"1561880100":64},"rr":{"1561880100":18}},{"startdate":1561901760,"state":3,"enddate":1561902360,"hr":{"1561901760":58,"1561901820":58,"1561901880":61,"1561901940":60,"1561902000":64,"1561902060":61,"1561902120":61,"1561902180":60,"1561902240":60,"1561902300":60},"rr":{"1561901760":9,"1561901820":10,"1561901880":13,"1561901940":11,"1561902000":9,"1561902060":12,"1561902120":13,"1561902180":11,"1561902240":11,"1561902300":13}},{"startdate":1561873500,"state":0,"enddate":1561873560,"hr":{"1561873500":62},"rr":{"1561873500":16}},{"startdate":1561880160,"state":0,"enddate":1561880220,"hr":{"1561880160":61},"rr":{"1561880160":17}},{"startdate":1561902360,"state":3,"enddate":1561902660,"hr":{"1561902360":59,"1561902420":60,"1561902480":60,"1561902540":61,"1561902600":57},"rr":{"1561902360":12,"1561902420":11,"1561902480":11,"1561902540":11,"1561902600":12}},{"startdate":1561902660,"state":1,"enddate":1561902960,"hr":{"1561902660":58,"1561902720":57,"1561902780":57,"1561902840":59,"1561902900":59},"rr":{"1561902660":11,"1561902720":11,"1561902780":11,"1561902840":13,"1561902900":11}},{"startdate":1561880220,"state":0,"enddate":1561880280,"hr":{"1561880220":60},"rr":{"1561880220":17}},{"startdate":1561902960,"state":1,"enddate":1561903560,"hr":{"1561902960":60,"1561903020":59,"1561903080":59,"1561903140":59,"1561903200":60,"1561903260":60,"1561903320":60,"1561903380":60,"1561903440":61,"1561903500":61},"rr":{"1561902960":12,"1561903020":11,"1561903080":12,"1561903140":11,"1561903200":12,"1561903260":11,"1561903320":12,"1561903380":13,"1561903440":12,"1561903500":12}},{"startdate":1561880280,"state":0,"enddate":1561880340,"hr":{"1561880280":60},"rr":{"1561880280":16}},{"startdate":1561903560,"state":1,"enddate":1561904160,"hr":{"1561903560":60,"1561903620":60,"1561903680":60,"1561903740":59,"1561903800":60,"1561903860":61,"1561903920":57,"1561903980":58,"1561904040":58,"1561904100":58},"rr":{"1561903560":12,"1561903620":13,"1561903680":13,"1561903740":12,"1561903800":12,"1561903860":12,"1561903920":12,"1561903980":11,"1561904040":11,"1561904100":11}},{"startdate":1561880340,"state":0,"enddate":1561880400,"hr":{"1561880340":62},"rr":{"1561880340":17}},{"startdate":1561904160,"state":1,"enddate":1561904760,"hr":{"1561904160":59,"1561904220":57,"1561904280":57,"1561904340":58,"1561904400":59,"1561904460":59,"1561904520":56,"1561904580":57,"1561904640":57,"1561904700":60},"rr":{"1561904160":12,"1561904220":11,"1561904280":12,"1561904340":11,"1561904400":12,"1561904460":12,"1561904520":12,"1561904580":11,"1561904640":11,"1561904700":25}},{"startdate":1561880400,"state":0,"enddate":1561880460,"hr":{"1561880400":64},"rr":{"1561880400":10}},{"startdate":1561904760,"state":1,"enddate":1561905240,"hr":{"1561904760":60,"1561904820":60,"1561904880":58,"1561904940":59,"1561905000":57,"1561905060":58,"1561905120":62,"1561905180":63},"rr":{"1561904760":14,"1561904820":11,"1561904880":11,"1561904940":12,"1561905000":14,"1561905060":14,"1561905120":12,"1561905180":13}},{"startdate":1561905240,"state":3,"enddate":1561905360,"hr":{"1561905240":61,"1561905300":65},"rr":{"1561905240":12,"1561905300":16}},{"startdate":1561880460,"state":0,"enddate":1561880520,"hr":{"1561880460":61},"rr":{"1561880460":17}},{"startdate":1561905360,"state":3,"enddate":1561905960,"hr":{"1561905360":65,"1561905420":67,"1561905480":66,"1561905540":65,"1561905600":66,"1561905660":65,"1561905720":69,"1561905780":63,"1561905840":64,"1561905900":63},"rr":{"1561905360":15,"1561905420":15,"1561905480":15,"1561905540":15,"1561905600":15,"1561905660":15,"1561905720":17,"1561905780":12,"1561905840":12,"1561905900":13}},{"startdate":1561880520,"state":0,"enddate":1561880580,"hr":{"1561880520":62},"rr":{"1561880520":17}},{"startdate":1561905960,"state":3,"enddate":1561906020,"hr":{"1561905960":62},"rr":{"1561905960":13}},{"startdate":1561906020,"state":1,"enddate":1561906560,"hr":{"1561906020":58,"1561906080":60,"1561906140":63,"1561906200":62,"1561906260":65,"1561906320":61,"1561906380":67,"1561906440":67,"1561906500":66},"rr":{"1561906020":12,"1561906080":14,"1561906140":13,"1561906200":13,"1561906260":15,"1561906320":15,"1561906380":16,"1561906440":13,"1561906500":13}},{"startdate":1561880580,"state":0,"enddate":1561880640,"hr":{"1561880580":64},"rr":{"1561880580":10}},{"startdate":1561906560,"state":1,"enddate":1561907160,"hr":{"1561906560":63,"1561906620":65,"1561906680":68,"1561906740":67,"1561906800":57,"1561906860":69,"1561906920":63,"1561906980":65,"1561907040":63,"1561907100":61},"rr":{"1561906560":13,"1561906620":16,"1561906680":15,"1561906740":13,"1561906800":11,"1561906860":13,"1561906920":12,"1561906980":12,"1561907040":13,"1561907100":12}},{"startdate":1561880640,"state":0,"enddate":1561880700,"hr":{"1561880640":61},"rr":{"1561880640":18}},{"startdate":1561907160,"state":1,"enddate":1561907760,"hr":{"1561907160":62,"1561907220":60,"1561907280":58,"1561907340":61,"1561907400":59,"1561907460":60,"1561907520":60,"1561907580":55,"1561907640":56,"1561907700":55},"rr":{"1561907160":12,"1561907220":14,"1561907280":12,"1561907340":10,"1561907400":13,"1561907460":11,"1561907520":10,"1561907580":11,"1561907640":12,"1561907700":12}},{"startdate":1561880700,"state":0,"enddate":1561880760,"hr":{"1561880700":63},"rr":{"1561880700":18}},{"startdate":1561907760,"state":1,"enddate":1561908360,"hr":{"1561907760":56,"1561907820":57,"1561907880":59,"1561907940":59,"1561908000":59,"1561908060":58,"1561908120":60,"1561908180":60,"1561908240":61,"1561908300":62},"rr":{"1561907760":13,"1561907820":13,"1561907880":12,"1561907940":12,"1561908000":13,"1561908060":11,"1561908120":11,"1561908180":12,"1561908240":12,"1561908300":12}},{"startdate":1561873560,"state":0,"enddate":1561873620,"hr":{"1561873560":70},"rr":{"1561873560":13}},{"startdate":1561880760,"state":0,"enddate":1561880820,"hr":{"1561880760":68},"rr":{"1561880760":14}},{"startdate":1561908360,"state":1,"enddate":1561908960,"hr":{"1561908360":61,"1561908420":61,"1561908480":62,"1561908540":58,"1561908600":57,"1561908660":58,"1561908720":56,"1561908780":56,"1561908840":58,"1561908900":59},"rr":{"1561908360":12,"1561908420":12,"1561908480":13,"1561908540":11,"1561908600":11,"1561908660":11,"1561908720":13,"1561908780":12,"1561908840":12,"1561908900":12}},{"startdate":1561880820,"state":0,"enddate":1561880880,"hr":{"1561880820":65},"rr":{"1561880820":15}},{"startdate":1561908960,"state":1,"enddate":1561909500,"hr":{"1561908960":58,"1561909020":58,"1561909080":59,"1561909140":59,"1561909200":60,"1561909260":59,"1561909320":59,"1561909380":60,"1561909440":60},"rr":{"1561908960":11,"1561909020":12,"1561909080":12,"1561909140":12,"1561909200":13,"1561909260":12,"1561909320":12,"1561909380":12,"1561909440":12}},{"startdate":1561909500,"state":2,"enddate":1561909560,"hr":{"1561909500":60},"rr":{"1561909500":12}},{"startdate":1561881480,"state":0,"enddate":1561881540,"hr":{"1561881480":71},"rr":{"1561881480":16}},{"startdate":1561909560,"state":2,"enddate":1561910160,"hr":{"1561909560":59,"1561909620":60,"1561909680":60,"1561909740":59,"1561909800":61,"1561909860":61,"1561909920":60,"1561909980":61,"1561910040":61,"1561910100":62},"rr":{"1561909560":13,"1561909620":13,"1561909680":12,"1561909740":14,"1561909800":12,"1561909860":12,"1561909920":13,"1561909980":13,"1561910040":12,"1561910100":13}},{"startdate":1561881540,"state":0,"enddate":1561881600,"hr":{"1561881540":61},"rr":{"1561881540":17}},{"startdate":1561910160,"state":2,"enddate":1561910280,"hr":{"1561910160":61,"1561910220":63},"rr":{"1561910160":13,"1561910220":13}},{"startdate":1561910280,"state":1,"enddate":1561910760,"hr":{"1561910280":59,"1561910340":60,"1561910400":60,"1561910460":60,"1561910520":58,"1561910580":59,"1561910640":57,"1561910700":58},"rr":{"1561910280":11,"1561910340":13,"1561910400":11,"1561910460":12,"1561910520":11,"1561910580":11,"1561910640":11,"1561910700":18}},{"startdate":1561881600,"state":0,"enddate":1561881660,"hr":{"1561881600":57},"rr":{"1561881600":17}},{"startdate":1561910760,"state":1,"enddate":1561911360,"hr":{"1561910760":55,"1561910820":59,"1561910880":59,"1561910940":56,"1561911000":56,"1561911060":59,"1561911120":62,"1561911180":56,"1561911240":58,"1561911300":60},"rr":{"1561910760":12,"1561910820":12,"1561910880":11,"1561910940":11,"1561911000":13,"1561911060":13,"1561911120":11,"1561911180":12,"1561911240":12,"1561911300":13}},{"startdate":1561881660,"state":0,"enddate":1561881720,"hr":{"1561881660":50},"rr":{"1561881660":16}},{"startdate":1561911360,"state":1,"enddate":1561911840,"hr":{"1561911360":65,"1561911420":63,"1561911480":65,"1561911540":66,"1561911600":61,"1561911660":59,"1561911720":63,"1561911780":64},"rr":{"1561911360":12,"1561911420":11,"1561911480":11,"1561911540":11,"1561911600":12,"1561911660":13,"1561911720":16,"1561911780":13}},{"startdate":1561911840,"state":3,"enddate":1561911960,"hr":{"1561911840":66,"1561911900":66},"rr":{"1561911840":14,"1561911900":13}},{"startdate":1561881720,"state":0,"enddate":1561881780,"hr":{"1561881720":60},"rr":{"1561881720":17}},{"startdate":1561911960,"state":3,"enddate":1561912560,"hr":{"1561911960":61,"1561912020":66,"1561912080":67,"1561912140":64,"1561912200":65,"1561912260":64,"1561912320":64,"1561912380":66,"1561912440":62,"1561912500":65},"rr":{"1561911960":10,"1561912020":12,"1561912080":12,"1561912140":12,"1561912200":12,"1561912260":11,"1561912320":12,"1561912380":11,"1561912440":12,"1561912500":15}},{"startdate":1561881780,"state":0,"enddate":1561881840,"hr":{"1561881780":62},"rr":{"1561881780":17}},{"startdate":1561912560,"state":3,"enddate":1561912920,"hr":{"1561912560":64,"1561912620":64,"1561912680":63,"1561912740":64,"1561912800":64,"1561912860":63},"rr":{"1561912560":11,"1561912620":13,"1561912680":12,"1561912740":13,"1561912800":13,"1561912860":12}},{"startdate":1561912920,"state":1,"enddate":1561913160,"hr":{"1561912920":61,"1561912980":62,"1561913040":60,"1561913100":60},"rr":{"1561912920":13,"1561912980":13,"1561913040":12,"1561913100":14}},{"startdate":1561881840,"state":0,"enddate":1561881900,"hr":{"1561881840":61},"rr":{"1561881840":14}},{"startdate":1561913160,"state":1,"enddate":1561913340,"hr":{"1561913160":65,"1561913220":65,"1561913280":68},"rr":{"1561913160":14,"1561913220":14,"1561913280":16}},{"startdate":1561913340,"state":0,"enddate":1561913700,"hr":{"1561913340":66,"1561913400":70,"1561913460":65,"1561913520":66,"1561913580":70,"1561913640":79},"rr":{"1561913340":15,"1561913400":17,"1561913460":15,"1561913520":13,"1561913580":15,"1561913640":16}},{"startdate":1561881900,"state":0,"enddate":1561881960,"hr":{"1561881900":50},"rr":{"1561881900":15}},{"startdate":1561873620,"state":0,"enddate":1561873680,"hr":{"1561873620":78},"rr":{"1561873620":14}},{"startdate":1561881960,"state":0,"enddate":1561882560,"hr":{"1561881960":61,"1561882020":50,"1561882080":63,"1561882140":60,"1561882200":61,"1561882260":64,"1561882320":64,"1561882380":63,"1561882440":61,"1561882500":62},"rr":{"1561881960":19,"1561882020":14,"1561882080":14,"1561882140":17,"1561882200":24,"1561882260":17,"1561882320":15,"1561882380":15,"1561882440":14,"1561882500":14}},{"startdate":1561873680,"state":0,"enddate":1561873740,"hr":{"1561873680":61},"rr":{"1561873680":15}},{"startdate":1561882560,"state":0,"enddate":1561883160,"hr":{"1561882560":59,"1561882620":62,"1561882680":60,"1561882740":61,"1561882800":60,"1561882860":59,"1561882920":60,"1561882980":59,"1561883040":60,"1561883100":60},"rr":{"1561882560":12,"1561882620":12,"1561882680":13,"1561882740":13,"1561882800":12,"1561882860":14,"1561882920":13,"1561882980":13,"1561883040":13,"1561883100":14}},{"startdate":1561873740,"state":0,"enddate":1561873800,"hr":{"1561873740":60},"rr":{"1561873740":11}},{"startdate":1561883160,"state":0,"enddate":1561883340,"hr":{"1561883160":59,"1561883220":61,"1561883280":60},"rr":{"1561883160":12,"1561883220":13,"1561883280":13}},{"startdate":1561883340,"state":1,"enddate":1561883760,"hr":{"1561883340":60,"1561883400":61,"1561883460":61,"1561883520":62,"1561883580":63,"1561883640":57,"1561883700":59},"rr":{"1561883340":12,"1561883400":12,"1561883460":12,"1561883520":12,"1561883580":13,"1561883640":12,"1561883700":11}},{"startdate":1561873800,"state":0,"enddate":1561873860,"hr":{"1561873800":71},"rr":{"1561873800":17}},{"startdate":1561883760,"state":1,"enddate":1561884360,"hr":{"1561883760":59,"1561883820":61,"1561883880":61,"1561883940":61,"1561884000":60,"1561884060":61,"1561884120":60,"1561884180":64,"1561884240":62,"1561884300":61},"rr":{"1561883760":10,"1561883820":12,"1561883880":12,"1561883940":12,"1561884000":12,"1561884060":14,"1561884120":12,"1561884180":13,"1561884240":12,"1561884300":12}}],"model":32}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:58 GMT
+- request:
+    method: get
+    uri: https://wbsapi.withings.net/v2/measure?action=getworkouts&data_fields=calories,distance,effduration,elevation,hr_average,hr_max,hr_min,hr_zone_0,hr_zone_1,hr_zone_2,hr_zone_3,intensity,pool_laps,pool_length,steps,strokes&enddateymd=2019-06-30&startdateymd=2019-06-29
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer WITHINGS_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Jul 2019 04:37:58 GMT
+      Server:
+      - Apache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, *
+      Content-Length:
+      - '2054'
+      Content-Type:
+      - text/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"status":0,"body":{"series":[{"id":1103305563,"category":1,"timezone":"US\/Pacific","model":1057,"attrib":0,"startdate":1561848840,"enddate":1561849200,"date":"2019-06-29","deviceid":null,"data":{"calories":15.917961120605,"effduration":360,"intensity":0,"steps":560,"distance":453.03125},"modified":1561862666},{"id":1103305564,"category":1,"timezone":"US\/Pacific","model":1057,"attrib":0,"startdate":1561849740,"enddate":1561855020,"date":"2019-06-29","deviceid":null,"data":{"calories":209.46328735352,"effduration":5100,"intensity":0,"steps":7369,"distance":5961.404296875},"modified":1561947414},{"id":1103305566,"category":1,"timezone":"US\/Pacific","model":1057,"attrib":0,"startdate":1561855980,"enddate":1561856460,"date":"2019-06-29","deviceid":null,"data":{"calories":16.685432434082,"effduration":480,"intensity":0,"steps":587,"distance":474.87380981445},"modified":1562040988},{"id":1103305567,"category":1,"timezone":"US\/Pacific","model":1057,"attrib":0,"startdate":1561856940,"enddate":1561862460,"date":"2019-06-29","deviceid":null,"data":{"calories":208.09889221191,"effduration":5520,"intensity":0,"steps":7321,"distance":5922.5717773438},"modified":1562040988},{"id":1104218812,"category":1,"timezone":"US\/Pacific","model":1057,"attrib":0,"startdate":1561935000,"enddate":1561938660,"date":"2019-06-30","deviceid":null,"data":{"calories":156.28031921387,"effduration":3660,"intensity":0,"steps":5498,"distance":4447.7958984375},"modified":1562040989},{"id":1102939854,"category":37,"timezone":"America\/Los_Angeles","model":63,"attrib":0,"startdate":1561803480,"enddate":1561827480,"date":"2019-06-29","deviceid":"698b1eb7e71a41ec242ecd7350eeb52e8de92f52","data":{"hr_average":60,"hr_min":54,"hr_max":77},"modified":1561834887},{"id":1103905054,"category":37,"timezone":"America\/Los_Angeles","model":63,"attrib":0,"startdate":1561881480,"enddate":1561913700,"date":"2019-06-30","deviceid":"698b1eb7e71a41ec242ecd7350eeb52e8de92f52","data":{"hr_average":60,"hr_min":55,"hr_max":69},"modified":1561921107}],"more":false,"offset":0}}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2019 04:37:59 GMT
+recorded_with: VCR 5.0.0

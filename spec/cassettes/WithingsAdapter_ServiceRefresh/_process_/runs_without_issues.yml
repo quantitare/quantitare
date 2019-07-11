@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://account.withings.com/oauth2/token
+    body:
+      encoding: UTF-8
+      string: client_id=WITHINGS_OAUTH_KEY&client_secret=WITHINGS_OAUTH_SECRET&grant_type=refresh_token&refresh_token=WITHINGS_TEST_USER_REFRESH_TOKEN
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 29 Jun 2019 19:56:25 GMT
+      Server:
+      - Apache
+      Content-Security-Policy:
+      - frame-ancestors 'self' https://hmweb.withings.com healthmate.health.nokia.com/
+      Strict-Transport-Security:
+      - max-age=2592000
+      X-Xss-Protection:
+      - '1'
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      Accept-Encoding:
+      - gzip, deflate
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - ALLOW-FROM https://hmweb.withings.com healthmate.health.nokia.com/
+      Content-Length:
+      - '226'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"WITHINGS_TEST_USER_TOKEN","expires_in":"10800","token_type":"Bearer","scope":"user.activity,user.metrics,user.info","refresh_token":"WITHINGS_TEST_USER_REFRESH_TOKEN","userid":WITHINGS_TEST_USER_ID}'
+    http_version:
+  recorded_at: Sat, 29 Jun 2019 19:56:25 GMT
+recorded_with: VCR 5.0.0

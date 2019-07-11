@@ -4,6 +4,14 @@
 # Stores credentials for an external service used to retrieve data from.
 #
 class Service < ApplicationRecord
+  ISSUE_NATURES = [
+    IN_REFRESH_TOKEN = 'refresh_token',
+    IN_USER_TOKEN = 'user_token',
+    IN_PROVIDER_CREDENTIALS = 'provider_credentials',
+    IN_REQUEST_FORMAT = 'request_format',
+    IN_GENERAL = 'general'
+  ].freeze
+
   belongs_to :user, inverse_of: :services
   has_many :scrobblers, inverse_of: :service, dependent: :destroy
 
@@ -48,6 +56,30 @@ class Service < ApplicationRecord
     end
   end
 
+  def expired?
+    Time.current > expires_at
+  rescue ArgumentError
+    false
+  end
+
+  def issues?
+    issues.present?
+  end
+
+  def report_issue!(nature, message)
+    issues << new_issue(nature, message)
+    save!
+  end
+
+  def clear_issues!
+    issues.clear
+    save!
+  end
+
+  def new_issue(nature, message)
+    { nature: nature, message: message }
+  end
+
   def provider_data
     Provider[provider]
   end
@@ -66,5 +98,9 @@ class Service < ApplicationRecord
 
   register_provider(:foursquare) do |omniauth|
     { name: omniauth[:info][:email] }
+  end
+
+  register_provider(:withings2) do |_omniauth|
+    { name: 'Withings' }
   end
 end

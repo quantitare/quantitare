@@ -1,0 +1,122 @@
+---
+blood_pressure_diastolic:
+- :path: "/measure"
+  :params:
+    :action: getmeas
+    :meastype: 9
+    :category: 1
+  :response_config:
+    :key: mmhg
+    :type: 9
+blood_pressure_systolic:
+- :path: "/measure"
+  :params:
+    :action: getmeas
+    :meastype: 10
+    :category: 1
+  :response_config:
+    :key: mmhg
+    :type: 10
+body_temperature:
+- :path: "/measure"
+  :params:
+    :action: getmeas
+    :meastype: 12
+    :category: 1
+  :response_config:
+    :key: degrees_celsius
+    :type: 12
+- :path: "/measure"
+  :params:
+    :action: getmeas
+    :meastype: 71
+    :category: 1
+  :response_config:
+    :key: degrees_celsius
+    :type: 71
+active_calorie_burn:
+- :path: measure
+  :params:
+    :action: getintradayactivity
+    :data_fields: calories
+  :response_config:
+    :fields:
+      - :key: kcal
+        :value: calories
+floors_climbed:
+- :path: measure
+  :params:
+    :action: getintradayactivity
+    :data_fields: elevation
+  :response_config:
+    :fields:
+      - :key: count
+        :value: elevation
+heart_rate:
+- :path: measure
+  :params:
+    :action: getintradayactivity
+    :data_fields: heart_rate
+  :response_config:
+    :fields:
+      - :key: bpm
+        :value: heart_rate
+- :path: sleep
+  :params:
+    :action: get
+    :data_fields: hr
+  :response_config:
+    :individual_datapoints: true
+    :datapoint_name: hr
+    :key: bpm
+in_bed:
+- :path: sleep
+  :params:
+    action: get
+  :response_config:
+    :aggregate: true
+respiratory_rate:
+- :path: sleep
+  :params:
+    :action: get
+    :data_fields: rr
+  :response_config:
+    :individual_datapoints: true
+    :datapoint_name: rr
+    :key: breaths_per_minute
+sleep:
+- :path: sleep
+  :params:
+    :action: get
+spo2:
+- :path: "/measure"
+  :params:
+    :action: getmeas
+    :meastype: 54
+    :category: 1
+  :response_config:
+    :key: percent
+    :type: 54
+steps:
+- :path: measure
+  :params:
+    :action: getintradayactivity
+    :data_fields: steps
+  :response_config:
+    :fields:
+      - :key: count
+        :value: steps
+weight:
+- :path: "/measure"
+  :params:
+    :action: getmeas
+    :meastype: 1
+    :category: 1
+  :response_config:
+    :key: kg
+    :type: 1
+workout:
+- :path: measure
+  :params:
+    :action: getworkouts
+    :data_fields: "calories,distance,effduration,elevation,hr_average,hr_max,hr_min,hr_zone_0,hr_zone_1,hr_zone_2,hr_zone_3,intensity,pool_laps,pool_length,steps,strokes"

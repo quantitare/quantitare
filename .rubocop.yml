@@ -1,3 +1,6 @@
+require:
+  - rubocop-rails
+
 AllCops:
   Exclude:
     - 'spec/**/*'
@@ -7,9 +10,6 @@ AllCops:
     - 'config/**/*'
     - '**/*.haml'
     - '**/*.js.erb'
-
-Rails:
-  Enabled: true
 
 # Metrics
 

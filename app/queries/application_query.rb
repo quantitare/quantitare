@@ -60,7 +60,7 @@
 class ApplicationQuery
   include Callable
 
-  attr_reader :relation
+  attr_accessor :relation
 
   class << self
     attr_writer :required_params

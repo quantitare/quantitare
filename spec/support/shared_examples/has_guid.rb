@@ -4,10 +4,6 @@ require 'rails_helper'
 shared_examples_for HasGuid do
   it { should have_db_index :guid }
 
-  it 'does not initialize with the value set' do
-    expect(subject.guid).to be_nil
-  end
-
   it 'sets a value on save' do
     subject.save!
     expect(subject.guid).to be_present

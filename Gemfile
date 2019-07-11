@@ -30,11 +30,14 @@ gem 'sidekiq', '~> 5.0'
 # Utilities
 gem 'bcrypt', '~> 3.1.7'
 gem 'carmen', '~> 1.1.1'
+gem 'faraday'
+gem 'faraday_middleware'
 gem 'geocoder', '~> 1.5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.2.0'
 gem 'liquid'
 gem 'nokogiri', '~> 1.10.0'
+gem 'sidekiq-scheduler'
 gem 'virtus'
 
 # Extensions
@@ -54,6 +57,7 @@ gem 'omniauth', '~> 1.9.0'
 # Omniauth strategies
 gem 'omniauth-foursquare', '~> 1.0'
 gem 'omniauth-lastfm', '~> 0.0.7'
+gem 'omniauth-withings2'
 
 # API adapters
 gem 'foursquare2'
@@ -76,6 +80,10 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'dotenv-rails'
+
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -84,9 +92,6 @@ group :development do
 
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
-  gem 'rubocop'
-  gem 'rubocop-rspec'
 end
 
 group :test do

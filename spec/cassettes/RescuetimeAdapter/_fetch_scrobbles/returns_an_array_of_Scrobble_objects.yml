@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.rescuetime.com/anapi/data?format=csv&key=RESCUETIME_TEST_USER_TOKEN&operation=select&perspective=interval&resolution_time=minute&restrict_begin=2019-07-05&restrict_end=2019-07-08&restrict_kind=activity&version=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.rescuetime.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - text/csv; charset=utf-8
+      Date:
+      - Thu, 11 Jul 2019 03:16:29 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 1267d90f-e350-48b3-98c2-e06ae326ce42
+      X-Runtime:
+      - '0.327478'
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        Date,Time Spent (seconds),Number of People,Activity,Category,Productivity
+        2019-07-05T00:00:00,189,1,sublime text,Editing & IDEs,2
+        2019-07-05T00:00:00,55,1,Terminal,Systems Operations,2
+        2019-07-05T00:00:00,34,1,spark,Email,0
+        2019-07-05T00:00:00,22,1,Slack,Instant Message,0
+        2019-07-05T00:05:00,152,1,sublime merge,Editing & IDEs,2
+        2019-07-05T00:05:00,96,1,sublime text,Editing & IDEs,2
+        2019-07-05T00:05:00,22,1,todoist,Project Management,2
+        2019-07-05T00:05:00,15,1,Terminal,Systems Operations,2
+        2019-07-05T00:05:00,9,1,Slack,Instant Message,0
+        2019-07-05T00:05:00,3,1,huginn.tylerguillen.com,Internet Utilities,1
+        2019-07-05T00:05:00,3,1,users,General Software Development,2
+        2019-07-05T00:10:00,1,1,huginn.tylerguillen.com,Internet Utilities,1
+        2019-07-05T08:50:00,105,1,Slack,Instant Message,0
+        2019-07-05T08:50:00,76,1,spark,Email,0
+        2019-07-05T08:50:00,5,1,loginwindow,General Utilities,1
+        2019-07-05T08:50:00,2,1,youtube.com,Video,-2
+        2019-07-05T08:50:00,1,1,Safari,Browsers,0
+        2019-07-05T08:50:00,1,1,github.com,General Software Development,2
+        2019-07-05T08:55:00,9,1,spark,Email,0
+        2019-07-05T09:00:00,62,1,huginn.tylerguillen.com,Internet Utilities,1
+        2019-07-05T09:00:00,32,1,touchofmodern.com,General Shopping,-2
+        2019-07-05T09:00:00,24,1,rollbar.com,Quality Assurance,2
+        2019-07-05T09:00:00,16,1,Slack,Instant Message,0
+    http_version:
+  recorded_at: Thu, 11 Jul 2019 03:16:29 GMT
+recorded_with: VCR 5.0.0

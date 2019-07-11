@@ -57,6 +57,8 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('MAPBOX_API_KEY') { ENV['MAPBOX_API_KEY'] }
 
+  config.filter_sensitive_data('RESCUETIME_TEST_USER_TOKEN') { ENV['RESCUETIME_TEST_USER_TOKEN'] }
+
   config.filter_sensitive_data('WITHINGS_OAUTH_KEY') { ENV['WITHINGS_OAUTH_KEY'] }
   config.filter_sensitive_data('WITHINGS_OAUTH_SECRET') { ENV['WITHINGS_OAUTH_SECRET'] }
   config.filter_sensitive_data('WITHINGS_TEST_USER_ID') { ENV['WITHINGS_TEST_USER_ID'] }

@@ -9,10 +9,10 @@
     "choices.js": "^7.0.0",
     "css-loader": "^2.0.0",
     "jquery": "^3.4.1",
-    "lodash": "^4.17.11",
-    "luxon": "^1.16.0",
+    "lodash": "^4.17.14",
+    "luxon": "^1.16.1",
     "popper.js": "^1.15.0",
-    "query-string": "^6.7.0",
+    "query-string": "^6.8.1",
     "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.3",
     "turbolinks": "^5.2.0",
@@ -23,15 +23,19 @@
     "vue-template-compiler": "^2.6.10",
     "vue-turbolinks": "^2.0.4",
     "vuex": "^3.1.1",
-    "webpack": "^4.33.0"
+    "webpack": "^4.35.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.6",
     "file-loader": "^4.0.0",
     "sass-loader": "^7.1.0",
-    "webpack-cli": "^3.3.4",
-    "webpack-dev-server": "^3.7.1"
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
   }
 }

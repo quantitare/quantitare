@@ -7,7 +7,7 @@ class ServicesController < AuthenticatedController
   has_scope :for_place_metadata, type: :boolean
 
   def search
-    @services = apply_scopes(Service.available_to_user(current_user)).all
+    @services = apply_scopes(Service.available_to_user(current_user)).all.map(&:decorate)
 
     respond_to { |format| format.json }
   end

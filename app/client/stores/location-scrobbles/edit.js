@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.esm';
+import { promiseForDispatch } from 'utilities/store-helpers'
 
 const PE_CLOSED = 'closed';
 const PE_NEW = 'new';
@@ -44,10 +45,7 @@ export default {
     },
 
     updatePlace({ dispatch }, payload) {
-      return new Promise((resolve, reject) => {
-        dispatch('place/update', payload)
-          .then(() => resolve());
-      });
+      return promiseForDispatch(dispatch, 'place/update')
     },
 
     refreshLocationScrobble({ dispatch }, payload) {
@@ -56,24 +54,15 @@ export default {
     },
 
     updateLocationScrobble({ dispatch }, payload) {
-      return new Promise((resolve, reject) => {
-        dispatch('locationScrobble/update', payload)
-          .then(() => resolve());
-      });
+      return promiseForDispatch(dispatch, 'locationScrobble/update', payload)
     },
 
     refreshPlaceMatch({ dispatch }, payload) {
-      return new Promise((resolve, reject) => {
-        dispatch('placeMatch/update', payload)
-          .then(() => resolve());
-      });
+      return promiseForDispatch(dispatch, 'placeMatch/update', payload)
     },
 
     updatePlaceMatch({ dispatch }, payload) {
-      return new Promise((resolve, reject) => {
-        dispatch('placeMatch/update', payload)
-          .then(() => resolve());
-      });
+      return promiseForDispatch(dispatch, 'placeMatch/update', payload)
     },
 
     processPlaceId({ dispatch, state }) {

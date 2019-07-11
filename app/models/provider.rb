@@ -47,6 +47,7 @@ class Provider
   end
 
   alias provider_options oauth_opts
+  alias options oauth_opts
 
   def oauth?
     true

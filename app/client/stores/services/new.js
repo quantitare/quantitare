@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.esm'
+import { promiseForDispatch } from 'utilities/store-helpers'
 
 export default {
   actions: {
@@ -7,17 +8,11 @@ export default {
     },
 
     clearService({ dispatch }) {
-      return new Promise((resolve, reject) => {
-        dispatch('service/clear')
-          .then(() => resolve())
-      })
+      return promiseForDispatch(dispatch, 'service/clear')
     },
 
     updateService({ dispatch }, payload) {
-      return new Promise((resolve, reject) => {
-        dispatch('service/update', payload)
-          .then(() => resolve())
-      })
+      return promiseForDispatch(dispatch, 'service/update')
     }
   }
 }

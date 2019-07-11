@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.rescuetime.com/anapi/data?format=csv&key=RESCUETIME_TEST_USER_TOKEN&operation=select&perspective=interval&resolution_time=minute&restrict_begin=2019-07-05&restrict_end=2019-07-08&restrict_kind=activity&version=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.rescuetime.com
+  response:
+    status:
+      code: 429
+      message: Too Many Requests
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - text/csv; charset=utf-8
+      Date:
+      - Thu, 11 Jul 2019 03:11:28 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - '0598cf70-3ebc-4222-ae1d-65fb770d4b5a'
+      X-Runtime:
+      - '0.962921'
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"# too many requests","messages":"too many requests"}'
+    http_version:
+  recorded_at: Thu, 11 Jul 2019 03:11:29 GMT
+recorded_with: VCR 5.0.0

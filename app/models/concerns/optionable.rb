@@ -41,6 +41,7 @@
 #
 #   Thing.new({ foo: 'bar', options: { name: 'A cool name', description: 'A cool description' } })
 #
+# rubocop:disable Metrics/ModuleLength
 module Optionable
   extend ActiveSupport::Concern
 
@@ -96,18 +97,28 @@ module Optionable
       attribute_name.to_s.camelize
     end
 
-    # rubocop:disable Lint/UselessAssignment
+    # rubocop:disable Lint/UselessAssignment, Metrics/MethodLength
     def new_options_klass
       klass = Class.new do # Setting a local variable here so it doesn't mess up the bracket highlighter in my editor.
         include Virtus.model
         include ActiveModel::Validations
+
+        class << self
+          def config
+            attribute_set.map do |attribute|
+              attribute.options
+                .slice(:name, :display, :default, :required)
+                .merge(type: attribute.type.primitive.name.underscore)
+            end
+          end
+        end
 
         def inspect
           attributes
         end
       end
     end
-    # rubocop:enable Lint/UselessAssignment
+    # rubocop:enable Lint/UselessAssignment, Metrics/MethodLength
 
     def options_klass_constant_for(attribute_name)
       fq_klass_name = fq_options_klass_name_for(attribute_name)
@@ -157,6 +168,10 @@ module Optionable
     send("#{attribute_name}_type") || self.class.options_klass_for(attribute_name)
   end
 
+  def options_config_for(attribute_name)
+    options_klass_for(attribute_name).config
+  end
+
   def options_must_be_valid
     options_attributes.each_key do |attribute|
       value = public_send(attribute)
@@ -166,3 +181,4 @@ module Optionable
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength

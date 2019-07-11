@@ -11,6 +11,10 @@ FactoryBot.define do
       secret { SecureRandom.hex }
     end
 
+    trait :expired do
+      expires_at { 24.hours.ago }
+    end
+
     trait :withings2 do
       provider { :withings2 }
       token { ENV['WITHINGS_TEST_USER_TOKEN'] }
@@ -18,8 +22,9 @@ FactoryBot.define do
       options { { name: 'Withings' } }
     end
 
-    trait :expired do
-      expires_at { 24.hours.ago }
+    trait :rescuetime do
+      provider { :rescuetime }
+      token { ENV['RESCUETIME_TEST_USER_TOKEN'] }
     end
   end
 end

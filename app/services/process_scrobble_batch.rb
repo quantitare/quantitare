@@ -47,7 +47,7 @@ class ProcessScrobbleBatch
   end
 
   def clean_up_existing_scrobbles
-    source.scrobbles.overlapping_range(start_time, end_time).destroy_all
+    source.scrobbles_in_interval(start_time, end_time).destroy_all
   end
 
   def prepare_import

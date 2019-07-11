@@ -92,6 +92,10 @@ class Service < ApplicationRecord
     provider_data.secret
   end
 
+  def provider_options
+    provider_data.options
+  end
+
   register_provider(:default) do |omniauth|
     { name: omniauth[:info][:nickname] || omniauth[:info][:name] }
   end

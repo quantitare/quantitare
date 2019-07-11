@@ -13,9 +13,8 @@ module Scrobblers
     self.request_cadence = Rails.env.test? ? 0.seconds : 1.5.seconds
     self.request_chunk_size = 24.hours
 
-    fetch_in_chunks!
-
     requires_provider :withings2
+    fetches_in_chunks!
 
     configure_options(:options) do
       attribute :categories, Array[String], display: { selection: CATEGORIES }
@@ -32,9 +31,7 @@ module Scrobblers
     end
 
     def fetch_scrobbles(start_time, end_time)
-      scrobbles = adapter.fetch_scrobbles(start_time, end_time, categories: categories, cadence: request_cadence)
-
-      scrobbles.map { |scrobble| build_scrobble(scrobble) }
+      adapter.fetch_scrobbles(start_time, end_time, categories: categories, cadence: request_cadence)
     end
   end
 end

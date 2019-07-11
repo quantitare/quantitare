@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 ##
-# Fetches scrobbles from a scrobbler and processes them. Makes a direct call to the {Scrobbler#fetch_scrobbles} method
-# in order to handle errors directly. Meant as a way to
+# Fetches scrobbles from a scrobbler and processes them. Makes a direct call to the
+# {Scrobbler#fetch_and_format_scrobbles} method in order to handle errors directly. Meant as a way to
 #
 class ScrobblerFetchJob < ApplicationJob
   queue_as :fetch
@@ -32,7 +32,7 @@ class ScrobblerFetchJob < ApplicationJob
 
     return if scrobbler.service_issues?
 
-    scrobbles = scrobbler.fetch_scrobbles(start_time, end_time)
+    scrobbles = scrobbler.fetch_and_format_scrobbles(start_time, end_time)
     batch = ScrobbleBatch.new(scrobbles, source: scrobbler, start_time: start_time, end_time: end_time)
     result = processor.(batch)
 

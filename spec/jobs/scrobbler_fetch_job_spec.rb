@@ -10,12 +10,12 @@ RSpec.describe ScrobblerFetchJob do
   let(:action) { ScrobblerFetchJob.perform_now(scrobbler, 2.hours.ago, 1.hour.ago, processor: processor) }
 
   before do
-    allow(scrobbler).to receive(:fetch_scrobbles).and_return([instance_double(Scrobble)])
+    allow(scrobbler).to receive(:fetch_and_format_scrobbles).and_return([instance_double(Scrobble)])
   end
 
   describe '#perform' do
-    it 'calls #fetch_scrobbles on the scrobbler' do
-      expect(scrobbler).to receive(:fetch_scrobbles).and_return([instance_double(Scrobble)])
+    it 'calls #fetch_and_format_scrobbles on the scrobbler' do
+      expect(scrobbler).to receive(:fetch_and_format_scrobbles).and_return([instance_double(Scrobble)])
 
       action
     end
@@ -27,7 +27,7 @@ RSpec.describe ScrobblerFetchJob do
     end
 
     context 'when fetching scrobbles raises a config error' do
-      before { allow(scrobbler).to receive(:fetch_scrobbles).and_raise(Errors::ServiceConfigError) }
+      before { allow(scrobbler).to receive(:fetch_and_format_scrobbles).and_raise(Errors::ServiceConfigError) }
 
       it 'does not call the processor' do
         expect(processor).to_not receive(:call)
@@ -45,7 +45,7 @@ RSpec.describe ScrobblerFetchJob do
     end
 
     context 'when fetching scrobbles raises an API error' do
-      before { allow(scrobbler).to receive(:fetch_scrobbles).and_raise(Errors::ServiceAPIError) }
+      before { allow(scrobbler).to receive(:fetch_and_format_scrobbles).and_raise(Errors::ServiceAPIError) }
 
       it 'does not call the processor' do
         expect(processor).to_not receive(:call)
@@ -71,6 +71,6 @@ RSpec.describe ScrobblerFetchJob do
   end
 
   describe 'interface contracts' do
-    specify { expect(scrobbler).to respond_to(:fetch_scrobbles).with(2).arguments }
+    specify { expect(scrobbler).to respond_to(:fetch_and_format_scrobbles).with(2).arguments }
   end
 end

@@ -1,10 +1,9 @@
+import { promiseForDispatch } from 'utilities/store-helpers'
+
 export default {
   actions: {
     updateSetting({ dispatch }, payload) {
-      return new Promise((resolve, reject) => {
-        dispatch('settings/update', payload)
-          .then(() => resolve());
-      });
+      return promiseForDispatch(dispatch, 'settings/update', payload)
     }
   }
-};
+}

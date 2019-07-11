@@ -15,6 +15,7 @@
     "query-string": "^6.8.1",
     "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.3",
+    "string": "^3.3.3",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.10",
     "vue-data-scooper": "^0.7.1",

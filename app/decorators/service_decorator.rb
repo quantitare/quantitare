@@ -6,7 +6,11 @@
 class ServiceDecorator < ApplicationDecorator
   delegate_all
 
+  def display_name
+    h.omniauth_provider_name(provider)
+  end
+
   def label_text
-    "#{h.omniauth_provider_name(provider)} - #{name}"
+    "#{display_name} - #{name}"
   end
 end

@@ -6,6 +6,10 @@ FactoryBot.define do
 
     name { Faker::Lorem.words(1)[0] }
 
+    factory :rescuetime_scrobbler, class: Scrobblers::RescuetimeScrobbler do
+      service { create :service, :rescuetime }
+      options { { time_zone: 'Pacific Time (US & Canada)' } }
+    end
     factory :webhook_scrobbler, class: Scrobblers::WebhookScrobbler
     factory :withings_scrobbler, class: Scrobblers::WithingsScrobbler do
       service { create :service, :withings2 }

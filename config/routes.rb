@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :settings, only: [:index, :update]
   end
 
-  resources :services, only: [:index, :update, :destroy] do
+  resources :services, only: [:index, :new, :create, :update, :destroy] do
     collection do
       get :search
     end

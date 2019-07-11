@@ -21,6 +21,10 @@ module ApplicationHelper
     render opts
   end
 
+  def j_json_partial(*args)
+    j raw json_partial(*args)
+  end
+
   def default_vue_data
     { alerts: available_alerts }
   end
@@ -65,6 +69,13 @@ module ApplicationHelper
     link_to(
       omniauth_button_text(provider), user_omniauth_authorize_path(provider),
       class: "btn btn-secondary btn-service btn-service-#{provider}"
+    )
+  end
+
+  def non_omniauth_provider_button(provider, **link_options)
+    link_to(
+      omniauth_button_text(provider), new_service_path(service: { provider: provider }),
+      class: "btn btn-secondary btn-service btn-service-#{provider}", **link_options
     )
   end
 

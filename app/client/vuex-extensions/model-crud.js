@@ -5,7 +5,11 @@ export default {
 
   mutations: {
     update(state, payload) {
-      _.keys(payload).forEach((key) => state[key] = payload[key]);
+      _.keys(payload).forEach((key) => Vue.set(state, key, payload[key]))
+    },
+
+    clear(state) {
+      _.keys(state).forEach((key) => Vue.delete(state, key))
     },
 
     cacheOriginal(state) {
@@ -29,6 +33,13 @@ export default {
         commit('update', payload);
         resolve();
       });
+    },
+
+    clear({ commit }) {
+      return new Promise((resolve, reject) => {
+        commit('clear')
+        resolve()
+      })
     },
 
     cacheOriginal({ commit }) {

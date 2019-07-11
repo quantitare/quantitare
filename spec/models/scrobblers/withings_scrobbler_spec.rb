@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Scrobblers::WithingsScrobbler do
   let(:scrobbler) { create :withings_scrobbler }
 
-  describe '#fetch_scrobbles', :vcr do
+  describe '#fetch_and_format_scrobbles', :vcr do
     it 'returns a list of scrobbles' do
-      result = scrobbler.fetch_scrobbles(
+      result = scrobbler.fetch_and_format_scrobbles(
         Time.zone.parse('2019-07-01 05:27:04 UTC'),
         Time.zone.parse('2019-07-02 05:27:04 UTC')
       )

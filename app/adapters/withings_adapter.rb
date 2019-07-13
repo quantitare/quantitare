@@ -81,6 +81,8 @@ class WithingsAdapter
     raise Errors::ServiceConfigError.new(issue_reported: true) if service.issues?
 
     http_client.get("#{request.path}?#{request.params.to_query}")
+  rescue Faraday::TimeoutError
+    raise Errors::ServiceAPIError, "Request to service #{service.name} timed out"
   end
 
   def scrobbles_for_response(response, request)

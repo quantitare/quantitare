@@ -36,9 +36,9 @@ class RescuetimeAdapter
 
     def parsed_data
       {
-        name: data[:activity],
+        name: sanitize_encoding(data[:activity]),
         device_type: 'computer',
-        classification: data[:category],
+        classification: sanitize_encoding(data[:category]),
         seconds_spent: data[:time_spent_seconds].to_i,
         rating: rating
       }
@@ -52,6 +52,10 @@ class RescuetimeAdapter
       when 1 then 75
       when 2 then 100
       end
+    end
+
+    def sanitize_encoding(str)
+      Util.sanitize_encoding(str)
     end
   end
 end

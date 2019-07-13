@@ -10,5 +10,9 @@ module Util
       normalized_pair = pair.map { |trackpoint| [trackpoint.latitude, trackpoint.longitude] }
       Geocoder::Calculations.distance_between(normalized_pair[0], normalized_pair[1])
     end
+
+    def sanitize_encoding(str)
+      str.encode('UTF-8', invalid: :replace, undef: :replace, replace: '_')
+    end
   end
 end

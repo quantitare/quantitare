@@ -4,6 +4,8 @@
 # Basic CRUD for {Scrobbler}s
 #
 class ScrobblersController < AuthenticatedController
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found!
+
   def index
     @scrobblers = current_user.scrobblers.all.order(created_at: :desc)
   end
@@ -26,6 +28,14 @@ class ScrobblersController < AuthenticatedController
     @scrobbler = current_user.scrobblers.find(params[:id])
 
     redirect_to scrobblers_path if @scrobbler.update(scrobbler_params)
+  end
+
+  def destroy
+    @scrobbler = current_user.scrobblers.find(params[:id])
+
+    @scrobbler.destroy
+
+    redirect_to scrobblers_path
   end
 
   private

@@ -1,9 +1,13 @@
-<scrobbler-form :scrobbler="scrobbler" inline-template>
+
+
+<!-- <scrobbler-form :scrobbler="scrobbler" inline-template>
   <%=
     vue_form_with model: @scrobbler,
       scope: 'scrobbler',
       url: @scrobbler.new_record? ? scrobblers_path : scrobbler_path(@scrobbler) do |f|
   %>
+    <%= f.hidden_field :id %>
+
     <div class="row">
       <div class="col-md-6 pr-5">
         <model-errors :errors="scrobbler.errors"></model-errors>
@@ -58,4 +62,4 @@
       <div class="col-md-6 pl-5"></div>
     </div>
   <% end %>
-</scrobbler-form>
+</scrobbler-form> -->

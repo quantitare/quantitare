@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 const PE_CLOSED = 'closed';
 const PE_NEW = 'new';

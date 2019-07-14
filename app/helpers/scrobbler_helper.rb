@@ -13,7 +13,20 @@ module ScrobblerHelper
   def scrobbler_provider_options(scrobbler)
     scrobbler.valid_services_for(current_user).map do |service|
       service = service.decorate
-      [service.label_text, service.id]
+
+      {
+        label: service.label_text,
+        value: service.id,
+        selected: scrobbler.service == service
+      }
     end
+  end
+
+  def scrobbler_status_badge(scrobbler)
+    working = scrobbler.working?
+    text = working ? 'OK' : 'Error'
+    type = working ? 'success' : 'danger'
+
+    badge_tag text, type: type
   end
 end

@@ -1,6 +1,6 @@
 <% if @service.persisted? %>
   window.app.$store.dispatch('clearService')
-  Turbolinks.visit(window.location)
+  window.loacation.reload()
 <% else %>
   window.app.$store.dispatch(
     'refreshService',

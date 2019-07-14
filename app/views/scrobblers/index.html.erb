@@ -10,8 +10,8 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Age</th>
-        <th scope="col">Last scrobbled at</th>
-        <th scope="col">Scrobble count</th>
+        <th scope="col">Scrobbles</th>
+        <th scope="col">Status</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -20,18 +20,34 @@
       <% @scrobblers.each do |scrobbler| %>
         <tr>
           <th scope="row">
-            <%= scrobbler.name %>
+            <%= scrobbler.name %><br>
+            <span class="text-muted font-weight-normal"><%= humanize_type(scrobbler.type) %></span>
           </th>
+          <td><%= time_ago_in_words scrobbler.created_at %></td>
+          <td><%= scrobbler.scrobbles_count %></td>
+          <td><%= scrobbler_status_badge(scrobbler) %></td>
           <td>
-            <%= time_ago_in_words scrobbler.created_at %>
+            <div class="dropdown">
+              <button
+                class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                type="button"
+                id="dropdown_scrobbler_<%= scrobbler.guid %>"
+                data-toggle="dropdown"
+              >
+                <i class="fas fa-list"></i> Actions
+              </button>
+
+              <div class="dropdown-menu dropdown-menu-right">
+                <%= link_to edit_scrobbler_path(scrobbler), class: 'dropdown-item' do %>
+                  <i class="fas fa-edit"></i> Edit
+                <% end %>
+                <div class="dropdown-divider"></div>
+                <%= link_to scrobbler_path(scrobbler), class: 'dropdown-item', method: :delete do %>
+                  <i class="fas fa-trash"></i> Delete
+                <% end %>
+              </div>
+            </div>
           </td>
-          <td>
-            <%= time_ago_in_words scrobbler.last_scrobbled_at if scrobbler.last_scrobbled_at.present? %>
-          </td>
-          <td>
-            <%= scrobbler.scrobbles.size %>
-          </td>
-          <td></td>
         </tr>
       <% end %>
     </tbody>

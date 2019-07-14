@@ -1,8 +1,6 @@
 <template>
-  <select :id="id" :name="name" :disabled="disabled" @search="$emit('search', $event)" :multiple="multiple">
-    <slot>
-      <option value="" placeholder>Make a selection...</option>
-    </slot>
+  <select :id="id" :name="name" :disabled="disabled" v-model="myValue" @search="$emit('search', $event)" :multiple="multiple">
+    <slot></slot>
   </select>
 </template>
 
@@ -40,7 +38,8 @@ export default {
 
   data() {
     return {
-      choices: null
+      choices: null,
+      myValue: null
     };
   },
 
@@ -48,13 +47,13 @@ export default {
     choicesOptions() {
       if (this.path) return [];
 
-      const vm = this;
-
       return this.options.map((pair) => {
+        if (!(pair instanceof Array)) return pair
+
         return {
           value: pair[1],
           label: pair[0],
-          selected: pair[1] === vm.value
+          selected: this.shouldSelectValue(pair[1])
         };
       });
     }
@@ -84,20 +83,27 @@ export default {
       });
     },
 
-    changed(event) {
-      const value = event.detail.value
-      this.$emit('input', value);
-    }
+    shouldSelectValue(targetValue) {
+      return this.multiple ? this.value.includes(targetValue) : this.value === targetValue
+    },
   },
 
   watch: {
+    myValue() {
+      this.$emit('input', this.myValue);
+    },
+
     disabled(newValue) {
       if (newValue) {
         this.choices.disable();
       } else {
         this.choices.enable();
       }
-    }
+    },
+  },
+
+  created() {
+    this.myValue = this.value
   },
 
   mounted() {
@@ -118,7 +124,6 @@ export default {
     let mergedParams = _.merge(defaultParams, this.params);
     const el = document.getElementById(this.id);
     this.choices = new Choices(el, mergedParams);
-    el.addEventListener('addItem', this.changed);
 
     if (this.path) this.fetchOptionsFromPath();
   }

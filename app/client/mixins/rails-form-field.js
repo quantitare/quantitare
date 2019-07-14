@@ -4,6 +4,18 @@ export default {
   inject: ['model', 'scope'],
 
   props: {
+    model: {
+      default() {
+        return this.model
+      }
+    },
+
+    scope: {
+      default() {
+        return this.scope
+      }
+    },
+
     attribute: String,
   },
 

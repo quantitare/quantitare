@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :scrobblers, only: [:index, :new, :create] do
+  resources :scrobblers do
     collection do
       resource :type_data, only: [:show], as: 'scrobbler_type_data', controller: 'scrobblers/type_data'
     end

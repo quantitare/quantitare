@@ -56,6 +56,10 @@ class Scrobbler < ApplicationRecord
     end
   end
 
+  def working?
+    !service_issues?
+  end
+
   def source_identifier
     "#{type}_#{id}"
   end

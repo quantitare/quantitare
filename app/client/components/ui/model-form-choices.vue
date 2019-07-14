@@ -9,6 +9,7 @@
 
     :params="params"
     :options="options"
+    :multiple="multiple"
 
     :path="path"
     :pathDataFormatter="pathDataFormatter"
@@ -37,6 +38,8 @@ export default {
       type: Array,
       default() { return []; },
     },
+
+    multiple: Boolean,
 
     disabled: {
       type: Boolean,

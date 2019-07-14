@@ -19,7 +19,6 @@
     "vue": "^2.6.10",
     "vue-data-scooper": "^0.7.1",
     "vue-loader": "^15.7.0",
-    "vue-reactive-provide": "^0.3.0",
     "vue-resource": "^1.5.1",
     "vue-template-compiler": "^2.6.10",
     "vuex": "^3.1.1",

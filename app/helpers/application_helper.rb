@@ -26,7 +26,7 @@ module ApplicationHelper
     j raw json_partial(*args)
   end
 
-  def model_url_for(model)
+  def model_url_for(model, *args)
     model =
       if model.class.superclass == ApplicationRecord || model.class.superclass == ApplicationDecorator
         model
@@ -34,7 +34,7 @@ module ApplicationHelper
         model.becomes(model.class.superclass)
       end
 
-    url_for(model)
+    url_for(model, *args)
   end
 
   def default_vue_data

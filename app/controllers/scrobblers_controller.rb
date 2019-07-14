@@ -31,6 +31,10 @@ class ScrobblersController < AuthenticatedController
   private
 
   def scrobbler_params
-    params.require(:scrobbler).permit(:type, :name, :service_id, :earliest_data_at, options: {})
+    params.require(scrobbler_key).permit(:type, :name, :service_id, :earliest_data_at, :enabled, options: {})
+  end
+
+  def scrobbler_key
+    params[:scrobbler].present? ? :scrobbler : "scrobbler_#{@scrobbler.try(:id)}"
   end
 end

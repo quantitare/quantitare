@@ -68,6 +68,15 @@ class Scrobbler < ApplicationRecord
     scrobbles.overlapping_range(*denormalize_times(from, to))
   end
 
+  def enabled
+    !disabled
+  end
+
+  def enabled=(value)
+    self.disabled = value
+    self.disabled = !disabled
+  end
+
   def enable!
     update!(disabled: false)
   end

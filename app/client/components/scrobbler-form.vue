@@ -88,7 +88,6 @@ export default {
     loadTypeOptions(type) {
       this.$http.get('/scrobblers/type_data', { params: { type: type, scrobbler_id: this.model.id } }).then(
         (response) => {
-          console.log(Object.assign({}, response))
           this.updateScrobbler(response.body.scrobbler)
             .then(() => this.scrobblerMetadata = response.body)
         },

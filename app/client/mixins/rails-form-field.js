@@ -48,9 +48,11 @@ export default {
     },
 
     attributeNesting() {
-      const nestings = this.attribute.split('.');
+      const nestings = this.attribute.split('.')
+      const base = nestings.map((node) => `[${_.snakeCase(node)}]`).join('')
+      const append = this.value instanceof Array ? '[]' : ''
 
-      return nestings.map((node) => `[${_.snakeCase(node)}]`).join('');
+      return `${base}${append}`
     }
   },
 

@@ -30,7 +30,7 @@ module Schedulable
   DEFAULT_SCHEDULES = {
     CHECK_FULL => '7d',
     CHECK_DEEP => '1d',
-    CHECK_MEDIUM => '6h',
+    CHECK_MEDIUM => '5h',
     CHECK_SHALLOW => '5m'
   }.freeze
 

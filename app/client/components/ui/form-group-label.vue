@@ -1,5 +1,5 @@
 <template>
-  <label v-if="layout === 'narrow'">
+  <label v-if="layout === 'narrow'" class="mb-1">
     <slot></slot>
   </label>
 

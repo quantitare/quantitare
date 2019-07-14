@@ -10,6 +10,16 @@ module ScrobblerHelper
     end
   end
 
+  def type_options_for_scrobbler(scrobbler)
+    Scrobbler.types.map do |type|
+      {
+        label: humanize_type(type.name),
+        value: type.name,
+        selected: scrobbler.type.to_s == type.name
+      }
+    end
+  end
+
   def scrobbler_provider_options(scrobbler)
     scrobbler.valid_services_for(current_user).map do |service|
       service = service.decorate
@@ -28,5 +38,9 @@ module ScrobblerHelper
     type = working ? 'success' : 'danger'
 
     badge_tag text, type: type
+  end
+
+  def scrobbler_schedule_options(_scrobbler)
+    Scheduler.available_schedules.map { |schedule| { label: schedule, value: schedule } }
   end
 end

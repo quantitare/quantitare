@@ -1,11 +1,6 @@
 <% content_for :title, 'New Scrobbler' %>
 
-<div class="row border-bottom pb-2">
-  <h2>Create a new Scrobbler</h2>
-</div>
+<%= vuex_store_tag :scrobblers_new %>
+<%= vue_data_tag data: { scrobbler: json_partial('scrobbler', locals: { scrobbler: @scrobbler }) } %>
 
-<div class="row py-4">
-  <div class="col-md-12">
-    <%= render 'form' %>
-  </div>
-</div>
+<scrobbler-new :available-type-options="<%= type_options_for_scrobbler(@scrobbler).to_json %>"></scrobbler-new>

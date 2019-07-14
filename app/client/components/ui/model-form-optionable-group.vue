@@ -6,6 +6,7 @@
         :options="selectionOptions"
         :multiple="selectMultiple"
         :params="selectParams"
+        :default="options.default"
       ></model-form-choices>
     </template>
   </model-form-group>
@@ -16,7 +17,6 @@ export default {
   props: {
     options: Object,
     baseAttributeName: String,
-    model: Object,
     layout: { type: String, default: 'wide' },
   },
 
@@ -50,6 +50,6 @@ export default {
     selectMultiple() {
       return this.options.type === 'array'
     },
-  }
+  },
 }
 </script>

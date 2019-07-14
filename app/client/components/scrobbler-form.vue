@@ -8,11 +8,15 @@
     </div>
 
     <model-form :model="model" scope="scrobbler">
-      <model-form-group v-if="model.isNewRecord" attribute="type" layout="narrow"></model-form-group>
-
-      <model-form-group attribute="name" layout="narrow"></model-form-group>
+      <model-form-group v-if="model.isNewRecord" attribute="type" layout="narrow">
+        <template slot="fields">
+          <model-form-choices attribute="type" :options="availableTypeOptions"></model-form-choices>
+        </template>
+      </model-form-group>
 
       <div v-if="scrobblerMetadata.ready" class="scrobbler-options">
+        <model-form-group attribute="name" layout="narrow"></model-form-group>
+
         <model-form-group v-if="scrobblerMetadata.requiresProvider" attribute="serviceId" layout="narrow">
           <template slot="fields">
             <model-form-choices
@@ -26,13 +30,28 @@
           v-for="option in scrobblerMetadata.options"
           :key="option.name"
           :options="option"
-          :model="model.options"
           base-attribute-name="options"
           layout="narrow"
         ></model-form-optionable-group>
 
         <div v-if="showAdvanced" id="advanced">
-          <model-form-group attribute="earliestDataAt" layout="narrow" inputType="datetime-local"></model-form-group>
+          <model-form-group
+            attribute="earliestDataAt" layout="narrow" inputType="datetime-local" :desc="earliestDataAtDesc"
+          ></model-form-group>
+
+          <div class="row">
+            <page-subheader-2 :cozy="true">Schedules</page-subheader-2>
+          </div>
+
+          <div class="row">
+            <div class="col"><scrobbler-schedule-field :metadata="scrobblerMetadata" schedule="shallow" /></div>
+            <div class="col"><scrobbler-schedule-field :metadata="scrobblerMetadata" schedule="medium" /></div>
+          </div>
+
+          <div class="row">
+            <div class="col"><scrobbler-schedule-field :metadata="scrobblerMetadata" schedule="deep" /></div>
+            <div class="col"><scrobbler-schedule-field :metadata="scrobblerMetadata" schedule="full" /></div>
+          </div>
         </div>
 
         <div class="row"><model-form-submit /></div>
@@ -42,16 +61,22 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  props: {
+    availableTypeOptions: { type: Array, default: () => { return [] } }
+  },
+
   data() {
     return {
       scrobblerMetadata: {
         ready: false
       },
 
-      showAdvanced: false
+      showAdvanced: false,
+
+      earliestDataAtDesc: 'The earliest date for which you expect the service to have data.'
     }
   },
 
@@ -63,64 +88,26 @@ export default {
     loadTypeOptions(type) {
       this.$http.get('/scrobblers/type_data', { params: { type: type, scrobbler_id: this.model.id } }).then(
         (response) => {
-          this.scrobblerMetadata = response.body
+          console.log(Object.assign({}, response))
+          this.updateScrobbler(response.body.scrobbler)
+            .then(() => this.scrobblerMetadata = response.body)
         },
 
         (response) => {
           console.log('oops') // TODO: Handle HTTP errors better
         }
       )
-    }
+    },
+
+    ...mapActions(['updateScrobbler'])
   },
 
   mounted() {
     this.loadTypeOptions(this.model.type)
+
+    this.$watch('model.type', (newVal, oldVal) => {
+      if (newVal !== oldVal) this.loadTypeOptions(newVal)
+    })
   }
 }
-
-// import choices from 'components/choices';
-// import modelErrors from 'components/model-errors';
-
-// export default {
-//   components: { choices, modelErrors },
-
-//   props: {
-//     scrobbler: Object,
-//   },
-
-//   data() {
-//     return {
-//       scrobblerMetadata: {
-//         ready: false
-//       }
-//     };
-//   },
-
-//   methods: {
-//     typeChanged(value) {
-//       this.scrobbler.type = value;
-//       this.loadTypeOptions(this.scrobbler.type);
-//     },
-
-//     loadTypeOptions(type) {
-//       this.$http.get('/scrobblers/type_data', { params: { type: type, scrobbler_id: this.scrobbler.id } }).then(
-//         (response) => {
-//           this.scrobblerMetadata = response.body
-
-//           if (!response.body.scrobbler) return
-
-//           _.keys(response.body.scrobbler).forEach((key) => this.$set(this.scrobbler, key, response.body.scrobbler[key]))
-//         },
-
-//         (response) => {
-//           console.log('oops'); // TODO: Display some error message.
-//         }
-//       );
-//     }
-//   },
-
-//   mounted() {
-//     this.loadTypeOptions(this.scrobbler.type);
-//   }
-// };
 </script>

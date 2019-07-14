@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group row">
+  <div :class="wrapperClassName">
     <form-group-label v-if="label" :for="fieldId" :layout="layout">
       <slot>{{ friendlyAttribute }}</slot>
     </form-group-label>
@@ -40,7 +40,8 @@ export default {
     disabled: Boolean,
     readonly: Boolean,
 
-    layout: { type: String, default: 'wide' }
+    layout: { type: String, default: 'wide' },
+    row: { type: Boolean, default: true }
   },
 
   computed: {
@@ -54,6 +55,10 @@ export default {
 
     wideLayout() {
       return this.layout !== 'narrow'
+    },
+
+    wrapperClassName() {
+      return this.row ? 'form-group row' : 'form-group'
     }
   }
 };

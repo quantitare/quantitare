@@ -3,7 +3,7 @@
 json.key_format! camelize: :lower
 
 json.extract! scrobbler,
-  :id, :type, :name, :service_id, :earliest_data_at
+  :id, :type, :name, :service_id, :earliest_data_at, :schedules
 
 json.options { json.merge! scrobbler.options.to_h }
 

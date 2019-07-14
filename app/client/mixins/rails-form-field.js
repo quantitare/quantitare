@@ -4,23 +4,16 @@ export default {
   inject: ['model', 'scope'],
 
   props: {
-    model: {
-      default() {
-        return this.model
-      }
-    },
-
-    scope: {
-      default() {
-        return this.scope
-      }
-    },
-
     attribute: String,
+    default: null,
   },
 
   computed: {
     value() {
+      return this.attributeOnModel === undefined ? this.default : this.attributeOnModel
+    },
+
+    attributeOnModel() {
       return  _.get(this.model, this.attribute);
     },
 

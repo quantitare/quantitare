@@ -17,7 +17,7 @@ module Scrobblers
     fetches_in_chunks!
 
     configure_options(:options) do
-      attribute :categories, Array[String], display: { selection: CATEGORIES }
+      attribute :categories, Array[String], default: proc { [] }, display: { selection: CATEGORIES }
 
       validate do |object|
         errors[:categories] << 'must contain valid categories' if object.categories.any? { |cat| !cat.in?(CATEGORIES) }

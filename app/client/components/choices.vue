@@ -48,13 +48,7 @@ export default {
       if (this.path) return [];
 
       return this.options.map((pair) => {
-        if (!(pair instanceof Array)) return pair
-
-        return {
-          value: pair[1],
-          label: pair[0],
-          selected: this.shouldSelectValue(pair[1])
-        };
+        return pair instanceof Array ? this.arrayOptions(pair) : this.objectOptions(pair)
       });
     }
   },
@@ -81,6 +75,18 @@ export default {
             console.log(error); // TODO
           });
       });
+    },
+
+    arrayOptions(pair) {
+      return {
+        value: pair[1],
+        label: pair[0],
+        selected: this.shouldSelectValue(pair[1])
+      }
+    },
+
+    objectOptions(pair) {
+      return _.extend({ selected: this.shouldSelectValue(pair.value) }, pair)
     },
 
     shouldSelectValue(targetValue) {

@@ -29,5 +29,9 @@ module Scheduler
         ]
       end.to_h
     end
+
+    def available_schedules
+      SCHEDULES_TO_CRON.keys
+    end
   end
 end

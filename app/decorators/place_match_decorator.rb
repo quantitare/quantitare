@@ -3,7 +3,7 @@
 ##
 # Adds presentation logic for a {PlaceMatch}
 #
-class PlaceMatchDecorator < Draper::Decorator
+class PlaceMatchDecorator < ApplicationDecorator
   delegate_all
 
   def enabled?

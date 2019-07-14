@@ -1,15 +1,4 @@
-import Vue from 'vue/dist/vue.esm'
-import { promiseForDispatch } from 'utilities/store-helpers'
+import scrobblerStore from 'stores/scrobblers/_scrobbler'
+import { extend } from 'lodash'
 
-export default {
-  actions: {
-    refreshScrobbler({ dispatch }, payload) {
-      dispatch('updateScrobbler', payload)
-        .then(() => dispatch('scrobbler/cacheOriginal'))
-    },
-
-    updateScrobbler({ dispatch }, payload) {
-      return promiseForDispatch(dispatch, 'scrobbler/update', payload)
-    }
-  }
-}
+export default extend({}, scrobblerStore)

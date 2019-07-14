@@ -3,6 +3,7 @@
 ##
 # Helper methods for controllers & views.
 #
+# rubocop:disable Metrics/ModuleLength
 module ApplicationHelper
   def available_alerts
     flash.map do |level, content|
@@ -141,3 +142,4 @@ module ApplicationHelper
     type.gsub(/^.*::/, '').titleize
   end
 end
+# rubocop:enable Metrics/ModuleLength

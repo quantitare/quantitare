@@ -5,7 +5,18 @@ export default {
 
   mutations: {
     update(state, payload) {
-      _.keys(payload).forEach((key) => Vue.set(state, key, payload[key]))
+      _.keys(payload).forEach((key) => {
+        let currentLevel = state
+        let currentKey = key
+        const subkeys = key.split('.')
+
+        subkeys.forEach((subkey, idx) => {
+          if (idx < subkeys.length - 1) currentLevel = currentLevel[subkey]
+          currentKey = subkey
+        })
+
+        Vue.set(currentLevel, currentKey, payload[key])
+      })
     },
 
     clear(state) {

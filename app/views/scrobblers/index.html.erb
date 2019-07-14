@@ -10,8 +10,9 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Age</th>
-        <th scope="col">Last scrobbled at</th>
-        <th scope="col">Scrobble count</th>
+        <th scope="col">Scrobbles</th>
+        <th scope="col">Status</th>
+        <th scope="col">Enabled</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -20,18 +21,54 @@
       <% @scrobblers.each do |scrobbler| %>
         <tr>
           <th scope="row">
-            <%= scrobbler.name %>
+            <%= scrobbler.name %><br>
+            <span class="text-muted font-weight-normal"><%= humanize_type(scrobbler.type) %></span>
           </th>
+          <td><%= time_ago_in_words scrobbler.created_at %></td>
+          <td><%= scrobbler.scrobbles_count %></td>
+          <td><%= scrobbler_status_badge(scrobbler) %></td>
           <td>
-            <%= time_ago_in_words scrobbler.created_at %>
+            <reactive-form
+              form-id="<%= "scrobbler_#{scrobbler.id}_form" %>"
+              :model="<%= "scrobbler_#{scrobbler.id}" %>"
+            >
+              <%=
+                vue_form_with model: scrobbler,
+                  scope: "scrobbler_#{scrobbler.id}",
+                  id: "scrobbler_#{scrobbler.id}_form",
+                  url: model_url_for(scrobbler) do |f|
+              %>
+                <div class="custom-control custom-switch">
+                  <%= f.check_box :enabled, class: 'custom-control-input' %>
+                  <%= f.label :enabled, class: 'custom-control-label' %>
+                </div>
+
+                <div class="d-none"><%= f.submit data: { 'disable-with': 'Saving...' } %></div>
+              <% end %>
+            </reactive-form>
           </td>
           <td>
-            <%= time_ago_in_words scrobbler.last_scrobbled_at if scrobbler.last_scrobbled_at.present? %>
+            <div class="dropdown">
+              <button
+                class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                type="button"
+                id="dropdown_scrobbler_<%= scrobbler.guid %>"
+                data-toggle="dropdown"
+              >
+                <i class="fas fa-list"></i> Actions
+              </button>
+
+              <div class="dropdown-menu dropdown-menu-right py-1">
+                <%= link_to edit_scrobbler_path(scrobbler), class: 'dropdown-item' do %>
+                  <i class="fas fa-edit"></i> Edit
+                <% end %>
+                <div class="dropdown-divider my-1"></div>
+                <%= link_to scrobbler_path(scrobbler), class: 'dropdown-item', method: :delete do %>
+                  <i class="fas fa-trash text-danger"></i> Delete
+                <% end %>
+              </div>
+            </div>
           </td>
-          <td>
-            <%= scrobbler.scrobbles.size %>
-          </td>
-          <td></td>
         </tr>
       <% end %>
     </tbody>

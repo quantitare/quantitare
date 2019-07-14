@@ -16,7 +16,7 @@ export default {
     return {
       model: this.model,
       scope: this.scope
-    };
+    }
   },
 
   props: {

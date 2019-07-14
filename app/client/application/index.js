@@ -11,7 +11,6 @@ import _ from 'lodash';
 
 import Vue from 'vue/dist/vue.esm';
 
-import TurbolinksAdapter from 'vue-turbolinks';
 import VueResource from 'vue-resource';
 import Vuex from 'vuex';
 import VueDataScooper from 'vue-data-scooper';
@@ -19,7 +18,6 @@ import VueDataScooper from 'vue-data-scooper';
 import { mapState } from 'vuex';
 
 import Rails from 'rails-ujs';
-import Turbolinks from 'turbolinks';
 import * as ActiveStorage from 'activestorage';
 
 import registerRequiredComponents from 'utilities/register-required-components';
@@ -28,10 +26,8 @@ import loadVuexData from 'utilities/load-vuex-data';
 import 'styles/application';
 
 Rails.start();
-Turbolinks.start();
 ActiveStorage.start();
 
-Vue.use(TurbolinksAdapter);
 Vue.use(VueResource);
 Vue.use(Vuex);
 Vue.use(VueDataScooper);
@@ -51,7 +47,7 @@ registerRequiredComponents(viewComponent, '$1-view');
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   // Set a CSRF token header in every VueResource HTTP request.
   Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -72,6 +68,7 @@ document.addEventListener('turbolinks:load', () => {
     el.querySelectorAll('.vue-data').forEach((element) => moduleStates = _.merge(moduleStates, element.dataset));
     moduleStates = _.mapValues(moduleStates, (value) => JSON.parse(value));
     moduleNames = moduleNames.concat(_.keys(moduleStates));
+
 
     const availableModules = loadVuexData(moduleComponents);
     const modules = _.pick(availableModules, moduleNames);
@@ -97,11 +94,6 @@ document.addEventListener('turbolinks:load', () => {
       store,
 
       computed: mapState(['alerts']),
-
-      mounted() {
-        // Allow fontawesome SVG icons to be loaded with Turbolinks.
-        FontAwesome.dom.i2svg();
-      }
     });
   }
 });

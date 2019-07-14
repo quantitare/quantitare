@@ -21,7 +21,7 @@ export default {
 
   props: {
     model: Object,
-    scope: String
-  }
+    scope: String,
+  },
 };
 </script>

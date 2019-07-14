@@ -15,7 +15,6 @@ gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
 
 # Front-end core
 gem 'sass-rails', '~> 5.0'
-gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby

@@ -14,7 +14,7 @@ module Schedulable
     scope :scheduled_for, ->(schedule) { Scrobblers::ScheduledForQuery.(all, schedule: schedule) }
 
     attribute :schedules, :json, default: DEFAULT_SCHEDULES
-    attribute :earliest_data_at, :datetime, default: -> { 15.years.ago }
+    attribute :earliest_data_at, :datetime, default: -> { 15.years.ago.beginning_of_day }
   end
 
   # A list of checks, ordered by depth
@@ -30,7 +30,7 @@ module Schedulable
   DEFAULT_SCHEDULES = {
     CHECK_FULL => '7d',
     CHECK_DEEP => '1d',
-    CHECK_MEDIUM => '6h',
+    CHECK_MEDIUM => '5h',
     CHECK_SHALLOW => '5m'
   }.freeze
 

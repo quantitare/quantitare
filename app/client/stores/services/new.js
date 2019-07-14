@@ -12,7 +12,7 @@ export default {
     },
 
     updateService({ dispatch }, payload) {
-      return promiseForDispatch(dispatch, 'service/update')
+      return promiseForDispatch(dispatch, 'service/update', payload)
     }
   }
 }

@@ -3,6 +3,7 @@
 ##
 # Helper methods for controllers & views.
 #
+# rubocop:disable Metrics/ModuleLength
 module ApplicationHelper
   def available_alerts
     flash.map do |level, content|
@@ -25,12 +26,27 @@ module ApplicationHelper
     j raw json_partial(*args)
   end
 
+  def model_url_for(model, *args)
+    model =
+      if model.class.superclass == ApplicationRecord || model.class.superclass == ApplicationDecorator
+        model
+      else
+        model.becomes(model.class.superclass)
+      end
+
+    url_for(model, *args)
+  end
+
   def default_vue_data
     { alerts: available_alerts }
   end
 
   def friendly_format_time(time)
     time.strftime('%-d %b %Y %l:%M:%S%P')
+  end
+
+  def badge_tag(content = '', type: 'secondary')
+    content_tag :span, content, class: "badge badge-#{type}"
   end
 
   def icon_tag(icon_class, options = {})
@@ -126,3 +142,4 @@ module ApplicationHelper
     type.gsub(/^.*::/, '').titleize
   end
 end
+# rubocop:enable Metrics/ModuleLength

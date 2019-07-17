@@ -56,6 +56,7 @@ gem 'omniauth', '~> 1.9.0'
 # Omniauth strategies
 gem 'omniauth-foursquare', '~> 1.0'
 gem 'omniauth-lastfm', '~> 0.0.7'
+gem 'omniauth-trakt'
 gem 'omniauth-withings2'
 
 # API adapters

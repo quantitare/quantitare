@@ -56,8 +56,8 @@ class Service < ApplicationRecord
     end
   end
 
-  def expired?
-    Time.current > expires_at
+  def expired?(at_time = Time.current)
+    at_time > expires_at
   rescue ArgumentError
     false
   end
@@ -102,6 +102,10 @@ class Service < ApplicationRecord
 
   register_provider(:foursquare) do |omniauth|
     { name: omniauth[:info][:email] }
+  end
+
+  register_provider(:trakt) do |_omniauth|
+    { name: 'Trakt.tv' }
   end
 
   register_provider(:withings2) do |_omniauth|

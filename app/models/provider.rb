@@ -94,6 +94,15 @@ class Provider
   )
 
   Provider.register(
+    :trakt, 'TRAKT_OAUTH_KEY', 'TRAKT_OAUTH_SECRET',
+    strategy_class: OmniAuth::Strategies::Trakt,
+
+    icon_css_class: 'fas fa-film',
+    icon_text_color: '#fff',
+    icon_bg_color: '#ed1a25'
+  )
+
+  Provider.register(
     :withings2, 'WITHINGS_OAUTH_KEY', 'WITHINGS_OAUTH_SECRET',
     strategy_class: OmniAuth::Strategies::Withings2,
 

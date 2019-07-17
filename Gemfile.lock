@@ -253,6 +253,9 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    omniauth-trakt (0.0.3)
+      omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-withings2 (0.2.0)
       omniauth-oauth2 (~> 1.4)
     orm_adapter (0.5.0)
@@ -486,6 +489,7 @@ DEPENDENCIES
   omniauth (~> 1.9.0)
   omniauth-foursquare (~> 1.0)
   omniauth-lastfm (~> 0.0.7)
+  omniauth-trakt
   omniauth-withings2
   pg (>= 0.18, < 2.0)
   pry-byebug

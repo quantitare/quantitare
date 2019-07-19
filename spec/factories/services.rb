@@ -15,16 +15,23 @@ FactoryBot.define do
       expires_at { 24.hours.ago }
     end
 
+    trait :rescuetime do
+      provider { :rescuetime }
+      token { ENV['RESCUETIME_TEST_USER_TOKEN'] }
+    end
+
+    trait :trakt do
+      provider { :trakt }
+      token { ENV['TRAKT_TEST_USER_TOKEN'] }
+      refresh_token { ENV['TRAKT_TEST_USER_REFRESH_TOKEN'] }
+      options { { name: 'Trakt.tv' } }
+    end
+
     trait :withings2 do
       provider { :withings2 }
       token { ENV['WITHINGS_TEST_USER_TOKEN'] }
       refresh_token { ENV['WITHINGS_TEST_USER_REFRESH_TOKEN'] }
       options { { name: 'Withings' } }
-    end
-
-    trait :rescuetime do
-      provider { :rescuetime }
-      token { ENV['RESCUETIME_TEST_USER_TOKEN'] }
     end
   end
 end

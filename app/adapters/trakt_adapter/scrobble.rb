@@ -9,16 +9,11 @@ class TraktAdapter
 
     class << self
       def from_api(response, categories: CATEGORY_MAPPINGS.keys)
-        verify_response(response)
-
         response.body.map do |raw_scrobble|
           next unless raw_scrobble['type'].in?(source_types_for_categories(categories))
 
           generator_for_raw(raw_scrobble).to_scrobble
         end.compact
-      end
-
-      def verify_response(response)
       end
 
       private

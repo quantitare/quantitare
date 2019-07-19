@@ -6,6 +6,11 @@ module Scrobblers
   #
   class TraktScrobbler < Scrobbler
     CATEGORIES = %w[movie tv].freeze
+    CHECK_DEPTHS = {
+      CHECK_DEEP => 1.year,
+      CHECK_MEDIUM => 1.month,
+      CHECK_SHALLOW => 1.week
+    }.freeze
 
     self.request_cadence = Rails.env.test? ? 0.seconds : 0.25.seconds
 
@@ -26,6 +31,10 @@ module Scrobblers
 
     def adapter
       TraktAdapter.new(service)
+    end
+
+    def fetch_scrobbles(start_time, end_time)
+      adapter.fetch_scrobbles(start_time, end_time, categories: categories, cadence: request_cadence)
     end
   end
 end

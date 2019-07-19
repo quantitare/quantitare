@@ -5,7 +5,11 @@
 #
 class TraktAdapter
   Request = Struct.new(:path, :params)
-  Response = Struct.new(:body, :page, :page_count)
+  Response = Struct.new(:body, :status, :success, :page, :page_count) do
+    def success?
+      success
+    end
+  end
 
   API_URL = 'https://api.trakt.tv'
   CATEGORY_MAPPINGS = { tv: 'episode', movie: 'movie' }.freeze
@@ -40,7 +44,11 @@ class TraktAdapter
   end
 
   def fetch(request)
-    parse_response(http_client.get("#{request.path}?#{(request.params || {}).to_query}"))
+    response = parse_response(http_client.get("#{request.path}?#{(request.params || {}).to_query}"))
+
+    verify_response(response)
+
+    response
   rescue Faraday::TimeoutError
     raise Errors::ServiceAPIError, "Request to service #{service.name} timed out"
   end
@@ -54,9 +62,15 @@ class TraktAdapter
   def parse_response(http_response)
     Response.new(
       http_response.body,
+      http_response.status,
+      http_response.success?,
       http_response.headers['X-Pagination-Page'],
       http_response.headers['X-Pagination-Page-Count']
     )
+  end
+
+  def verify_response(response)
+    TraktAdapter::ResponseVerifier.new(response).process!
   end
 
   def more_pages?(response)

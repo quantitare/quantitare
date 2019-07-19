@@ -34,5 +34,25 @@ RSpec.describe TraktAdapter, :vcr do
     it 'returns scrobbles that have a timestamp' do
       expect(action.all? { |item| item.timestamp.present? }).to be(true)
     end
+
+    it 'raises an API error if we are rate limited' do
+      expect { action }.to raise_error(Errors::ServiceAPIError)
+    end
+
+    it 'raises a config error if we get a 4xx error' do
+      expect { action }.to raise_error(Errors::ServiceConfigError)
+    end
+
+    it 'raises an API error if we get a 5xx error' do
+      expect { action }.to raise_error(Errors::ServiceAPIError)
+    end
+
+    context 'when the token is invalid' do
+      let(:service) { create :service, :trakt, token: 'some_nonsense' }
+
+      it 'raises a config error' do
+        expect { action }.to raise_error(Errors::ServiceConfigError)
+      end
+    end
   end
 end

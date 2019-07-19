@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.trakt.tv/users/me/history?end_at=2019-02-15T00:00:00Z&page=0&start_at=2019-02-01T00:00:00Z
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Trakt-Api-Key:
+      - TRAKT_OAUTH_KEY
+      Trakt-Api-Version:
+      - '2'
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer TRAKT_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 503
+      message: Service Unavailable
+    headers:
+      Date:
+      - Fri, 19 Jul 2019 06:12:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '796'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d49d304f236595005140f11dd89e15bb61563516730; expires=Sat, 18-Jul-20
+        06:12:10 GMT; path=/; domain=.trakt.tv; HttpOnly
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Cf-Railgun:
+      - 337f64e0f7 99.99 0.021678 0030 57da
+      Etag:
+      - W/"a335aed19c8e3a96a4d54b1c276cde7c"
+      Last-Modified:
+      - Mon, 15 Jul 2019 09:00:44 GMT
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Pagination-Item-Count:
+      - '17'
+      X-Pagination-Limit:
+      - '10'
+      X-Pagination-Page:
+      - '1'
+      X-Pagination-Page-Count:
+      - '2'
+      X-Private-User:
+      - 'true'
+      X-Request-Id:
+      - a6399f76-aae9-416b-8b15-60d141979b02
+      X-Runtime:
+      - '0.018299'
+      X-Xss-Protection:
+      - 1; mode=block
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4f8a8acf3cbfd0f4-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version:
+  recorded_at: Fri, 19 Jul 2019 06:12:10 GMT
+recorded_with: VCR 5.0.0

@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.trakt.tv/users/me/history?end_at=2019-02-15T00:00:00Z&page=0&start_at=2019-02-01T00:00:00Z
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Trakt-Api-Key:
+      - TRAKT_OAUTH_KEY
+      Trakt-Api-Version:
+      - '2'
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer some_nonsense
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 19 Jul 2019 06:03:45 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d19a7d21d714f3dd9d1fedbbfc32941931563516225; expires=Sat, 18-Jul-20
+        06:03:45 GMT; path=/; domain=.trakt.tv; HttpOnly
+      Cache-Control:
+      - max-age=0, private, no-cache, no-store, must-revalidate
+      Cf-Railgun:
+      - ff4c370144 99.99 0.020971 0030 57da
+      Vary:
+      - Accept-Encoding
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_token", error_description="The access
+        token is invalid"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 4efdd34b-4eff-45c0-810b-435dc2c3dd0b
+      X-Runtime:
+      - '0.005742'
+      X-Xss-Protection:
+      - 1; mode=block
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4f8a7e76ad419bc7-SJC
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 19 Jul 2019 06:03:45 GMT
+recorded_with: VCR 5.0.0

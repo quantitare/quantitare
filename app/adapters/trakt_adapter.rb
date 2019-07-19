@@ -37,7 +37,7 @@ class TraktAdapter
     while more_pages?(responses.last)
       sleep cadence
 
-      responses << fetch(request_for_history(start_time, end_time, page: responses.last.page_count))
+      responses << fetch(request_for_history(start_time, end_time, page: responses.last.page + 1))
     end
 
     responses.flat_map { |response| scrobbles_for_response(response, categories: categories) }
@@ -64,8 +64,8 @@ class TraktAdapter
       http_response.body,
       http_response.status,
       http_response.success?,
-      http_response.headers['X-Pagination-Page'],
-      http_response.headers['X-Pagination-Page-Count']
+      Integer(http_response.headers['X-Pagination-Page'] || 0),
+      Integer(http_response.headers['X-Pagination-Page-Count'] || 0)
     )
   end
 

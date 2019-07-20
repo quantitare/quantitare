@@ -54,5 +54,21 @@ RSpec.describe TraktAdapter, :vcr do
         expect { action }.to raise_error(Errors::ServiceConfigError)
       end
     end
+
+    context 'when the user token is expired' do
+      let(:service) { create :service, :trakt, :expired }
+
+      it 'is successful' do
+        expect { action }.to_not raise_error
+      end
+
+      it "refreshes the service's token" do
+        expect { action }.to change(subject.service, :token)
+      end
+
+      it "refreshes the service's refresh token" do
+        expect { action }.to change(subject.service, :refresh_token)
+      end
+    end
   end
 end

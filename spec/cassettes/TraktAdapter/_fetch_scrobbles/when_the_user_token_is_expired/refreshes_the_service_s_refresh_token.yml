@@ -1,0 +1,254 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.trakt.tv/oauth/token
+    body:
+      encoding: UTF-8
+      string: '{"grant_type":"refresh_token","client_id":"TRAKT_OAUTH_KEY","client_secret":"TRAKT_OAUTH_SECRET","redirect_uri":"","refresh_token":"TRAKT_TEST_USER_REFRESH_TOKEN"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 20 Jul 2019 17:50:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d28ce5a5ef7ca9040336985019ce5f5f01563645022; expires=Sun, 19-Jul-20
+        17:50:22 GMT; path=/; domain=.trakt.tv; HttpOnly
+      - _traktsession=some_session;
+        path=/; HttpOnly
+      Cache-Control:
+      - no-store
+      Cf-Railgun:
+      - aae2df9fe5 99.99 0.018208 0030 57da
+      Etag:
+      - W/"a759737dc870279be5f062a7b3551fc9"
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 45a1889f-e468-43b7-beb9-1fb9938e27c7
+      X-Runtime:
+      - '0.016504'
+      X-Xss-Protection:
+      - 1; mode=block
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4f96c6ee69d0928c-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"some_new_token","token_type":"Bearer","expires_in":7776000,"refresh_token":"some_new_refresh_token","scope":"public","created_at":1563644758}'
+    http_version:
+  recorded_at: Sat, 20 Jul 2019 17:50:22 GMT
+- request:
+    method: get
+    uri: https://api.trakt.tv/users/me/history?end_at=2019-02-15T00:00:00Z&page=0&start_at=2019-02-01T00:00:00Z
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Trakt-Api-Key:
+      - TRAKT_OAUTH_KEY
+      Trakt-Api-Version:
+      - '2'
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer some_new_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 20 Jul 2019 17:50:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '796'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0e31f539ef23e95e9d5d71182ab977df1563645022; expires=Sun, 19-Jul-20
+        17:50:22 GMT; path=/; domain=.trakt.tv; HttpOnly
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Cf-Railgun:
+      - 70f87bf6ff 99.99 0.020452 0030 57da
+      Etag:
+      - W/"03a7279627bb706aac0655aa108f8e2c"
+      Last-Modified:
+      - Fri, 19 Jul 2019 15:59:27 GMT
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Pagination-Item-Count:
+      - '17'
+      X-Pagination-Limit:
+      - '10'
+      X-Pagination-Page:
+      - '1'
+      X-Pagination-Page-Count:
+      - '2'
+      X-Private-User:
+      - 'true'
+      X-Request-Id:
+      - bf5cb29e-72a4-4874-b870-7206d9a3c231
+      X-Runtime:
+      - '0.013770'
+      X-Xss-Protection:
+      - 1; mode=block
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4f96c6ef4c406bcc-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":4230613006,"watched_at":"2019-02-11T04:45:05.000Z","action":"watch","type":"episode","episode":{"season":3,"number":11,"title":"Chidi
+        Sees the Time-Knife","ids":{"trakt":3113039,"tvdb":6786373,"imdb":"tt8601216","tmdb":1664109,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4230613005,"watched_at":"2019-02-11T04:07:37.000Z","action":"watch","type":"episode","episode":{"season":9,"number":10,"title":"Los
+        Diablos!","ids":{"trakt":3197881,"tvdb":6972837,"imdb":"tt8245476","tmdb":1677260,"tvrage":0}},"show":{"title":"Shameless","year":2011,"ids":{"trakt":34160,"slug":"shameless-2011","tvdb":161511,"imdb":"tt1586680","tmdb":34307,"tvrage":25117}}},{"id":4228022667,"watched_at":"2019-02-10T07:14:23.000Z","action":"watch","type":"episode","episode":{"season":3,"number":10,"title":"The
+        Book of Dougs","ids":{"trakt":3064198,"tvdb":6786372,"imdb":"tt8601222","tmdb":1624957,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4228022666,"watched_at":"2019-02-10T07:14:23.000Z","action":"watch","type":"episode","episode":{"season":3,"number":9,"title":"Janet(s)","ids":{"trakt":3064197,"tvdb":6742813,"imdb":"tt8578788","tmdb":1593086,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4228022665,"watched_at":"2019-02-10T06:47:00.000Z","action":"watch","type":"episode","episode":{"season":3,"number":8,"title":"Don''t
+        Let the Good Life Pass You By","ids":{"trakt":3064196,"tvdb":6742812,"imdb":"tt8601212","tmdb":1593085,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4225394374,"watched_at":"2019-02-09T06:19:30.000Z","action":"watch","type":"episode","episode":{"season":3,"number":7,"title":"The
+        Worst Possible Use of Free Will","ids":{"trakt":3064195,"tvdb":6742811,"imdb":"tt8488908","tmdb":1593084,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4225195293,"watched_at":"2019-02-09T05:53:56.000Z","action":"watch","type":"episode","episode":{"season":3,"number":6,"title":"A
+        Fractured Inheritance","ids":{"trakt":3064194,"tvdb":6742810,"imdb":"tt8564998","tmdb":1591871,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4222821358,"watched_at":"2019-02-08T04:52:30.000Z","action":"watch","type":"episode","episode":{"season":3,"number":4,"title":"Jeremy
+        Bearimy","ids":{"trakt":3016852,"tvdb":6914549,"imdb":"tt8601206","tmdb":1586228,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4222821359,"watched_at":"2019-02-08T04:22:11.000Z","action":"watch","type":"episode","episode":{"season":3,"number":5,"title":"The
+        Ballad of Donkey Doug","ids":{"trakt":3016853,"tvdb":6742809,"imdb":"tt8534442","tmdb":1590077,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4220586507,"watched_at":"2019-02-07T04:16:23.000Z","action":"watch","type":"episode","episode":{"season":3,"number":3,"title":"The
+        Snowplow","ids":{"trakt":3016851,"tvdb":6854186,"imdb":"tt8601206","tmdb":1586227,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}}]'
+    http_version:
+  recorded_at: Sat, 20 Jul 2019 17:50:22 GMT
+- request:
+    method: get
+    uri: https://api.trakt.tv/users/me/history?end_at=2019-02-15T00:00:00Z&page=2&start_at=2019-02-01T00:00:00Z
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Trakt-Api-Key:
+      - TRAKT_OAUTH_KEY
+      Trakt-Api-Version:
+      - '2'
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer some_new_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 20 Jul 2019 17:50:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '648'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d31ac61838edc8a94a664caace61455051563645022; expires=Sun, 19-Jul-20
+        17:50:22 GMT; path=/; domain=.trakt.tv; HttpOnly
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Cf-Railgun:
+      - 12a413da15 99.99 0.019089 0030 57da
+      Etag:
+      - W/"42d0b38745ea807c20ee6cfbeed4c947"
+      Last-Modified:
+      - Fri, 19 Jul 2019 15:59:27 GMT
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Pagination-Item-Count:
+      - '17'
+      X-Pagination-Limit:
+      - '10'
+      X-Pagination-Page:
+      - '2'
+      X-Pagination-Page-Count:
+      - '2'
+      X-Private-User:
+      - 'true'
+      X-Request-Id:
+      - dab0ab43-b384-4577-88fd-6a00cb10f847
+      X-Runtime:
+      - '0.017273'
+      X-Xss-Protection:
+      - 1; mode=block
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4f96c6f02fb96ddc-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":4220586506,"watched_at":"2019-02-07T03:54:36.000Z","action":"watch","type":"episode","episode":{"season":3,"number":2,"title":"The
+        Brainy Bunch","ids":{"trakt":3016850,"tvdb":6704751,"imdb":"tt8601200","tmdb":1574791,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4212999933,"watched_at":"2019-02-04T02:04:54.000Z","action":"watch","type":"episode","episode":{"season":3,"number":1,"title":"Everything
+        Is Bonzer!","ids":{"trakt":2880094,"tvdb":6704749,"imdb":"tt7664192","tmdb":1510891,"tvrage":0}},"show":{"title":"The
+        Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}},{"id":4209980013,"watched_at":"2019-02-03T05:56:41.000Z","action":"watch","type":"movie","movie":{"title":"The
+        Tale","year":2018,"ids":{"trakt":266273,"slug":"the-tale-2018","imdb":"tt4015500","tmdb":369523}}},{"id":4212390124,"watched_at":"2019-02-02T03:54:25.000Z","action":"watch","type":"episode","episode":{"season":4,"number":12,"title":"Kimmy
+        Says Bye!","ids":{"trakt":3274497,"tvdb":6937679,"imdb":"tt8367936","tmdb":1683154,"tvrage":0}},"show":{"title":"Unbreakable
+        Kimmy Schmidt","year":2015,"ids":{"trakt":77766,"slug":"unbreakable-kimmy-schmidt","tvdb":281593,"imdb":"tt3339966","tmdb":61671,"tvrage":39221}}},{"id":4212390125,"watched_at":"2019-02-02T02:46:57.000Z","action":"watch","type":"episode","episode":{"season":4,"number":11,"title":"Kimmy
+        Is Rich*!","ids":{"trakt":3274496,"tvdb":6937677,"imdb":"tt8367932","tmdb":1683153,"tvrage":0}},"show":{"title":"Unbreakable
+        Kimmy Schmidt","year":2015,"ids":{"trakt":77766,"slug":"unbreakable-kimmy-schmidt","tvdb":281593,"imdb":"tt3339966","tmdb":61671,"tvrage":39221}}},{"id":4212390126,"watched_at":"2019-02-01T05:16:02.000Z","action":"watch","type":"episode","episode":{"season":4,"number":10,"title":"Kimmy
+        Finds a Liar!","ids":{"trakt":3274482,"tvdb":6937675,"imdb":"tt8367934","tmdb":1683152,"tvrage":0}},"show":{"title":"Unbreakable
+        Kimmy Schmidt","year":2015,"ids":{"trakt":77766,"slug":"unbreakable-kimmy-schmidt","tvdb":281593,"imdb":"tt3339966","tmdb":61671,"tvrage":39221}}},{"id":4212390127,"watched_at":"2019-02-01T04:08:15.000Z","action":"watch","type":"episode","episode":{"season":4,"number":9,"title":"Sliding
+        Van Doors","ids":{"trakt":3274481,"tvdb":6937674,"imdb":"tt8367930","tmdb":1683151,"tvrage":0}},"show":{"title":"Unbreakable
+        Kimmy Schmidt","year":2015,"ids":{"trakt":77766,"slug":"unbreakable-kimmy-schmidt","tvdb":281593,"imdb":"tt3339966","tmdb":61671,"tvrage":39221}}}]'
+    http_version:
+  recorded_at: Sat, 20 Jul 2019 17:50:22 GMT
+recorded_with: VCR 5.0.0

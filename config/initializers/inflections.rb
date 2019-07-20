@@ -17,4 +17,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'KML'
   inflect.acronym 'XML'
   inflect.acronym 'API'
+  inflect.acronym 'TV'
 end

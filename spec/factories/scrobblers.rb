@@ -10,7 +10,14 @@ FactoryBot.define do
       service { create :service, :rescuetime }
       options { { time_zone: 'Pacific Time (US & Canada)' } }
     end
+
+    factory :trakt_scrobbler, class: Scrobblers::TraktScrobbler do
+      service { create :service, :trakt }
+      options { { categories: Scrobblers::TraktScrobbler::CATEGORIES } }
+    end
+
     factory :webhook_scrobbler, class: Scrobblers::WebhookScrobbler
+
     factory :withings_scrobbler, class: Scrobblers::WithingsScrobbler do
       service { create :service, :withings2 }
       options { { categories: Scrobblers::WithingsScrobbler::CATEGORIES } }

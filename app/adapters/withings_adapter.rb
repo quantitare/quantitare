@@ -5,8 +5,6 @@
 # requests as possible.
 #
 class WithingsAdapter
-  attr_reader :service, :refresher
-
   API_URL = 'https://wbsapi.withings.net/v2'
   ACCOUNT_URL = 'https://account.withings.com/oauth2/token'
   CATEGORY_CONFIGS = YAML.safe_load(
@@ -17,6 +15,8 @@ class WithingsAdapter
     File.read(Rails.root.join('app', 'adapters', 'withings_adapter', 'endpoint_configs.yml')),
     [Symbol]
   ).freeze
+
+  attr_reader :service, :refresher
 
   delegate :user, :token, to: :service
 
@@ -77,7 +77,7 @@ class WithingsAdapter
   end
 
   def fetch(request)
-    refresh_service! if service.expired?
+    refresh_service! if service.reload.expired?(60.minutes.from_now)
     raise Errors::ServiceConfigError.new(issue_reported: true) if service.issues?
 
     http_client.get("#{request.path}?#{request.params.to_query}")

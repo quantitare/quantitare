@@ -7,7 +7,7 @@ class ScrobblersController < AuthenticatedController
   rescue_from ActiveRecord::RecordNotFound, with: :not_found!
 
   def index
-    @scrobblers = current_user.scrobblers.all.order(created_at: :desc)
+    @scrobblers = current_user.scrobblers.all.order(created_at: :desc).includes(:service)
   end
 
   def new

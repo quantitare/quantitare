@@ -8,7 +8,7 @@ class WithingsAdapter
     attr_reader :service
 
     def initialize(service)
-      @service = service.reload
+      @service = service
     end
 
     def process!

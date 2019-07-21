@@ -5,23 +5,12 @@ class TraktAdapter
   # @private
   #
   class ServiceRefresh
+    include ServiceRefreshable
+
     attr_reader :service
 
     def initialize(service)
       @service = service.reload.decorate
-    end
-
-    def process!
-      response, refresh_params = fetch_refresh_data
-
-      if response.success?
-        process_refresh!(refresh_params)
-      else
-        raise Errors::ServiceConfigError.new(<<~TEXT.squish, nature: Service::IN_REFRESH_TOKEN)
-          We couldn't refresh the access token for the service #{service.name}. You may need to re-authenticate with
-          the service.
-        TEXT
-      end
     end
 
     private
@@ -41,7 +30,7 @@ class TraktAdapter
           grant_type: 'refresh_token',
           client_id: service.provider_key,
           client_secret: service.provider_secret,
-          redirect_uri: '',
+          redirect_uri: service.callback_url,
           refresh_token: service.refresh_token
         }.to_json
       end

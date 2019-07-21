@@ -108,6 +108,10 @@ class Service < ApplicationRecord
     { name: 'Trakt.tv' }
   end
 
+  register_provider(:twitter) do |omniauth|
+    { name: omniauth[:info][:nickname] }
+  end
+
   register_provider(:withings2) do |_omniauth|
     { name: 'Withings' }
   end

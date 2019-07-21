@@ -5,20 +5,12 @@ class WithingsAdapter
   # @private
   #
   class ServiceRefresh
+    include ServiceRefreshable
+
     attr_reader :service
 
     def initialize(service)
-      @service = service.reload
-    end
-
-    def process!
-      response, refresh_params = fetch_refresh_data
-
-      if response.success?
-        process_refresh!(refresh_params)
-      else
-        service.report_issue!(:refresh_token, refresh_params['errors'].map { |error| error['message'] }.join(', '))
-      end
+      @service = service
     end
 
     def fetch_refresh_data

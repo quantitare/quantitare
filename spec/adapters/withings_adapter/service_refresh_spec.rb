@@ -24,16 +24,8 @@ RSpec.describe WithingsAdapter::ServiceRefresh do
     context 'when the given token is invalid' do
       let(:service) { create :service, :withings2, :expired, refresh_token: 'some_nonsense' }
 
-      it 'adds issues to the service' do
-        action
-
-        expect(service.issues?).to be(true)
-      end
-
-      it 'adds an appropriate issue to the service' do
-        action
-
-        expect(service.issues.last['nature']).to eq('refresh_token')
+      it 'raises a service config error' do
+        expect { action }.to raise_error(Errors::ServiceConfigError)
       end
     end
   end

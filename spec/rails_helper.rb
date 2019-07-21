@@ -65,6 +65,11 @@ VCR.configure do |config|
   config.filter_sensitive_data('TRAKT_TEST_USER_TOKEN') { ENV['TRAKT_TEST_USER_TOKEN'] }
   config.filter_sensitive_data('TRAKT_TEST_USER_REFRESH_TOKEN') { ENV['TRAKT_TEST_USER_REFRESH_TOKEN'] }
 
+  config.filter_sensitive_data('TWITTER_OAUTH_KEY') { ENV['TWITTER_OAUTH_KEY'] }
+  config.filter_sensitive_data('TWITTER_OAUTH_SECRET') { ENV['TWITTER_OAUTH_SECRET'] }
+  config.filter_sensitive_data('TWITTER_TEST_USER_TOKEN') { ENV['TWITTER_TEST_USER_TOKEN'] }
+  config.filter_sensitive_data('TWITTER_TEST_USER_SECRET') { ENV['TWITTER_TEST_USER_SECRET'] }
+
   config.filter_sensitive_data('WITHINGS_OAUTH_KEY') { ENV['WITHINGS_OAUTH_KEY'] }
   config.filter_sensitive_data('WITHINGS_OAUTH_SECRET') { ENV['WITHINGS_OAUTH_SECRET'] }
   config.filter_sensitive_data('WITHINGS_TEST_USER_ID') { ENV['WITHINGS_TEST_USER_ID'] }

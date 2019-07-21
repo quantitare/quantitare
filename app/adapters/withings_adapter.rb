@@ -77,8 +77,7 @@ class WithingsAdapter
   end
 
   def fetch(request)
-    refresh_service! if service.reload.expired?(60.minutes.from_now)
-    raise Errors::ServiceConfigError.new(issue_reported: true) if service.issues?
+    refresh_service_if_necessary!
 
     http_client.get("#{request.path}?#{request.params.to_query}")
   rescue Faraday::TimeoutError
@@ -87,6 +86,10 @@ class WithingsAdapter
 
   def scrobbles_for_response(response, request)
     WithingsAdapter::Scrobble.from_api(response, request)
+  end
+
+  def refresh_service_if_necessary!
+    service.with_lock { refresh_service! if service.expired?(60.minutes.from_now) }
   end
 
   def refresh_service!

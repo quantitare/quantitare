@@ -13,4 +13,8 @@ class ServiceDecorator < ApplicationDecorator
   def label_text
     "#{display_name} - #{name}"
   end
+
+  def callback_url
+    h.public_send("user_#{provider}_omniauth_callback_url")
+  end
 end

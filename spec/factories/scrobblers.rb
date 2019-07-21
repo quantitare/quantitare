@@ -16,6 +16,10 @@ FactoryBot.define do
       options { { categories: Scrobblers::TraktScrobbler::CATEGORIES } }
     end
 
+    factory :twitter_scrobbler, class: Scrobblers::TwitterScrobbler do
+      service { create :service, :twitter }
+    end
+
     factory :webhook_scrobbler, class: Scrobblers::WebhookScrobbler
 
     factory :withings_scrobbler, class: Scrobblers::WithingsScrobbler do

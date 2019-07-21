@@ -17,7 +17,10 @@ class WithingsAdapter
       if response.success?
         process_refresh!(refresh_params)
       else
-        service.report_issue!(:refresh_token, refresh_params['errors'].map { |error| error['message'] }.join(', '))
+        raise Errors::ServiceConfigError.new(<<~TEXT.squish, nature: Service::IN_REFRESH_TOKEN)
+          We couldn't refresh the access token for the service #{service.name}. You may need to re-authenticate with
+          the service.
+        TEXT
       end
     end
 

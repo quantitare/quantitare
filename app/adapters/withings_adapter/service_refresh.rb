@@ -5,23 +5,12 @@ class WithingsAdapter
   # @private
   #
   class ServiceRefresh
+    include ServiceRefreshable
+
     attr_reader :service
 
     def initialize(service)
       @service = service
-    end
-
-    def process!
-      response, refresh_params = fetch_refresh_data
-
-      if response.success?
-        process_refresh!(refresh_params)
-      else
-        raise Errors::ServiceConfigError.new(<<~TEXT.squish, nature: Service::IN_REFRESH_TOKEN)
-          We couldn't refresh the access token for the service #{service.name}. You may need to re-authenticate with
-          the service.
-        TEXT
-      end
     end
 
     def fetch_refresh_data

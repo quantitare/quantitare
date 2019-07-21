@@ -128,17 +128,6 @@ RSpec.describe WithingsAdapter, :vcr do
 
         expect { action }.to raise_error(Errors::ServiceConfigError)
       end
-
-      it 'reports an issue to the service if there is a problem with the refresh' do
-        service.update refresh_token: 'some_nonsense'
-
-        begin
-          action
-        rescue Errors::ServiceConfigError
-        end
-
-        expect(service).to be_issues
-      end
     end
   end
 end

@@ -77,7 +77,7 @@ class WithingsAdapter
   end
 
   def fetch(request)
-    refresh_service! if service.reload.expired?(60.minutes.from_now)
+    service.with_lock { refresh_service! if service.expired?(60.minutes.from_now) }
     raise Errors::ServiceConfigError.new(issue_reported: true) if service.issues?
 
     http_client.get("#{request.path}?#{request.params.to_query}")

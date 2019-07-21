@@ -27,6 +27,13 @@ FactoryBot.define do
       options { { name: 'Trakt.tv' } }
     end
 
+    trait :twitter do
+      provider { :twitter }
+      token { ENV['TWITTER_TEST_USER_TOKEN'] }
+      secret { ENV['TWITTER_TEST_USER_SECRET'] }
+      options { { name: 'tyler_throwaway' } }
+    end
+
     trait :withings2 do
       provider { :withings2 }
       token { ENV['WITHINGS_TEST_USER_TOKEN'] }

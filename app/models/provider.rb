@@ -103,6 +103,15 @@ class Provider
   )
 
   Provider.register(
+    :twitter, 'TWITTER_OAUTH_KEY', 'TWITTER_OAUTH_SECRET',
+    strategy_class: OmniAuth::Strategies::Twitter,
+
+    icon_css_class: 'fab fa-twitter',
+    icon_text_color: '#fff',
+    icon_bg_color: '#55acee'
+  )
+
+  Provider.register(
     :withings2, 'WITHINGS_OAUTH_KEY', 'WITHINGS_OAUTH_SECRET',
     strategy_class: OmniAuth::Strategies::Withings2,
 

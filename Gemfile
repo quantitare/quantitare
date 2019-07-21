@@ -57,12 +57,14 @@ gem 'omniauth', '~> 1.9.0'
 gem 'omniauth-foursquare', '~> 1.0'
 gem 'omniauth-lastfm', '~> 0.0.7'
 gem 'omniauth-trakt'
+gem 'omniauth-twitter'
 gem 'omniauth-withings2'
 
 # API adapters
 gem 'foursquare2'
 gem 'lastfm'
 gem 'rescuetime', github: 'aastronautss/rescuetime'
+gem 'twitter'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -414,6 +414,10 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    todoist-ruby (0.2.2)
+      concurrent-ruby (~> 1.0)
+      mimemagic (~> 0.3)
+      multipart-post (~> 2.0)
     twitter (6.2.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -518,6 +522,7 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
+  todoist-ruby
   twitter
   uglifier (>= 1.3.0)
   vcr

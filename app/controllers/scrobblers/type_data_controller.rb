@@ -3,7 +3,9 @@
 ##
 # Retrieves type data for a scrobbler of a given type.
 #
-class Scrobblers::TypeDataController < AuthenticatedController
+class Scrobblers::TypeDataController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     set_scrobbler!
 

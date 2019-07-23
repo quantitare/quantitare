@@ -3,7 +3,9 @@
 ##
 # Base controller for {LocationScrobble}-related actions.
 #
-class LocationScrobblesController < AuthenticatedController
+class LocationScrobblesController < ApplicationController
+  before_action :authenticate_user!
+
   include PlaceMatchable
 
   def index

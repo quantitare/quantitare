@@ -3,7 +3,9 @@
 ##
 # Handles requests related to {Place}s
 #
-class PlacesController < AuthenticatedController
+class PlacesController < ApplicationController
+  before_action :authenticate_user!
+
   include PlaceMatchable
 
   def search

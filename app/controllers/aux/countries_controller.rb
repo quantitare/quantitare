@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-class Aux::CountriesController < AuthenticatedController
+class Aux::CountriesController < ApplicationController
 end

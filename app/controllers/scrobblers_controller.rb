@@ -3,7 +3,9 @@
 ##
 # Basic CRUD for {Scrobbler}s
 #
-class ScrobblersController < AuthenticatedController
+class ScrobblersController < ApplicationController
+  before_action :authenticate_user!
+
   rescue_from ActiveRecord::RecordNotFound, with: :not_found!
 
   def index

@@ -133,4 +133,13 @@ class Provider
     icon_text_color: '#fff',
     icon_bg_color: '#667b8b'
   )
+
+  Provider.register_non_oauth(
+    :todoist,
+    fields: { token: { as: :api_token } },
+
+    icon_css_class: 'fas fa-check-double',
+    icon_text_color: '#fff',
+    icon_bg_color: '#e44232'
+  )
 end

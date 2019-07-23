@@ -3,7 +3,9 @@
 ##
 # CRUD for external services.
 #
-class ServicesController < AuthenticatedController
+class ServicesController < ApplicationController
+  before_action :authenticate_user!
+
   has_scope :for_place_metadata, type: :boolean
 
   def search

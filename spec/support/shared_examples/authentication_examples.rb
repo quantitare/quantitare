@@ -21,9 +21,14 @@ RSpec.shared_examples 'authenticated_action' do
   context 'when there is a user' do
     before { sign_in(user) }
 
-    it 'has an OK status' do
+    it 'does not respond with a server error' do
       action
       expect(response).to_not be_server_error
+    end
+
+    it 'does not respond with a client error' do
+      action
+      expect(response).to_not be_client_error
     end
   end
 end

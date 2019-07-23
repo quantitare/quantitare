@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Aux::Todoist::Label#data",
+  "description": "A Label record from the Todoist API",
+
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The ID of the label",
+      "type": "integer"
+    },
+
+    "name": {
+      "description": "The name of the label",
+      "type": "string"
+    },
+
+    "color": {
+      "description": "The coded color of the label designated by the user",
+      "type": "integer"
+    }
+  },
+  "required": ["id", "name"]
+}

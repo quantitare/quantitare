@@ -20,6 +20,11 @@ FactoryBot.define do
       token { ENV['RESCUETIME_TEST_USER_TOKEN'] }
     end
 
+    trait :todoist do
+      provider { :todoist }
+      token { ENV['TODOIST_TEST_USER_TOKEN'] }
+    end
+
     trait :trakt do
       provider { :trakt }
       token { ENV['TRAKT_TEST_USER_TOKEN'] }

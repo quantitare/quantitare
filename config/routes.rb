@@ -5,10 +5,6 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   root to: 'pages#index'
 
-  authenticate :user, ->(user) { user.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
   devise_for :users,
     path: 'auth',
     path_names: {
@@ -20,6 +16,10 @@ Rails.application.routes.draw do
     controllers: {
       omniauth_callbacks: 'omniauth_callbacks'
     }
+
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   namespace :admin do
     resources :settings, only: [:index, :update]

@@ -3,7 +3,9 @@
 ##
 # Global settings are set here.
 #
-class Admin::SettingsController < AdminController
+class Admin::SettingsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @settings = Setting.get_all
   end

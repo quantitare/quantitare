@@ -3,7 +3,9 @@
 ##
 # LocationScrobble importers get called from here.
 #
-class LocationImportsController < AuthenticatedController
+class LocationImportsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @location_import = current_user.location_imports.new
   end

@@ -64,6 +64,7 @@ gem 'omniauth-withings2'
 gem 'foursquare2'
 gem 'lastfm'
 gem 'rescuetime', github: 'aastronautss/rescuetime'
+gem 'todoist-ruby'
 gem 'twitter'
 
 # Use ActiveStorage variant

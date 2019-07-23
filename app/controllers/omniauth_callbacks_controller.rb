@@ -3,7 +3,7 @@
 ##
 # Handles omniauth callbacks.
 #
-class OmniauthCallbacksController < AuthenticatedController
+class OmniauthCallbacksController < ApplicationController
   def action_missing(action_name)
     case action_name.to_sym
     when *Devise.omniauth_providers

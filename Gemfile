@@ -54,6 +54,7 @@ gem 'devise', '~> 4.6.1'
 gem 'omniauth', '~> 1.9.0'
 
 # Omniauth strategies
+gem 'omniauth-flickr'
 gem 'omniauth-foursquare', '~> 1.0'
 gem 'omniauth-lastfm', '~> 0.0.7'
 gem 'omniauth-trakt'
@@ -61,6 +62,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-withings2'
 
 # API adapters
+gem 'flickr'
 gem 'foursquare2'
 gem 'lastfm'
 gem 'rescuetime', github: 'aastronautss/rescuetime'

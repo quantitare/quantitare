@@ -160,6 +160,7 @@ GEM
     faraday_middleware (0.13.0)
       faraday (>= 0.7.4, < 1.0)
     ffi (1.9.24)
+    flickr (2.0.2)
     foursquare2 (2.0.2)
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
@@ -246,6 +247,8 @@ GEM
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
+    omniauth-flickr (0.0.17)
+      omniauth-oauth (~> 1.0)
     omniauth-foursquare (1.0.1)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -483,6 +486,7 @@ DEPENDENCIES
   faker
   faraday
   faraday_middleware
+  flickr
   foursquare2
   geocoder (~> 1.5.0)
   has_scope (~> 0.7.2)
@@ -494,6 +498,7 @@ DEPENDENCIES
   memoist
   nokogiri (~> 1.10.0)
   omniauth (~> 1.9.0)
+  omniauth-flickr
   omniauth-foursquare (~> 1.0)
   omniauth-lastfm (~> 0.0.7)
   omniauth-trakt

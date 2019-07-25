@@ -100,6 +100,10 @@ class Service < ApplicationRecord
     { name: omniauth[:info][:nickname] || omniauth[:info][:name] }
   end
 
+  register_provider(:flickr) do |omniauth|
+    { name: omniauth[:info][:nickname] || omniauth[:info][:name] }
+  end
+
   register_provider(:foursquare) do |omniauth|
     { name: omniauth[:info][:email] }
   end

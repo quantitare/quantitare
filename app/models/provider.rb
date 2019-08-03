@@ -96,6 +96,15 @@ class Provider
   )
 
   Provider.register(
+    :github, 'GITHUB_OAUTH_KEY', 'GITHUB_OAUTH_SECRET',
+    scope: 'user,repo,gist',
+
+    icon_css_class: 'fab fa-github',
+    icon_text_color: '#fff',
+    icon_bg_color: '#000'
+  )
+
+  Provider.register(
     :lastfm, 'LASTFM_OAUTH_KEY', 'LASTFM_OAUTH_SECRET',
     strategy_class: OmniAuth::Strategies::Lastfm,
 

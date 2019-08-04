@@ -62,4 +62,5 @@ class LocationImport < ApplicationRecord
   end
 
   add_adapter GoogleMapsKmlAdapter
+  add_adapter ArcJSONAdapter
 end

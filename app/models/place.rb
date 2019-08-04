@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_dependency 'place/fetcher'
+
 ##
 # A place
 #
@@ -8,7 +10,7 @@ class Place < ApplicationRecord
   include Categorizable
   include ServiceFetchable
 
-  FETCHER_KLASS = Fetcher
+  FETCHER_KLASS = Place::Fetcher
   CATEGORY_KLASS = PlaceCategory
 
   FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :zip, :country].freeze
@@ -125,5 +127,3 @@ class Place < ApplicationRecord
     attr_names.any? { |attr_name| send("#{attr_name}_changed?") }
   end
 end
-
-require_dependency 'place/fetcher'

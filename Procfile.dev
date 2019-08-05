@@ -2,3 +2,4 @@ web: bundle exec rails s
 client: ./bin/webpack-dev-server
 worker1: bundle exec sidekiq
 worker2: bundle exec sidekiq
+worker3: bundle exec sidekiq -q default -q schedule

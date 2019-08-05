@@ -25,11 +25,8 @@ Rails.application.routes.draw do
     resources :settings, only: [:index, :update]
   end
 
-  resources :services, only: [:index, :new, :create, :update, :destroy] do
-    collection do
-      get :search
-    end
-  end
+  resource :timeline, only: [:show]
+  resources :scrobbles, only: [:index]
 
   resources :scrobblers do
     collection do
@@ -37,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :places, only: [:show, :new, :create, :update] do
+  resources :services, only: [:index, :new, :create, :update, :destroy] do
     collection do
       get :search
     end
@@ -49,6 +46,12 @@ Rails.application.routes.draw do
 
       resources :imports, except: [:index, :destroy], as: 'location_imports', controller: 'location_imports'
       resources :categories, only: [:index], as: 'location_categories', controller: 'location_categories'
+    end
+  end
+
+  resources :places, only: [:show, :new, :create, :update] do
+    collection do
+      get :search
     end
   end
 

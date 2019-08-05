@@ -42,6 +42,9 @@ registerRequiredComponents(baseComponent);
 const uiComponent = require.context('components/ui', true, /.+\.(vue|js)/);
 registerRequiredComponents(uiComponent);
 
+const timelineComponent = require.context('components/timeline', true, /.+\.(vue|js)/)
+registerRequiredComponents(timelineComponent)
+
 const viewComponent = require.context('views', true, /.+\.(vue|js)/);
 registerRequiredComponents(viewComponent, '$1-view');
 

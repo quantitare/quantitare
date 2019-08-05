@@ -24,7 +24,7 @@ class TraktAdapter
   end
 
   def http_client
-    Faraday.new(url: API_URL, headers: http_client_headers) do |conn|
+    Faraday.new(url: API_URL, headers: http_client_headers, request: { timeout: 5, open_timeout: 5 }) do |conn|
       conn.request :oauth2, token, token_type: :bearer
       conn.response :json
 

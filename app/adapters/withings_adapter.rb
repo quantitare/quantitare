@@ -80,7 +80,7 @@ class WithingsAdapter
     refresh_service_if_necessary!
 
     http_client.get("#{request.path}?#{request.params.to_query}")
-  rescue Faraday::TimeoutError
+  rescue Faraday::TimeoutError, Faraday::ConnectionFailed
     raise Errors::ServiceAPIError, "Request to service #{service.name} timed out"
   end
 

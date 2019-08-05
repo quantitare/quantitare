@@ -31,7 +31,7 @@ class WithingsAdapter
   # @return [#get] an HTTP client that can be used to fetch a payload from the Withings API, pre-loaded with
   #   authentication headers and everything else needed to authenticate with the API
   def http_client
-    Faraday.new(url: API_URL) do |conn|
+    Faraday.new(url: API_URL, request: { timeout: 5, open_timeout: 5 }) do |conn|
       conn.request :oauth2, token, token_type: :bearer
       conn.response :json
 

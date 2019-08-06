@@ -52,7 +52,7 @@ class TraktAdapter
     verify_response(response)
 
     response
-  rescue Faraday::TimeoutError
+  rescue Faraday::TimeoutError, Faraday::ConnectionFailed
     raise Errors::ServiceAPIError, "Request to service #{service.name} timed out"
   rescue Faraday::ParsingError
     raise Errors::ServiceAPIError, "The Trakt API is temporarily down for service #{service.name}"

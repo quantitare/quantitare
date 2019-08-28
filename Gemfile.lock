@@ -484,27 +484,28 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import (~> 1.0.0)
   acts-as-taggable-on (~> 6.0)
-  bcrypt (~> 3.1.7)
+  bcrypt
   bootsnap (>= 1.1.0)
-  carmen (~> 1.1.1)
+  carmen
   devise (~> 4.6.1)
   dotenv-rails
   draper (~> 3.1.0)
+  dry-schema
   factory_bot_rails
   faker
   faraday
   faraday_middleware
   flickr
   foursquare2
-  geocoder (~> 1.5.0)
+  geocoder
   has_scope (~> 0.7.2)
-  jbuilder (~> 2.5)
-  json_schemer (~> 0.2.0)
+  jbuilder
+  json_schemer
   lastfm
   liquid
   listen (>= 3.0.5, < 3.2)
   memoist
-  nokogiri (~> 1.10.0)
+  nokogiri
   octokit
   omniauth (~> 1.9.0)
   omniauth-flickr
@@ -523,7 +524,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rails-controller-testing
   rails-settings-cached (~> 0.7.1)
-  redis (~> 4.0)
+  redis
   rescuetime!
   responders (~> 3.0.0)
   rspec-rails
@@ -532,7 +533,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (~> 5.0)
   shoulda-matchers
-  sidekiq (~> 5.0)
+  sidekiq
   sidekiq-scheduler
   simplecov
   spring

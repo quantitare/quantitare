@@ -21,3 +21,18 @@
     }
   }
 }
+
+.timeline-chart {
+  overflow: visible !important;
+
+  .timeline-tooltip-body {
+    width: 200px;
+    white-space: normal !important;
+  }
+
+  svg { overflow: visible !important; }
+  .highcharts-container { overflow: visible !important; }
+  .highcharts-tooltip { z-index: 9998; }
+  .highcharts-background { background-color: rgba(255, 255, 255, 0); }
+  .highcharts-credits { display: none; }
+}

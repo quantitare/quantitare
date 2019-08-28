@@ -18,7 +18,7 @@ class TraktAdapter
     private
 
     def handle_unsuccessful_response
-      raise Errors::ServiceAPIError if response.status.to_i == 429
+      raise Errors::ServiceAPIError, 'Too many requests' if response.status.to_i == 429
 
       case response.status.to_i
       when 400..499

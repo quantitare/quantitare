@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_193812) do
+ActiveRecord::Schema.define(version: 2019_08_05_221242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -237,6 +237,20 @@ ActiveRecord::Schema.define(version: 2019_06_29_193812) do
     t.string "name"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "timeline_modules", force: :cascade do |t|
+    t.string "type"
+    t.string "guid"
+    t.string "section"
+    t.text "options"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guid"], name: "index_timeline_modules_on_guid"
+    t.index ["section"], name: "index_timeline_modules_on_section"
+    t.index ["type"], name: "index_timeline_modules_on_type"
+    t.index ["user_id"], name: "index_timeline_modules_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

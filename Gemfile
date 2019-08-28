@@ -23,19 +23,20 @@ gem 'webpacker'
 gem 'vue-rails-form-builder'
 
 # Back-end core
-gem 'redis', '~> 4.0'
-gem 'sidekiq', '~> 5.0'
+gem 'redis'
+gem 'sidekiq'
 
 # Utilities
-gem 'bcrypt', '~> 3.1.7'
-gem 'carmen', '~> 1.1.1'
+gem 'bcrypt'
+gem 'carmen'
+gem 'dry-schema'
 gem 'faraday'
 gem 'faraday_middleware'
-gem 'geocoder', '~> 1.5.0'
-gem 'jbuilder', '~> 2.5'
-gem 'json_schemer', '~> 0.2.0'
+gem 'geocoder'
+gem 'jbuilder'
+gem 'json_schemer'
 gem 'liquid'
-gem 'nokogiri', '~> 1.10.0'
+gem 'nokogiri'
 gem 'sidekiq-scheduler'
 gem 'virtus'
 

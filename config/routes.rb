@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     resources :settings, only: [:index, :update]
   end
 
-  resource :timeline, only: [:show]
+  resource :timeline, only: [:show] do
+    resources :sections, only: [:create], controller: 'timeline_sections'
+    resources :modules, only: [:show, :create], controller: 'timeline_modules'
+  end
+
   resources :scrobbles, only: [:index]
 
   resources :scrobblers do

@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :timeline_modules, dependent: :destroy
+
   has_many :services, dependent: :destroy
 
   has_many :scrobblers, dependent: :destroy

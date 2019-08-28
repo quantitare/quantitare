@@ -5,6 +5,10 @@
 #
 module Util
   class << self
+    def time_floor(time, seconds)
+      Time.zone.at((time.to_f / seconds).round * seconds)
+    end
+
     def distance_travelled_by_trackpoints(*trackpoints)
       linked_pairs(trackpoints).sum { |pair| distance_between_trackpoints(*pair) }
     end

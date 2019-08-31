@@ -24,7 +24,7 @@ gem 'vue-rails-form-builder'
 
 # Back-end core
 gem 'redis', '~> 4.0'
-gem 'sidekiq', '~> 5.0'
+gem 'sidekiq', '~> 6.0'
 
 # Utilities
 gem 'bcrypt', '~> 3.1.7'

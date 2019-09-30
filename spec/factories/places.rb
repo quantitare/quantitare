@@ -4,8 +4,8 @@ FactoryBot.define do
   factory :place do
     user
 
-    name { Faker::Lorem.words(2).join(' ') }
-    category { Faker::Lorem.words(1).join(' ') }
+    name { Faker::Lorem.words(number: 2).join(' ') }
+    category { Faker::Lorem.words(number: 1).join(' ') }
 
     longitude { 37.8053204 }
     latitude { -122.27254440000002 }

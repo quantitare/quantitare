@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://todoist.com/API/v7/sync
+    uri: https://api.todoist.com/sync/v8/sync
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&commands=%5B%5D
@@ -27,34 +27,32 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:23:58 GMT
+      - Mon, 30 Sep 2019 21:25:07 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=6886408cc801461d986d42d24835ec96; Expires=Fri, 20-Jul-2029 05:23:58 GMT;
+      - csrf=e49d55edf2ff41188f733dd9918687ba; Expires=Thu, 27-Sep-2029 21:25:07 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 eb9103174f828a69a975f55ae9d3f4fb.cloudfront.net (CloudFront)
+      - 1.1 5f77bd93eaeac8e32d1c411a80449035.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - LAX3-C2
+      - LAX3-C3
       X-Amz-Cf-Id:
-      - CFZx7kwevAebnerANyV8AZAZrMVYqAIQrZXvk3jLngVmW5777_qoVQ==
+      - GHfemcaDjy_qIkdaPk1TiDh3zpcku8FLQ4d88WCP3ycNz1v0JF4tWQ==
     body:
       encoding: UTF-8
-      string: '{"sync_token":"RKw_ObUmpC0V_F8z8uDAOFNBqWRL6YwVOA3O4eHs4vtakPWukoXjA762mrTPIh52KeirHJEmx4wmP0TEA1Pr-R2BGb1q-JeutiWgVyYS9Rdc9zY","temp_id_mapping":{},"full_sync":true}'
+      string: '{"sync_token":"C2klKAm9wiu-RV1lveOfdtoIs5SOklswOrogbgNeYlXyb1URGn6RiTlP31K1UNURm4Ky35h-woczMXDv0RcqMlAWAt4iJcWmubmEwbvfUPjEz0U","temp_id_mapping":{},"full_sync":true}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:23:58 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:07 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/sync
+    uri: https://api.todoist.com/sync/v8/sync
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&sync_token=%7B%22projects%22%3D%3E%22*%22%2C+%22labels%22%3D%3E%22*%22%2C+%22items%22%3D%3E%22*%22%2C+%22notes%22%3D%3E%22*%22%2C+%22reminders%22%3D%3E%22*%22%2C+%22filters%22%3D%3E%22*%22%7D&resource_types=%5B%22labels%22%5D
@@ -67,53 +65,6 @@ http_interactions:
       - Ruby
       Content-Type:
       - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 502
-      message: Bad Gateway
-    headers:
-      Content-Length:
-      - '0'
-      Connection:
-      - keep-alive
-      Date:
-      - Tue, 23 Jul 2019 05:23:58 GMT
-      P3p:
-      - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Cache:
-      - Error from cloudfront
-      Via:
-      - 1.1 225837527b3d85f48a3c60b7f9dcad16.cloudfront.net (CloudFront)
-      X-Amz-Cf-Pop:
-      - LAX3-C2
-      X-Amz-Cf-Id:
-      - y-B55bB3IQoiicKNUE0mYZVbNsr0_SXV5fbgxIQg5JDNxAyy-HrB5Q==
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:23:58 GMT
-- request:
-    method: post
-    uri: https://todoist.com/API/v7/sync
-    body:
-      encoding: US-ASCII
-      string: token=TODOIST_TEST_USER_TOKEN&sync_token=%7B%22projects%22%3D%3E%22*%22%2C+%22labels%22%3D%3E%22*%22%2C+%22items%22%3D%3E%22*%22%2C+%22notes%22%3D%3E%22*%22%2C+%22reminders%22%3D%3E%22*%22%2C+%22filters%22%3D%3E%22*%22%7D&resource_types=%5B%22labels%22%5D
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Host:
-      - todoist.com
-      Content-Length:
-      - '272'
   response:
     status:
       code: 200
@@ -122,33 +73,31 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '763'
+      - '889'
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:23:58 GMT
+      - Mon, 30 Sep 2019 21:25:07 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=585c75ade509421a9a11f949881fe35c; Expires=Fri, 20-Jul-2029 05:23:58 GMT;
+      - csrf=0904a16a4f75497e96b9bc2d6b1f06d8; Expires=Thu, 27-Sep-2029 21:25:07 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 eb9103174f828a69a975f55ae9d3f4fb.cloudfront.net (CloudFront)
+      - 1.1 db929e55bb40b085896b8e336fba2ab7.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - LAX3-C2
+      - LAX3-C3
       X-Amz-Cf-Id:
-      - SI8S-DmJHLue1WNyufbrHsFYoRYy4WPSpwB_m-GFusDfZlW0CAR-qg==
+      - 3IMouXRn9UzVj0V3roktjyReZKO4lz9AlJnSg3vjhmnlCYsS8-6IcQ==
     body:
       encoding: UTF-8
-      string: '{"sync_token":"RKw_ObUmpC0V_F8z8uDAOFNBqWRL6YwVOA3O4eHs4vtakPWukoXjA762mrTPIh52KeirHJEmx4wmP0TEA1Pr-R2BGb1q-JeutiWgVyYS9Rdc9zY","temp_id_mapping":{},"labels":[{"item_order":2,"is_deleted":0,"name":"github_issues","color":10,"is_favorite":0,"id":2150056131},{"item_order":3,"is_deleted":0,"name":"home_maintenance","color":11,"is_favorite":0,"id":2152895999},{"item_order":1,"is_deleted":0,"name":"jira_tickets","color":6,"is_favorite":0,"id":2150056338},{"item_order":6,"is_deleted":0,"name":"job_search","color":7,"is_favorite":0,"id":1242157},{"item_order":4,"is_deleted":0,"name":"software_bug","color":2,"is_favorite":0,"id":2152851618},{"item_order":5,"is_deleted":0,"name":"software_improvement","color":2,"is_favorite":0,"id":2152894039}],"full_sync":true}'
+      string: '{"sync_token":"C2klKAm9wiu-RV1lveOfdtoIs5SOklswOrogbgNeYlXyb1URGn6RiTlP31K1UNURm4Ky35h-woczMXDv0RcqMlAWAt4iJcWmubmEwbvfUPjEz0U","temp_id_mapping":{},"labels":[{"item_order":2,"is_deleted":0,"name":"github_issues","color":30,"is_favorite":0,"id":2150056131},{"item_order":3,"is_deleted":0,"name":"home_maintenance","color":35,"is_favorite":0,"id":2152895999},{"item_order":1,"is_deleted":0,"name":"jira_tickets","color":38,"is_favorite":0,"id":2150056338},{"item_order":7,"is_deleted":0,"name":"job_search","legacy_id":1242157,"color":47,"is_favorite":0,"id":1880290349},{"item_order":4,"is_deleted":0,"name":"online_finance","color":37,"is_favorite":0,"id":2153135689},{"item_order":5,"is_deleted":0,"name":"software_bug","color":31,"is_favorite":0,"id":2152851618},{"item_order":6,"is_deleted":0,"name":"software_improvement","color":31,"is_favorite":0,"id":2152894039}],"full_sync":true}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:23:58 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:07 GMT
 recorded_with: VCR 5.0.0

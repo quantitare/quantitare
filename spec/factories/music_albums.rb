@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :music_album, class: Aux::MusicAlbum do
     transient do
       mbid { nil }
-      title { Faker::Lorem.words(4).join(' ') }
+      title { Faker::Lorem.words(number: 4).join(' ') }
       release_date { nil }
 
       artist_name { Faker::Music.band }
@@ -13,7 +13,7 @@ FactoryBot.define do
       tracks do
         [{
           rank: 1,
-          title: Faker::Lorem.words(4).join(' '),
+          title: Faker::Lorem.words(number: 4).join(' '),
           artist_name: artist_name
         }]
       end
@@ -30,19 +30,19 @@ FactoryBot.define do
         tracks: tracks
       }.compact
     end
-    expires_at { Faker::Time.forward(14, :all) }
+    expires_at { Faker::Time.forward(days: 14, period: :all) }
 
     trait :with_service do
       service
     end
 
     trait :with_tags do
-      tag_list { Faker::Lorem.words(5).join(', ') }
+      tag_list { Faker::Lorem.words(number: 5).join(', ') }
     end
 
     trait :with_info do
       after(:build) do |album|
-        full_info = Faker::Lorem.paragraphs(3)
+        full_info = Faker::Lorem.paragraphs(number: 3)
 
         album.data[:info] = {
           summary: full_info[0],
@@ -54,16 +54,16 @@ FactoryBot.define do
     trait :with_image do
       after(:build) do |album|
         artist.data[:image] = {
-          small: Faker::Placeholdit.image('50x50'),
-          medium: Faker::Placeholdit.image('100x100'),
-          large: Faker::Placeholdit.image('400x400'),
-          original: Faker::Placeholdit.image('800x800')
+          small: Faker::Placeholdit.image(size: '50x50'),
+          medium: Faker::Placeholdit.image(size: '100x100'),
+          large: Faker::Placeholdit.image(size: '400x400'),
+          original: Faker::Placeholdit.image(size: '800x800')
         }
       end
     end
 
     trait :expired do
-      expires_at { Faker::Time.between(30.days.ago, 1.week.ago, :all) }
+      expires_at { Faker::Time.between(from: 30.days.ago, to: 1.week.ago) }
     end
   end
 end

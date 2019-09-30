@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe LocationScrobbles::MatchingPlaceMatchQuery, :vcr do
   describe '#call' do
-    let(:name) { Faker::Lorem.words(2).join(' ') }
+    let(:name) { Faker::Lorem.words(number: 2).join(' ') }
     let(:source_fields) { { name: name } }
 
     let!(:matching_location_scrobble_1) { create :place_scrobble, name: name }

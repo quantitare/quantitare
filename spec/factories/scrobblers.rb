@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :scrobbler, class: Scrobblers::DummyScrobbler do
     user
 
-    name { Faker::Lorem.words(1)[0] }
+    name { Faker::Lorem.words(number: 1)[0] }
 
     factory :rescuetime_scrobbler, class: Scrobblers::RescuetimeScrobbler do
       service { create :service, :rescuetime }

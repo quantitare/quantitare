@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.trakt.tv/oauth/token
     body:
       encoding: UTF-8
-      string: '{"grant_type":"refresh_token","client_id":"TRAKT_OAUTH_KEY","client_secret":"TRAKT_OAUTH_SECRET","redirect_uri":"","refresh_token":"TRAKT_TEST_USER_REFRESH_TOKEN"}'
+      string: '{"grant_type":"refresh_token","client_id":"TRAKT_OAUTH_KEY","client_secret":"TRAKT_OAUTH_SECRET","redirect_uri":"http://test.host/auth/auth/trakt/callback","refresh_token":"TRAKT_TEST_USER_REFRESH_TOKEN"}'
     headers:
       Content-Type:
       - application/json
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 17:50:22 GMT
+      - Sun, 27 Oct 2019 17:40:44 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,16 +29,16 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d28ce5a5ef7ca9040336985019ce5f5f01563645022; expires=Sun, 19-Jul-20
-        17:50:22 GMT; path=/; domain=.trakt.tv; HttpOnly
+      - __cfduid=d4bf4d066f97d15a33fa88d3a639af5091572198043; expires=Mon, 26-Oct-20
+        17:40:43 GMT; path=/; domain=.trakt.tv; HttpOnly
       - _traktsession=some_session;
         path=/; HttpOnly
       Cache-Control:
       - no-store
       Cf-Railgun:
-      - aae2df9fe5 99.99 0.018208 0030 57da
+      - dc8f99fb65 99.99 0.058686 0030 57da
       Etag:
-      - W/"a759737dc870279be5f062a7b3551fc9"
+      - W/"ea912542a88b92672399595944ef699a"
       Pragma:
       - no-cache
       Vary:
@@ -48,22 +48,24 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 45a1889f-e468-43b7-beb9-1fb9938e27c7
+      - 0420176a-9787-4a25-aeb2-796c68f65470
       X-Runtime:
-      - '0.016504'
+      - '0.030363'
       X-Xss-Protection:
       - 1; mode=block
+      Cf-Cache-Status:
+      - DYNAMIC
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4f96c6ee69d0928c-SJC
+      - 52c674ee8fb89346-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"some_new_token","token_type":"Bearer","expires_in":7776000,"refresh_token":"some_new_refresh_token","scope":"public","created_at":1563644758}'
+      string: '{"access_token":"SOME_TOKEN","token_type":"Bearer","expires_in":7776000,"refresh_token":"SOME_REFRESH_TOKEN","scope":"public","created_at":1572198041}'
     http_version:
-  recorded_at: Sat, 20 Jul 2019 17:50:22 GMT
+  recorded_at: Sun, 27 Oct 2019 17:40:44 GMT
 - request:
     method: get
     uri: https://api.trakt.tv/users/me/history?end_at=2019-02-15T00:00:00Z&page=0&start_at=2019-02-01T00:00:00Z
@@ -78,9 +80,9 @@ http_interactions:
       Trakt-Api-Version:
       - '2'
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.16.2
       Authorization:
-      - Bearer some_new_token
+      - Bearer SOME_TOKEN
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -91,7 +93,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 17:50:22 GMT
+      - Sun, 27 Oct 2019 17:40:44 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -99,16 +101,16 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d0e31f539ef23e95e9d5d71182ab977df1563645022; expires=Sun, 19-Jul-20
-        17:50:22 GMT; path=/; domain=.trakt.tv; HttpOnly
+      - __cfduid=d8c1c037eb4e56edf82fa2a8e2ffbabee1572198044; expires=Mon, 26-Oct-20
+        17:40:44 GMT; path=/; domain=.trakt.tv; HttpOnly
       Cache-Control:
       - max-age=0, private, must-revalidate
       Cf-Railgun:
-      - 70f87bf6ff 99.99 0.020452 0030 57da
+      - 6eb3018ca8 99.99 0.228045 0030 57da
       Etag:
-      - W/"03a7279627bb706aac0655aa108f8e2c"
+      - W/"1ecac054c5cb253871aa4694a14c47d5"
       Last-Modified:
-      - Fri, 19 Jul 2019 15:59:27 GMT
+      - Sun, 27 Oct 2019 07:07:38 GMT
       Vary:
       - Accept-Encoding
       X-Content-Type-Options:
@@ -126,17 +128,19 @@ http_interactions:
       X-Private-User:
       - 'true'
       X-Request-Id:
-      - bf5cb29e-72a4-4874-b870-7206d9a3c231
+      - b256f766-c920-47bc-8ee0-abdd05ffb3e5
       X-Runtime:
-      - '0.013770'
+      - '0.161258'
       X-Xss-Protection:
       - 1; mode=block
+      Cf-Cache-Status:
+      - DYNAMIC
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4f96c6ef4c406bcc-SJC
+      - 52c674efdfea6c50-SJC
     body:
       encoding: ASCII-8BIT
       string: '[{"id":4230613006,"watched_at":"2019-02-11T04:45:05.000Z","action":"watch","type":"episode","episode":{"season":3,"number":11,"title":"Chidi
@@ -159,7 +163,7 @@ http_interactions:
         Snowplow","ids":{"trakt":3016851,"tvdb":6854186,"imdb":"tt8601206","tmdb":1586227,"tvrage":0}},"show":{"title":"The
         Good Place","year":2016,"ids":{"trakt":107700,"slug":"the-good-place","tvdb":311711,"imdb":"tt4955642","tmdb":66573,"tvrage":null}}}]'
     http_version:
-  recorded_at: Sat, 20 Jul 2019 17:50:22 GMT
+  recorded_at: Sun, 27 Oct 2019 17:40:44 GMT
 - request:
     method: get
     uri: https://api.trakt.tv/users/me/history?end_at=2019-02-15T00:00:00Z&page=2&start_at=2019-02-01T00:00:00Z
@@ -174,9 +178,9 @@ http_interactions:
       Trakt-Api-Version:
       - '2'
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.16.2
       Authorization:
-      - Bearer some_new_token
+      - Bearer SOME_TOKEN
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -187,7 +191,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 17:50:22 GMT
+      - Sun, 27 Oct 2019 17:40:44 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -195,16 +199,16 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d31ac61838edc8a94a664caace61455051563645022; expires=Sun, 19-Jul-20
-        17:50:22 GMT; path=/; domain=.trakt.tv; HttpOnly
+      - __cfduid=dd4ec34275d1cd7560ed4fffdeaaa81c51572198044; expires=Mon, 26-Oct-20
+        17:40:44 GMT; path=/; domain=.trakt.tv; HttpOnly
       Cache-Control:
       - max-age=0, private, must-revalidate
       Cf-Railgun:
-      - 12a413da15 99.99 0.019089 0030 57da
+      - 4ae89c9522 99.99 0.032941 0030 57da
       Etag:
-      - W/"42d0b38745ea807c20ee6cfbeed4c947"
+      - W/"ef3bfe9f4412632e7ba5e1225ca38a14"
       Last-Modified:
-      - Fri, 19 Jul 2019 15:59:27 GMT
+      - Sun, 27 Oct 2019 07:07:38 GMT
       Vary:
       - Accept-Encoding
       X-Content-Type-Options:
@@ -222,17 +226,19 @@ http_interactions:
       X-Private-User:
       - 'true'
       X-Request-Id:
-      - dab0ab43-b384-4577-88fd-6a00cb10f847
+      - 2d289333-9da4-43b3-963d-c807acf5b225
       X-Runtime:
-      - '0.017273'
+      - '0.030583'
       X-Xss-Protection:
       - 1; mode=block
+      Cf-Cache-Status:
+      - DYNAMIC
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4f96c6f02fb96ddc-SJC
+      - 52c674f2097292f8-SJC
     body:
       encoding: ASCII-8BIT
       string: '[{"id":4220586506,"watched_at":"2019-02-07T03:54:36.000Z","action":"watch","type":"episode","episode":{"season":3,"number":2,"title":"The
@@ -250,5 +256,5 @@ http_interactions:
         Van Doors","ids":{"trakt":3274481,"tvdb":6937674,"imdb":"tt8367930","tmdb":1683151,"tvrage":0}},"show":{"title":"Unbreakable
         Kimmy Schmidt","year":2015,"ids":{"trakt":77766,"slug":"unbreakable-kimmy-schmidt","tvdb":281593,"imdb":"tt3339966","tmdb":61671,"tvrage":39221}}}]'
     http_version:
-  recorded_at: Sat, 20 Jul 2019 17:50:22 GMT
+  recorded_at: Sun, 27 Oct 2019 17:40:44 GMT
 recorded_with: VCR 5.0.0

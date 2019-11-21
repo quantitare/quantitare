@@ -45,7 +45,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'draper', '~> 3.1.0'
 gem 'has_scope', '~> 0.7.2'
 gem 'memoist'
-gem 'rack-cors', '~> 1.0.5'
+gem 'rack-cors', '~> 1.1.0'
 gem 'rails-settings-cached', '~> 0.7.1'
 gem 'responders', '~> 3.0.0'
 

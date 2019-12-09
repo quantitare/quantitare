@@ -20,7 +20,7 @@ gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby
 
 # Front-end extensions
-gem 'vue-rails-form-builder'
+gem 'vue-rails-form-builder', github: 'aastronautss/vue-rails-form-builder'
 
 # Back-end core
 gem 'redis', '~> 4.0'

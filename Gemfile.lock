@@ -167,7 +167,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.13.1)
       faraday (>= 0.7.4, < 1.0)
-    ffi (1.11.1)
+    ffi (1.11.3)
     foursquare2 (2.0.2)
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
@@ -213,7 +213,7 @@ GEM
       httparty
       xml-simple
     liquid (4.0.3)
-    listen (3.2.0)
+    listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.4.0)
@@ -494,7 +494,7 @@ DEPENDENCIES
   json_schemer (~> 0.2.0)
   lastfm
   liquid
-  listen (>= 3.0.5, <= 3.2.0)
+  listen (>= 3.0.5, <= 3.2.1)
   memoist
   nokogiri (~> 1.10.0)
   omniauth (~> 1.9.0)

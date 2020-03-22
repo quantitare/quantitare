@@ -3,8 +3,8 @@
 FactoryBot.define do
   factory :service do
     user
-    provider { Faker::Lorem.words(1) }
-    name { Faker::Lorem.words(1) }
+    provider { Faker::Lorem.words(number: 1) }
+    name { Faker::Lorem.words(number: 1) }
     token { SecureRandom.hex }
 
     trait :with_secret do

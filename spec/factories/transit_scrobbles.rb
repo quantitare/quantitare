@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :transit_scrobble do
     user
-    category { Faker::Lorem.words(1) }
+    category { Faker::Lorem.words(number: 1) }
     source { create :location_import }
 
     start_time { 2.hours.ago }

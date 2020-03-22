@@ -6,8 +6,8 @@ RSpec.describe FindPlaceMatchForLocationScrobble, :vcr do
   describe '#call' do
     subject { FindPlaceMatchForLocationScrobble }
 
-    let(:name) { Faker::Lorem.words(2).join(' ') }
-    let(:other_name) { Faker::Lorem.words(2).join(' ') + ' & does not match' }
+    let(:name) { Faker::Lorem.words(number: 2).join(' ') }
+    let(:other_name) { Faker::Lorem.words(number: 2).join(' ') + ' & does not match' }
     let(:longitude) { '1.0' }
     let(:latitude) { '2.0' }
 

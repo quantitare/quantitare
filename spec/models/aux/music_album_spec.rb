@@ -62,7 +62,7 @@ RSpec.describe Aux::MusicAlbum do
 
     context 'when title and artist name are provided' do
       let(:artist_name) { Faker::Music.band }
-      let(:title) { Faker::Lorem.words(4).join(' ') }
+      let(:title) { Faker::Lorem.words(number: 4).join(' ') }
       let(:options) { { title: title, artist_name: artist_name, adapter: adapter } }
 
       context 'when there is an unexpired cache' do

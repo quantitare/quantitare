@@ -1,13 +1,35 @@
 # frozen_string_literal: true
 
 ##
+# DSL for autoloadable STI types. Used for the purposes of validating the `type` column intended for STI, as well as
+# keeping STI types organized.
 #
+#   # app/models/thing.rb
+#
+#   class Thing < ApplicationRecord
+#     include Typeable
+#
+#     load_types_in 'Things'
+#   end
+#
+#   # app/models/things/widget.rb
+#
+#   class Widget < Thing
+#   end
+#
+#   # elsewhere...
+#
+#   Widget.new.valid_type? #=> true
+#
+#   Thing.new(type: 'Gadget').valid_type? #=> false
 #
 module Typeable
   extend ActiveSupport::Concern
 
   included do
     validate :validate_type
+
+    default_scope { where(type: type_names) }
   end
 
   class_methods do
@@ -19,6 +41,20 @@ module Typeable
 
     def types
       class_variable_get('@@types').map(&:constantize)
+    end
+
+    def type_names
+      class_variable_get('@@types')
+    end
+
+    def friendly_name
+      name.split('::').last.underscore.titleize
+    end
+
+    def inherited(subklass)
+      class_variable_get('@@types') << subklass.name unless class_variable_get('@@types').include?(subklass.name)
+
+      super
     end
 
     private

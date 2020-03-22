@@ -3,12 +3,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.0'
 
 gem 'rails', '~> 5.2.0'
 
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.0'
+gem 'puma', '~> 4.3'
 
 # Quantitare modules
 gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
@@ -20,18 +20,18 @@ gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby
 
 # Front-end extensions
-gem 'vue-rails-form-builder'
+gem 'vue-rails-form-builder', github: 'aastronautss/vue-rails-form-builder'
 
 # Back-end core
 gem 'redis', '~> 4.0'
-gem 'sidekiq', '~> 5.0'
+gem 'sidekiq', '~> 6.0'
 
 # Utilities
 gem 'bcrypt', '~> 3.1.7'
 gem 'carmen', '~> 1.1.1'
 gem 'faraday'
 gem 'faraday_middleware'
-gem 'geocoder', '~> 1.5.0'
+gem 'geocoder', '~> 1.6.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.2.0'
 gem 'liquid'
@@ -39,18 +39,22 @@ gem 'nokogiri', '~> 1.10.0'
 gem 'sidekiq-scheduler'
 gem 'virtus'
 
+# Ruby 2.7 compatibility
+gem 'e2mmap'
+gem 'thwait'
+
 # Extensions
 gem 'activerecord-import', '~> 1.0.0'
 gem 'acts-as-taggable-on', '~> 6.0'
-gem 'draper', '~> 3.1.0'
+gem 'draper', '~> 4.0.0'
 gem 'has_scope', '~> 0.7.2'
 gem 'memoist'
-gem 'rack-cors', '~> 1.0.2'
+gem 'rack-cors', '~> 1.1.0'
 gem 'rails-settings-cached', '~> 0.7.1'
 gem 'responders', '~> 3.0.0'
 
 # Authentication
-gem 'devise', '~> 4.6.1'
+gem 'devise', '~> 4.7.0'
 gem 'omniauth', '~> 1.9.0'
 
 # Omniauth strategies
@@ -93,7 +97,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '>= 3.0.5', '<= 3.2.1'
   gem 'web-console', '>= 3.3.0'
 
   gem 'spring'

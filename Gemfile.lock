@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/quantitare/quantitare-categories.git
-  revision: 215a6b661a1e26e11a3cb6c6aebb3711e55238be
+  revision: eb52ba1974e5c6a08b3d33b747ed856a31a9a81c
   specs:
     quantitare-categories (0.1.0)
       activesupport

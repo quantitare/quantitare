@@ -63,7 +63,7 @@ http_interactions:
       - 52c67a352bc76da0-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"SOME_TOKEN","token_type":"Bearer","expires_in":7776000,"refresh_token":"SOME_REFRESH_TOKEN","scope":"public","created_at":1572198254}'
+      string: '{"access_token":"SOME_TOKEN","token_type":"Bearer","expires_in":7776000,"refresh_token":"SOME_REFRESH_TOKEN","scope":"public","created_at":3162743123}'
     http_version:
   recorded_at: Sun, 27 Oct 2019 17:44:20 GMT
 - request:

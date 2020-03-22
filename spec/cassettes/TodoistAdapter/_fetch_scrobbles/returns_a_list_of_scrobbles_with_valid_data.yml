@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://todoist.com/API/v7/completed/get_all
+    uri: https://api.todoist.com/sync/v8/completed/get_all
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&since=2019-07-18T00%3A00&until=2019-07-19T00%3A00&limit=50&offset=0
@@ -29,43 +29,38 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 23 Jul 2019 05:12:47 GMT
+      - Mon, 30 Sep 2019 21:25:00 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=4ce7eed472844daf9c0ba41516e97d02; Expires=Fri, 20-Jul-2029 05:12:47 GMT;
+      - csrf=7c3946963d08480eba7d38e0d7f89f67; Expires=Thu, 27-Sep-2029 21:25:00 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 5bdcc25b38d6ec0a4b1c17e81fdf7bf7.cloudfront.net (CloudFront)
+      - 1.1 fc69a025b8d31536c9f86f29f3d9a033.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - EEai95WmKwHAPMGWHdjfpMtJ3WAYqfBeZBPy2VSg_kqPX4SFryrWvg==
+      - 0zz8cmLfKcuD1pAQj9HPUa-0VcvhwS3lHwhuVyo2PMfnsFxfwVy_9Q==
     body:
       encoding: ASCII-8BIT
-      string: '{"items":[{"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-760
+      string: '{"items":[{"content":"https://touchofmodern.atlassian.net/browse/ENG-760
         ([ENG-760]) PDF attachment issues due to ImageMagick security vulnerabilities
-        patch @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3287137893,"project_id":179984353,"completed_date":"Thu
-        18 Jul 2019 23:44:32 +0000","id":3287137893},{"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-1266
-        ([ENG-1266]) Admin load-balanced via ECS @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3226172004,"project_id":2205011866,"completed_date":"Thu
-        18 Jul 2019 18:44:40 +0000","id":3226172004},{"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-1505
-        ([ENG-1505]) Conditionally set ECS services to serve assets via cdn-s3 @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3300166828,"project_id":179984353,"completed_date":"Thu
-        18 Jul 2019 18:44:38 +0000","id":3300166828},{"content":"Spray the plants","meta_data":null,"user_id":9036325,"task_id":2932557544,"project_id":2183987461,"completed_date":"Thu
-        18 Jul 2019 05:11:20 +0000","id":2932557544}],"projects":{"179984353":{"indent":1,"name":"Work","is_favorite":0,"color":4,"is_deleted":0,"collapsed":0,"parent_id":null,"item_order":17,"is_archived":0,"id":179984353},"2205011866":{"indent":2,"name":"JIRA
-        Inbox","is_favorite":0,"color":4,"is_deleted":0,"collapsed":0,"parent_id":179984353,"item_order":18,"is_archived":0,"id":2205011866},"2183987461":{"indent":1,"name":"Future","is_favorite":0,"color":3,"is_deleted":0,"collapsed":0,"parent_id":null,"item_order":35,"is_archived":0,"id":2183987461}}}'
+        patch @jira_tickets","legacy_project_id":179984353,"meta_data":null,"user_id":9036325,"task_id":3287137893,"project_id":2059032545,"completed_date":"2019-07-18T23:44:32Z","id":3287137893},{"content":"https://touchofmodern.atlassian.net/browse/ENG-1266
+        ([ENG-1266]) Admin load-balanced via ECS @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3226172004,"project_id":2205011866,"completed_date":"2019-07-18T18:44:40Z","id":3226172004},{"content":"https://touchofmodern.atlassian.net/browse/ENG-1505
+        ([ENG-1505]) Conditionally set ECS services to serve assets via cdn-s3 @jira_tickets","legacy_project_id":179984353,"meta_data":null,"user_id":9036325,"task_id":3300166828,"project_id":2059032545,"completed_date":"2019-07-18T18:44:38Z","id":3300166828},{"content":"Spray
+        the plants","meta_data":null,"user_id":9036325,"task_id":2932557544,"project_id":2183987461,"completed_date":"2019-07-18T05:11:20Z","id":2932557544}],"projects":{"2059032545":{"name":"Work","is_favorite":0,"color":40,"is_deleted":0,"collapsed":0,"parent_id":null,"child_order":6,"is_archived":0,"id":2059032545,"legacy_id":179984353},"2205011866":{"name":"JIRA
+        Inbox","is_favorite":0,"legacy_parent_id":179984353,"color":40,"is_deleted":0,"collapsed":0,"parent_id":2059032545,"child_order":1,"is_archived":0,"id":2205011866},"2183987461":{"name":"Future","is_favorite":0,"color":33,"is_deleted":0,"collapsed":0,"parent_id":null,"child_order":7,"is_archived":0,"id":2183987461}}}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:47 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:00 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/completed/get_all
+    uri: https://api.todoist.com/sync/v8/completed/get_all
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&since=2019-07-18T00%3A00&until=2019-07-19T00%3A00&limit=50&offset=50
@@ -90,34 +85,32 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:12:47 GMT
+      - Mon, 30 Sep 2019 21:25:00 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=1d98fba06d44476a87944022ca73ce94; Expires=Fri, 20-Jul-2029 05:12:47 GMT;
+      - csrf=5902ff2084764bd6abf5be7d56705603; Expires=Thu, 27-Sep-2029 21:25:00 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 fc69a025b8d31536c9f86f29f3d9a033.cloudfront.net (CloudFront)
+      - 1.1 1e3efed5d78d083b7fd9806e465068e1.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - 2gLW0bBVwU19nHdCdqLNKZMjxVEMkK0JOdz2a8WCywawBFM8k7UVcQ==
+      - KxTYnFhmp11kiboDPuL8P_S4j4UbnOXGD4O-CEbP9ObrURx73gM6Dw==
     body:
       encoding: UTF-8
       string: '{"items":[],"projects":{}}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:47 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:00 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/items/get
+    uri: https://api.todoist.com/sync/v8/items/get
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&item_id=3287137893&all_data=true
@@ -138,42 +131,38 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '784'
+      - '733'
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:12:48 GMT
+      - Mon, 30 Sep 2019 21:25:01 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=18ac90f9644c49c2861686bc360d07b2; Expires=Fri, 20-Jul-2029 05:12:48 GMT;
+      - csrf=005cbc9c6fa84351906f84177763cf36; Expires=Thu, 27-Sep-2029 21:25:01 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 170a6969b81e7fb3b7cd4266b0118992.cloudfront.net (CloudFront)
+      - 1.1 60bf8c31583fc8615410cf45d263fddc.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - nCJK78N4dfOAiXGQrVR1t6KvMAIoP8qE1WbXpWtg1Igw4OhPHVi0mA==
+      - NUXCLoIptbw25qg3k1LxvFekNEbKWTVDHCfQSLzIfF66EUrtqbGG4A==
     body:
       encoding: UTF-8
-      string: '{"project":{"indent":1,"name":"Work","is_favorite":0,"color":4,"is_deleted":0,"collapsed":0,"parent_id":null,"item_order":17,"is_archived":0,"shared":false,"id":179984353},"item":{"is_deleted":0,"assigned_by_uid":9036325,"is_archived":0,"labels":[2150056338],"sync_id":null,"all_day":false,"in_history":1,"indent":1,"date_added":"Tue
-        09 Jul 2019 18:54:48 +0000","date_lang":null,"id":3287137893,"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-760
+      string: '{"project":{"name":"Work","is_favorite":0,"color":40,"is_deleted":0,"collapsed":0,"parent_id":null,"child_order":6,"is_archived":0,"shared":false,"id":2059032545,"legacy_id":179984353},"item":{"legacy_project_id":179984353,"is_deleted":0,"assigned_by_uid":9036325,"labels":[2150056338],"sync_id":null,"section_id":null,"in_history":1,"child_order":8,"date_added":"2019-07-09T18:54:48Z","id":3287137893,"content":"https://touchofmodern.atlassian.net/browse/ENG-760
         ([ENG-760]) PDF attachment issues due to ImageMagick security vulnerabilities
-        patch","checked":1,"user_id":9036325,"due_date_utc":null,"priority":1,"parent_id":null,"item_order":449,"responsible_uid":null,"project_id":179984353,"date_completed":"Thu
-        18 Jul 2019 23:44:32 +0000","collapsed":0,"date_string":null},"notes":[]}'
+        patch","checked":1,"user_id":9036325,"due":null,"priority":1,"parent_id":null,"responsible_uid":null,"project_id":2059032545,"date_completed":"2019-07-18T23:44:32Z","collapsed":0},"notes":[]}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:48 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:01 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/sync
+    uri: https://api.todoist.com/sync/v8/sync
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&commands=%5B%5D
@@ -198,34 +187,32 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:12:48 GMT
+      - Mon, 30 Sep 2019 21:25:01 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=203ea54c62414b06b4ab596447015e08; Expires=Fri, 20-Jul-2029 05:12:48 GMT;
+      - csrf=32af283f9f144e5da50e940d8c39020f; Expires=Thu, 27-Sep-2029 21:25:01 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 b2c7a6e5cdaa79dd9cda021cad5792a9.cloudfront.net (CloudFront)
+      - 1.1 bd310f631d1314e239dc9cd04967c61f.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - XQ5jy9M7HvMtozUzi8zyPGNl0SpnvMfy6oBkFWh5mql7RlqlnN0ITw==
+      - eDLepcp6yyzSzY-apr2ocAd_HArvp0skzYcveb1GtkRaI6eGSCXJZQ==
     body:
       encoding: UTF-8
-      string: '{"sync_token":"RKw_ObUmpC0V_F8z8uDAOFNBqWRL6YwVOA3O4eHs4vtakPWukoXjA762mrTPIh52KeirHJEmx4wmP0TEA1Pr-R2BGb1q-JeutiWgVyYS9Rdc9zY","temp_id_mapping":{},"full_sync":true}'
+      string: '{"sync_token":"C2klKAm9wiu-RV1lveOfdtoIs5SOklswOrogbgNeYlXyb1URGn6RiTlP31K1UNURm4Ky35h-woczMXDv0RcqMlAWAt4iJcWmubmEwbvfUPjEz0U","temp_id_mapping":{},"full_sync":true}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:48 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:01 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/sync
+    uri: https://api.todoist.com/sync/v8/sync
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&sync_token=%7B%22projects%22%3D%3E%22*%22%2C+%22labels%22%3D%3E%22*%22%2C+%22items%22%3D%3E%22*%22%2C+%22notes%22%3D%3E%22*%22%2C+%22reminders%22%3D%3E%22*%22%2C+%22filters%22%3D%3E%22*%22%7D&resource_types=%5B%22labels%22%5D
@@ -246,38 +233,36 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '763'
+      - '889'
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:12:48 GMT
+      - Mon, 30 Sep 2019 21:25:01 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=202ef6a4f4394ce7a70a160d521730e1; Expires=Fri, 20-Jul-2029 05:12:48 GMT;
+      - csrf=4af0ce69c3754db8936fe2ef0e909d9e; Expires=Thu, 27-Sep-2029 21:25:01 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 de1a76a9cfceb99637fcf59c540ddbde.cloudfront.net (CloudFront)
+      - 1.1 29d5f0d8e2dd422f7acbfacb05e899e8.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - _qif8mAZp2kD4mO3XJlaOUhr0DxnpBk0raVPfTiQRhOD4hoVyP3VOg==
+      - _-zX8jROThNPShFp-epQPBn8gNqtKdStzl1v_NesZy2CJATVa5m2Dg==
     body:
       encoding: UTF-8
-      string: '{"sync_token":"RKw_ObUmpC0V_F8z8uDAOFNBqWRL6YwVOA3O4eHs4vtakPWukoXjA762mrTPIh52KeirHJEmx4wmP0TEA1Pr-R2BGb1q-JeutiWgVyYS9Rdc9zY","temp_id_mapping":{},"labels":[{"item_order":2,"is_deleted":0,"name":"github_issues","color":10,"is_favorite":0,"id":2150056131},{"item_order":3,"is_deleted":0,"name":"home_maintenance","color":11,"is_favorite":0,"id":2152895999},{"item_order":1,"is_deleted":0,"name":"jira_tickets","color":6,"is_favorite":0,"id":2150056338},{"item_order":6,"is_deleted":0,"name":"job_search","color":7,"is_favorite":0,"id":1242157},{"item_order":4,"is_deleted":0,"name":"software_bug","color":2,"is_favorite":0,"id":2152851618},{"item_order":5,"is_deleted":0,"name":"software_improvement","color":2,"is_favorite":0,"id":2152894039}],"full_sync":true}'
+      string: '{"sync_token":"C2klKAm9wiu-RV1lveOfdtoIs5SOklswOrogbgNeYlXyb1URGn6RiTlP31K1UNURm4Ky35h-woczMXDv0RcqMlAWAt4iJcWmubmEwbvfUPjEz0U","temp_id_mapping":{},"labels":[{"item_order":2,"is_deleted":0,"name":"github_issues","color":30,"is_favorite":0,"id":2150056131},{"item_order":3,"is_deleted":0,"name":"home_maintenance","color":35,"is_favorite":0,"id":2152895999},{"item_order":1,"is_deleted":0,"name":"jira_tickets","color":38,"is_favorite":0,"id":2150056338},{"item_order":7,"is_deleted":0,"name":"job_search","legacy_id":1242157,"color":47,"is_favorite":0,"id":1880290349},{"item_order":4,"is_deleted":0,"name":"online_finance","color":37,"is_favorite":0,"id":2153135689},{"item_order":5,"is_deleted":0,"name":"software_bug","color":31,"is_favorite":0,"id":2152851618},{"item_order":6,"is_deleted":0,"name":"software_improvement","color":31,"is_favorite":0,"id":2152894039}],"full_sync":true}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:48 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:01 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/items/get
+    uri: https://api.todoist.com/sync/v8/items/get
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&item_id=3226172004&all_data=true
@@ -298,41 +283,37 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '753'
+      - '680'
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:12:48 GMT
+      - Mon, 30 Sep 2019 21:25:02 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=44f1eb2bb0db4709b0e9d48cf0a0e63d; Expires=Fri, 20-Jul-2029 05:12:48 GMT;
+      - csrf=2ff0884f53984ea59f4993c158c55e3d; Expires=Thu, 27-Sep-2029 21:25:02 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 b2c7a6e5cdaa79dd9cda021cad5792a9.cloudfront.net (CloudFront)
+      - 1.1 d05901decd39bd339fbb13247b0f62f6.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - qsENfE8iBfTejsDCasowmSPFONEiMgR65nmK6epBV4twHp3gLovznw==
+      - rYAC6j3SedTmrzf8bjvJIVp57-rv09zIUEqvp_KZIZs_m10sl9cV_A==
     body:
       encoding: UTF-8
-      string: '{"project":{"indent":2,"name":"JIRA Inbox","is_favorite":0,"color":4,"is_deleted":0,"collapsed":0,"parent_id":179984353,"item_order":18,"is_archived":0,"shared":false,"id":2205011866},"item":{"is_deleted":0,"assigned_by_uid":9036325,"is_archived":0,"labels":[2150056338],"sync_id":null,"all_day":false,"in_history":1,"indent":1,"date_added":"Fri
-        31 May 2019 21:04:22 +0000","date_lang":null,"id":3226172004,"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-1266
-        ([ENG-1266]) Admin load-balanced via ECS","checked":1,"user_id":9036325,"due_date_utc":null,"priority":1,"parent_id":null,"item_order":8,"responsible_uid":null,"project_id":2205011866,"date_completed":"Thu
-        18 Jul 2019 18:44:40 +0000","collapsed":0,"date_string":null},"notes":[]}'
+      string: '{"project":{"legacy_parent_id":179984353,"name":"JIRA Inbox","is_favorite":0,"color":40,"is_deleted":0,"collapsed":0,"parent_id":2059032545,"child_order":1,"is_archived":0,"shared":false,"id":2205011866},"item":{"is_deleted":0,"assigned_by_uid":9036325,"labels":[2150056338],"sync_id":null,"section_id":null,"in_history":1,"child_order":8,"date_added":"2019-05-31T21:04:22Z","id":3226172004,"content":"https://touchofmodern.atlassian.net/browse/ENG-1266
+        ([ENG-1266]) Admin load-balanced via ECS","checked":1,"user_id":9036325,"due":null,"priority":1,"parent_id":null,"responsible_uid":null,"project_id":2205011866,"date_completed":"2019-07-18T18:44:40Z","collapsed":0},"notes":[]}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:48 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:02 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/items/get
+    uri: https://api.todoist.com/sync/v8/items/get
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&item_id=3300166828&all_data=true
@@ -353,41 +334,37 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '772'
+      - '722'
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:12:48 GMT
+      - Mon, 30 Sep 2019 21:25:02 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=b944d2dee85f4e99be78dfb7ad05b367; Expires=Fri, 20-Jul-2029 05:12:48 GMT;
+      - csrf=e5cdb9dffa3941aba7d5cced1ba27f97; Expires=Thu, 27-Sep-2029 21:25:02 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 90a2caaefc6601d7221c81fd5d65a2cb.cloudfront.net (CloudFront)
+      - 1.1 a395ab921d8c9cd3e200604240c4e840.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - "-aDrls0KfStOQ0KzL4aR_IFOY_4ZKmOlDyTGpTWMmIlT5eSM4MjBNA=="
+      - mxnAC6Qw76VKbb1nCsA6HQ6d178WWsgLIBtIsPpYA_E1c7rOptv50A==
     body:
       encoding: UTF-8
-      string: '{"project":{"indent":1,"name":"Work","is_favorite":0,"color":4,"is_deleted":0,"collapsed":0,"parent_id":null,"item_order":17,"is_archived":0,"shared":false,"id":179984353},"item":{"is_deleted":0,"assigned_by_uid":9036325,"is_archived":0,"labels":[2150056338],"sync_id":null,"all_day":false,"in_history":1,"indent":1,"date_added":"Wed
-        17 Jul 2019 23:04:36 +0000","date_lang":null,"id":3300166828,"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-1505
-        ([ENG-1505]) Conditionally set ECS services to serve assets via cdn-s3","checked":1,"user_id":9036325,"due_date_utc":null,"priority":1,"parent_id":null,"item_order":448,"responsible_uid":null,"project_id":179984353,"date_completed":"Thu
-        18 Jul 2019 18:44:38 +0000","collapsed":0,"date_string":null},"notes":[]}'
+      string: '{"project":{"name":"Work","is_favorite":0,"color":40,"is_deleted":0,"collapsed":0,"parent_id":null,"child_order":6,"is_archived":0,"shared":false,"id":2059032545,"legacy_id":179984353},"item":{"legacy_project_id":179984353,"is_deleted":0,"assigned_by_uid":9036325,"labels":[2150056338],"sync_id":null,"section_id":null,"in_history":1,"child_order":32,"date_added":"2019-07-17T23:04:36Z","id":3300166828,"content":"https://touchofmodern.atlassian.net/browse/ENG-1505
+        ([ENG-1505]) Conditionally set ECS services to serve assets via cdn-s3","checked":1,"user_id":9036325,"due":null,"priority":1,"parent_id":null,"responsible_uid":null,"project_id":2059032545,"date_completed":"2019-07-18T18:44:38Z","collapsed":0},"notes":[]}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:48 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:02 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/items/get
+    uri: https://api.todoist.com/sync/v8/items/get
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&item_id=2932557544&all_data=true
@@ -408,37 +385,33 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '673'
+      - '636'
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 05:12:48 GMT
+      - Mon, 30 Sep 2019 21:25:02 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=eb32b9c973d641af8864e3797fd510b7; Expires=Fri, 20-Jul-2029 05:12:48 GMT;
+      - csrf=fd56f45fcd2348de9e69caa71c245890; Expires=Thu, 27-Sep-2029 21:25:02 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 d3e9860c1306f02cb57e75ed57120ee4.cloudfront.net (CloudFront)
+      - 1.1 29d5f0d8e2dd422f7acbfacb05e899e8.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - LAX3-C3
       X-Amz-Cf-Id:
-      - G6-qK4wh0Fd41UfZAvfDgplQld37iENPoNGuaChj7ZLK0TLTQCzJeA==
+      - HZyAT8WY9F0zcOglEfNnXRWxvilTwmMHUGEtGQacVHV9Fa9qMPCtOg==
     body:
       encoding: UTF-8
-      string: '{"project":{"indent":1,"name":"Future","is_favorite":0,"color":3,"is_deleted":0,"collapsed":0,"parent_id":null,"item_order":35,"is_archived":0,"shared":false,"id":2183987461},"item":{"is_deleted":0,"assigned_by_uid":9036325,"is_archived":0,"labels":[2152895999],"sync_id":null,"all_day":true,"in_history":0,"indent":1,"date_added":"Sun
-        02 Dec 2018 19:04:54 +0000","date_lang":"en","id":2932557544,"content":"Spray
-        the plants","checked":0,"user_id":9036325,"due_date_utc":"Wed 24 Jul 2019
-        06:59:59 +0000","priority":1,"parent_id":null,"item_order":2,"responsible_uid":null,"project_id":2183987461,"date_completed":null,"collapsed":0,"date_string":"every
-        3 days"},"notes":[]}'
+      string: '{"project":{"name":"Future","is_favorite":0,"color":33,"is_deleted":0,"collapsed":0,"parent_id":null,"child_order":7,"is_archived":0,"shared":false,"id":2183987461},"item":{"is_deleted":0,"assigned_by_uid":9036325,"labels":[2152895999],"sync_id":null,"section_id":null,"in_history":0,"child_order":2,"date_added":"2018-12-02T19:04:54Z","id":2932557544,"content":"Spray
+        the plants","checked":0,"user_id":9036325,"due":{"date":"2019-10-03","timezone":null,"is_recurring":true,"string":"every
+        3 days","lang":"en"},"priority":1,"parent_id":null,"responsible_uid":null,"project_id":2183987461,"date_completed":null,"collapsed":0},"notes":[]}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 05:12:48 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:02 GMT
 recorded_with: VCR 5.0.0

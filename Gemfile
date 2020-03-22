@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.7.0'
 
 gem 'rails', '~> 5.2.0'
 
@@ -38,6 +38,10 @@ gem 'liquid'
 gem 'nokogiri', '~> 1.10.0'
 gem 'sidekiq-scheduler'
 gem 'virtus'
+
+# Ruby 2.7 compatibility
+gem 'e2mmap'
+gem 'thwait'
 
 # Extensions
 gem 'activerecord-import', '~> 1.0.0'

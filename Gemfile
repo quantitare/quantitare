@@ -35,7 +35,7 @@ gem 'geocoder', '~> 1.6.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json_schemer', '~> 0.2.0'
 gem 'liquid'
-gem 'nokogiri', '~> 1.10.0'
+gem 'nokogiri', '~> 1.10.8'
 gem 'sidekiq-scheduler'
 gem 'virtus'
 

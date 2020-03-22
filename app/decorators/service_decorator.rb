@@ -4,6 +4,8 @@
 # Presentation logic for {Service}s
 #
 class ServiceDecorator < ApplicationDecorator
+  include Rails.application.routes.url_helpers
+
   delegate_all
 
   def display_name

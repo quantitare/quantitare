@@ -179,7 +179,7 @@ RSpec.describe Scrobbler do
 
     context 'when the input is a hash do' do
       let(:scrobble) do
-        { category: 'log', timestamp: Faker::Time.backward(14, :day), data: { content: 'some content' } }
+        { category: 'log', timestamp: Faker::Time.backward(days: 14, period: :day), data: { content: 'some content' } }
       end
 
       it 'creates a new scrobble' do

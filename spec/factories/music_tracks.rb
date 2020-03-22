@@ -18,14 +18,14 @@ FactoryBot.define do
         artist_name: artist_name
       }.compact
     end
-    expires_at { Faker::Time.forward(14, :all) }
+    expires_at { Faker::Time.forward(days: 14, period: :all) }
 
     trait :with_service do
       service
     end
 
     trait :expired do
-      expires_at { Faker::Time.between(30.days.ago, 1.week.ago, :all) }
+      expires_at { Faker::Time.between(from: 30.days.ago, to: 1.week.ago) }
     end
   end
 end

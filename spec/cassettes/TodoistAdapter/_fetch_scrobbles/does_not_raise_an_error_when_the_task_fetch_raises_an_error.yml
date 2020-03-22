@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://todoist.com/API/v7/completed/get_all
+    uri: https://api.todoist.com/sync/v8/completed/get_all
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&since=2019-07-18T00%3A00&until=2019-07-19T00%3A00&limit=50&offset=0
@@ -29,43 +29,38 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 23 Jul 2019 07:44:45 GMT
+      - Mon, 30 Sep 2019 21:25:02 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=73685d97894441c7955ff228fc8668b9; Expires=Fri, 20-Jul-2029 07:44:45 GMT;
+      - csrf=34d93329982f466785d970050fc46448; Expires=Thu, 27-Sep-2029 21:25:02 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 9552af4ceb2e0dd55964a80d1e549fd5.cloudfront.net (CloudFront)
+      - 1.1 60bf8c31583fc8615410cf45d263fddc.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - SFO9
+      - LAX3-C3
       X-Amz-Cf-Id:
-      - Ll0FjNc0j_oArlBmfIS4RYALUWjW7I22odwcL9toeE1Qd6KgVZbPWg==
+      - M-trzMV3jelGktT2OrWJloHddB25OwYRVmBxkviE_1VmK7HfjIePOw==
     body:
       encoding: ASCII-8BIT
-      string: '{"items":[{"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-760
+      string: '{"items":[{"content":"https://touchofmodern.atlassian.net/browse/ENG-760
         ([ENG-760]) PDF attachment issues due to ImageMagick security vulnerabilities
-        patch @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3287137893,"project_id":179984353,"completed_date":"Thu
-        18 Jul 2019 23:44:32 +0000","id":3287137893},{"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-1266
-        ([ENG-1266]) Admin load-balanced via ECS @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3226172004,"project_id":2205011866,"completed_date":"Thu
-        18 Jul 2019 18:44:40 +0000","id":3226172004},{"content":"https:\/\/touchofmodern.atlassian.net\/browse\/ENG-1505
-        ([ENG-1505]) Conditionally set ECS services to serve assets via cdn-s3 @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3300166828,"project_id":179984353,"completed_date":"Thu
-        18 Jul 2019 18:44:38 +0000","id":3300166828},{"content":"Spray the plants","meta_data":null,"user_id":9036325,"task_id":2932557544,"project_id":2183987461,"completed_date":"Thu
-        18 Jul 2019 05:11:20 +0000","id":2932557544}],"projects":{"179984353":{"indent":1,"name":"Work","is_favorite":0,"color":4,"is_deleted":0,"collapsed":0,"parent_id":null,"item_order":17,"is_archived":0,"id":179984353},"2205011866":{"indent":2,"name":"JIRA
-        Inbox","is_favorite":0,"color":4,"is_deleted":0,"collapsed":0,"parent_id":179984353,"item_order":18,"is_archived":0,"id":2205011866},"2183987461":{"indent":1,"name":"Future","is_favorite":0,"color":3,"is_deleted":0,"collapsed":0,"parent_id":null,"item_order":35,"is_archived":0,"id":2183987461}}}'
+        patch @jira_tickets","legacy_project_id":179984353,"meta_data":null,"user_id":9036325,"task_id":3287137893,"project_id":2059032545,"completed_date":"2019-07-18T23:44:32Z","id":3287137893},{"content":"https://touchofmodern.atlassian.net/browse/ENG-1266
+        ([ENG-1266]) Admin load-balanced via ECS @jira_tickets","meta_data":null,"user_id":9036325,"task_id":3226172004,"project_id":2205011866,"completed_date":"2019-07-18T18:44:40Z","id":3226172004},{"content":"https://touchofmodern.atlassian.net/browse/ENG-1505
+        ([ENG-1505]) Conditionally set ECS services to serve assets via cdn-s3 @jira_tickets","legacy_project_id":179984353,"meta_data":null,"user_id":9036325,"task_id":3300166828,"project_id":2059032545,"completed_date":"2019-07-18T18:44:38Z","id":3300166828},{"content":"Spray
+        the plants","meta_data":null,"user_id":9036325,"task_id":2932557544,"project_id":2183987461,"completed_date":"2019-07-18T05:11:20Z","id":2932557544}],"projects":{"2059032545":{"name":"Work","is_favorite":0,"color":40,"is_deleted":0,"collapsed":0,"parent_id":null,"child_order":6,"is_archived":0,"id":2059032545,"legacy_id":179984353},"2205011866":{"name":"JIRA
+        Inbox","is_favorite":0,"legacy_parent_id":179984353,"color":40,"is_deleted":0,"collapsed":0,"parent_id":2059032545,"child_order":1,"is_archived":0,"id":2205011866},"2183987461":{"name":"Future","is_favorite":0,"color":33,"is_deleted":0,"collapsed":0,"parent_id":null,"child_order":7,"is_archived":0,"id":2183987461}}}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 07:44:45 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:02 GMT
 - request:
     method: post
-    uri: https://todoist.com/API/v7/completed/get_all
+    uri: https://api.todoist.com/sync/v8/completed/get_all
     body:
       encoding: US-ASCII
       string: token=TODOIST_TEST_USER_TOKEN&since=2019-07-18T00%3A00&until=2019-07-19T00%3A00&limit=50&offset=50
@@ -90,29 +85,27 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 23 Jul 2019 07:44:45 GMT
+      - Mon, 30 Sep 2019 21:25:02 GMT
       Cache-Control:
       - no-cache
       P3p:
       - policyref="/static/p3p.xml", CP="IDC DSP COR IVAi IVDi OUR TST"
       Set-Cookie:
-      - csrf=44f162a2825a41ed934f825f7161189a; Expires=Fri, 20-Jul-2029 07:44:45 GMT;
+      - csrf=e415d06f192f400cb215147c9e2e1bea; Expires=Thu, 27-Sep-2029 21:25:02 GMT;
         Secure; Path=/
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Warning:
-      - 119 - "Deprecated API version. Will be removed on 2019-08-30"
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 032d42677fbf05c24a4bb71369581429.cloudfront.net (CloudFront)
+      - 1.1 94714c239ea352985d3c1efcf41484f2.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - SFO9
+      - LAX3-C3
       X-Amz-Cf-Id:
-      - 4q0Sni_CVz_Y3D3SPDMEacqRl2_CXmMjK4rqYJIGcCPKoRuw8cnEnQ==
+      - hSKARti0N35vWTCJcuZ2DI6GxP07HSi_-XJ2AZu98SxBgPCphTbgqg==
     body:
       encoding: UTF-8
       string: '{"items":[],"projects":{}}'
     http_version: 
-  recorded_at: Tue, 23 Jul 2019 07:44:45 GMT
+  recorded_at: Mon, 30 Sep 2019 21:25:02 GMT
 recorded_with: VCR 5.0.0

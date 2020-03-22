@@ -13,31 +13,31 @@ AllCops:
 
 # Metrics
 
-Metrics/LineLength:
-  Max: 120
-
 Metrics/MethodLength:
   Max: 15
 
 # Layout
 
-Layout/AlignArguments:
-  EnforcedStyle: with_fixed_indentation
-
-Layout/AlignParameters:
+Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Layout/EmptyLinesAroundArguments:
   Enabled: false
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 120
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
 
 # Style
 

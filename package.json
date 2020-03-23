@@ -33,7 +33,7 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.1.0",
     "file-loader": "^4.1.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^8.0.2",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   }

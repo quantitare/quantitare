@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.flickr.com/services/rest/
+    body:
+      encoding: US-ASCII
+      string: user_id=67275002%40N00&min_upload_date=1556694000&max_upload_date=1583049600&page=1&method=flickr.people.getPhotos&format=json&nojsoncallback=1
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Flickr/2.0.2 (+https://github.com/cyclotron3k/flickr)
+      Authorization:
+      - OAuth realm="https://api.flickr.com/services/rest/", oauth_consumer_key="FLICKR_OAUTH_KEY",
+        oauth_nonce="hIm4aPojKh%2FDcNExzvYNqq5pdWhowRzG5I3sKLRUb%2Fs%3D", oauth_signature="FLICKR_OAUTH_SECRET%26",
+        oauth_signature_method="PLAINTEXT", oauth_timestamp="1584926488", oauth_token="FLICKR_TEST_USER_TOKEN",
+        oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Mon, 23 Mar 2020 01:21:28 GMT
+      Server:
+      - Apache/2.4.41 (Ubuntu)
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 05f36da5536f76cd9f7690e9a1b6a1f7.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - HIO50-C2
+      X-Amz-Cf-Id:
+      - kfKUuDi9xiDv5LPtCYwDhU8Hn3XhFxHUyxLQoZs8chnQYIYybibDcg==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"photos":{"page":1,"pages":1,"perpage":100,"total":"27","photo":[{"id":"49532795116","owner":"67275002@N00","secret":"9bcbfa45f6","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"49462469243","owner":"67275002@N00","secret":"2c2aa14d16","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"49462467063","owner":"67275002@N00","secret":"db402dbe9b","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"49269965758","owner":"67275002@N00","secret":"dc9f3c707e","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"49269916061","owner":"67275002@N00","secret":"e511a1a173","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"49140562231","owner":"67275002@N00","secret":"cbcefe6b16","server":"65535","farm":66,"title":"","ispublic":1,"isfriend":0,"isfamily":0},{"id":"49022293481","owner":"67275002@N00","secret":"f2c89d669d","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48966016048","owner":"67275002@N00","secret":"5797650382","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48961044066","owner":"67275002@N00","secret":"fe1ddf4e52","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48950068168","owner":"67275002@N00","secret":"0e43f630c6","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48950489691","owner":"67275002@N00","secret":"71daf58505","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48669256258","owner":"67275002@N00","secret":"f43d7b5b4a","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48669598801","owner":"67275002@N00","secret":"940baa6a69","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48669756317","owner":"67275002@N00","secret":"17927d9202","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48668736901","owner":"67275002@N00","secret":"5db2272425","server":"65535","farm":66,"title":"Seine","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48667549877","owner":"67275002@N00","secret":"87af805bb1","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48666054311","owner":"67275002@N00","secret":"53750b2e75","server":"65535","farm":66,"title":"Merritt","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48665588078","owner":"67275002@N00","secret":"d75734e747","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48627375453","owner":"67275002@N00","secret":"1a157311b5","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48625838506","owner":"67275002@N00","secret":"869facd4b1","server":"65535","farm":66,"title":"Balaton","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48625198372","owner":"67275002@N00","secret":"830757610b","server":"65535","farm":66,"title":"Seine","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48625051811","owner":"67275002@N00","secret":"dbb09f2f7c","server":"65535","farm":66,"title":"Seine","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48624787797","owner":"67275002@N00","secret":"2f50b1fdb3","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48613435378","owner":"67275002@N00","secret":"60e8f73705","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48610165543","owner":"67275002@N00","secret":"83fcedc4a7","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"48549159351","owner":"67275002@N00","secret":"30de18e0b3","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0},{"id":"47955972296","owner":"67275002@N00","secret":"305336527a","server":"65535","farm":66,"title":"*","ispublic":1,"isfriend":0,"isfamily":0}]},"stat":"ok"}'
+    http_version: null
+  recorded_at: Mon, 23 Mar 2020 01:21:28 GMT
+- request:
+    method: post
+    uri: https://api.flickr.com/services/rest/
+    body:
+      encoding: US-ASCII
+      string: user_id=67275002%40N00&min_upload_date=1556694000&max_upload_date=1583049600&page=2&method=flickr.people.getPhotos&format=json&nojsoncallback=1
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Flickr/2.0.2 (+https://github.com/cyclotron3k/flickr)
+      Authorization:
+      - OAuth realm="https://api.flickr.com/services/rest/", oauth_consumer_key="FLICKR_OAUTH_KEY",
+        oauth_nonce="iG%2FXOCM%2F%2BYT830lff59oCZWXvrBGCzYoLnDPhM%2Fpp%2Bc%3D", oauth_signature="FLICKR_OAUTH_SECRET%26",
+        oauth_signature_method="PLAINTEXT", oauth_timestamp="1584926488", oauth_token="FLICKR_TEST_USER_TOKEN",
+        oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 23 Mar 2020 01:21:29 GMT
+      Server:
+      - Apache/2.4.41 (Ubuntu)
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 05369a6effd223b3d51d346f1271512e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - HIO50-C2
+      X-Amz-Cf-Id:
+      - 13uEdTo34RezI3FAp5LIgN7zMJZTKe0fyxJjPzcMgPPZ_dWcfjOJWw==
+    body:
+      encoding: UTF-8
+      string: '{"stat":"fail","code":105,"message":"Service currently unavailable"}'
+    http_version: null
+  recorded_at: Mon, 23 Mar 2020 01:21:29 GMT
+recorded_with: VCR 5.1.0

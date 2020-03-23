@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe FlickrAdapter, vcr: { match_requests_on: [:method, :uri, :body], record: :new_episodes } do
+RSpec.describe FlickrAdapter, vcr: { match_requests_on: [:method, :uri, :body] } do
   let(:service) { create :service, :flickr }
 
   subject { FlickrAdapter.new(service) }

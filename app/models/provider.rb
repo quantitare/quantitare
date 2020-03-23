@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 ##
-# A registry for Omniauth providers. Provides a unified interface for registering omniauth providers and checking for
+# A registry for OmniAuth providers. Provides a unified interface for registering omniauth providers and checking for
 # valid credentials.
 #
+# rubocop:disable Metrics/ClassLength
 class Provider
   @registry = {}.with_indifferent_access
 
@@ -76,6 +77,16 @@ class Provider
   end
 
   Provider.register(
+    :flickr, 'FLICKR_OAUTH_KEY', 'FLICKR_OAUTH_SECRET',
+    strategy_class: OmniAuth::Strategies::Flickr,
+    scope: 'read',
+
+    icon_css_class: 'fab fa-flickr',
+    icon_text_color: '#fff',
+    icon_bg_color: '#ff0084'
+  )
+
+  Provider.register(
     :foursquare, 'FOURSQUARE_OAUTH_KEY', 'FOURSQUARE_OAUTH_SECRET',
     strategy_class: OmniAuth::Strategies::Foursquare,
 
@@ -143,3 +154,4 @@ class Provider
     icon_bg_color: '#e44232'
   )
 end
+# rubocop:enable Metrics/ClassLength

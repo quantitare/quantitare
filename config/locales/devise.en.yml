@@ -31,6 +31,7 @@ en:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     omniauth_providers:
+      flickr: "Flickr"
       foursquare: "Foursquare"
       lastfm: "Last.fm"
       rescuetime: "Rescuetime"

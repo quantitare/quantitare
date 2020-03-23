@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Aux::Flickr::Photo#data",
+  "description": "A Photo record from the Flickr API",
+
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The ID of the photo",
+      "type": "integer"
+    },
+
+    "title": {
+      "description": "The title of the photo",
+      "type": "string"
+    },
+
+    "description": {
+      "description": "The description of the photo",
+      "type": "string"
+    },
+
+    "url": {
+      "description": "The URL to the resource associated with the photo",
+      "type": "string",
+      "format": "uri"
+    },
+
+    "type": {
+      "description": "The type of media that was shared",
+      "type": "string"
+    },
+
+    "favorites": {
+      "description": "The number of favorites on the photo",
+      "type": "integer"
+    },
+
+    "comments": {
+      "description": "The number of comments on the photo",
+      "type": "integer"
+    },
+
+    "location": {
+      "description": "General information about the location data associated with the photo",
+      "type": "object",
+      "properties": {
+        "longitude": {
+          "description": "The longitude at which the photo was taken",
+          "type": ["number", "null"]
+        },
+
+        "latitude": {
+          "description": "The latitude at which the photo was taken",
+          "type": ["number", "null"]
+        }
+      }
+    },
+
+    "uploaded_at": {
+      "description": "The date when the photo was uploaded/shared",
+      "type": "string",
+      "format": "date-time"
+    },
+
+    "taken_at": {
+      "description": "The date when the photo was taken",
+      "type": "string",
+      "format": "date-time"
+    },
+
+    "user": {
+      "description": "General information about the uploader",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The user's ID on Flickr",
+          "type": "string"
+        },
+
+        "username": {
+          "description": "The user's username on Flickr",
+          "type": "string"
+        },
+
+        "display_name": {
+          "description": "The user's display name as shown on Flickr",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["id", "title", "type", "uploaded_at", "favorites", "comments"]
+}

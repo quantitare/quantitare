@@ -61,5 +61,5 @@ class LocationImport < ApplicationRecord
     adapter.nil? ? nil : adapter.constantize
   end
 
-  add_adapter GoogleMapsKmlAdapter
+  add_adapter GoogleMapsKMLAdapter
 end

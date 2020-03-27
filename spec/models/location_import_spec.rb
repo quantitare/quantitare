@@ -126,10 +126,10 @@ RSpec.describe LocationImport do
 
   describe '#adapter_klass' do
     let(:import_with_nil_adapter) { build :location_import, adapter: nil }
-    subject { create :location_import, adapter: 'GoogleMapsKmlAdapter' }
+    subject { create :location_import, adapter: 'GoogleMapsKMLAdapter' }
 
     it 'returns the correct class when present' do
-      expect(subject.adapter_klass).to eq(GoogleMapsKmlAdapter)
+      expect(subject.adapter_klass).to eq(GoogleMapsKMLAdapter)
     end
 
     it 'returns nil with no adapter' do

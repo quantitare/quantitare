@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_dependency 'arc_gpx_adapter/placemark'
-require_dependency 'arc_gpx_adapter/trackpoint'
-
 class ArcGPXAdapter
   ##
   # Extracts attributes from a GPX XML node.

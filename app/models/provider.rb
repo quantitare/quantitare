@@ -19,8 +19,8 @@ class Provider
       instance.process!
     end
 
-    def register_non_oauth(provider_name, *args)
-      instance = TokenProvider.new(provider_name, *args)
+    def register_non_oauth(provider_name, *args, **kwargs)
+      instance = TokenProvider.new(provider_name, *args, **kwargs)
       registry[provider_name] = instance
     end
 

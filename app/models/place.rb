@@ -125,5 +125,3 @@ class Place < ApplicationRecord
     attr_names.any? { |attr_name| send("#{attr_name}_changed?") }
   end
 end
-
-require_dependency 'place/fetcher'

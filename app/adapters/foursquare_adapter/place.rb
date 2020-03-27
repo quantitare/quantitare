@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_dependency 'place'
-
 class FoursquareAdapter
   ##
   # Translates data for a place returned by the Foursquare API into a {Place} model.

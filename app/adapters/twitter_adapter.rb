@@ -97,5 +97,3 @@ class TwitterAdapter
     base_opts
   end
 end
-
-require_dependency 'twitter_adapter/scrobble'

@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_dependency 'service_fetchable/fetcher'
-require_dependency 'service_fetchable/searcher'
-
 ##
 # Shared logic for a class that can fetch and cache resources from a web API.
 #

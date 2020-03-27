@@ -108,6 +108,10 @@ class Service < ApplicationRecord
     { name: omniauth[:info][:email] }
   end
 
+  register_provider(:github) do |omniauth|
+    { name: omniauth[:info][:nickname] || omniauth[:info][:name] }
+  end
+
   register_provider(:trakt) do |_omniauth|
     { name: 'Trakt.tv' }
   end

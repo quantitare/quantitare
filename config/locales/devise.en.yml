@@ -33,6 +33,7 @@ en:
     omniauth_providers:
       flickr: "Flickr"
       foursquare: "Foursquare"
+      github: "GitHub"
       lastfm: "Last.fm"
       rescuetime: "Rescuetime"
       todoist: "Todoist"

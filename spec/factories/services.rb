@@ -22,6 +22,13 @@ FactoryBot.define do
       secret { ENV['FLICKR_TEST_USER_SECRET'] }
     end
 
+    trait :github do
+      provider { :github }
+      uid { ENV['GITHUB_TEST_USER_UID'] }
+      token { ENV['GITHUB_TEST_USER_TOKEN'] }
+      options { { "name" => "aastronautss-dev" } }
+    end
+
     trait :rescuetime do
       provider { :rescuetime }
       token { ENV['RESCUETIME_TEST_USER_TOKEN'] }

@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Aux::CodeCommit#data",
+  "description": "A CodeCommit record for a version control system",
+
+  "type": "object",
+  "properties": {
+    "repository_name": {
+      "description": "The name of the repository in which the commit can be found",
+      "type": "string"
+    },
+
+    "sha": {
+      "description": "The SHA hash of the commit",
+      "type": "string"
+    },
+
+    "message": {
+      "description": "The commit message of the commit",
+      "type": "string"
+    },
+
+    "author": {
+      "description": "Information about the author of the commit",
+      "type": "object",
+
+      "properties": {
+        "name": {
+          "description": "The name of the author of the commit",
+          "type": "string"
+        },
+
+        "email": {
+          "description": "The email address associated with the commit's author",
+          "type": "string"
+        },
+
+        "date": {
+          "description": "The date and time at which the commit was authored",
+          "type": "string",
+          "format": "date-time"
+        },
+
+        "avatar_url": {
+          "description": "The URL pointing to the author's avatar",
+          "type": "string"
+        }
+      }
+    },
+
+    "committer": {
+      "description": "Information about the committer of the commit",
+      "type": "object",
+
+      "properties": {
+        "name": {
+          "description": "The name of the committer of the commit",
+          "type": "string"
+        },
+
+        "email": {
+          "description": "The email address associated with the commit's committer",
+          "type": "string"
+        },
+
+        "date": {
+          "description": "The date and time at which the commit was authored",
+          "type": "string",
+
+          "format": "date-time"
+        },
+
+        "avatar_url": {
+          "description": "The URL pointing to the committer's avatar",
+          "type": "string"
+        }
+      }
+    },
+
+    "diff": {
+      "description": "General information about the diff data on the commit",
+      "type": "object",
+
+      "properties": {
+        "files_changed": {
+          "description": "The number of files involved in the commit, including additions, deletions, and modifications",
+          "type": "integer"
+        },
+
+        "additions": {
+          "description": "The sum total of additions made in the commit",
+          "type": "integer"
+        },
+
+        "deletions": {
+          "description": "The sum total of deletions made in the commit",
+          "type": "integer"
+        }
+      }
+    },
+
+    "parents": {
+      "description": "A list of the parent nodes of the commit",
+      "type": "array",
+
+      "items": {
+        "type": "object",
+        "properties": {
+          "sha": {
+            "description": "The SHA hash of the parent commit",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

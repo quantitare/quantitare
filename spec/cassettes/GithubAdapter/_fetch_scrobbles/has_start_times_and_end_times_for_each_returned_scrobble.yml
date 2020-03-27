@@ -1,0 +1,711 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/repos?per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4973'
+      X-Ratelimit-Reset:
+      - '1585280692'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"84f5434158dcb6213a168da09cd535b3"
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4E8:0AE4:1586F6:19FE62:5E7D6F08
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":250425700,"node_id":"MDEwOlJlcG9zaXRvcnkyNTA0MjU3MDA=","name":"quantitare-test-private","full_name":"aastronautss-dev/quantitare-test-private","private":true,"owner":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"html_url":"https://github.com/aastronautss-dev/quantitare-test-private","description":null,"fork":false,"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private","forks_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/forks","keys_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/keys{/key_id}","collaborators_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/teams","hooks_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/hooks","issue_events_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/issues/events{/number}","events_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/events","assignees_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/assignees{/user}","branches_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/branches{/branch}","tags_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/tags","blobs_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/refs{/sha}","trees_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/trees{/sha}","statuses_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/statuses/{sha}","languages_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/languages","stargazers_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/stargazers","contributors_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/contributors","subscribers_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/subscribers","subscription_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/subscription","commits_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits{/sha}","git_commits_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/commits{/sha}","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/comments{/number}","issue_comment_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/issues/comments{/number}","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/contents/{+path}","compare_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/compare/{base}...{head}","merges_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/merges","archive_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/downloads","issues_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/issues{/number}","pulls_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/pulls{/number}","milestones_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/milestones{/number}","notifications_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/labels{/name}","releases_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/releases{/id}","deployments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/deployments","created_at":"2020-03-27T02:53:32Z","updated_at":"2020-03-27T02:54:18Z","pushed_at":"2020-03-27T02:54:16Z","git_url":"git://github.com/aastronautss-dev/quantitare-test-private.git","ssh_url":"git@github.com:aastronautss-dev/quantitare-test-private.git","clone_url":"https://github.com/aastronautss-dev/quantitare-test-private.git","svn_url":"https://github.com/aastronautss-dev/quantitare-test-private","homepage":null,"size":0,"stargazers_count":0,"watchers_count":0,"language":null,"has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":250425392,"node_id":"MDEwOlJlcG9zaXRvcnkyNTA0MjUzOTI=","name":"quantitare-test-public","full_name":"aastronautss-dev/quantitare-test-public","private":false,"owner":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"html_url":"https://github.com/aastronautss-dev/quantitare-test-public","description":null,"fork":false,"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public","forks_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/forks","keys_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/keys{/key_id}","collaborators_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/teams","hooks_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/hooks","issue_events_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/issues/events{/number}","events_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/events","assignees_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/assignees{/user}","branches_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/branches{/branch}","tags_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/tags","blobs_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/refs{/sha}","trees_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/trees{/sha}","statuses_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/statuses/{sha}","languages_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/languages","stargazers_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/stargazers","contributors_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/contributors","subscribers_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/subscribers","subscription_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/subscription","commits_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits{/sha}","git_commits_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/commits{/sha}","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/comments{/number}","issue_comment_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/issues/comments{/number}","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/contents/{+path}","compare_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/compare/{base}...{head}","merges_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/merges","archive_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/downloads","issues_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/issues{/number}","pulls_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/pulls{/number}","milestones_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/milestones{/number}","notifications_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/labels{/name}","releases_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/releases{/id}","deployments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/deployments","created_at":"2020-03-27T02:51:11Z","updated_at":"2020-03-27T02:53:08Z","pushed_at":"2020-03-27T02:53:06Z","git_url":"git://github.com/aastronautss-dev/quantitare-test-public.git","ssh_url":"git@github.com:aastronautss-dev/quantitare-test-public.git","clone_url":"https://github.com/aastronautss-dev/quantitare-test-public.git","svn_url":"https://github.com/aastronautss-dev/quantitare-test-public","homepage":null,"size":0,"stargazers_count":0,"watchers_count":0,"language":null,"has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}}]'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:08 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits?author=aastronautss-dev&per_page=100&since=2020-03-25T00:00:00%2B00:00&until=2020-03-28T00:00:00%2B00:00
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4972'
+      X-Ratelimit-Reset:
+      - '1585280693'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"2105e78c38fb4731452ad97008b31e2a"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:54:15 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4E9:0AE4:158708:19FE78:5E7D6F08
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"sha":"13e4d6e8284d13f0cc80288365d96cbaafac0288","node_id":"MDY6Q29tbWl0MjUwNDI1NzAwOjEzZTRkNmU4Mjg0ZDEzZjBjYzgwMjg4MzY1ZDk2Y2JhYWZhYzAyODg=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:54:15Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:54:15Z"},"message":"update","tree":{"sha":"af541c248b727416f47101bbe502ae060bf652ba","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/trees/af541c248b727416f47101bbe502ae060bf652ba"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/commits/13e4d6e8284d13f0cc80288365d96cbaafac0288","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWrXCRBK7hj4Ov3rIwAAdHIIAGpk3vlHC3HTx2sljkrgfbRD\nrqdjgcom/INbsas/zDdYLtRja/d56xQhEBo4YfGp2tZ4XUmG3LE7ralZkw9JLr4M\n7wW8DRxjQZOG9HYm5C8P7sBdpkY4GR/3I1wWHwOkn1c+Oe2WnYQAPMSjfOjoBwAX\nGjtooUzRu5Ww50iaZlioNdpN+O9rTpXdpcgnBIOv7HTucfbQ235WbvRsxhc8s9zV\n9fWch36+9C7/OM8Cbl86yqgzEjOiFzmmsq+Z/8NbdrRZ3ygFntcIQhVuv1aFA4AQ\nZaal6KEjwY51y76dK4N9ECQVU7gfnQZ/+jgM8lQ2IRnXNo7J5J097ZswsCXwpU0=\n=Pgjk\n-----END
+        PGP SIGNATURE-----\n","payload":"tree af541c248b727416f47101bbe502ae060bf652ba\nparent
+        4ae0684e0625dfa43376f692ca158959dea9b3b1\nauthor aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277655 -0700\ncommitter GitHub <noreply@github.com> 1585277655 -0700\n\nupdate"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/13e4d6e8284d13f0cc80288365d96cbaafac0288","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/13e4d6e8284d13f0cc80288365d96cbaafac0288","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/13e4d6e8284d13f0cc80288365d96cbaafac0288/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"4ae0684e0625dfa43376f692ca158959dea9b3b1","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/4ae0684e0625dfa43376f692ca158959dea9b3b1"}]},{"sha":"4ae0684e0625dfa43376f692ca158959dea9b3b1","node_id":"MDY6Q29tbWl0MjUwNDI1NzAwOjRhZTA2ODRlMDYyNWRmYTQzMzc2ZjY5MmNhMTU4OTU5ZGVhOWIzYjE=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:54:03Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:54:03Z"},"message":"init","tree":{"sha":"28170c3a7d4e39f3df53ca08923ca85dac4c9abf","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/trees/28170c3a7d4e39f3df53ca08923ca85dac4c9abf"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWrLCRBK7hj4Ov3rIwAAdHIIAExIiBBsGBDtkZ8wr07jBhng\nWkAtui0TXM3NMrp/rSuSumY9aGx4vDvMjXdbIqX7ZPjf3VgUtzFkiLsTZIDpA4lB\nfvApDRVBJ27AmxtdmIMoD8yv/eRHc5pZc7FJCkQ0t7NMaVX6XNxWIGhDEvjw3Gu3\nak2IQQ/oQgpC7nixWY+aByN/ilFB6ooPGqrpqe2mJhjUmCsl3L96eUWZ/HHDm/Jw\nJ3/YJ1uUG06HSVi6MQKm+VT+zLqjEYzhgXw2aHPNFoXAy8h9XpheACEgEK5Imqbj\nkKJ7gXlWCxZ8NRXKTbah4wtMsMhXU77cYa1T0a00xhEVA3cXx7w1RI95lmtADfM=\n=JK2o\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 28170c3a7d4e39f3df53ca08923ca85dac4c9abf\nparent
+        87e1fe9764f00f817fc3e949d817d796df2ed4f5\nauthor aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277643 -0700\ncommitter GitHub <noreply@github.com> 1585277643 -0700\n\ninit"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/4ae0684e0625dfa43376f692ca158959dea9b3b1","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"87e1fe9764f00f817fc3e949d817d796df2ed4f5","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/87e1fe9764f00f817fc3e949d817d796df2ed4f5"}]},{"sha":"87e1fe9764f00f817fc3e949d817d796df2ed4f5","node_id":"MDY6Q29tbWl0MjUwNDI1NzAwOjg3ZTFmZTk3NjRmMDBmODE3ZmMzZTk0OWQ4MTdkNzk2ZGYyZWQ0ZjU=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:53:34Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:53:34Z"},"message":"Initial
+        commit","tree":{"sha":"217a27c76030407687b79793b8388e63adbee6b4","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/trees/217a27c76030407687b79793b8388e63adbee6b4"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWquCRBK7hj4Ov3rIwAAdHIIAClCsK0OzUvpbvr3pH7OSYnP\n/utRkCAZUf3AVKxzbvzORAJMwoUYuhEgzPJXQ2lY4/MQbWjAkaInz2Q5Si+sfqsp\nhbJjk9m14Zl+Ly2pIRI0ciA8ifiwDIBWKJtpLstcq/HhwTwquQqnLu0E1wDfkV0F\nQd0VvCOcqLEkH7VIiD3fQHEOUBVCWSzQ0jtLUkxxmSIz2scgxTfdjmT1QZSMbh78\nYKA0kddxtUm5xbnLLZxODI5JTrRbDc4eiCd+5JIpFJuA6QoaQEv+oE7c/9OdYajQ\nNYUu/HCQnKXC56dV7zfSoewHKSzyWZf3stnRfCzvC6mW0uZje//Dxu4cRJZepak=\n=Vnh3\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 217a27c76030407687b79793b8388e63adbee6b4\nauthor
+        aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277614 -0700\ncommitter GitHub <noreply@github.com> 1585277614 -0700\n\nInitial
+        commit"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/87e1fe9764f00f817fc3e949d817d796df2ed4f5","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[]}]'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:09 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/13e4d6e8284d13f0cc80288365d96cbaafac0288
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4971'
+      X-Ratelimit-Reset:
+      - '1585280692'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"afbc2c5b147cc1575a5bb2890a694297"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:54:15 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4EA:051D:122273:160E92:5E7D6F09
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sha":"13e4d6e8284d13f0cc80288365d96cbaafac0288","node_id":"MDY6Q29tbWl0MjUwNDI1NzAwOjEzZTRkNmU4Mjg0ZDEzZjBjYzgwMjg4MzY1ZDk2Y2JhYWZhYzAyODg=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:54:15Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:54:15Z"},"message":"update","tree":{"sha":"af541c248b727416f47101bbe502ae060bf652ba","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/trees/af541c248b727416f47101bbe502ae060bf652ba"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/commits/13e4d6e8284d13f0cc80288365d96cbaafac0288","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWrXCRBK7hj4Ov3rIwAAdHIIAGpk3vlHC3HTx2sljkrgfbRD\nrqdjgcom/INbsas/zDdYLtRja/d56xQhEBo4YfGp2tZ4XUmG3LE7ralZkw9JLr4M\n7wW8DRxjQZOG9HYm5C8P7sBdpkY4GR/3I1wWHwOkn1c+Oe2WnYQAPMSjfOjoBwAX\nGjtooUzRu5Ww50iaZlioNdpN+O9rTpXdpcgnBIOv7HTucfbQ235WbvRsxhc8s9zV\n9fWch36+9C7/OM8Cbl86yqgzEjOiFzmmsq+Z/8NbdrRZ3ygFntcIQhVuv1aFA4AQ\nZaal6KEjwY51y76dK4N9ECQVU7gfnQZ/+jgM8lQ2IRnXNo7J5J097ZswsCXwpU0=\n=Pgjk\n-----END
+        PGP SIGNATURE-----\n","payload":"tree af541c248b727416f47101bbe502ae060bf652ba\nparent
+        4ae0684e0625dfa43376f692ca158959dea9b3b1\nauthor aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277655 -0700\ncommitter GitHub <noreply@github.com> 1585277655 -0700\n\nupdate"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/13e4d6e8284d13f0cc80288365d96cbaafac0288","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/13e4d6e8284d13f0cc80288365d96cbaafac0288","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/13e4d6e8284d13f0cc80288365d96cbaafac0288/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"4ae0684e0625dfa43376f692ca158959dea9b3b1","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/4ae0684e0625dfa43376f692ca158959dea9b3b1"}],"stats":{"total":2,"additions":2,"deletions":0},"files":[{"sha":"03416e5711488534d85f0df8a8ef3ee6838b94c1","filename":"README.md","status":"modified","additions":2,"deletions":0,"changes":2,"blob_url":"https://github.com/aastronautss-dev/quantitare-test-private/blob/13e4d6e8284d13f0cc80288365d96cbaafac0288/README.md","raw_url":"https://github.com/aastronautss-dev/quantitare-test-private/raw/13e4d6e8284d13f0cc80288365d96cbaafac0288/README.md","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/contents/README.md?ref=13e4d6e8284d13f0cc80288365d96cbaafac0288","patch":"@@
+        -1,3 +1,5 @@\n # quantitare-test-private\n \n This is a test of a private
+        repo\n+\n+I am adding this line later on."}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:09 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4970'
+      X-Ratelimit-Reset:
+      - '1585280692'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"18373bcc3f4741738c08dca0f0a7ac1f"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:54:03 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4EB:12C1:56DAB:61D8D:5E7D6F09
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sha":"4ae0684e0625dfa43376f692ca158959dea9b3b1","node_id":"MDY6Q29tbWl0MjUwNDI1NzAwOjRhZTA2ODRlMDYyNWRmYTQzMzc2ZjY5MmNhMTU4OTU5ZGVhOWIzYjE=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:54:03Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:54:03Z"},"message":"init","tree":{"sha":"28170c3a7d4e39f3df53ca08923ca85dac4c9abf","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/trees/28170c3a7d4e39f3df53ca08923ca85dac4c9abf"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWrLCRBK7hj4Ov3rIwAAdHIIAExIiBBsGBDtkZ8wr07jBhng\nWkAtui0TXM3NMrp/rSuSumY9aGx4vDvMjXdbIqX7ZPjf3VgUtzFkiLsTZIDpA4lB\nfvApDRVBJ27AmxtdmIMoD8yv/eRHc5pZc7FJCkQ0t7NMaVX6XNxWIGhDEvjw3Gu3\nak2IQQ/oQgpC7nixWY+aByN/ilFB6ooPGqrpqe2mJhjUmCsl3L96eUWZ/HHDm/Jw\nJ3/YJ1uUG06HSVi6MQKm+VT+zLqjEYzhgXw2aHPNFoXAy8h9XpheACEgEK5Imqbj\nkKJ7gXlWCxZ8NRXKTbah4wtMsMhXU77cYa1T0a00xhEVA3cXx7w1RI95lmtADfM=\n=JK2o\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 28170c3a7d4e39f3df53ca08923ca85dac4c9abf\nparent
+        87e1fe9764f00f817fc3e949d817d796df2ed4f5\nauthor aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277643 -0700\ncommitter GitHub <noreply@github.com> 1585277643 -0700\n\ninit"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/4ae0684e0625dfa43376f692ca158959dea9b3b1","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/4ae0684e0625dfa43376f692ca158959dea9b3b1/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"87e1fe9764f00f817fc3e949d817d796df2ed4f5","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/87e1fe9764f00f817fc3e949d817d796df2ed4f5"}],"stats":{"total":4,"additions":3,"deletions":1},"files":[{"sha":"6b42c1c82686c8871e2d8ebd8b94f5df743762cd","filename":"README.md","status":"modified","additions":3,"deletions":1,"changes":4,"blob_url":"https://github.com/aastronautss-dev/quantitare-test-private/blob/4ae0684e0625dfa43376f692ca158959dea9b3b1/README.md","raw_url":"https://github.com/aastronautss-dev/quantitare-test-private/raw/4ae0684e0625dfa43376f692ca158959dea9b3b1/README.md","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/contents/README.md?ref=4ae0684e0625dfa43376f692ca158959dea9b3b1","patch":"@@
+        -1 +1,3 @@\n-# quantitare-test-private\n\\ No newline at end of file\n+# quantitare-test-private\n+\n+This
+        is a test of a private repo"}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:09 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4969'
+      X-Ratelimit-Reset:
+      - '1585280693'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"0634144eee110b310ba4c2ac852a69ba"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:53:34 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4ED:1BE5:13401:18464:5E7D6F09
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sha":"87e1fe9764f00f817fc3e949d817d796df2ed4f5","node_id":"MDY6Q29tbWl0MjUwNDI1NzAwOjg3ZTFmZTk3NjRmMDBmODE3ZmMzZTk0OWQ4MTdkNzk2ZGYyZWQ0ZjU=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:53:34Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:53:34Z"},"message":"Initial
+        commit","tree":{"sha":"217a27c76030407687b79793b8388e63adbee6b4","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/trees/217a27c76030407687b79793b8388e63adbee6b4"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/git/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWquCRBK7hj4Ov3rIwAAdHIIAClCsK0OzUvpbvr3pH7OSYnP\n/utRkCAZUf3AVKxzbvzORAJMwoUYuhEgzPJXQ2lY4/MQbWjAkaInz2Q5Si+sfqsp\nhbJjk9m14Zl+Ly2pIRI0ciA8ifiwDIBWKJtpLstcq/HhwTwquQqnLu0E1wDfkV0F\nQd0VvCOcqLEkH7VIiD3fQHEOUBVCWSzQ0jtLUkxxmSIz2scgxTfdjmT1QZSMbh78\nYKA0kddxtUm5xbnLLZxODI5JTrRbDc4eiCd+5JIpFJuA6QoaQEv+oE7c/9OdYajQ\nNYUu/HCQnKXC56dV7zfSoewHKSzyWZf3stnRfCzvC6mW0uZje//Dxu4cRJZepak=\n=Vnh3\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 217a27c76030407687b79793b8388e63adbee6b4\nauthor
+        aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277614 -0700\ncommitter GitHub <noreply@github.com> 1585277614 -0700\n\nInitial
+        commit"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5","html_url":"https://github.com/aastronautss-dev/quantitare-test-private/commit/87e1fe9764f00f817fc3e949d817d796df2ed4f5","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/commits/87e1fe9764f00f817fc3e949d817d796df2ed4f5/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[],"stats":{"total":57,"additions":57,"deletions":0},"files":[{"sha":"e3200e0f8145a0287931e92b16edbc679b62ff21","filename":".gitignore","status":"added","additions":56,"deletions":0,"changes":56,"blob_url":"https://github.com/aastronautss-dev/quantitare-test-private/blob/87e1fe9764f00f817fc3e949d817d796df2ed4f5/.gitignore","raw_url":"https://github.com/aastronautss-dev/quantitare-test-private/raw/87e1fe9764f00f817fc3e949d817d796df2ed4f5/.gitignore","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/contents/.gitignore?ref=87e1fe9764f00f817fc3e949d817d796df2ed4f5","patch":"@@
+        -0,0 +1,56 @@\n+*.gem\n+*.rbc\n+/.config\n+/coverage/\n+/InstalledFiles\n+/pkg/\n+/spec/reports/\n+/spec/examples.txt\n+/test/tmp/\n+/test/version_tmp/\n+/tmp/\n+\n+#
+        Used by dotenv library to load environment variables.\n+# .env\n+\n+# Ignore
+        Byebug command history file.\n+.byebug_history\n+\n+## Specific to RubyMotion:\n+.dat*\n+.repl_history\n+build/\n+*.bridgesupport\n+build-iPhoneOS/\n+build-iPhoneSimulator/\n+\n+##
+        Specific to RubyMotion (use of CocoaPods):\n+#\n+# We recommend against adding
+        the Pods directory to your .gitignore. However\n+# you should judge for yourself,
+        the pros and cons are mentioned at:\n+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control\n+#\n+#
+        vendor/Pods/\n+\n+## Documentation cache and generated files:\n+/.yardoc/\n+/_yardoc/\n+/doc/\n+/rdoc/\n+\n+##
+        Environment normalization:\n+/.bundle/\n+/vendor/bundle\n+/lib/bundler/man/\n+\n+#
+        for a library or gem, you might want to ignore these files since the code
+        is\n+# intended to run in multiple environments; otherwise, check them in:\n+#
+        Gemfile.lock\n+# .ruby-version\n+# .ruby-gemset\n+\n+# unless supporting rvm
+        < 1.11.0 or doing something fancy, ignore this:\n+.rvmrc\n+\n+# Used by RuboCop.
+        Remote config files pulled in from inherit_from directive.\n+# .rubocop-https?--*"},{"sha":"1a72c07e8a9c43db7756ac80fc92234db659397a","filename":"README.md","status":"added","additions":1,"deletions":0,"changes":1,"blob_url":"https://github.com/aastronautss-dev/quantitare-test-private/blob/87e1fe9764f00f817fc3e949d817d796df2ed4f5/README.md","raw_url":"https://github.com/aastronautss-dev/quantitare-test-private/raw/87e1fe9764f00f817fc3e949d817d796df2ed4f5/README.md","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-private/contents/README.md?ref=87e1fe9764f00f817fc3e949d817d796df2ed4f5","patch":"@@
+        -0,0 +1 @@\n+# quantitare-test-private\n\\ No newline at end of file"}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:10 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits?author=aastronautss-dev&per_page=100&since=2020-03-25T00:00:00%2B00:00&until=2020-03-28T00:00:00%2B00:00
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4968'
+      X-Ratelimit-Reset:
+      - '1585280692'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"4644a3a00fff672fb647ebe5ec1120e2"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:53:05 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4EE:9CDF:42332:527C3:5E7D6F0A
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"sha":"80d582136b4447a6cb31dbab7f018327552e7730","node_id":"MDY6Q29tbWl0MjUwNDI1MzkyOjgwZDU4MjEzNmI0NDQ3YTZjYjMxZGJhYjdmMDE4MzI3NTUyZTc3MzA=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:53:05Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:53:05Z"},"message":"Update
+        README.md","tree":{"sha":"6af5fba3220324f61d5c0479399b7470fbd7dc82","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/trees/6af5fba3220324f61d5c0479399b7470fbd7dc82"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/commits/80d582136b4447a6cb31dbab7f018327552e7730","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWqRCRBK7hj4Ov3rIwAAdHIIAJDGDV6o1LJuJ9kf91AafxOJ\nS2jMjWkj15vOCMl5frH/qZCa7CjY8MvMOMZkzdcd0pbJg5HvKUyG33/zaCGJrZny\ndeNzRjaJTL0XrycFAFyVWB31dJW43Q1VKggY1nw7VtoRFZ2YmpibgtX+PdSLlHUz\n39MVsKTvIgFGFOYQbjGgN8ReHSxzSPgKzcx9DUO6MF7dooZ3fiIKTtrAaYESgwPt\nMhNNc/FA6cmx8lfN7VGb0H0okeFq9q4Hv/F67ktxkxSGKTPpULt8IDy2uca2LdIM\nRyL7n9syGn1D3jeSH6o7be9UE5weetuAvS6zkL/XKrautgWEQQR4YrqcgMAfqn0=\n=jWaN\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 6af5fba3220324f61d5c0479399b7470fbd7dc82\nparent
+        46b4de33eadf1f70b80731f82afbd0836d25f92f\nauthor aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277585 -0700\ncommitter GitHub <noreply@github.com> 1585277585 -0700\n\nUpdate
+        README.md"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/80d582136b4447a6cb31dbab7f018327552e7730","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"46b4de33eadf1f70b80731f82afbd0836d25f92f","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/46b4de33eadf1f70b80731f82afbd0836d25f92f"}]},{"sha":"46b4de33eadf1f70b80731f82afbd0836d25f92f","node_id":"MDY6Q29tbWl0MjUwNDI1MzkyOjQ2YjRkZTMzZWFkZjFmNzBiODA3MzFmODJhZmJkMDgzNmQyNWY5MmY=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:52:24Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:52:24Z"},"message":"init","tree":{"sha":"11ce419b5276a9a2ef1b687e1e17ecdca6a1d731","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/trees/11ce419b5276a9a2ef1b687e1e17ecdca6a1d731"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWpoCRBK7hj4Ov3rIwAAdHIIAJmP1Hz0aLX3FNlxsx+EWYeN\nFIk2n46eZJ5mnJeB0yZq5XJTQ1fTRmZl8X/RvAkP2BZfj0UbXvP+xEFOZEadk75x\n+2pPuXMoAHAxHyz6/81NRuTupFD646zKNmLjdJ9/tymacEE7H1AR62o6J9OR7Ydp\neH2b8jqgRyILkBiuv7OLk4SnpOmprVFEqGsQCzSNfBKnIC1T5NEfJey4eZgUZKcP\ni7eVblmmTHiqriOIpFwJtfiXqqLRktaBfftuKPHr5fkoZcDwZGWC8Va5RWJqFtSR\npqNdE0CDBj5drskh9PafesY+sDl9EP2Q4joe/g9wiQ7StzdqegzX/Zab7agfyYA=\n=pxjI\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 11ce419b5276a9a2ef1b687e1e17ecdca6a1d731\nauthor
+        aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277544 -0700\ncommitter GitHub <noreply@github.com> 1585277544 -0700\n\ninit"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/46b4de33eadf1f70b80731f82afbd0836d25f92f","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[]}]'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:10 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4967'
+      X-Ratelimit-Reset:
+      - '1585280692'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"c9d715ab145a8bfd020b4ca57f03704d"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:53:05 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4EF:9494:3D698:4D490:5E7D6F0A
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sha":"80d582136b4447a6cb31dbab7f018327552e7730","node_id":"MDY6Q29tbWl0MjUwNDI1MzkyOjgwZDU4MjEzNmI0NDQ3YTZjYjMxZGJhYjdmMDE4MzI3NTUyZTc3MzA=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:53:05Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:53:05Z"},"message":"Update
+        README.md","tree":{"sha":"6af5fba3220324f61d5c0479399b7470fbd7dc82","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/trees/6af5fba3220324f61d5c0479399b7470fbd7dc82"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/commits/80d582136b4447a6cb31dbab7f018327552e7730","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWqRCRBK7hj4Ov3rIwAAdHIIAJDGDV6o1LJuJ9kf91AafxOJ\nS2jMjWkj15vOCMl5frH/qZCa7CjY8MvMOMZkzdcd0pbJg5HvKUyG33/zaCGJrZny\ndeNzRjaJTL0XrycFAFyVWB31dJW43Q1VKggY1nw7VtoRFZ2YmpibgtX+PdSLlHUz\n39MVsKTvIgFGFOYQbjGgN8ReHSxzSPgKzcx9DUO6MF7dooZ3fiIKTtrAaYESgwPt\nMhNNc/FA6cmx8lfN7VGb0H0okeFq9q4Hv/F67ktxkxSGKTPpULt8IDy2uca2LdIM\nRyL7n9syGn1D3jeSH6o7be9UE5weetuAvS6zkL/XKrautgWEQQR4YrqcgMAfqn0=\n=jWaN\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 6af5fba3220324f61d5c0479399b7470fbd7dc82\nparent
+        46b4de33eadf1f70b80731f82afbd0836d25f92f\nauthor aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277585 -0700\ncommitter GitHub <noreply@github.com> 1585277585 -0700\n\nUpdate
+        README.md"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/80d582136b4447a6cb31dbab7f018327552e7730","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"46b4de33eadf1f70b80731f82afbd0836d25f92f","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/46b4de33eadf1f70b80731f82afbd0836d25f92f"}],"stats":{"total":2,"additions":2,"deletions":0},"files":[{"sha":"e0d966330e1057e13eea03d3cc1eb91a9eb4f892","filename":"README.md","status":"modified","additions":2,"deletions":0,"changes":2,"blob_url":"https://github.com/aastronautss-dev/quantitare-test-public/blob/80d582136b4447a6cb31dbab7f018327552e7730/README.md","raw_url":"https://github.com/aastronautss-dev/quantitare-test-public/raw/80d582136b4447a6cb31dbab7f018327552e7730/README.md","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/contents/README.md?ref=80d582136b4447a6cb31dbab7f018327552e7730","patch":"@@
+        -1,3 +1,5 @@\n # Quantitare test\n \n This is a test of the Quantitare integration
+        for public repos\n+\n+I''m adding this on as a new commit."}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:10 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4966'
+      X-Ratelimit-Reset:
+      - '1585280692'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"efeb586365463de1237e925e3a152e8c"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:52:24 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4F0:48CE:16B5E0:1B1B06:5E7D6F0A
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sha":"46b4de33eadf1f70b80731f82afbd0836d25f92f","node_id":"MDY6Q29tbWl0MjUwNDI1MzkyOjQ2YjRkZTMzZWFkZjFmNzBiODA3MzFmODJhZmJkMDgzNmQyNWY5MmY=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:52:24Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:52:24Z"},"message":"init","tree":{"sha":"11ce419b5276a9a2ef1b687e1e17ecdca6a1d731","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/trees/11ce419b5276a9a2ef1b687e1e17ecdca6a1d731"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWpoCRBK7hj4Ov3rIwAAdHIIAJmP1Hz0aLX3FNlxsx+EWYeN\nFIk2n46eZJ5mnJeB0yZq5XJTQ1fTRmZl8X/RvAkP2BZfj0UbXvP+xEFOZEadk75x\n+2pPuXMoAHAxHyz6/81NRuTupFD646zKNmLjdJ9/tymacEE7H1AR62o6J9OR7Ydp\neH2b8jqgRyILkBiuv7OLk4SnpOmprVFEqGsQCzSNfBKnIC1T5NEfJey4eZgUZKcP\ni7eVblmmTHiqriOIpFwJtfiXqqLRktaBfftuKPHr5fkoZcDwZGWC8Va5RWJqFtSR\npqNdE0CDBj5drskh9PafesY+sDl9EP2Q4joe/g9wiQ7StzdqegzX/Zab7agfyYA=\n=pxjI\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 11ce419b5276a9a2ef1b687e1e17ecdca6a1d731\nauthor
+        aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277544 -0700\ncommitter GitHub <noreply@github.com> 1585277544 -0700\n\ninit"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/46b4de33eadf1f70b80731f82afbd0836d25f92f","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[],"stats":{"total":3,"additions":3,"deletions":0},"files":[{"sha":"03014f0435a7197d28350f5b59245e52b2ce39f4","filename":"README.md","status":"added","additions":3,"deletions":0,"changes":3,"blob_url":"https://github.com/aastronautss-dev/quantitare-test-public/blob/46b4de33eadf1f70b80731f82afbd0836d25f92f/README.md","raw_url":"https://github.com/aastronautss-dev/quantitare-test-public/raw/46b4de33eadf1f70b80731f82afbd0836d25f92f/README.md","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/contents/README.md?ref=46b4de33eadf1f70b80731f82afbd0836d25f92f","patch":"@@
+        -0,0 +1,3 @@\n+# Quantitare test\n+\n+This is a test of the Quantitare integration
+        for public repos"}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:10 GMT
+recorded_with: VCR 5.1.0

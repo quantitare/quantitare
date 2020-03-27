@@ -18,13 +18,13 @@ module ServiceFetchable
     end
 
     def fetch(cache_klass, opts = {})
-      opts = opts.with_indifferent_access
+      opts = opts.symbolize_keys
       adapter = opts[:adapter]
 
       cached = find_cached(cache_klass, adapter.service, opts)
       return cached if cached.present? && !cached.expired?
 
-      fresh = adapter.public_send(cache_klass.fetch_adapter_method, opts)
+      fresh = adapter.public_send(cache_klass.fetch_adapter_method, **opts)
 
       return nil if fresh.blank?
 

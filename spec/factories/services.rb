@@ -15,6 +15,20 @@ FactoryBot.define do
       expires_at { 24.hours.ago }
     end
 
+    trait :flickr do
+      provider { :flickr }
+      uid { '67275002@N00' }
+      token { ENV['FLICKR_TEST_USER_TOKEN'] }
+      secret { ENV['FLICKR_TEST_USER_SECRET'] }
+    end
+
+    trait :github do
+      provider { :github }
+      uid { ENV['GITHUB_TEST_USER_UID'] }
+      token { ENV['GITHUB_TEST_USER_TOKEN'] }
+      options { { "name" => "aastronautss-dev" } }
+    end
+
     trait :rescuetime do
       provider { :rescuetime }
       token { ENV['RESCUETIME_TEST_USER_TOKEN'] }

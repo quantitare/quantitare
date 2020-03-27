@@ -29,7 +29,7 @@ module ServiceFetchable
     end
 
     def searcher(*searcher_keywords, **searcher_keywords_with_defaults)
-      searchers << searcher_klass.new(*searcher_keywords, searcher_keywords_with_defaults)
+      searchers << searcher_klass.new(*searcher_keywords, **searcher_keywords_with_defaults)
     end
 
     def search(opts = {})

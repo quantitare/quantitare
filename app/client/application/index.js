@@ -17,8 +17,8 @@ import VueDataScooper from 'vue-data-scooper';
 
 import { mapState } from 'vuex';
 
-import Rails from 'rails-ujs';
-import * as ActiveStorage from 'activestorage';
+import Rails from '@rails/ujs';
+import * as ActiveStorage from '@rails/activestorage';
 
 import registerRequiredComponents from 'utilities/register-required-components';
 import loadVuexData from 'utilities/load-vuex-data';

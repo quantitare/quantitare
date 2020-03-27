@@ -52,5 +52,3 @@ class RescuetimeAdapter
     raise Errors::ServiceConfigError.new(invalid_request_message, nature: :request_format)
   end
 end
-
-require_dependency 'rescuetime_adapter/scrobble'

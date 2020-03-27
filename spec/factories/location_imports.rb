@@ -5,7 +5,7 @@ include ActionDispatch::TestProcess
 FactoryBot.define do
   factory :location_import do
     user
-    adapter { 'GoogleMapsKmlAdapter' }
+    adapter { 'GoogleMapsKMLAdapter' }
 
     trait :with_scrobbles do
       transient do

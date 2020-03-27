@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GoogleMapsKmlAdapter
+class GoogleMapsKMLAdapter
   ##
   # Parses raw coordinates from Google Maps' KML export to the Trackpoint format accepted by LocationScrobble
   #

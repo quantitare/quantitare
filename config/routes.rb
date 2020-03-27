@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sidekiq/web'
+Provider
 
 Rails.application.routes.draw do
   root to: 'pages#index'

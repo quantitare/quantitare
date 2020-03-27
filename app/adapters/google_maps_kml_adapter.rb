@@ -3,7 +3,7 @@
 ##
 # An adapter for dealing with a Google Maps KML file.
 #
-class GoogleMapsKmlAdapter
+class GoogleMapsKMLAdapter
   include LocationImportable
 
   TRANSIT_CATEGORY_PATH = File.join(__dir__, 'google_maps_kml_adapter', 'transit_category_mappings.yml').freeze
@@ -31,7 +31,7 @@ class GoogleMapsKmlAdapter
 
   def placemarks
     @placemarks ||= parsed_kml.css('kml Document Placemark').map do |xml_node|
-      GoogleMapsKmlAdapter::Placemark.new(xml_node)
+      GoogleMapsKMLAdapter::Placemark.new(xml_node)
     end
   end
 end

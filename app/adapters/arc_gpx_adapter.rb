@@ -39,5 +39,3 @@ class ArcGPXAdapter
     @xml_nodes ||= parsed_gpx.css('gpx wpt,gpx trk')
   end
 end
-
-require_dependency 'arc_gpx_adapter/placemark'

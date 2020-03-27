@@ -95,6 +95,3 @@ class TodoistAdapter
     raise_error ? raise(parsed_error) : nil
   end
 end
-
-require_dependency 'todoist_adapter/scrobble'
-require_dependency 'todoist_adapter/label'

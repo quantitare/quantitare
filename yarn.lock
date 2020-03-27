@@ -861,6 +861,18 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.1.9.tgz#d3af6d4e50f337327de90447fe35fa1e117a2fbe"
   integrity sha512-h/emhmZz+DfB2zOGLWawNwXq82UYhn9waTfUjLLmeaIqtnIyNt6kYlpQT/vzJjLZRDRvY2IEJAh1di5qKpKVpA==
 
+"@rails/activestorage@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.0.2.tgz#3882da2716d1f21091840fc52b71091d406a9c43"
+  integrity sha512-X0uGBLNsSKvVw5n93rH7k+7rbxc3Cq7p0ShiQbrk1cN0xflGjElzEJRY3okZZHsKkCV+h6rFCk0BOBVrLSrJ0A==
+  dependencies:
+    spark-md5 "^3.0.0"
+
+"@rails/ujs@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.2.tgz#8d32452d51c5e115374a218fb5475803dc17f4c0"
+  integrity sha512-KSQjJG8yzSWC1IT+UtFQglefABU37hpJ7uAz39K1/iWtoaJaI9ydGIaxxpJBT/PmYv4kS6lCSjXq13DELeJocw==
+
 "@rails/webpacker@^4.2.2":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-4.2.2.tgz#b9dd3235fdf4d0badbda8e33f6ebee742a9f3abb"
@@ -1140,13 +1152,6 @@ acorn@^6.2.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
   integrity sha512-ZVA9k326Nwrj3Cj9jlh3wGFutC2ZornPNARZwsNYqQYgN0EsV2d53w5RN/co65Ohn4sUAUtb1rSUAOD6XN9idA==
-
-activestorage@^5.2.4:
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/activestorage/-/activestorage-5.2.4.tgz#758650e01cbb2ce0e3e80e4b20a7641a021a5412"
-  integrity sha512-3HDU9nCt/wn4yisSdS7wd32YPZgKRfwq2BE4kA7yuAQYKn+/X2S1sM8nAtnfPQRZIWarabIvGjbVzJNsERAb5Q==
-  dependencies:
-    spark-md5 "^3.0.0"
 
 aggregate-error@^3.0.0:
   version "3.0.1"
@@ -7142,11 +7147,6 @@ rails-erb-loader@^5.5.2:
   dependencies:
     loader-utils "^1.1.0"
     lodash.defaults "^4.2.0"
-
-rails-ujs@^5.2.4:
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/rails-ujs/-/rails-ujs-5.2.4.tgz#31056ccd62d868f7d044395f31d77a4440550ceb"
-  integrity sha512-Mzu6bnTBKn4IuJvP7BDJRy4lzvR1zMWVDeTdPwDubXBfxpFEKqwOi5Nb6tfE2SYtTd+bb3PRETf40I94jgKw3w==
 
 randomatic@^3.0.0:
   version "3.1.1"

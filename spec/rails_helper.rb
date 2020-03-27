@@ -51,6 +51,16 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
 
+  config.filter_sensitive_data('FLICKR_OAUTH_KEY') { ENV['FLICKR_OAUTH_KEY'] }
+  config.filter_sensitive_data('FLICKR_OAUTH_SECRET') { ENV['FLICKR_OAUTH_SECRET'] }
+  config.filter_sensitive_data('FLICKR_TEST_USER_TOKEN') { ENV['FLICKR_TEST_USER_TOKEN'] }
+  config.filter_sensitive_data('FLICKR_TEST_USER_SECRET') { ENV['FLICKR_TEST_USER_SECRET'] }
+
+  config.filter_sensitive_data('GITHUB_OAUTH_KEY') { ENV['GITHUB_OAUTH_KEY'] }
+  config.filter_sensitive_data('GITHUB_OAUTH_SECRET') { ENV['GITHUB_OAUTH_SECRET'] }
+  config.filter_sensitive_data('GITHUB_TEST_USER_UID') { ENV['GITHUB_TEST_USER_UID'] }
+  config.filter_sensitive_data('GITHUB_TEST_USER_TOKEN') { ENV['GITHUB_TEST_USER_TOKEN'] }
+
   config.filter_sensitive_data('LASTFM_OAUTH_KEY') { ENV['LASTFM_OAUTH_KEY'] }
   config.filter_sensitive_data('LASTFM_OAUTH_SECRET') { ENV['LASTFM_OAUTH_SECRET'] }
   config.filter_sensitive_data('LASTFM_TEST_USER_UID') { ENV['LASTFM_TEST_USER_UID'] }

@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.14.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_TEST_USER_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 03:12:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4975'
+      X-Ratelimit-Reset:
+      - '1585280693'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With, X-GitHub-OpenAPI
+      Etag:
+      - W/"c9d715ab145a8bfd020b4ca57f03704d"
+      Last-Modified:
+      - Fri, 27 Mar 2020 02:53:05 GMT
+      X-Oauth-Scopes:
+      - gist, repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - GITHUB_OAUTH_KEY
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D4E6:43A3:318FB:3AD82:5E7D6F08
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sha":"80d582136b4447a6cb31dbab7f018327552e7730","node_id":"MDY6Q29tbWl0MjUwNDI1MzkyOjgwZDU4MjEzNmI0NDQ3YTZjYjMxZGJhYjdmMDE4MzI3NTUyZTc3MzA=","commit":{"author":{"name":"aastronautss-dev","email":"GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com","date":"2020-03-27T02:53:05Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2020-03-27T02:53:05Z"},"message":"Update
+        README.md","tree":{"sha":"6af5fba3220324f61d5c0479399b7470fbd7dc82","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/trees/6af5fba3220324f61d5c0479399b7470fbd7dc82"},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/git/commits/80d582136b4447a6cb31dbab7f018327552e7730","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJefWqRCRBK7hj4Ov3rIwAAdHIIAJDGDV6o1LJuJ9kf91AafxOJ\nS2jMjWkj15vOCMl5frH/qZCa7CjY8MvMOMZkzdcd0pbJg5HvKUyG33/zaCGJrZny\ndeNzRjaJTL0XrycFAFyVWB31dJW43Q1VKggY1nw7VtoRFZ2YmpibgtX+PdSLlHUz\n39MVsKTvIgFGFOYQbjGgN8ReHSxzSPgKzcx9DUO6MF7dooZ3fiIKTtrAaYESgwPt\nMhNNc/FA6cmx8lfN7VGb0H0okeFq9q4Hv/F67ktxkxSGKTPpULt8IDy2uca2LdIM\nRyL7n9syGn1D3jeSH6o7be9UE5weetuAvS6zkL/XKrautgWEQQR4YrqcgMAfqn0=\n=jWaN\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 6af5fba3220324f61d5c0479399b7470fbd7dc82\nparent
+        46b4de33eadf1f70b80731f82afbd0836d25f92f\nauthor aastronautss-dev <GITHUB_TEST_USER_UID+aastronautss-dev@users.noreply.github.com>
+        1585277585 -0700\ncommitter GitHub <noreply@github.com> 1585277585 -0700\n\nUpdate
+        README.md"}},"url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/80d582136b4447a6cb31dbab7f018327552e7730","comments_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/80d582136b4447a6cb31dbab7f018327552e7730/comments","author":{"login":"aastronautss-dev","id":GITHUB_TEST_USER_UID,"node_id":"MDQ6VXNlcjYyNTU4MjA2","avatar_url":"https://avatars2.githubusercontent.com/u/GITHUB_TEST_USER_UID?v=4","gravatar_id":"","url":"https://api.github.com/users/aastronautss-dev","html_url":"https://github.com/aastronautss-dev","followers_url":"https://api.github.com/users/aastronautss-dev/followers","following_url":"https://api.github.com/users/aastronautss-dev/following{/other_user}","gists_url":"https://api.github.com/users/aastronautss-dev/gists{/gist_id}","starred_url":"https://api.github.com/users/aastronautss-dev/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/aastronautss-dev/subscriptions","organizations_url":"https://api.github.com/users/aastronautss-dev/orgs","repos_url":"https://api.github.com/users/aastronautss-dev/repos","events_url":"https://api.github.com/users/aastronautss-dev/events{/privacy}","received_events_url":"https://api.github.com/users/aastronautss-dev/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"node_id":"MDQ6VXNlcjE5ODY0NDQ3","avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"46b4de33eadf1f70b80731f82afbd0836d25f92f","url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/commits/46b4de33eadf1f70b80731f82afbd0836d25f92f","html_url":"https://github.com/aastronautss-dev/quantitare-test-public/commit/46b4de33eadf1f70b80731f82afbd0836d25f92f"}],"stats":{"total":2,"additions":2,"deletions":0},"files":[{"sha":"e0d966330e1057e13eea03d3cc1eb91a9eb4f892","filename":"README.md","status":"modified","additions":2,"deletions":0,"changes":2,"blob_url":"https://github.com/aastronautss-dev/quantitare-test-public/blob/80d582136b4447a6cb31dbab7f018327552e7730/README.md","raw_url":"https://github.com/aastronautss-dev/quantitare-test-public/raw/80d582136b4447a6cb31dbab7f018327552e7730/README.md","contents_url":"https://api.github.com/repos/aastronautss-dev/quantitare-test-public/contents/README.md?ref=80d582136b4447a6cb31dbab7f018327552e7730","patch":"@@
+        -1,3 +1,5 @@\n # Quantitare test\n \n This is a test of the Quantitare integration
+        for public repos\n+\n+I''m adding this on as a new commit."}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 03:12:08 GMT
+recorded_with: VCR 5.1.0

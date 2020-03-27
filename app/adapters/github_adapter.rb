@@ -28,7 +28,7 @@ class GithubAdapter
     fetch_raw_repositories.flat_map { |raw_repo| scrobbles_for_raw_repository(raw_repo, start_time, end_time) }
   end
 
-  def fetch_code_commit(opts = {})
+  def fetch_code_commit(**opts)
     raw_commit = fetch_raw_commit(opts[:repository_name], opts[:sha])
 
     GithubAdapter::CodeCommit.new(raw_commit, opts[:repository_name], self).to_aux

@@ -1,8 +1,6 @@
 <% content_for :title, 'Scrobblers' %>
 
-<div class="row border-bottom pb-2">
-  <h2>Scrobblers</h2>
-</div>
+<%= page_header_tag 'Scrobblers' %>
 
 <div class="row pt-4">
   <table class="table table-sm table-hover">
@@ -28,25 +26,20 @@
           <td><%= scrobbler.scrobbles_count %></td>
           <td><%= scrobbler_status_badge(scrobbler) %></td>
           <td>
-            <!--
-            <reactive-form
-              form-id="<#%= "scrobbler_#{scrobbler.id}_form" %>"
-              :model="<%#= "scrobbler_#{scrobbler.id}" %>"
-            >
-              <%#=
-                form_with model: scrobbler,
-                  scope: "scrobbler_#{scrobbler.id}",
-                  id: "scrobbler_#{scrobbler.id}_form",
-                  url: model_url_for(scrobbler) do |f|
-              %>
-                <div class="custom-control custom-switch">
-                  <%#= f.check_box :enabled, class: 'custom-control-input' %>
-                  <%#= f.label :enabled, class: 'custom-control-label' %>
-                </div>
+            <%=
+              form_with model: scrobbler,
+                scope: "scrobbler_#{scrobbler.id}",
+                id: "scrobbler_#{scrobbler.id}",
+                url: model_url_for(scrobbler),
+                data: { controller: 'reactive-form' } do |f|
+            %>
+              <div class="custom-control custom-switch">
+                <%= f.check_box :enabled, class: 'custom-control-input', data: { action: 'reactive-form#submit' } %>
+                <%= f.label :enabled, class: 'custom-control-label' %>
+              </div>
 
-                <div class="d-none"><%#= f.submit data: { 'disable-with': 'Saving...' } %></div>
-              <%# end %>
-            </reactive-form> -->
+              <div class="d-none"><%= f.submit data: { 'disable-with': 'Saving...' } %></div>
+            <% end %>
           </td>
           <td>
             <div class="dropdown">

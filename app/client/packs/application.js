@@ -9,6 +9,9 @@
 
 import 'bootstrap'
 
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
+
 require('@rails/ujs').start()
 require('turbolinks').start()
 require('@rails/activestorage').start()

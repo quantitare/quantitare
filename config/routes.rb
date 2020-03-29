@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sidekiq/web'
+
 Provider
 
 Rails.application.routes.draw do
@@ -37,6 +38,8 @@ Rails.application.routes.draw do
       resource :type_data, only: [:show], as: 'scrobbler_type_data', controller: 'scrobblers/type_data'
     end
   end
+
+  resources :connections
 
   resources :places, only: [:show, :new, :create, :update] do
     collection do

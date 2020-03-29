@@ -1,1 +1,9 @@
 <% content_for :title, 'New Scrobbler' %>
+
+<%= page_header_tag 'Create a new scrobbler' %>
+
+<div class="row pb-4">
+  <div class="col-md-12">
+    <%= render 'form', scrobbler: @scrobbler %>
+  </div>
+</div>

@@ -1,9 +1,0 @@
-window.app.$store.dispatch(
-  'refreshLocationScrobble',
-  JSON.parse('<%= j raw(json_partial('location_scrobble', locals: { location_scrobble: @location_scrobble })) %>')
-);
-
-window.app.$store.dispatch(
-  'refreshPlaceMatch',
-  JSON.parse('<%= j raw(json_partial('place_matches/place_match', locals: { place_match: @place_match })) %>')
-);

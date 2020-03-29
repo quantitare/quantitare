@@ -5,14 +5,6 @@ GIT
     rescuetime (1.0.1)
 
 GIT
-  remote: https://github.com/aastronautss/vue-rails-form-builder.git
-  revision: bb0d804860acda58b5a0420404cfae89af9be76f
-  specs:
-    vue-rails-form-builder (0.8.2)
-      actionview (>= 4.2)
-      railties (>= 4.2)
-
-GIT
   remote: https://github.com/quantitare/quantitare-categories.git
   revision: eb52ba1974e5c6a08b3d33b747ed856a31a9a81c
   specs:
@@ -411,17 +403,8 @@ GEM
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
     safe_yaml (1.0.5)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.1.0)
-      railties (>= 5.2.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
+    sassc (2.2.1)
+      ffi (~> 1.9)
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
@@ -565,7 +548,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  sass-rails (~> 5.0)
+  sassc
   shoulda-matchers
   sidekiq (~> 6.0)
   sidekiq-scheduler
@@ -578,7 +561,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   vcr
   virtus
-  vue-rails-form-builder!
   web-console (>= 3.3.0)
   webmock
   webpacker

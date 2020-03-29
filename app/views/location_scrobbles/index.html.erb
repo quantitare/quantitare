@@ -1,15 +1,5 @@
 <% content_for :title, 'Locations' %>
 
-<%= vuex_store_tag :location_scrobbles_index %>
-<%=
-  vue_data_tag data: {
-    location_scrobbles: json_partial('location_scrobbles', locals: { location_scrobbles: @location_scrobbles })
-  }
-%>
-
-<location-scrobbles-index-view>
-</location-scrobbles-index-view>
-
 <div class="row py-4">
   <%= link_to 'Import', new_location_import_path, class: 'btn btn-primary' %>
 </div>

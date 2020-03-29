@@ -37,10 +37,6 @@ module ApplicationHelper
     url_for(model, *args)
   end
 
-  def default_vue_data
-    { alerts: available_alerts }
-  end
-
   def friendly_format_time(time)
     time.strftime('%-d %b %Y %l:%M:%S%P')
   end

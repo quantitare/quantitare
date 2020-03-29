@@ -14,13 +14,10 @@ gem 'puma', '~> 4.3'
 gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
 
 # Front-end core
-gem 'sass-rails', '~> 5.0'
+gem 'sassc'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby
-
-# Front-end extensions
-gem 'vue-rails-form-builder', github: 'aastronautss/vue-rails-form-builder'
 
 # Back-end core
 gem 'redis', '~> 4.0'

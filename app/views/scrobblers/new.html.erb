@@ -1,6 +1,1 @@
 <% content_for :title, 'New Scrobbler' %>
-
-<%= vuex_store_tag :scrobblers_new %>
-<%= vue_data_tag data: { scrobbler: json_partial('scrobbler', locals: { scrobbler: @scrobbler }) } %>
-
-<scrobbler-new :available-type-options="<%= type_options_for_scrobbler(@scrobbler).to_json %>"></scrobbler-new>

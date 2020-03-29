@@ -28,24 +28,25 @@
           <td><%= scrobbler.scrobbles_count %></td>
           <td><%= scrobbler_status_badge(scrobbler) %></td>
           <td>
+            <!--
             <reactive-form
-              form-id="<%= "scrobbler_#{scrobbler.id}_form" %>"
-              :model="<%= "scrobbler_#{scrobbler.id}" %>"
+              form-id="<#%= "scrobbler_#{scrobbler.id}_form" %>"
+              :model="<%#= "scrobbler_#{scrobbler.id}" %>"
             >
-              <%=
-                vue_form_with model: scrobbler,
+              <%#=
+                form_with model: scrobbler,
                   scope: "scrobbler_#{scrobbler.id}",
                   id: "scrobbler_#{scrobbler.id}_form",
                   url: model_url_for(scrobbler) do |f|
               %>
                 <div class="custom-control custom-switch">
-                  <%= f.check_box :enabled, class: 'custom-control-input' %>
-                  <%= f.label :enabled, class: 'custom-control-label' %>
+                  <%#= f.check_box :enabled, class: 'custom-control-input' %>
+                  <%#= f.label :enabled, class: 'custom-control-label' %>
                 </div>
 
-                <div class="d-none"><%= f.submit data: { 'disable-with': 'Saving...' } %></div>
-              <% end %>
-            </reactive-form>
+                <div class="d-none"><%#= f.submit data: { 'disable-with': 'Saving...' } %></div>
+              <%# end %>
+            </reactive-form> -->
           </td>
           <td>
             <div class="dropdown">
@@ -74,6 +75,7 @@
     </tbody>
   </table>
 </div>
+
 <div class="row">
   <div class="btn-group">
     <%= link_to icon_tag('fas fa-plus') + ' New Scrobbler', new_scrobbler_path, class: 'btn btn-sm btn-outline-dark' %>

@@ -111,6 +111,6 @@ group :test do
   gem 'webmock'
 
   gem 'shoulda-matchers'
-  gem 'simplecov', '~> 0.17.0'
+  gem 'simplecov', '~> 0.18.5'
   gem 'vcr'
 end

@@ -36,6 +36,29 @@ RSpec.describe ConnectionsController do
     end
   end
 
+  describe 'GET show' do
+    let(:scrobbler) { create :scrobbler, user: user }
+    let(:action) { get :show, params: { id: scrobbler.id } }
+
+    it_behaves_like 'authenticated_action'
+
+    it 'pull the correct scrobbler' do
+      action
+      expect(assigns(:scrobbler)).to eq(scrobbler)
+    end
+
+    it 'renders the proper template' do
+      action
+      expect(response).to render_template(:show)
+    end
+
+    it "does not allow the user to see other users' scrobblers" do
+      get :show, params: { id: create(:scrobbler).id }
+
+      expect(response).to have_http_status(:not_found)
+    end
+  end
+
   describe 'GET new' do
     let(:action) { get :new }
 
@@ -65,12 +88,12 @@ RSpec.describe ConnectionsController do
 
         it 'redirects back to connections#index' do
           action
-          expect(response).to redirect_to(connections_path)
+          expect(response).to redirect_to(connection_path(scrobbler))
         end
 
         it 'sets the flash' do
           action
-          expect(response.flash[:warning]).to be_present
+          expect(response.flash[:primary]).to be_present
         end
       end
 
@@ -159,35 +182,14 @@ RSpec.describe ConnectionsController do
     end
   end
 
-  describe 'GET edit' do
-    let(:scrobbler) { create :scrobbler, user: user }
-    let(:action) { get :edit, params: { id: scrobbler.id } }
-
-    it_behaves_like 'authenticated_action'
-
-    it 'pull the correct scrobbler' do
-      action
-      expect(assigns(:scrobbler)).to eq(scrobbler)
-    end
-
-    it 'renders the proper template' do
-      action
-      expect(response).to render_template(:edit)
-    end
-
-    it "does not allow the user to edit other users' scrobblers" do
-      get :edit, params: { id: create(:scrobbler).id }
-
-      expect(response).to have_http_status(:not_found)
-    end
-  end
-
   describe 'PATCH update' do
     let(:scrobbler) { create :scrobbler, user: user }
     let(:params) { { id: scrobbler.id, scrobbler: { name: 'some new name' } } }
     let(:action) { patch :update, params: params, format: :js }
 
     it_behaves_like 'authenticated_action'
+
+    render_views
 
     it 'assigns the correct scrobbler' do
       action
@@ -199,9 +201,9 @@ RSpec.describe ConnectionsController do
       expect(assigns(:scrobbler)).to be_valid
     end
 
-    it 'redirects to connections#index' do
+    it 'renders form' do
       action
-      expect(response.body).to include('window.location=')
+      expect(response.body).to include('<form')
     end
 
     context 'with invalid params' do

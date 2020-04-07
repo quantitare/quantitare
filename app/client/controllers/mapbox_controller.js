@@ -15,37 +15,37 @@ export default class extends Controller {
       zoom: 14
     })
 
-    this.map.on('load', () => {
-      this.map.addSource('place-scrobbles', { type: 'geojson', data: this.scrobbles.geojson.places })
-
-      this.map.addLayer({
-        id: 'place-scrobbles', type: 'circle', 'source': 'place-scrobbles',
-        paint: {
-          'circle-radius': 4,
-          'circle-color': '#76B1E8',
-          'circle-stroke-color': '#7876E8',
-          'circle-stroke-width': 2,
-          'circle-stroke-opacity': 0.25,
-        }
-      })
-
-      this.map.addSource('transit-scrobbles', { type: 'geojson', data: this.scrobbles.geojson.transits })
-
-      this.map.addLayer({
-        id: 'transit-scrobbles', type: 'line', source: 'transit-scrobbles',
-        paint: {
-          'line-color': ['get', 'colorPrimary'],
-          'line-width': 3,
-          'line-opacity': 0.45,
-        }
-      })
-
-      console.log(this.scrobbles.geojson.transits)
-    })
+    this.map.on('load', () => this.renderLayers())
   }
 
   disconnect() {
     this.map.remove()
+  }
+
+  renderLayers() {
+    this.map.addSource('place-scrobbles', { type: 'geojson', data: this.scrobbles.geojson.places })
+
+    this.map.addLayer({
+      id: 'place-scrobbles', type: 'circle', 'source': 'place-scrobbles',
+      paint: {
+        'circle-radius': 4,
+        'circle-color': '#76B1E8',
+        'circle-stroke-color': '#7876E8',
+        'circle-stroke-width': 2,
+        'circle-stroke-opacity': 0.25,
+      }
+    })
+
+    this.map.addSource('transit-scrobbles', { type: 'geojson', data: this.scrobbles.geojson.transits })
+
+    this.map.addLayer({
+      id: 'transit-scrobbles', type: 'line', source: 'transit-scrobbles',
+      paint: {
+        'line-color': ['get', 'colorPrimary'],
+        'line-width': 3,
+        'line-opacity': 0.45,
+      }
+    })
   }
 
   get scrobbles() {

@@ -21,7 +21,6 @@ class ProcessLocationImport
       step :save_location_import
     end
 
-
     result.set(location_import: location_import, options: options)
   end
 

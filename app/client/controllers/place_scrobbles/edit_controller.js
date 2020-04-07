@@ -17,17 +17,17 @@ export default class extends Controller {
     return ['placeSubmittable', 'placeInitializable', 'placeEditableInitializable', 'placeClosable']
   }
 
-  // ===--------------------------------===
+  // ========----------------------------------------------========
   // Model attributes
-  // ===--------------------------------===
+  // ========----------------------------------------------========
 
   get placeId() {
     return this.hasPlaceIdTarget && parseInt(this.placeIdTarget.value)
   }
 
-  // ===--------------------------------===
+  // ========----------------------------------------------========
   // State getters
-  // ===--------------------------------===
+  // ========----------------------------------------------========
 
   get placeEditing() {
     return this.data.has('placeEditing') && this.data.get('placeEditing') == 'true'
@@ -45,9 +45,9 @@ export default class extends Controller {
     return
   }
 
-  // ===--------------------------------===
+  // ========----------------------------------------------========
   // Actions
-  // ===--------------------------------===
+  // ========----------------------------------------------========
 
   placeNewOpen(event) {
     event.preventDefault()
@@ -63,9 +63,19 @@ export default class extends Controller {
     this.refreshPlaceElements()
   }
 
-  // ===--------------------------------===
+  // ========----------------------------------------------========
+  // General helpers
+  // ========----------------------------------------------========
+
+  toggleElementsForTypes(elementType, show) {
+    const action = show ? 'remove' : 'add'
+
+    this[`${elementType}Targets`].forEach((element) => element.classList.[action]('d-none'))
+  }
+
+  // ========----------------------------------------------========
   // Place button helpers
-  // ===--------------------------------===
+  // ========----------------------------------------------========
 
   refreshPlaceElements() {
     this.hidePlaceButtons()
@@ -79,7 +89,7 @@ export default class extends Controller {
   }
 
   hidePlaceButtonsForType(buttonType) {
-    this[`${buttonType}Targets`].forEach((element) => element.classList.add('d-none'))
+    this.toggleElementsForTypes(buttonType, false)
   }
 
   showRelevantPlaceButtons() {
@@ -95,24 +105,26 @@ export default class extends Controller {
   }
 
   showPlaceButtonsForType(buttonType) {
-    this[`${buttonType}Targets`].forEach((element) => element.classList.remove('d-none'))
+    this.toggleElementsForTypes(buttonType, true)
   }
 
   setPlaceIdState() {
     this.placeIdTargets.forEach((element) => element.disabled = this.placeEditing)
   }
 
+  // ========----------------------------------------------========
   // Place field helpers
+  // ========----------------------------------------------========
 
   hidePlaceFields() {
-    this.placeFieldsTargets.forEach((element) => element.classList.add('d-none'))
+    this.toggleElementsForTypes('placeFields', false)
     this.data.set('placeEditing', 'false')
 
     this.refreshPlaceElements()
   }
 
   showPlaceFields() {
-    this.placeFieldsTargets.forEach((element) => element.classList.remove('d-none'))
+    this.toggleElementsForTypes('placeFields', true)
     this.data.set('placeEditing', 'true')
   }
 }

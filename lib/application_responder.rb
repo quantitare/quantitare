@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+##
+# Base responder for all application controllers.
+#
 class ApplicationResponder < ActionController::Responder
   include Responders::FlashResponder
   include Responders::HttpCacheResponder

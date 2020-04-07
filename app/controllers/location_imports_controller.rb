@@ -11,15 +11,12 @@ class LocationImportsController < ApplicationController
   end
 
   def create
-    params[:location_import][:import_file].each do |file|
+    import_files.each do |file|
       location_import = current_user.location_imports.new(location_import_params.merge({ import_file: file }))
-      result = ProcessLocationImport.(location_import, options_params)
 
-      unless result.success?
-        flash[:danger] = "Import aborted"
+      next if ProcessLocationImport.(location_import, options_params).success?
 
-        break
-      end
+      flash[:danger] = 'Import aborted'
     end
 
     redirect_to new_location_import_path
@@ -29,6 +26,10 @@ class LocationImportsController < ApplicationController
   end
 
   private
+
+  def import_files
+    params[:location_import][:import_file]
+  end
 
   def location_import_params
     params.require(:location_import).permit(:adapter, :import_file)

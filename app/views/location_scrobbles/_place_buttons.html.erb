@@ -1,0 +1,43 @@
+<%=
+  f.button class: 'btn btn-outline-success form-control',
+    data: { target: 'place-scrobbles--edit.placeSubmittable' } do
+%>
+  <%= icon_tag 'fas fa-check' %>
+<% end %>
+
+<%=
+  button_tag class: 'btn btn-outline-success form-control',
+    data: {
+      target: 'place-scrobbles--edit.placeInitializable',
+      action: 'place-scrobbles--edit#placeNewOpen'
+    },
+    html: { type: 'button' } do
+%>
+  <%= icon_tag 'fas fa-plus' %>
+<% end %>
+
+<div class="btn-group w-100" data-target="place-scrobbles--edit.placeEditableInitializable">
+  <%=
+    button_tag class: 'btn btn-outline-primary',
+      data: { action: 'place-scrobbles--edit#placeEditOpen' },
+      html: { type: 'button' } do
+  %>
+    <%= icon_tag 'fas fa-pencil-alt' %>
+  <% end %>
+
+  <%=
+    button_tag class: 'btn btn-outline-success',
+      data: { action: 'place-scrobbles--edit#placeNewOpen' },
+      html: { type: 'button' } do
+  %>
+    <%= icon_tag 'fas fa-plus' %>
+  <% end %>
+</div>
+
+<%=
+  button_tag class: 'btn btn-outline-danger form-control',
+    data: { target: 'place-scrobbles--edit.placeClosable', action: 'place-scrobbles--edit#placeEditClose' },
+    html: { type: 'button' } do
+%>
+  <%= icon_tag 'fas fa-times' %>
+<% end %>

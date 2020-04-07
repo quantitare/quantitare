@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Quantitare
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults '6.0'
 
@@ -20,17 +23,9 @@ module Quantitare
     config.autoload_paths << config.root.join('app', 'queries', 'concerns')
     config.autoload_paths << config.root.join('lib')
 
-    # config.middleware.insert_before 0, Rack::Cors do
-    #   allow do
-    #     origins '*'
-
-    #     resource '*',
-    #       headers: :any,
-    #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-    #   end
-    # end
-
     config.active_job.queue_adapter = :sidekiq
+
+    config.responders.flash_keys = %i[success danger]
   end
 end
 

@@ -1,0 +1,43 @@
+<div class="form-row">
+  <%= form_group_tag class: 'col' do %>
+    <%= f.label :street_1, 'Street line 1' %>
+    <%= f.text_field :street_1, class: 'form-control' %>
+    <%= f.errors :street_1 %>
+  <% end %>
+</div>
+
+<div class="form-row">
+  <%= form_group_tag class: 'col' do %>
+    <%= f.label :street_2, 'Street line 2' %>
+    <%= f.text_field :street_2, class: 'form-control' %>
+    <%= f.errors :street_2 %>
+  <% end %>
+</div>
+
+<div class="form-row">
+  <%= form_group_tag class: 'col-md-6' do %>
+    <%= f.label :city %>
+    <%= f.text_field :city, class: 'form-control' %>
+    <%= f.errors :city %>
+  <% end %>
+
+  <%= form_group_tag class: 'col-md-4' do %>
+    <%= f.label :state, 'State' %>
+    <%= f.text_field :state, class: 'form-control' %>
+    <%= f.errors :state %>
+  <% end %>
+
+  <%= form_group_tag class: 'col-md-2' do %>
+    <%= f.label :zip %>
+    <%= f.text_field :zip, class: 'form-control' %>
+    <%= f.errors :zip %>
+  <% end %>
+</div>
+
+<div class="form-row">
+  <%= form_group_tag class: 'col' do %>
+    <%= f.label :country %>
+    <%= f.text_field :country, class: 'form-control' %>
+    <%= f.errors :country %>
+  <% end %>
+</div>

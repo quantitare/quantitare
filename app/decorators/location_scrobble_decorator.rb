@@ -19,11 +19,15 @@ class LocationScrobbleDecorator < ApplicationDecorator
   end
 
   def icon
-    object.category_info.icon
+    object.category_info.icon.with_indifferent_access
   end
 
   def icon_class
-    "fas fa-#{icon.try(:name)}"
+    "fas fa-#{icon[:name].downcase}"
+  end
+
+  def colors
+    (object.category_info.colors || {}).with_indifferent_access
   end
 
   def friendly_start_time
@@ -36,5 +40,13 @@ class LocationScrobbleDecorator < ApplicationDecorator
 
   def distance
     "#{object.distance == object.distance.to_i ? object.distance.to_i : object.distance}m"
+  end
+
+  def geo_json_coordinates
+    if place?
+      [longitude.to_f, latitude.to_f]
+    else
+      trackpoints.map { |trackpoint| [trackpoint['longitude'], trackpoint['latitude']] }
+    end
   end
 end

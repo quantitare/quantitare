@@ -8,16 +8,19 @@ class ProcessLocationImport
 
   attr_reader :location_import, :options
 
-  transactional!
-
   def initialize(location_import, options = {})
     @location_import = location_import
     @options = options.to_h.with_indifferent_access
   end
 
   def call
-    step :process_scrobbles
     step :save_location_import
+
+    location_import.transaction do
+      step :process_scrobbles
+      step :save_location_import
+    end
+
 
     result.set(location_import: location_import, options: options)
   end

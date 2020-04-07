@@ -3,7 +3,6 @@
 ##
 # Helper methods for controllers & views.
 #
-# rubocop:disable Metrics/ModuleLength
 module ApplicationHelper
   def available_alerts
     flash.map do |level, content|
@@ -45,13 +44,6 @@ module ApplicationHelper
     content_tag :span, content, class: "badge badge-#{type}"
   end
 
-  def icon_tag(icon_class, options = {})
-    icon_class ||= 'fas fa-question-circle'
-    dom_class = add_dom_classes(options[:class], icon_class)
-
-    content_tag :i, nil, class: dom_class
-  end
-
   def errors_for(object)
     return unless object.errors.any?
 
@@ -91,10 +83,6 @@ module ApplicationHelper
     )
   end
 
-  def omniauth_provider_name(provider)
-    t("devise.omniauth_providers.#{provider}")
-  end
-
   def omniauth_button_text(provider)
     [
       omniauth_provider_icon_tag(provider),
@@ -108,10 +96,6 @@ module ApplicationHelper
     output += ' ' + new_classes
 
     output.squish
-  end
-
-  def user_omniauth_authorize_path(provider)
-    send "user_#{provider}_omniauth_authorize_path"
   end
 
   private
@@ -135,7 +119,6 @@ module ApplicationHelper
   end
 
   def humanize_type(type)
-    type.gsub(/^.*::/, '').titleize
+    type.gsub(/\A.*::/, '').titleize
   end
 end
-# rubocop:enable Metrics/ModuleLength

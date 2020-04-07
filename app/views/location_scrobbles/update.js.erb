@@ -1,0 +1,6 @@
+(function () {
+  const form = document.getElementById('location_scrobble_form_wrapper')
+  if (!form) return
+
+  form.innerHTML = "<%= j render('form', scrobble: @location_scrobble) %>"
+})();

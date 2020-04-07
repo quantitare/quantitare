@@ -1,0 +1,15 @@
+(function () {
+  const alerts = document.getElementById('alerts')
+  let div
+
+  alerts.innerHTML = ''
+
+  <% flash.each do |level, message| %>
+    div = document.createElement('div')
+    div.innerHTML = "<%= j render 'shared/alert', level: level, message: message %>"
+
+    alerts.append(div)
+  <% end %>
+})();
+
+<%= yield %>

@@ -1,0 +1,5 @@
+<div id="alerts">
+  <% flash.each do |level, message| %>
+    <%= render 'shared/alert', level: level, message: message %>
+  <% end %>
+</div>

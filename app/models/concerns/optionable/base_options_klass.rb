@@ -29,5 +29,9 @@ module Optionable
     def inspect
       attributes
     end
+
+    def persisted?
+      false
+    end
   end
 end

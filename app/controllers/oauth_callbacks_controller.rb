@@ -3,7 +3,7 @@
 ##
 # Handles omniauth callbacks.
 #
-class OmniauthCallbacksController < ApplicationController
+class OauthCallbacksController < Devise::OmniauthCallbacksController
   def action_missing(action_name)
     case action_name.to_sym
     when *Devise.omniauth_providers
@@ -11,20 +11,26 @@ class OmniauthCallbacksController < ApplicationController
 
       if @service
         flash[:success] = "Successfully added #{action_name.humanize}!"
+
+        redirect_to new_connection_path(service_id: @service.id)
       else
         flash[:danger] = "An error occurred while trying to add #{action_name.humanize}."
+
+        redirect_to connections_path
       end
     else
       flash[:danger] = "We couldn't find a provider for #{action_name.humanize}"
-    end
 
-    redirect_to services_path
+      redirect_to connections_path
+    end
   end
 
   private
 
   def handle_omniauth
     service = current_user.services.find_or_initialize_via_omniauth(request.env['omniauth.auth'])
-    service&.save
+    service&.clear_issues
+
+    service&.save && service
   end
 end

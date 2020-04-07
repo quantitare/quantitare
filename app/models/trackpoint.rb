@@ -4,11 +4,11 @@
 # A simple universal Trackpoint struct.
 #
 class Trackpoint
-  attr_reader :latitude, :longitude, :altitude, :timestamp
+  attr_reader :longitude, :latitude, :altitude, :timestamp
 
-  def initialize(latitude, longitude, altitude = nil, timestamp = nil)
-    @latitude = latitude
+  def initialize(longitude, latitude, altitude = nil, timestamp = nil)
     @longitude = longitude
+    @latitude = latitude
     @altitude = altitude
     @timestamp = timestamp
   end

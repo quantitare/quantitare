@@ -55,7 +55,7 @@ class GoogleMapsKMLAdapter
     end
 
     def trackpoints
-      GoogleMapsKmlAdapter::Trackpoint.parse_raw(raw_trackpoints)
+      GoogleMapsKMLAdapter::Trackpoint.parse_raw(raw_trackpoints)
     end
 
     def raw_trackpoints

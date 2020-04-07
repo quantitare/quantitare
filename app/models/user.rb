@@ -6,7 +6,8 @@
 class User < ApplicationRecord
   include RailsSettings::Extend
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+    omniauth_providers: Devise.omniauth_providers
 
   has_many :services, dependent: :destroy
 

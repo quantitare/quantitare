@@ -1,0 +1,51 @@
+<%= section_header_3_tag 'Schedules' %>
+
+<%= f.fields_for(:schedules, OpenStruct.new(f.object.schedules)) do |schedule_f| %>
+  <div class="row">
+    <div class="col">
+      <%= form_group_tag do %>
+        <%= schedule_f.label :shallow %>
+        <%=
+          schedule_f.select :shallow, scrobbler_schedule_options(f.object),
+            {},
+            class: 'form-control custom-select'
+        %>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <%= form_group_tag do %>
+        <%= schedule_f.label :medium %>
+        <%=
+          schedule_f.select :medium, scrobbler_schedule_options(f.object),
+            {},
+            class: 'form-control custom-select'
+        %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= form_group_tag do %>
+        <%= schedule_f.label :deep %>
+        <%=
+          schedule_f.select :deep, scrobbler_schedule_options(f.object),
+            {},
+            class: 'form-control custom-select'
+        %>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <%= form_group_tag do %>
+        <%= schedule_f.label :full %>
+        <%=
+          schedule_f.select :full, scrobbler_schedule_options(f.object),
+            {},
+            class: 'form-control custom-select'
+        %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

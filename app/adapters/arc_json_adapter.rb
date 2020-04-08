@@ -30,6 +30,3 @@ class ArcJSONAdapter
     @parsed_json ||= JSON.parse(file.read)
   end
 end
-
-require_dependency 'arc_json_adapter/timeline_item'
-require_dependency 'arc_json_adapter/trackpoint'

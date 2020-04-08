@@ -77,5 +77,3 @@ class GithubAdapter
     wrap_api_request { client.commit(repo_name, sha) }
   end
 end
-
-require_dependency 'github_adapter/scrobble'

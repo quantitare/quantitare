@@ -1,0 +1,7 @@
+<% if scrobble.transit? %>
+  <%= scrobble.distance %> &middot;
+<% end %>
+
+<%= time_tag scrobble.start_time %> <i class="text-muted">to</i> <%= time_tag scrobble.end_time %>
+&middot;
+<%= distance_of_time_in_words scrobble.duration %>

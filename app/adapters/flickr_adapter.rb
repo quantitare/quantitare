@@ -77,6 +77,3 @@ class FlickrAdapter
     FlickrAdapter::Scrobble.photo_from_api(photo, raw_photo_activity)
   end
 end
-
-require_dependency 'flickr_adapter/photo'
-require_dependency 'flickr_adapter/scrobble'

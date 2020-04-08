@@ -17,6 +17,6 @@ class ServiceDecorator < ApplicationDecorator
   end
 
   def callback_url
-    h.public_send("user_#{provider}_omniauth_callback_url")
+    public_send("user_#{provider}_omniauth_callback_url")
   end
 end

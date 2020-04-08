@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require_dependency 'aux/place_category_list'
-require_dependency 'foursquare_adapter/place'
-require_dependency 'foursquare_adapter/place_category'
-require_dependency 'foursquare_adapter/place_category_list'
-
 ##
 # API wrapper for the Foursquare service.
 #

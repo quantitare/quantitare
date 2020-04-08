@@ -40,4 +40,10 @@ shared_examples_for LocationScrobble do
       expect(subject.latitude).to be_nil
     end
   end
+
+  describe '#duration' do
+    it 'returns a durationable object' do
+      expect(subject.duration).to respond_to(:seconds)
+    end
+  end
 end

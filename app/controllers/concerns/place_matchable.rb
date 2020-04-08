@@ -9,8 +9,9 @@ module PlaceMatchable
   private
 
   def find_place_match!(location_scrobble:)
-    @place_match = FindPlaceMatchForLocationScrobble.(location_scrobble) ||
-      current_user.place_matches.new(source: location_scrobble.source)
+    @place_match =
+      FindPlaceMatchForLocationScrobble.(location_scrobble) ||
+      current_user.place_matches.build(source: location_scrobble.source)
   end
 
   def process_place_match!(source:, place:)

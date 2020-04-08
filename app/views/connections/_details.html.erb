@@ -1,0 +1,45 @@
+<%= section_header_2_tag 'Details' %>
+
+<div class="row mb-3">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Scrobbles</h5>
+
+        <div class="card-text"><%= scrobbler.scrobbles_count %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Age</h5>
+
+        <div class="card-text">
+          <%= time_tag scrobbler.created_at, time_ago_in_words(scrobbler.created_at) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if scrobbler.service_issues? %>
+  <div class="alert alert-danger">
+    <h5>This connection has issues</h5>
+    <div>
+      We will no longer check for updates from this service until the issues have been resolved. You can try re-establishing your connection by clicking the button below.
+    </div>
+  </div>
+<% end %>
+
+<% if scrobbler.oauth? %>
+  <div class="row mb-3">
+    <div class="col">
+      <%=
+        link_to 'Reconnect', user_omniauth_authorize_path(scrobbler.provider_name),
+          class: 'btn btn-outline-primary btn-block'
+      %>
+    </div>
+  </div>
+<% end %>

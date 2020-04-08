@@ -25,6 +25,12 @@ RSpec.describe TokenProvider do
     end
   end
 
+  describe '#icon' do
+    it 'is a correctly formatted hash' do
+      expect(subject.icon).to have_key(:type)
+    end
+  end
+
   describe '#icon_text_color' do
     it 'passes the correct value through' do
       expect(subject.icon_text_color).to eq('#fff')

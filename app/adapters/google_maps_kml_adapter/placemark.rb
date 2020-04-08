@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require_dependency 'google_maps_kml_adapter'
-
-class GoogleMapsKmlAdapter
+class GoogleMapsKMLAdapter
   ##
   # Converts a single placemark XML node from a KML document to a {LocationScrobble}.
   #
@@ -57,7 +55,7 @@ class GoogleMapsKmlAdapter
     end
 
     def trackpoints
-      GoogleMapsKmlAdapter::Trackpoint.parse_raw(raw_trackpoints)
+      GoogleMapsKMLAdapter::Trackpoint.parse_raw(raw_trackpoints)
     end
 
     def raw_trackpoints

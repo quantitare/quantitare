@@ -70,8 +70,8 @@ class TwitterAdapter
     raise Errors::ServiceConfigError.new(request_format_error_message, nature: :request_format)
   rescue *GENERAL_ERRORS
     raise Errors::ServiceConfigError.new("#{service.name} returned an unknown error", nature: :general)
-  rescue *API_ERRORS
-    raise Errors::ServiceAPIError
+  rescue *API_ERRORS => e
+    raise Errors::ServiceAPIError, e.message
   end
 
   def user_token_error_message
@@ -97,5 +97,3 @@ class TwitterAdapter
     base_opts
   end
 end
-
-require_dependency 'twitter_adapter/scrobble'

@@ -45,6 +45,10 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'app/controllers/**/*'
 
+Style/Documentation:
+  Exclude:
+    - 'app/controllers'
+
 Style/DoubleNegation:
   Enabled: false
 

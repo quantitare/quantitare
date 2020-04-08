@@ -4,6 +4,18 @@
 # Scrobbler-related view & controller helpers go here.
 #
 module ScrobblerHelper
+  def provider_select_options
+    options_for_select(
+      Provider.all.sort_by(&:name).map do |provider|
+        [
+          omniauth_provider_name(provider.name),
+          provider.name,
+          { data: { 'custom-properties': { icon: provider.icon } } }
+        ]
+      end
+    )
+  end
+
   def scrobbler_type_select_options
     Rails.cache.fetch(__method__) do
       Scrobbler.types.map { |type| [humanize_type(type.name), type.name] }.sort_by { |item| item[0] }
@@ -41,6 +53,6 @@ module ScrobblerHelper
   end
 
   def scrobbler_schedule_options(_scrobbler)
-    Scheduler.available_schedules.map { |schedule| { label: schedule, value: schedule } }
+    Scheduler.available_schedules.map { |schedule| [schedule, schedule] }
   end
 end

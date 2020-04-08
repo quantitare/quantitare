@@ -39,7 +39,9 @@ RSpec.describe ScrobblerCheckJob do
       end
 
       it 'does not enqueue any jobs' do
-        expect { action }.to_not change(ScrobblerCheckJob._queue_adapter.enqueued_jobs, :size)
+        action
+
+        expect(ScrobblerCheckJob).to_not have_been_enqueued
       end
     end
 
@@ -47,7 +49,9 @@ RSpec.describe ScrobblerCheckJob do
       let(:result) { double 'result', success?: false }
 
       it 'enqueues a ScrobblerFetchJob' do
-        expect { action }.to change(ScrobblerCheckJob._queue_adapter.enqueued_jobs, :size).by(1)
+        action
+
+        expect(ScrobblerFetchJob).to have_been_enqueued
       end
     end
   end

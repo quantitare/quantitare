@@ -1,0 +1,13 @@
+<div class="form-row">
+  <%= form_group_tag class: 'col' do %>
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude, class: 'form-control' %>
+    <%= f.errors :latitude %>
+  <% end %>
+
+  <%= form_group_tag class: 'col' do %>
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude, class: 'form-control' %>
+    <%= f.errors :longitude %>
+  <% end %>
+</div>

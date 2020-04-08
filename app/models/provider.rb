@@ -13,27 +13,37 @@ class Provider
 
     delegate :[], to: :registry
 
+    alias find []
+
     def register(provider_name, *args)
       instance = new(provider_name, *args)
       registry[provider_name] = instance
       instance.process!
     end
 
-    def register_non_oauth(provider_name, *args)
-      instance = TokenProvider.new(provider_name, *args)
+    def register_non_oauth(provider_name, *args, **kwargs)
+      instance = TokenProvider.new(provider_name, *args, **kwargs)
       registry[provider_name] = instance
     end
 
     def oauth_providers
-      registry.values.select(&:oauth?)
+      all.select(&:oauth?)
     end
 
     def non_oauth_providers
-      registry.values.reject(&:oauth?)
+      all.reject(&:oauth?)
     end
 
     def non_oauth_provider_names
-      registry.keys.reject { |key| self[key].oauth? }
+      names.reject { |key| self[key].oauth? }
+    end
+
+    def all
+      registry.values
+    end
+
+    def names
+      registry.keys
     end
   end
 
@@ -62,6 +72,10 @@ class Provider
     return false unless valid?
 
     Devise.setup { |config| config.omniauth(name, key, secret, oauth_opts) }
+  end
+
+  def icon
+    { type: 'fa', data: icon_css_class }
   end
 
   def icon_css_class

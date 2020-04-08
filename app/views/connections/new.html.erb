@@ -1,0 +1,7 @@
+<% content_for :title, 'Create a new connection' %>
+
+<%= page_header_tag "Complete #{omniauth_provider_name(@scrobbler.provider_name)} connection" %>
+
+<div id="scrobbler_form_wrapper">
+  <%= render 'scrobblers/form', scrobbler: @scrobbler %>
+</div>

@@ -4,9 +4,11 @@
 # Base controller for {LocationScrobble}-related actions.
 #
 class LocationScrobblesController < ApplicationController
-  before_action :authenticate_user!
-
   include PlaceMatchable
+
+  respond_to :js, only: :update
+
+  before_action :authenticate_user!
 
   def index
     @from = params[:from] || Date.current.beginning_of_day
@@ -21,6 +23,7 @@ class LocationScrobblesController < ApplicationController
 
   def edit
     @location_scrobble = current_user.location_scrobbles.find(params[:id])
+    @location_scrobble.place = current_user.places.build(place_params_from_scrobble) if initialize_place?
 
     find_place_match!(location_scrobble: @location_scrobble)
 
@@ -34,19 +37,25 @@ class LocationScrobblesController < ApplicationController
     if @location_scrobble.update(location_scrobble_params)
       find_place_match!(location_scrobble: @location_scrobble)
       process_place_match!(source: @location_scrobble.source, place: @location_scrobble.place)
-
-      flash.now[:success] = 'Successfully updated!'
-    else
-      flash.now[:danger] = 'Something went wrong while trying to save this location scrobble'
     end
 
     @location_scrobble = @location_scrobble.decorate
     @place_match = @place_match.decorate
+
+    respond_with @location_scrobble
   end
 
   private
 
   def location_scrobble_params
     params.require(:location_scrobble).permit(:place_id, :singular, :name)
+  end
+
+  def place_params_from_scrobble
+    { name: @location_scrobble.name }
+  end
+
+  def initialize_place?
+    @location_scrobble.place? && @location_scrobble.place.blank?
   end
 end

@@ -1,0 +1,8 @@
+<%= f.fields_for(attribute) do |options_f| %>
+  <% f.object.options_config_for(attribute).each do |config| %>
+    <%= form_group_tag do %>
+      <%= options_f.label config[:name] %>
+      <%= options_f.optionable_field config, class: 'form-control' %>
+    <% end %>
+  <% end %>
+<% end %>

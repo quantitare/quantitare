@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.2'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.3'
@@ -14,13 +14,10 @@ gem 'puma', '~> 4.3'
 gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
 
 # Front-end core
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby
-
-# Front-end extensions
-gem 'vue-rails-form-builder', github: 'aastronautss/vue-rails-form-builder'
 
 # Back-end core
 gem 'redis', '~> 4.0'
@@ -111,6 +108,12 @@ group :test do
   gem 'webmock'
 
   gem 'shoulda-matchers'
-  gem 'simplecov', '~> 0.17.0'
   gem 'vcr'
+
+  # CodeClimate's test reporter is broken for Simplecov version 0.18+. Update these gems once the issue is resolved.
+  gem 'simplecov', '< 0.18'
+  gem 'simplecov-json',
+    require: false,
+    git: 'https://github.com/kevjin/simplecov-json.git',
+    ref: 'dfdf187383dd7038ed37c8107da57a5d5d3ee759'
 end

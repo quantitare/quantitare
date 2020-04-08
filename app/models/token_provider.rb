@@ -19,6 +19,10 @@ class TokenProvider
     options[:fields]
   end
 
+  def icon
+    { type: 'fa', data: icon_css_class }
+  end
+
   def icon_css_class
     options[:icon_css_class]
   end

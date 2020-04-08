@@ -1,16 +1,19 @@
 <% content_for :title, 'Locations' %>
 
-<%= vuex_store_tag :location_scrobbles_index %>
-<%=
-  vue_data_tag data: {
-    location_scrobbles: json_partial('location_scrobbles', locals: { location_scrobbles: @location_scrobbles })
-  }
-%>
+<div class="row">
+  <div class="col mb-2">
+    <div
+      data-controller="mapbox"
+      data-mapbox-scrobbles="<%=
+        json_partial('location_scrobbles/location_scrobbles', locals: { location_scrobbles: @location_scrobbles })
+      %>"
+    >
+      <div data-target="mapbox.map" style="height: 800px;"></div>
+    </div>
+  </div>
+</div>
 
-<location-scrobbles-index-view>
-</location-scrobbles-index-view>
-
-<div class="row py-4">
+<div class="row pb-4">
   <%= link_to 'Import', new_location_import_path, class: 'btn btn-primary' %>
 </div>
 

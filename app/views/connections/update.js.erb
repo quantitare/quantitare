@@ -1,0 +1,5 @@
+(function () {
+  const form = document.getElementById('scrobbler_form_wrapper')
+
+  form.innerHTML = "<%= j(render('scrobblers/form', scrobbler: @scrobbler) { render 'details', scrobbler: @scrobbler }) %>"
+})();

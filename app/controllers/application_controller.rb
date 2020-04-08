@@ -1,11 +1,18 @@
 # frozen_string_literal: true
 
+require 'application_responder'
+
 ##
 # Application Controller
 #
 class ApplicationController < ActionController::Base
+  self.responder = ApplicationResponder
+  respond_to :html
+
   protect_from_forgery with: :exception
   # before_action :configure_permitted_parameters, if: :devise_controller?
+
+  helper_method :omniauth_provider_name, :user_omniauth_authorize_path
 
   def authenticate_admin!
     authenticate_user!
@@ -22,6 +29,14 @@ class ApplicationController < ActionController::Base
     else
       super
     end
+  end
+
+  def user_omniauth_authorize_path(provider)
+    send "user_#{provider}_omniauth_authorize_path"
+  end
+
+  def omniauth_provider_name(provider)
+    t("devise.omniauth_providers.#{provider}")
   end
 
   private

@@ -1,6 +1,17 @@
 require 'simplecov'
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  if ENV['CI']
+    formatter SimpleCov::Formatter::SimpleFormatter
+  else
+    require 'simplecov-json'
+
+    formatter SimpleCov::Formatter::MultiFormatter.new([
+      SimpleCov::Formatter::SimpleFormatter,
+      SimpleCov::Formatter::JSONFormatter
+    ])
+  end
+end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
@@ -8,6 +19,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
 Rails.application.eager_load!
+Zeitwerk::Loader.eager_load_all
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?

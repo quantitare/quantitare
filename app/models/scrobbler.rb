@@ -42,9 +42,33 @@ class Scrobbler < ApplicationRecord
   scope :enabled, -> { where(disabled: false) }
 
   delegate :issues?, to: :service, allow_nil: true, prefix: true
+  delegate :oauth?, to: :service, allow_nil: true
+  delegate :provider_name, to: :class
 
   load_types_in 'Scrobblers'
   options_attribute :options
+
+  class << self
+    def new_from_service(service, **params)
+      new_from_provider(service.provider, service: service, **params)
+    end
+
+    def new_from_provider(provider_name, **params)
+      new type: type_for_provider(provider_name).name, **params
+    end
+
+    def type_for_provider(provider)
+      types.find { |type| type.provider_name.to_sym == provider.to_sym }
+    end
+
+    def provider_name
+      required_provider || simple_type_name
+    end
+
+    def simple_type_name
+      name.split('::').last.sub(/Scrobbler\z/, '').underscore
+    end
+  end
 
   def working?
     !service_issues?
@@ -61,6 +85,8 @@ class Scrobbler < ApplicationRecord
   def enabled
     !disabled
   end
+
+  alias enabled? enabled
 
   def enabled=(value)
     self.disabled = value

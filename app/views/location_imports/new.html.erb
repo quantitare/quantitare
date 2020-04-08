@@ -12,7 +12,7 @@
       <div class="form-group row">
         <%= f.label :import_file, 'File to import', class: 'col-sm-3 col-form-label text-right' %>
         <div class="col-sm-9">
-          <%= f.file_field :import_file, required: true %>
+          <%= f.file_field :import_file, multiple: true, required: true %>
         </div>
       </div>
 
@@ -23,7 +23,7 @@
             f.select :adapter,
               options_for_select(LocationImport.adapters.map { |adapter| [adapter.importer_label, adapter.name] }),
               {},
-              required: true, include_blank: true, class: 'form-control'
+              required: true, class: 'form-control'
           %>
         </div>
       </div>

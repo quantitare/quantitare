@@ -35,7 +35,7 @@ RSpec.describe ScrobblerHelper do
 
   describe '#scrobbler_schedule_options' do
     it 'returns an array of arrays' do
-      expect(helper.scrobbler_schedule_options(scrobbler).all? { |item| item.is_a?(Hash) }).to be(true)
+      expect(helper.scrobbler_schedule_options(scrobbler).all? { |item| item.is_a?(Array) }).to be(true)
     end
   end
 

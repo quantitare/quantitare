@@ -23,6 +23,8 @@ class Service < ApplicationRecord
   scope :available_to_user, ->(user) { where(user_id: user.id) }
   scope :for_place_metadata, -> { where(provider: 'foursquare', global: true) }
 
+  delegate :oauth?, to: :provider_data
+
   @available_providers = {}.with_indifferent_access
 
   class << self
@@ -71,9 +73,14 @@ class Service < ApplicationRecord
     save!
   end
 
-  def clear_issues!
+  def clear_issues(save: false)
     issues.clear
-    save!
+
+    save! if save
+  end
+
+  def clear_issues!
+    clear_issues(save: true)
   end
 
   def new_issue(nature, message)

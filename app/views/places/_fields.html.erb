@@ -1,0 +1,42 @@
+<%= form_group_tag do %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.errors :name %>
+<% end %>
+
+<%= form_group_tag do %>
+  <%= f.label :category %>
+  <%= f.choices :category, [], class: 'form-control w-100', search_path: location_categories_path %>
+  <%= f.errors :category %>
+<% end %>
+
+<%= form_group_tag do %>
+  <%= f.label :locate_by, 'Locate by' %>
+
+  <ul class="nav nav-pills nav-fill mb-3">
+    <li class="nav-item">
+      <a href="#locate_by_address" class="nav-link active" data-toggle="pill">Address</a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#locate_by_coordinates" class="nav-link" data-toggle="pill">Coordinates</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane show active" id="locate_by_address">
+      <%= render 'places/address_fields', f: f %>
+    </div>
+
+    <div class="tab-pane show" id="locate_by_coordinates">
+      <%= render 'places/coordinates_fields', f: f %>
+    </div>
+  </div>
+<% end %>
+
+<%= form_group_tag do %>
+  <div class="custom-control custom-checkbox">
+    <%= f.check_box :global, class: 'custom-control-input' %>
+    <%= f.label :global, class: 'custom-control-label' %>
+  </div>
+<% end %>

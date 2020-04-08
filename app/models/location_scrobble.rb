@@ -32,6 +32,10 @@ class LocationScrobble < ApplicationRecord
     raise NotImplementedError
   end
 
+  def duration
+    end_time - start_time
+  end
+
   private
 
   def compute_coordinates

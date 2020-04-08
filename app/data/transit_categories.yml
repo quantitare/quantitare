@@ -2,6 +2,8 @@
   icon:
     type: fa
     name: walking
+  colors:
+    primary: "#18C429"
 - name: Wheelchair
   icon:
     type: fa
@@ -14,45 +16,65 @@
   icon:
     type: fa
     name: hiking
+  colors:
+    primary: '#19AB09'
 - name: Cycling
   icon:
     type: fa
     name: bicycle
+  colors:
+    primary: "#36FFE3"
 
 - name: Car
   icon:
     type: fa
     name: car
+  colors:
+    primary: "#C610B9"
 - name: Taxi or Rideshare
   icon:
     type: fa
     name: taxi
+  colors:
+    primary: "#C610B9"
 - name: Motorcycle
   icon:
     type: fa
     name: motorcycle
+  colors:
+    primary: "#D12302"
 
 - name: Bus
   icon:
     type: fa
     name: bus
+  colors:
+    primary: "#FAE405"
 - name: Train
   icon:
     type: fa
     name: train
+  colors:
+    primary: "#DE9C10"
 - name: Subway
   icon:
     type: fa
     name: subway
+  colors:
+    primary: "#BBBBBB"
 - name: Flying
   icon:
     type: fa
     name: plane
+  colors:
+    primary: "#8E1CE8"
 
 - name: Boating
   icon:
     type: fa
     name: ship
+  colors:
+    primary: "#0944E8"
 - name: Ferry
   icon:
     type: fa

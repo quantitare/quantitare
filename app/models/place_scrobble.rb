@@ -8,6 +8,8 @@ class PlaceScrobble < LocationScrobble
 
   validate :singular_scrobbles_cannot_have_a_place
 
+  accepts_nested_attributes_for :place
+
   def friendly_type
     'Place'
   end

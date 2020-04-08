@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6 pr-5" data-controller="collapse-toggle">
+    <div class="row d-flex mb-2 justify-content-end">
+      <div class="custom-control custom-switch">
+        <%=
+          check_box_tag 'show_advanced', '1', false,
+            class: 'custom-control-input', id: 'show_advanced',
+            data: { action: 'collapse-toggle#toggle', target: 'collapse-toggle.state' }
+        %>
+        <%= label_tag 'show_advanced', 'Advanced', class: 'custom-control-label' %>
+      </div>
+    </div>
+
+    <%= yield %>
+
+    <%= section_header_2_tag 'Settings' %>
+
+    <div class="row mb-2">
+      <div class="col">
+        <%=
+          form_with model: scrobbler,
+            url: scrobbler.new_record? ? connections_path : connection_path(scrobbler),
+            scope: :scrobbler,
+            class: 'form-horizontal',
+            html: { novalidate: true } do |f|
+        %>
+          <%= f.hidden_field :type %>
+          <%= f.hidden_field :service_id %>
+
+          <% scrobbler.errors[:base].each do |message| %>
+            <%= render 'shared/alert', level: 'danger', message: message %>
+          <% end %>
+
+          <%= form_group_tag do %>
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+            <%= f.errors :name %>
+          <% end %>
+
+          <%= render 'shared/optionable_fields', f: f, attribute: :options %>
+
+          <div data-target="collapse-toggle.collapsible">
+            <%= form_group_tag do %>
+              <%= f.label :earliest_data_at, 'Date of earliest data' %>
+              <%= f.date_field :earliest_data_at, class: 'form-control', data: { controller: 'datepicker' } %>
+              <%= f.errors :earliest_data_at %>
+            <% end %>
+
+            <%= render 'scrobblers/schedule_fields', f: f %>
+          </div>
+
+          <%= f.submit scrobbler.new_record? ? 'Connect' : 'Update', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,11 +24,12 @@ class LocationCategory
     private
 
     def all_hash
-      Hash[
-        YAML.load_file(data_path).map do |category_hash|
-          [category_hash['name'], new(category_hash['name'], category_hash['icon'] || default_icon)]
-        end
-      ]
+      YAML.load_file(data_path).map do |category_hash|
+        [
+          category_hash['name'],
+          new(category_hash['name'], category_hash['icon'] || default_icon, colors: category_hash['colors'])
+        ]
+      end.to_h
     end
 
     def data_path
@@ -36,17 +37,19 @@ class LocationCategory
     end
   end
 
-  attr_reader :name, :icon
+  attr_reader :name, :icon, :colors
 
-  def initialize(name, icon = self.class.default_icon)
+  def initialize(name, icon = self.class.default_icon, colors: {})
     @name = name
     @icon = icon
+    @colors = colors
   end
 
   def to_h
     {
       name: name,
-      icon: icon
+      icon: icon,
+      colors: colors
     }
   end
 end

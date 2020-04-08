@@ -1,0 +1,34 @@
+.choices {
+  margin-bottom: 0;
+
+  &.is-disabled {
+    .form-control {
+      background-color: #e9ecef;
+      opacity: 1;
+
+      cursor: not-allowed;
+    }
+  }
+}
+
+.choices__list.choices__list--single {
+  padding: 0px;
+}
+
+.is-open .choices__list--dropdown {
+  margin-top: 3px;
+
+  border: 1px solid #ced4da;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.choices__input {
+  background-color: #fff;
+}
+
+[data-type="select-multiple"] .form-control {
+  padding-bottom: 0px;
+}

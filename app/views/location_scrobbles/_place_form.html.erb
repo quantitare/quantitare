@@ -1,0 +1,50 @@
+<div data-controller="place-scrobbles--edit">
+  <%= form_with model: scrobble, data: { controller: 'reactive-form' } do |f| %>
+    <%= section_header_2_tag 'Options' %>
+
+    <% if scrobble.place.blank? || scrobble.place.new_record? %>
+      <%= form_group_tag do %>
+        <div class="custom-control custom-checkbox">
+          <%= f.check_box :singular, class: 'custom-control-input', data: { action: 'reactive-form#submit' } %>
+          <%= f.label :singular, 'This is a one-time stop (e.g. "Stuck in traffic")', class: 'custom-control-label' %>
+          <%= f.errors :singular %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% unless scrobble.singular? %>
+      <%= section_header_2_tag 'Place info' %>
+
+      <%= form_group_tag do %>
+        <%= f.label :place_id, 'Choose a place' %>
+        <div class="form-row">
+          <div class="col-sm-9">
+            <%=
+              f.choices :place_id, [],
+                class: 'form-control w-100',
+                data: { target: 'place-scrobbles--edit.placeId' }
+            %>
+          </div>
+
+          <div class="col-sm-3">
+            <%= render 'place_buttons', f: f %>
+          </div>
+        </div>
+      <% end %>
+
+      <div data-target="place-scrobbles--edit.placeFields">
+        <%= f.fields_for :place do |place_f| %>
+          <%= render 'places/fields', f: place_f %>
+        <% end %>
+      </div>
+
+      <div>
+        <%= fields model: @place_match do |place_match_f| %>
+          <%= render 'place_matches/fields', f: place_match_f, scrobble: scrobble %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+

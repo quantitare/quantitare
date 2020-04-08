@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 require 'sidekiq/web'
-Provider
 
 Rails.application.routes.draw do
   root to: 'pages#index'
 
   devise_for :users,
-    path: 'auth',
     path_names: {
       sign_in: 'login',
       sign_out: 'logout',
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
       sign_up: 'sign_up'
     },
     controllers: {
-      omniauth_callbacks: 'omniauth_callbacks'
+      omniauth_callbacks: 'oauth_callbacks'
     }
 
   authenticate :user, ->(user) { user.admin? } do
@@ -32,11 +30,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :scrobblers do
-    collection do
-      resource :type_data, only: [:show], as: 'scrobbler_type_data', controller: 'scrobblers/type_data'
-    end
-  end
+  resources :scrobblers, only: [:show]
+
+  resources :connections, only: [:index, :show, :new, :create, :update, :destroy]
 
   resources :places, only: [:show, :new, :create, :update] do
     collection do

@@ -1,0 +1,82 @@
+<% content_for :title, 'Connect' %>
+
+<%= page_header_tag 'Connect' %>
+
+<%= section_header_2_tag 'New connection' %>
+
+<div class="row pb-4">
+  <%= form_with url: new_connection_path, method: 'get', class: 'form-inline col-sm-8' do |f| %>
+    <%= f.label :provider, class: 'sr-only' %>
+    <div class="w-50 mr-2" data-controller="choices" data-choices-inner-class="form-control w-100">
+      <%= f.select :provider, provider_select_options, { include_blank: true }, data: { target: 'choices.select' } %>
+    </div>
+
+    <%= f.submit 'Add', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<%= section_header_2_tag 'Your connections' %>
+
+<div class="row pb-4">
+  <div class="col">
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Scrobbles</th>
+          <th scope="col">Status</th>
+          <th scope="col">Enabled</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @scrobblers.each do |scrobbler| %>
+          <tr>
+            <th scope="row">
+              <%= link_to scrobbler.name, connection_path(scrobbler) %><br>
+              <span class="text-muted font-weight-normal"><%= humanize_type(scrobbler.type) %></span>
+            </th>
+            <td><%= time_ago_in_words scrobbler.created_at %></td>
+            <td><%= scrobbler.scrobbles_count %></td>
+            <td><%= scrobbler_status_badge(scrobbler) %></td>
+            <td>
+              <%=
+                form_with model: scrobbler,
+                  scope: "scrobbler_#{scrobbler.id}",
+                  id: "scrobbler_#{scrobbler.id}",
+                  url: connection_path(scrobbler),
+                  data: { controller: 'reactive-form' } do |f|
+              %>
+                <div class="custom-control custom-switch">
+                  <%= f.check_box :enabled, class: 'custom-control-input', data: { action: 'reactive-form#submit' } %>
+                  <%= f.label :enabled, class: 'custom-control-label' %>
+                </div>
+              <% end %>
+            </td>
+            <td>
+              <div class="dropdown">
+                <button
+                  class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                  type="button"
+                  id="dropdown_scrobbler_<%= scrobbler.guid %>"
+                  data-toggle="dropdown"
+                >
+                  <i class="fas fa-list"></i> Actions
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right py-1">
+                  <div class="dropdown-divider my-1"></div>
+                  <%= link_to connection_path(scrobbler.service), class: 'dropdown-item', method: :delete do %>
+                    <i class="fas fa-trash text-danger"></i> Delete
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

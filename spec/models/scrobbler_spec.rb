@@ -3,6 +3,74 @@ require 'rails_helper'
 RSpec.describe Scrobbler do
   subject { create(:scrobbler) }
 
+  it { should have_many(:scrobbles).dependent(:destroy) }
+  it { should belong_to(:user) }
+  it { should belong_to(:service).optional }
+
+  it { should validate_presence_of(:name) }
+
+  it { should delegate_method(:issues?).to(:service).with_prefix.allow_nil }
+  it { should delegate_method(:oauth?).to(:service).allow_nil }
+  it { should delegate_method(:provider_name).to(:class) }
+
+  describe '.new_from_service' do
+    it 'pulls the correct type' do
+      service = create :service, :twitter
+
+      expect(described_class.new_from_service(service)).to be_a(Scrobblers::TwitterScrobbler)
+    end
+
+    it 'sets the service on the resulting scrobbler' do
+      service = create :service, :twitter
+
+      expect(described_class.new_from_service(service).service).to eq(service)
+    end
+
+    it 'adds other params' do
+      service = create :service, :twitter
+
+      expect(described_class.new_from_service(service, name: 'Some scrobbler').name).to eq('Some scrobbler')
+    end
+  end
+
+  describe '#working?' do
+    it 'is true by default' do
+      expect(subject.working?).to be(true)
+    end
+
+    it 'is false if issues have been reported' do
+      scrobbler = create :twitter_scrobbler
+      scrobbler.service.report_issue!('refresh_token', 'Some issue happened')
+
+      expect(scrobbler.working?).to be(false)
+    end
+  end
+
+  describe '#enabled?' do
+    it 'is enabled by default' do
+      expect(subject).to be_enabled
+    end
+
+    it 'is false when we soft-set the disabled state' do
+      subject.enabled = false
+
+      expect(subject).to_not be_enabled
+    end
+
+    it 'is false when we hard-set the disabled state' do
+      subject.disable!
+
+      expect(subject).to_not be_enabled
+    end
+
+    it 'can be re-enabled' do
+      subject.disable!
+      subject.enable!
+
+      expect(subject).to be_enabled
+    end
+  end
+
   describe '#source_identifier' do
     it "contains the scrobbler's ID" do
       expect(subject.source_identifier).to include(subject.id.to_s)

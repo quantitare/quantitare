@@ -1,9 +1,0 @@
-<% if @service.persisted? %>
-  window.app.$store.dispatch('clearService')
-  window.loacation.reload()
-<% else %>
-  window.app.$store.dispatch(
-    'refreshService',
-    JSON.parse('<%= j_json_partial('service', locals: { service: @service }) %>')
-  )
-<% end %>

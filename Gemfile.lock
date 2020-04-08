@@ -5,12 +5,13 @@ GIT
     rescuetime (1.0.1)
 
 GIT
-  remote: https://github.com/aastronautss/vue-rails-form-builder.git
-  revision: bb0d804860acda58b5a0420404cfae89af9be76f
+  remote: https://github.com/kevjin/simplecov-json.git
+  revision: dfdf187383dd7038ed37c8107da57a5d5d3ee759
+  ref: dfdf187383dd7038ed37c8107da57a5d5d3ee759
   specs:
-    vue-rails-form-builder (0.8.2)
-      actionview (>= 4.2)
-      railties (>= 4.2)
+    simplecov-json (0.2)
+      json
+      simplecov
 
 GIT
   remote: https://github.com/quantitare/quantitare-categories.git
@@ -223,6 +224,7 @@ GEM
     jaro_winkler (1.5.4)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    json (2.3.0)
     json_schemer (0.2.11)
       ecma-re-validator (~> 0.2)
       hana (~> 1.3)
@@ -411,17 +413,14 @@ GEM
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
     safe_yaml (1.0.5)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.1.0)
-      railties (>= 5.2.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
+    sassc (2.2.1)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
@@ -441,10 +440,11 @@ GEM
       thwait
       tilt (>= 1.4.0)
     simple_oauth (0.3.1)
-    simplecov (0.18.5)
+    simplecov (0.17.1)
       docile (~> 1.1)
-      simplecov-html (~> 0.11)
-    simplecov-html (0.12.2)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -565,11 +565,12 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  sass-rails (~> 5.0)
+  sassc-rails
   shoulda-matchers
   sidekiq (~> 6.0)
   sidekiq-scheduler
-  simplecov (~> 0.18.5)
+  simplecov (< 0.18)
+  simplecov-json!
   spring
   spring-watcher-listen (~> 2.0.0)
   thwait
@@ -578,7 +579,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   vcr
   virtus
-  vue-rails-form-builder!
   web-console (>= 3.3.0)
   webmock
   webpacker

@@ -9,9 +9,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= content_for(:head) %>
   </head>
@@ -19,8 +22,8 @@
   <body>
     <%= render 'layouts/nav' %>
 
-    <%= content_tag :div, id: 'app', class: 'container py-5', data: default_vue_data do %>
-      <%= render 'layouts/alert' %>
+    <%= content_tag :div, id: 'app', class: 'container py-4' do %>
+      <%= render 'layouts/alerts' %>
 
       <%= yield %>
     <% end %>

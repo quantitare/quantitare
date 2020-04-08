@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col">
+    <%= page_header_tag do %>
+      <%= scrobble.icon_tag %>
+
+      <span class="pl-2" data-target="editable.output" data-action="click->editable#activate">
+        <%= scrobble.category %>
+      </span>
+    <% end %>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col">
+    <%= render 'descriptor', scrobble: scrobble %>
+  </div>
+</div>

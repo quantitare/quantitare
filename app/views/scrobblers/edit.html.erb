@@ -1,6 +1,0 @@
-<%= content_for :title, "Editing #{@scrobbler.name}" %>
-
-<%= vuex_store_tag :scrobblers_edit %>
-<%= vue_data_tag data: { scrobbler: json_partial('scrobbler', locals: { scrobbler: @scrobbler }) } %>
-
-<scrobbler-edit></scrobbler-edit>

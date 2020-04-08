@@ -1,8 +1,5 @@
 <% content_for :title, 'Services' %>
 
-<%= vuex_store_tag :services_new %>
-<%= vue_data_tag data: { service: {} } %>
-
 <div class="row border-bottom pb-2">
   <h2>Services</h2>
 </div>
@@ -38,23 +35,16 @@
           <th scope="row"><%= omniauth_provider_name(service.provider) %></th>
           <td><%= service.name %></td>
           <td>
-            <reactive-form
-              form-id="<%= "service_#{service.id}_form" %>"
-              v-bind:model="<%= "service_#{service.id}" %>"
-            >
-              <%=
-                vue_form_with model: service,
-                  scope: "service_#{service.id}",
-                  id: "service_#{service.id}_form" do |f|
-              %>
+            <% if current_user.admin? %>
+              <%= form_with model: service, data: { model: 'reactive-form' } do |f| %>
                 <div class="custom-control custom-checkbox">
-                  <%= f.check_box :global, class: 'custom-control-input', disabled: !current_user.admin? %>
+                  <%= f.check_box :global, class: 'custom-control-input', data: { action: 'reactive-form#submit' } %>
                   <%= f.label :global, class: 'custom-control-label' %>
                 </div>
 
                 <div class="d-none"><%= f.submit data: { 'disable-with': 'Saving...' } %></div>
               <% end %>
-            </reactive-form>
+            <% end %>
           </td>
           <td>
             <%=

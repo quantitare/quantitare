@@ -70,7 +70,7 @@ export default class extends Controller {
   toggleElementsForTypes(elementType, show) {
     const action = show ? 'remove' : 'add'
 
-    this[`${elementType}Targets`].forEach((element) => element.classList.[action]('d-none'))
+    this[`${elementType}Targets`].forEach((element) => element.classList[action]('d-none'))
   }
 
   // ========----------------------------------------------========

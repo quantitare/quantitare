@@ -13,9 +13,11 @@
 # These inflection rules are supported but not enabled by default:
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'RESTful'
-  inflect.acronym 'GPX'
-  inflect.acronym 'KML'
-  inflect.acronym 'XML'
+
   inflect.acronym 'API'
+  inflect.acronym 'GPX'
+  inflect.acronym 'JSON'
+  inflect.acronym 'KML'
   inflect.acronym 'TV'
+  inflect.acronym 'XML'
 end

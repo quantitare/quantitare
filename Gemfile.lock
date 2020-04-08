@@ -5,6 +5,15 @@ GIT
     rescuetime (1.0.1)
 
 GIT
+  remote: https://github.com/kevjin/simplecov-json.git
+  revision: dfdf187383dd7038ed37c8107da57a5d5d3ee759
+  ref: dfdf187383dd7038ed37c8107da57a5d5d3ee759
+  specs:
+    simplecov-json (0.2)
+      json
+      simplecov
+
+GIT
   remote: https://github.com/quantitare/quantitare-categories.git
   revision: eb52ba1974e5c6a08b3d33b747ed856a31a9a81c
   specs:
@@ -561,6 +570,7 @@ DEPENDENCIES
   sidekiq (~> 6.0)
   sidekiq-scheduler
   simplecov (< 0.18)
+  simplecov-json!
   spring
   spring-watcher-listen (~> 2.0.0)
   thwait

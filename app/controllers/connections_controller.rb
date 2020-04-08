@@ -34,10 +34,6 @@ class ConnectionsController < ApplicationController
     end
   end
 
-  def edit
-    @scrobbler = current_user.scrobblers.find params[:id]
-  end
-
   def update
     @scrobbler = current_user.scrobblers.find params[:id]
 

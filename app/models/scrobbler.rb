@@ -50,7 +50,7 @@ class Scrobbler < ApplicationRecord
 
   class << self
     def new_from_service(service, **params)
-      new type: type_for_provider(service.provider).name, service: service, **params
+      new_from_provider(service.provider, service: service, **params)
     end
 
     def new_from_provider(provider_name, **params)
@@ -85,6 +85,8 @@ class Scrobbler < ApplicationRecord
   def enabled
     !disabled
   end
+
+  alias enabled? enabled
 
   def enabled=(value)
     self.disabled = value

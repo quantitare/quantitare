@@ -56,20 +56,26 @@
     name: train
   colors:
     primary: "#DE9C10"
+- name: Tram
+  icon:
+    type: fa
+    name: train
+  colors:
+    primary: "#DE9C10"
 - name: Subway
   icon:
     type: fa
     name: subway
   colors:
     primary: "#BBBBBB"
-- name: Flying
+- name: Airplane
   icon:
     type: fa
     name: plane
   colors:
     primary: "#8E1CE8"
 
-- name: Boating
+- name: Boat
   icon:
     type: fa
     name: ship

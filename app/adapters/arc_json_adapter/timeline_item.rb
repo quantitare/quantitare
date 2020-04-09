@@ -59,7 +59,7 @@ class ArcJSONAdapter
     end
 
     def category
-      place? ? '' : raw_item['activityType']
+      place? ? '' : TRANSIT_CATEGORY_MAPPINGS[raw_item['activityType']]
     end
 
     def distance

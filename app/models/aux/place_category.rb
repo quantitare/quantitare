@@ -22,7 +22,7 @@ module Aux
   # +fa+ icons must have a +name+ attribute pointing to the name of the icon being used.
   #
   class PlaceCategory < ServiceCache
-    store_accessor :data, :icon, :name, :plural_name, :provider
+    store_accessor :data, :icon, :colors, :name, :plural_name, :provider
 
     fetcher :id, [:id]
 
@@ -33,7 +33,8 @@ module Aux
             id: nil,
             name: 'Place',
             plural_name: 'Places',
-            icon: { type: 'fa', name: 'map-marker-alt' }
+            icon: { type: 'fa', name: 'map-marker-alt' },
+            colors: { default: '#444444' }
           }
         )
       end

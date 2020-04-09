@@ -5,6 +5,8 @@ class FoursquareAdapter
   # Translates data for a place returned by the Foursquare API into a {Place} model.
   #
   class Place
+    DEFAULT_CATEGORY_ID = '4bf58dd8d48988d130941735'
+
     attr_reader :raw_place, :service
 
     def initialize(raw_place, service:)
@@ -42,7 +44,7 @@ class FoursquareAdapter
     private
 
     def category_id
-      raw_place[:categories].find { |category| category[:primary] }.try(:dig, :id)
+      raw_place[:categories].find { |category| category[:primary] }.try(:dig, :id) || DEFAULT_CATEGORY_ID
     end
   end
 end

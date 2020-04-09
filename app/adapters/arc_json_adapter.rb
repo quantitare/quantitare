@@ -6,6 +6,9 @@
 class ArcJSONAdapter
   include LocationImportable
 
+  TRANSIT_CATEGORY_PATH = File.join(__dir__, 'arc_json_adapter', 'transit_category_mappings.yml').freeze
+  TRANSIT_CATEGORY_MAPPINGS = YAML.load_file(TRANSIT_CATEGORY_PATH).freeze
+
   class << self
     def importer_label
       'Arc JSON'
@@ -27,6 +30,6 @@ class ArcJSONAdapter
   end
 
   def parsed_json
-    @parsed_json ||= JSON.parse(file.read)
+    @parsed_json ||= JSON.parse(file)
   end
 end

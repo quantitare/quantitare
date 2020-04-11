@@ -22,5 +22,9 @@ module Util
     def sanitize_encoding(str)
       str.encode('UTF-8', invalid: :replace, undef: :replace, replace: '_')
     end
+
+    def time_floor(time, seconds)
+      Time.zone.at((time.to_f / seconds).round * seconds)
+    end
   end
 end

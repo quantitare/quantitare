@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :settings, only: [:index, :update]
   end
 
+  resource :timeline, only: [:show]
+
   resources :services, only: [:index, :new, :create, :update, :destroy] do
     collection do
       get :search

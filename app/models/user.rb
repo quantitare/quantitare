@@ -9,6 +9,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
     omniauth_providers: Devise.omniauth_providers
 
+  has_many :timeline_modules, dependent: :destroy
+
   has_many :services, dependent: :destroy
 
   has_many :scrobblers, dependent: :destroy
@@ -19,6 +21,5 @@ class User < ApplicationRecord
   has_many :places, dependent: :destroy
   has_many :place_matches, dependent: :destroy
 
-  has_many :available_services, ->(user) { available_to_user(user) },
-    class_name: 'Service', inverse_of: :user
+  has_many :available_services, ->(user) { available_to_user(user) }, class_name: 'Service', inverse_of: :user
 end

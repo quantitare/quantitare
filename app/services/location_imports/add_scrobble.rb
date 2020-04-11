@@ -8,9 +8,8 @@ module LocationImports
     expects :location_import, :location_scrobble
 
     executed do |ctx|
-      ctx.location_import.location_scrobbles << ctx.location_scrobble
-
       ctx.location_scrobble.assign_attributes(user: ctx.location_import.user)
+      ctx.location_import.location_scrobbles << ctx.location_scrobble
     end
 
     rolled_back do |ctx|

@@ -13,14 +13,19 @@ module LocationScrobbles
 
       case ctx.options[:collision_mode]&.to_sym
       when :overwrite
-        ctx.location_scrobble.user.location_scrobbles
-          .overlapping_range(ctx.location_scrobble.start_time, ctx.location_scrobble.end_time)
-          .destroy_all
+        overlapping_scrobbles(ctx).destroy_all
       when :skip
-        should_skip = true
+        should_skip = overlapping_scrobbles(ctx).exists?
       end
 
       ctx.skip = should_skip
+    end
+
+    class << self
+      def overlapping_scrobbles(ctx)
+        ctx.location_scrobble.user.location_scrobbles
+          .overlapping_range(ctx.location_scrobble.start_time, ctx.location_scrobble.end_time)
+      end
     end
   end
 end

@@ -9,7 +9,7 @@ module LocationImports
     promises :location_scrobbles
 
     executed do |ctx|
-      ctx.fail!('Could not preprocess the import') unless ctx.location_import.save
+      ctx.fail_and_return!('Could not preprocess the import') unless ctx.location_import.save
 
       ctx.location_scrobbles = ctx.location_import.prepared_adapter_scrobbles
     end

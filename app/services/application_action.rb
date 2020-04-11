@@ -49,9 +49,13 @@ module ApplicationAction
     # @raise [KeyNotFound] if the key is not not found on the context (i.e., we haven't used the +promises+ macro to set
     #   the key on the incoming context)
     def merge_default(ctx, var, default_val)
-      ctx.public_send("#{var}=", ctx[var].nil? ? default_val : ctx[var])
+      ctx.public_send("#{var}=", default_value(ctx, var, default_val))
     rescue NoMethodError
       raise KeyNotFoundError, "Key :#{var} not found on the context. Please add `promises :#{var}` to this action"
+    end
+
+    def default_value(ctx, var, default_val)
+      ctx[var].nil? ? default_val : ctx[var]
     end
   end
 end

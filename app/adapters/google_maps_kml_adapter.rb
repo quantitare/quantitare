@@ -29,6 +29,8 @@ class GoogleMapsKMLAdapter
     placemarks.map(&:to_location_scrobble)
   end
 
+  alias scrobbles location_scrobbles
+
   def placemarks
     @placemarks ||= parsed_kml.css('kml Document Placemark').map do |xml_node|
       GoogleMapsKMLAdapter::Placemark.new(xml_node)

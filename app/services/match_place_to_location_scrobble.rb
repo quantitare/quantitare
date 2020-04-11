@@ -5,42 +5,21 @@
 # associated {Place} to the scrobble.
 #
 class MatchPlaceToLocationScrobble
-  include Serviceable
+  include ApplicationOrganizer
 
-  attr_reader :location_scrobble, :query, :save
+  class << self
+    def call(location_scrobble, query: FindPlaceMatchForLocationScrobble, save: true, **options)
+      with(location_scrobble: location_scrobble, save: save, query: query, options: options)
+        .reduce(actions)
+    end
 
-  transactional!
-
-  def initialize(location_scrobble, query: FindPlaceMatchForLocationScrobble, save: true)
-    @location_scrobble = location_scrobble
-    @query = query
-    @save = save
-  end
-
-  def call
-    step :set_place_match
-    step :save_location_scrobble
-
-    result.set(location_scrobble: location_scrobble)
-  end
-
-  private
-
-  def set_place_match
-    return if matching_place_match.blank?
-
-    location_scrobble.place = matching_place_match.place
-  end
-
-  def save_location_scrobble
-    return unless save
-
-    location_scrobble.save
-
-    result.errors += location_scrobble.errors.full_messages
-  end
-
-  def matching_place_match
-    @matching_place_match ||= query.(location_scrobble)
+    def actions
+      [
+        with_transaction([
+          LocationScrobbles::FindPlaceMatch,
+          LocationScrobbles::ProcessScrobble
+        ])
+      ]
+    end
   end
 end

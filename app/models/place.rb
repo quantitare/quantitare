@@ -8,7 +8,7 @@ class Place < ApplicationRecord
   include Categorizable
   include ServiceFetchable
 
-  FETCHER_KLASS = Fetcher
+  FETCHER_KLASS = Place::Fetcher
   CATEGORY_KLASS = PlaceCategory
 
   FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :zip, :country].freeze

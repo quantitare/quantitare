@@ -23,7 +23,7 @@ class LocationScrobbleDecorator < ApplicationDecorator
   end
 
   def icon_class
-    "fas fa-#{icon[:name].downcase}"
+    'fas fa-map-marker-alt'
   end
 
   def colors

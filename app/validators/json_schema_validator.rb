@@ -3,7 +3,7 @@
 ##
 # Validates a model's JSON or JSONB attribute against a JSON schema.
 #
-class JsonSchemaValidator < ActiveModel::EachValidator
+class JSONSchemaValidator < ActiveModel::EachValidator
   def initialize(options)
     options.reverse_merge!(message: :invalid_json)
     options.reverse_merge!(schema: nil)

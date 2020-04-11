@@ -234,6 +234,7 @@ GEM
     lastfm (1.27.3)
       httparty
       xml-simple
+    light-service (0.12.0)
     liquid (4.0.3)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -536,6 +537,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   json_schemer (~> 0.2.0)
   lastfm
+  light-service
   liquid
   listen (>= 3.0.5, <= 3.2.1)
   memoist

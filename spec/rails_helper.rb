@@ -26,6 +26,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 
 require 'devise'
+require 'light-service/testing'
 require 'sidekiq/testing'
 require 'webmock/rspec'
 require 'vcr'

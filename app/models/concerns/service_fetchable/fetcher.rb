@@ -19,7 +19,7 @@ module ServiceFetchable
 
     def fetch(cache_klass, opts = {})
       opts = opts.symbolize_keys
-      adapter = opts[:adapter]
+      adapter = opts.delete(:adapter)
 
       cached = find_cached(cache_klass, adapter.service, opts)
       return cached if cached.present? && !cached.expired?
@@ -44,10 +44,7 @@ module ServiceFetchable
     end
 
     def merge_fresh_and_cached!(fresh, cached)
-      if cached.blank?
-        fresh.save!
-        return fresh
-      end
+      return save_fresh!(fresh) if cached.blank?
 
       attrs = fresh.attributes.with_indifferent_access.slice(*merge_attributes)
       cached.update!(attrs)
@@ -60,7 +57,11 @@ module ServiceFetchable
     end
 
     def keyword_attributes(opts)
-      Hash[keywords.map { |keyword| [keyword, opts[keyword]] }]
+      keywords.index_with { |keyword| opts[keyword] }
+    end
+
+    def save_fresh!(fresh)
+      fresh.save! && fresh
     end
   end
 end

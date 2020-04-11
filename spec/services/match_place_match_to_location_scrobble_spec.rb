@@ -20,7 +20,7 @@ RSpec.describe MatchPlaceToLocationScrobble, :vcr do
     end
 
     it 'is successful' do
-      expect(action).to be_successful
+      expect(action).to be_success
     end
 
     context 'when the query does not return a match' do
@@ -31,7 +31,7 @@ RSpec.describe MatchPlaceToLocationScrobble, :vcr do
       end
 
       it 'is successful' do
-        expect(action).to be_successful
+        expect(action).to be_success
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe MatchPlaceToLocationScrobble, :vcr do
       end
 
       it 'is not successful' do
-        expect(action).to_not be_successful
+        expect(action).to_not be_success
       end
     end
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Place
+class Place < ApplicationRecord
   ##
   # {ServiceFetchable::Fetcher} variant for places. Exhibits slightly different behavior from a normal
   # {ServiceFetchable}, but the idea is the same.

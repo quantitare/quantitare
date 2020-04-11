@@ -20,6 +20,8 @@ class LocationImport < ApplicationRecord
   validates :user, presence: true
   validates :adapter, presence: true
 
+  delegate :scrobbles, to: :prepared_adapter, prefix: true
+
   @adapters = []
 
   class << self

@@ -14,7 +14,7 @@ class LocationImportsController < ApplicationController
     import_files.each do |file|
       location_import = current_user.location_imports.new(location_import_params.merge({ import_file: file }))
 
-      next if ProcessLocationImport.(location_import, options_params).success?
+      next if ProcessLocationImport.(location_import, options_params.to_h).success?
 
       flash[:danger] = 'Import aborted'
     end

@@ -25,6 +25,8 @@ class ArcJSONAdapter
     timeline_items.map(&:to_location_scrobble)
   end
 
+  alias scrobbles location_scrobbles
+
   def timeline_items
     @timeline_items ||= parsed_json['timelineItems'].map { |raw_item| ArcJSONAdapter::TimelineItem.new(raw_item) }
   end

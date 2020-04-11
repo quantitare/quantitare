@@ -33,7 +33,7 @@ class FoursquareAdapter
   def fetch_place(opts = {})
     raw_venue = client.venue(opts[:service_identifier])
 
-    api_place_for_venue(raw_venue).to_aux
+    api_place_for_venue(raw_venue, target_identifier: opts[:service_identifier]).to_aux
   end
 
   def fetch_place_category_list(_opts = {})
@@ -51,7 +51,7 @@ class FoursquareAdapter
 
   private
 
-  def api_place_for_venue(venue)
-    FoursquareAdapter::Place.new(venue, service: service)
+  def api_place_for_venue(venue, target_identifier: nil)
+    FoursquareAdapter::Place.new(venue, target_identifier: target_identifier, service: service)
   end
 end

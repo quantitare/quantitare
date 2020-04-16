@@ -14,7 +14,7 @@ module Periodable
   included do
     before_save :set_period
 
-    scope :overlapping_range, ->(from, to) { where("#{table_name}.period && ?", "[#{from.to_s(:db)},#{to.to_s(:db)}]") }
+    scope :overlapping_range, ->(from, to) { where("#{table_name}.period && ?", "(#{from.to_s(:db)},#{to.to_s(:db)})") }
   end
 
   def any_times_changed?

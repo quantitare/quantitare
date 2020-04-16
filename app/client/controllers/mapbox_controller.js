@@ -11,11 +11,13 @@ export default class extends Controller {
       container: this.mapTarget,
       style: 'mapbox://styles/mapbox/light-v10',
 
-      center: this.center,
-      zoom: 14
+      bounds: this.previousBounds
     })
 
-    this.map.on('load', () => this.renderLayers())
+    this.map.on('load', () => {
+      this.map.resize()
+      this.renderLayers()
+    })
   }
 
   disconnect() {
@@ -23,7 +25,25 @@ export default class extends Controller {
   }
 
   renderLayers() {
-    this.map.addSource('place-scrobbles', { type: 'geojson', data: this.scrobbles.geojson.places })
+    const places = this.fetchPlaces()
+    const transits = this.fetchTransits()
+
+    Promise.all([places, transits]).then((collections) => this.updateBounds(collections))
+  }
+
+  fetchPlaces() {
+    return new Promise((resolve, reject) => {
+      fetch(this.filteredScrobblesPath({ type: 'place' }))
+        .then((response) => response.json())
+        .then((json) => {
+          this.populatePlaces(json)
+          resolve(json)
+        })
+    })
+  }
+
+  populatePlaces(json) {
+    this.map.addSource('place-scrobbles', { type: 'geojson', data: json })
 
     this.map.addLayer({
       id: 'place-scrobbles', type: 'circle', 'source': 'place-scrobbles',
@@ -35,8 +55,21 @@ export default class extends Controller {
         'circle-stroke-opacity': 0.25,
       }
     })
+  }
 
-    this.map.addSource('transit-scrobbles', { type: 'geojson', data: this.scrobbles.geojson.transits })
+  fetchTransits() {
+    return new Promise((resolve, reject) =>{
+      fetch(this.filteredScrobblesPath({ type: 'transit' }))
+        .then((response) => response.json())
+        .then((json) => {
+          this.populateTransits(json)
+          resolve(json)
+        })
+    })
+  }
+
+  populateTransits(json) {
+    this.map.addSource('transit-scrobbles', { type: 'geojson', data: json })
 
     this.map.addLayer({
       id: 'transit-scrobbles', type: 'line', source: 'transit-scrobbles',
@@ -48,16 +81,55 @@ export default class extends Controller {
     })
   }
 
-  get scrobbles() {
-    return JSON.parse(this.data.get('scrobbles'))
+  updateBounds(geojsonCollections) {
+    const bounds = new mapboxgl.LngLatBounds()
+
+    geojsonCollections.forEach((collection) => {
+      collection.features.forEach((feature) => {
+        bounds.extend(feature.geometry.coordinates)
+      })
+    })
+
+    this.map.fitBounds(bounds, { padding: 80 })
+    this.previousBounds = bounds
   }
 
-  get center() {
-    const sums = this.scrobbles.scrobbles.reduce((accumulator, current) => {
-      return { lat: accumulator.lat + current.averageLatitude, lon: accumulator.lon + current.averageLongitude }
-    }, { lat: 0, lon: 0 })
-    const length = this.scrobbles.scrobbles.length
+  fitBounds() {
+    const bounds = new mapboxgl.LngLatBounds()
+    console.log(this.map.isSourceLoaded('transit-scrobbles'))
+  }
 
-    return [sums.lon / length, sums.lat / length]
+  filteredScrobblesPath(filters) {
+    const url = this.scrobblesPathURL
+
+    for (const prop in filters) {
+      url.searchParams.append(prop, filters[prop])
+    }
+
+    return url.href
+  }
+
+  get scrobblesPath() {
+    return this.data.get('scrobbles-path')
+  }
+
+  get scrobblesPathURL() {
+    return new URL(this.scrobblesPath)
+  }
+
+  get previousBounds() {
+    const raw = JSON.parse(localStorage.getItem('mapBounds'))
+    if (!raw) return undefined
+
+    return new mapboxgl.LngLatBounds(
+      new mapboxgl.LngLat(raw.sw.lng, raw.sw.lat),
+      new mapboxgl.LngLat(raw.ne.lng, raw.sw.lat)
+    )
+  }
+
+  set previousBounds(value) {
+    const formatted = { sw: value['_sw'] || value['sw'], ne: value['_ne'] || value['ne'] }
+
+    localStorage.setItem('mapBounds', JSON.stringify(formatted))
   }
 }

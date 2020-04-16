@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/quantitare/quantitare-categories.git
-  revision: eb52ba1974e5c6a08b3d33b747ed856a31a9a81c
+  revision: a693e43caad0632c13d9407c558676b5b77ac1d8
   specs:
     quantitare-categories (0.1.0)
       activesupport
@@ -133,7 +133,7 @@ GEM
       activemodel-serializers-xml (>= 1.0)
       activesupport (>= 5.0)
       request_store (>= 1.0)
-    dry-configurable (0.11.4)
+    dry-configurable (0.11.5)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4, >= 0.4.7)
       dry-equalizer (~> 0.2)
@@ -476,7 +476,7 @@ GEM
       multipart-post (~> 2.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)

@@ -38,7 +38,8 @@ class FoursquareAdapter
         name: raw_category[:name],
         plural_name: raw_category[:plural_name],
 
-        icon: icon_params
+        icon: icon_params,
+        colors: { 'primary' => '#666' }
       }
     end
 

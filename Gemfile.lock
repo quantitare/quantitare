@@ -461,7 +461,7 @@ GEM
     thread_safe (0.3.6)
     thwait (0.1.0)
     tilt (2.0.10)
-    todoist-ruby (0.2.3)
+    todoist-ruby (0.2.4)
       concurrent-ruby (~> 1.0)
       mimemagic (~> 0.3)
       multipart-post (~> 2.0)

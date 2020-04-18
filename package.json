@@ -10,7 +10,7 @@
     "choices.js": "^9.0.1",
     "dotenv": "^8.2.0",
     "highcharts": "^8.0.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^1.9.1",
     "popper.js": "^1.16.1",
     "stimulus": "^1.1.1",

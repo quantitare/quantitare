@@ -72,7 +72,7 @@ class Timeline
   end
 
   def timeline_modules_for_section(section)
-    timeline_module_groups[section['id']] || []
+    (timeline_module_groups[section['id']] || []).sort_by(&:rank)
   end
 
   def timeline_module_groups

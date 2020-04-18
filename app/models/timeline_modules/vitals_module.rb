@@ -9,18 +9,58 @@ module TimelineModules
 
     self.component_name = 'vitals'
 
-    timeline_group(:heart_rate, categories: ['heart_rate']) do |scrobbles|
-      [{
-        name: 'Heart rate',
-        color: '#E08479',
+    timeline_group :heart_rate, categories: ['heart_rate']
 
-        type: 'line',
+    highchart(:vitals, groups: [:heart_rate]) do |scrobble_groups, date_scale|
+      {
+        series: heart_rate_series(scrobble_groups[:heart_rate], date_scale),
 
-        data: compiled_heart_rate_scrobbles(scrobbles)
-      }]
+        chart: {
+          height: 175
+        },
+
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            pointWidth: 10,
+            pointPlacement: 0.5
+          }
+        },
+
+        title: { text: nil },
+        legend: { enabled: false },
+        time: { useUTC: false },
+
+        xAxis: {
+          type: 'datetime',
+          min: time_to_js(date_scale.beginning_of_scale),
+          max: time_to_js(date_scale.end_of_scale)
+        },
+
+        yAxis: [
+          {
+            min: 0,
+            max: 150,
+            labels: { enabled: false },
+            title: { text: nil },
+            visible: false
+          }
+        ]
+      }
     end
 
     class << self
+      def heart_rate_series(scrobbles, _date_scale)
+        [{
+          name: 'Heart rate',
+          color: '#E08479',
+
+          type: 'line',
+
+          data: compiled_heart_rate_scrobbles(scrobbles)
+        }]
+      end
+
       def compiled_heart_rate_scrobbles(scrobbles)
         base = base_heart_rate_scrobbles(scrobbles)
         final = []
@@ -28,7 +68,7 @@ module TimelineModules
         base.each_with_index do |data, index|
           final << data
 
-          if base[index + 1] && Time.zone.at(base[index + 1][:x] / 1000) - Time.zone.at(data[:x] / 1000) > 5.minutes
+          if base[index + 1] && Time.zone.at(base[index + 1][:x] / 1_000) - Time.zone.at(data[:x] / 1_000) > 10.minutes
             final << { x: data[:x] + 60_000, y: nil }
           end
         end

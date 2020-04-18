@@ -94,14 +94,6 @@ RSpec.describe WithingsAdapter::SleepSample do
 
         expect(result.errors[:data]).to be_empty
       end
-
-      context 'when the state is 0' do
-        subject { WithingsAdapter::SleepSample.new('root_category', data[0], {}) }
-
-        it 'returns blank' do
-          expect(action).to be_blank
-        end
-      end
     end
   end
 end

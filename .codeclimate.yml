@@ -1,4 +1,11 @@
 version: "2"
+exclude_patterns:
+  - config/
+  - db/
+  - doc/
+  - node_modules/
+  - public/
+  - spec/
 plugins:
   rubocop:
     enabled: true

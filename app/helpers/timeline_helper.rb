@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+##
+# Tags for Timeline views.
+#
 module TimelineHelper
   delegate :beginning_of_scale, :end_of_scale, :previous_date, :next_date, to: :date_scale
 
@@ -59,19 +62,21 @@ module TimelineHelper
         'timeline-summary-path': timeline_module_path(timeline_module, date: date, scale: scale, name: name)
       } do
         spec.components.each do |component|
-          concat(
-            content_tag(
-              :div,
-              class: 'col',
-              data: { target: 'timeline-summary.component', component: component }
-            ) do
-              concat(content_tag(:strong, nil, data: { attribute: 'total' }))
-              concat(content_tag(:small, nil, data: { attribute: 'unit' }))
-              concat(tag(:br))
-              concat(content_tag(:span, nil, data: { attribute: 'label' }))
-            end
-          )
+          concat summary_component_tag(component)
         end
       end
+  end
+
+  def summary_component_tag(component)
+    content_tag(
+      :div,
+      class: 'col',
+      data: { target: 'timeline-summary.component', component: component }
+    ) do
+      concat(content_tag(:strong, nil, data: { attribute: 'total' }))
+      concat(content_tag(:small, nil, data: { attribute: 'unit' }))
+      concat(tag(:br))
+      concat(content_tag(:span, nil, data: { attribute: 'label' }))
+    end
   end
 end

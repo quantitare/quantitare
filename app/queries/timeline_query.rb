@@ -4,7 +4,7 @@
 # General superclass for querying {Periodable} records for a given set of timeline parameters
 #
 class TimelineQuery < ApplicationQuery
-  class InvalidScaleError < StandardError; end
+  InvalidScaleError = DateScale::InvalidScaleError
 
   SCALES = [
     SCALE_DAY = 'day',
@@ -12,6 +12,8 @@ class TimelineQuery < ApplicationQuery
     SCALE_MONTH = 'month',
     SCALE_YEAR = 'year'
   ].freeze
+
+  delegate :from, :to, to: :date_scale
 
   def call
     @relation = relation.overlapping_range(from, to)
@@ -21,33 +23,7 @@ class TimelineQuery < ApplicationQuery
 
   private
 
-  def from
-    beginning_date_of_range.beginning_of_day
-  end
-
-  def beginning_date_of_range
-    case scale.to_s.downcase
-    when SCALE_DAY then date
-    when SCALE_WEEK then date.beginning_of_week
-    when SCALE_MONTH then date.beginning_of_month
-    when SCALE_YEAR then date.beginning_of_year
-    else
-      raise InvalidScaleError
-    end
-  end
-
-  def to
-    end_date_of_range.end_of_day
-  end
-
-  def end_date_of_range
-    case scale.to_s.downcase
-    when SCALE_DAY then date
-    when SCALE_WEEK then date.end_of_week
-    when SCALE_MONTH then date.end_of_month
-    when SCALE_YEAR then date.end_of_year
-    else
-      raise InvalidScaleError
-    end
+  def date_scale
+    @date_scale ||= DateScale.new(date, scale)
   end
 end

@@ -25,20 +25,20 @@ export default class extends Controller {
   }
 
   renderLayers() {
-    const places = this.fetchPlaces()
-    const transits = this.fetchTransits()
+    const places = this.fetchLocationScrobbles('place')
+    const transits = this.fetchLocationScrobbles('transit')
+
+    places.then((json) => this.populatePlaces(json))
+    transits.then((json) => this.populateTransits(json))
 
     Promise.all([places, transits]).then((collections) => this.updateBounds(collections))
   }
 
-  fetchPlaces() {
+  fetchLocationScrobbles(type) {
     return new Promise((resolve, reject) => {
-      fetch(this.filteredScrobblesPath({ type: 'place' }))
+      fetch(this.filteredScrobblesPath({ type: type }))
         .then((response) => response.json())
-        .then((json) => {
-          this.populatePlaces(json)
-          resolve(json)
-        })
+        .then((json) => resolve(json))
     })
   }
 
@@ -54,17 +54,6 @@ export default class extends Controller {
         'circle-stroke-width': 2,
         'circle-stroke-opacity': 0.25,
       }
-    })
-  }
-
-  fetchTransits() {
-    return new Promise((resolve, reject) =>{
-      fetch(this.filteredScrobblesPath({ type: 'transit' }))
-        .then((response) => response.json())
-        .then((json) => {
-          this.populateTransits(json)
-          resolve(json)
-        })
     })
   }
 

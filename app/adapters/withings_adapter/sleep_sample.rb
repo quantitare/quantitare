@@ -6,6 +6,7 @@ class WithingsAdapter
   #
   class SleepSample
     DEPTH_MAP = {
+      0 => Categories::Sleep::D_AWAKE,
       1 => Categories::Sleep::D_LIGHT,
       2 => Categories::Sleep::D_DEEP,
       3 => Categories::Sleep::D_REM
@@ -35,13 +36,9 @@ class WithingsAdapter
     private
 
     def scrobbles_from_aggregate
-      scrobbles = []
-
       data
         .sort_by { |segment| segment['startdate'].to_i }
-        .each { |segment| process_aggregate_segment!(segment, scrobbles) }
-
-      scrobbles
+        .each_with_object([]) { |segment, scrobbles| process_aggregate_segment!(segment, scrobbles) }
     end
 
     def process_aggregate_segment!(segment, scrobbles)
@@ -76,7 +73,7 @@ class WithingsAdapter
     end
 
     def scrobble_from_root
-      data['state'].zero? ? [] : ::Scrobble.new(params_for_root)
+      ::Scrobble.new(params_for_root)
     end
 
     def params_for_root

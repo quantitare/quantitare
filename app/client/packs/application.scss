@@ -3,7 +3,9 @@ $font-size-base: 0.75rem;
 @import "~bootstrap/scss/bootstrap";
 @import "vanillajs-datepicker/sass/datepicker-bs4";
 
+@import "styles/timeline";
 @import "styles/choices";
+@import "styles/highcharts";
 
 .container {
   max-width: 720px;

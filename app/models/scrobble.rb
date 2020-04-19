@@ -8,6 +8,8 @@ class Scrobble < ApplicationRecord
   include Periodable
   include Categorizable
 
+  Total = Struct.new(:total, :unit, :label)
+
   CATEGORY_KLASS = Quantitare::Category
 
   belongs_to :user

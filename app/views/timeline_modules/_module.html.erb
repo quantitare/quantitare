@@ -1,0 +1,11 @@
+<% timeline_module.timeline_mapboxes&.each do |name, spec| %>
+  <%= mapbox_tag name, timeline_module %>
+<% end %>
+
+<% timeline_module.timeline_highcharts&.each do |name, spec| %>
+  <%= highchart_tag name, timeline_module %>
+<% end %>
+
+<% timeline_module.timeline_summaries&.each do |name, spec| %>
+  <%= summary_tag name, spec, timeline_module %>
+<% end %>

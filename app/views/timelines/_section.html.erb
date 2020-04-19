@@ -1,0 +1,5 @@
+<%= section_header_3_tag section[:name] %>
+
+<% section[:modules].each do |module_spec| %>
+  <%= render "timeline_modules/module", timeline_module: TimelineModule.find(module_spec[:id]) %>
+<% end %>

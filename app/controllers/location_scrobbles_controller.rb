@@ -6,19 +6,16 @@
 class LocationScrobblesController < ApplicationController
   include PlaceMatchable
 
+  respond_to :geojson, only: :index
   respond_to :js, only: :update
 
   before_action :authenticate_user!
 
   def index
-    @from = params[:from] || Date.current.beginning_of_day
-    @to = params[:to] || Date.current.end_of_day
+    @from = Time.zone.parse(params[:from]) || Date.current.beginning_of_day
+    @to = Time.zone.parse(params[:to]) || Date.current.end_of_day
 
-    @location_scrobbles = current_user.location_scrobbles
-      .overlapping_range(@from, @to)
-      .order(start_time: :asc)
-      .includes(place: :service)
-      .map(&:decorate)
+    set_location_scrobbles_collection!
   end
 
   def edit
@@ -46,6 +43,19 @@ class LocationScrobblesController < ApplicationController
   end
 
   private
+
+  def set_location_scrobbles_collection!
+    @location_scrobbles =
+      current_user.location_scrobbles
+        .overlapping_range(@from, @to)
+        .order(start_time: :asc)
+        .includes(place: :service)
+
+    @location_scrobbles = @location_scrobbles.place if params[:type] == 'place'
+    @location_scrobbles = @location_scrobbles.transit if params[:type] == 'transit'
+
+    @location_scrobbles = @location_scrobbles.map(&:decorate)
+  end
 
   def location_scrobble_params
     params.require(:location_scrobble).permit(:place_id, :singular, :name)

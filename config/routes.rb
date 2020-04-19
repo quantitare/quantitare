@@ -3,7 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  root to: 'pages#index'
+  root to: 'timelines#show'
 
   devise_for :users,
     path_names: {
@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :settings, only: [:index, :update]
+  end
+
+  resource :timeline, only: [:show] do
+    resources :modules, only: [:show, :create], controller: :timeline_modules
   end
 
   resources :services, only: [:index, :new, :create, :update, :destroy] do

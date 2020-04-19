@@ -20,6 +20,9 @@ class LocationScrobble < ApplicationRecord
 
   default_scope -> { order(start_time: :asc) }
 
+  scope :place, -> { where(type: PlaceScrobble.name) }
+  scope :transit, -> { where(type: TransitScrobble.name) }
+
   def place?
     is_a? PlaceScrobble
   end

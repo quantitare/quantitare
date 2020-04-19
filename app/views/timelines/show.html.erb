@@ -1,0 +1,5 @@
+<%= render 'nav' %>
+
+<% @settings[:sections].each do |section| %>
+  <%= render 'section', section: section %>
+<% end %>

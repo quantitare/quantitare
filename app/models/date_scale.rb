@@ -14,7 +14,7 @@ class DateScale
   end
 
   def beginning_of_scale
-    date.public_send("beginning_of_#{scale}")
+    date.middle_of_day.public_send("beginning_of_#{scale}")
   rescue NoMethodError
     raise InvalidScaleError, "Scale type :#{scale} is not valid."
   end
@@ -22,7 +22,7 @@ class DateScale
   alias from beginning_of_scale
 
   def end_of_scale
-    date.public_send("end_of_#{scale}")
+    date.middle_of_day.public_send("end_of_#{scale}")
   rescue NoMethodError
     raise InvalidScaleError, "Scale type :#{scale} is not valid."
   end

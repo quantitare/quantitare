@@ -3,19 +3,19 @@ require 'rails_helper'
 RSpec.describe DateScale do
   describe '#beginning_of_scale' do
     it 'is the right date for the "day" scale' do
-      expect(described_class.new(Date.current, 'day').from).to eq(Date.current.beginning_of_day)
+      expect(described_class.new(Date.current, 'day').from).to eq(Time.current.beginning_of_day)
     end
 
     it 'is the right date for the "week" scale' do
-      expect(described_class.new(Date.current, 'week').from).to eq(Date.current.beginning_of_week)
+      expect(described_class.new(Date.current, 'week').from).to eq(Time.current.beginning_of_week)
     end
 
     it 'is the right date for the "month" scale' do
-      expect(described_class.new(Date.current, 'month').from).to eq(Date.current.beginning_of_month)
+      expect(described_class.new(Date.current, 'month').from).to eq(Time.current.beginning_of_month)
     end
 
     it 'is the right date for the "year" scale' do
-      expect(described_class.new(Date.current, 'year').from).to eq(Date.current.beginning_of_year)
+      expect(described_class.new(Date.current, 'year').from).to eq(Time.current.beginning_of_year)
     end
 
     it 'throws when you give it an invalid scale' do
@@ -25,19 +25,19 @@ RSpec.describe DateScale do
 
   describe '#end_of_scale' do
     it 'is the right date for the "day" scale' do
-      expect(described_class.new(Date.current, 'day').to).to eq(Date.current.end_of_day)
+      expect(described_class.new(Date.current, 'day').to).to eq(Time.current.end_of_day)
     end
 
     it 'is the right date for the "week" scale' do
-      expect(described_class.new(Date.current, 'week').to).to eq(Date.current.end_of_week)
+      expect(described_class.new(Date.current, 'week').to).to eq(Time.current.end_of_week)
     end
 
     it 'is the right date for the "month" scale' do
-      expect(described_class.new(Date.current, 'month').to).to eq(Date.current.end_of_month)
+      expect(described_class.new(Date.current, 'month').to).to eq(Time.current.end_of_month)
     end
 
     it 'is the right date for the "year" scale' do
-      expect(described_class.new(Date.current, 'year').to).to eq(Date.current.end_of_year)
+      expect(described_class.new(Date.current, 'year').to).to eq(Time.current.end_of_year)
     end
 
     it 'throws when you give it an invalid scale' do

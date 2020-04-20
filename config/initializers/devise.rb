@@ -282,4 +282,5 @@ Devise.setup do |config|
   config.omniauth_path_prefix = '/auth/auth'
 end
 
-Provider
+require 'token_provider'
+require 'provider'

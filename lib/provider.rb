@@ -18,6 +18,7 @@ class Provider
     def register(provider_name, *args)
       instance = new(provider_name, *args)
       registry[provider_name] = instance
+
       instance.process!
     end
 
@@ -75,7 +76,7 @@ class Provider
   end
 
   def icon
-    { type: 'fa', data: icon_css_class }
+    Icon.for(:fa, name: icon_css_class)
   end
 
   def icon_css_class

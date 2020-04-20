@@ -27,7 +27,7 @@ class LocationCategory
       YAML.load_file(data_path).map do |category_hash|
         [
           category_hash['name'],
-          new(category_hash['name'], category_hash['icon'] || default_icon, colors: category_hash['colors'] || {})
+          new(category_hash['name'], icon: category_hash['icon'] || default_icon, colors: category_hash['colors'] || {})
         ]
       end.to_h
     end

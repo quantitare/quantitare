@@ -42,6 +42,11 @@ Layout/MultilineOperationIndentation:
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
+# Rails
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
 # Style
 
 Style/ClassAndModuleChildren:

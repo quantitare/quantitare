@@ -23,6 +23,8 @@ class LocationScrobble < ApplicationRecord
   scope :place, -> { where(type: PlaceScrobble.name) }
   scope :transit, -> { where(type: TransitScrobble.name) }
 
+  scope :from_other_sources, ->(other) { where.not(id: other.id).where.not(source: other.source) }
+
   def place?
     is_a? PlaceScrobble
   end

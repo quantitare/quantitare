@@ -27,7 +27,7 @@ class LocationCategory
       YAML.load_file(data_path).map do |category_hash|
         [
           category_hash['name'],
-          new(category_hash['name'], category_hash['icon'] || default_icon, colors: category_hash['colors'] || {})
+          new(category_hash['name'], icon: category_hash['icon'] || default_icon, colors: category_hash['colors'] || {})
         ]
       end.to_h
     end
@@ -37,19 +37,31 @@ class LocationCategory
     end
   end
 
-  attr_reader :name, :icon, :colors
+  attr_reader :name, :colors
 
-  def initialize(name, icon = self.class.default_icon, colors: {})
+  def initialize(name, icon: self.class.default_icon, colors: {})
     @name = name
     @icon = icon
     @colors = colors
   end
 
+  def icon
+    @icon.is_a?(Hash) ? parse_icon : @icon
+  end
+
   def to_h
     {
       name: name,
-      icon: icon,
+      icon: icon.to_h,
       colors: colors
     }
+  end
+
+  private
+
+  def parse_icon
+    icon_options = @icon.deep_dup.deep_symbolize_keys
+
+    Icon.for(icon_options.delete(:type), icon_options)
   end
 end

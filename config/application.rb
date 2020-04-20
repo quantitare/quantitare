@@ -19,9 +19,8 @@ module Quantitare
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.autoload_paths << config.root.join('app', 'queries')
-    config.autoload_paths << config.root.join('app', 'queries', 'concerns')
-    config.autoload_paths << config.root.join('lib')
+    config.autoload_paths << config.root.join('app/queries/concerns')
+    config.autoload_paths << config.root.join('app/services/concerns')
 
     config.active_job.queue_adapter = :sidekiq
 
@@ -32,3 +31,6 @@ end
 Rails.autoloaders.main.ignore(Rails.root.join('app', 'client'))
 
 Categories = Quantitare::Categories
+
+require 'util'
+require 'util/xml_node_tools'

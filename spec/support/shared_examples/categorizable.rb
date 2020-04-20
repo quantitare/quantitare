@@ -35,8 +35,8 @@ shared_examples_for Categorizable do
   end
 
   describe '#category_icon' do
-    it 'returns a hash' do
-      expect(subject.category_icon).to be_a(Hash)
+    it 'returns an Icon instance' do
+      expect(subject.category_icon).to be_an(Icon)
     end
   end
 end

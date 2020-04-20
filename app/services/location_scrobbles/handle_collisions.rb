@@ -25,7 +25,7 @@ module LocationScrobbles
       def overlapping_scrobbles(ctx)
         ctx.location_scrobble.user.location_scrobbles
           .overlapping_range(ctx.location_scrobble.start_time, ctx.location_scrobble.end_time)
-          .where.not(id: ctx.location_scrobble.id, source: ctx.location_scrobble.source)
+          .from_other_sources(ctx.location_scrobble)
       end
     end
   end

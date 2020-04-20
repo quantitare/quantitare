@@ -26,8 +26,8 @@ RSpec.describe TokenProvider do
   end
 
   describe '#icon' do
-    it 'is a correctly formatted hash' do
-      expect(subject.icon).to have_key(:type)
+    it 'is an Icon object' do
+      expect(subject.icon).to be_an(Icon)
     end
   end
 

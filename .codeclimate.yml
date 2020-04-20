@@ -9,4 +9,4 @@ exclude_patterns:
 plugins:
   rubocop:
     enabled: true
-    channel: rubocop-0-80
+    channel: rubocop-0-81

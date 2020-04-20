@@ -4,18 +4,18 @@
       <%= form_with model: scrobble, data: { target: 'editable.form' } do |f| %>
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
-            <span class="input-group-text"><%= icon_tag "fas fa-#{scrobble.category_icon[:name]}" %></span>
+            <span class="input-group-text"><%= icon_tag scrobble.category_icon %></span>
           </div>
 
           <%= f.text_field :name, class: 'form-control', data: { target: 'editable.input' } %>
 
           <div class="input-group-append">
             <%= f.button class: 'btn btn-outline-success' do %>
-              <%= icon_tag 'fas fa-check' %>
+              <%= fa_icon_tag 'fas fa-check' %>
             <% end %>
 
             <%= button_tag class: 'btn btn-outline-danger', data: { action: 'editable#deactivate' } do %>
-              <%= icon_tag 'fas fa-times' %>
+              <%= fa_icon_tag 'fas fa-times' %>
             <% end %>
           </div>
         </div>
@@ -23,7 +23,7 @@
     <% end %>
 
     <%= page_header_tag data: { target: 'editable.inactive' } do %>
-      <%= icon_tag "fas fa-#{scrobble.category_icon[:name]}" %>
+      <%= icon_tag scrobble.category_icon %>
 
       <span class="pl-2" data-target="editable.output" data-action="click->editable#activate">
         <%= scrobble.name %>

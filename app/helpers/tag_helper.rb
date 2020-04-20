@@ -2,15 +2,16 @@
 
 # Random tag wrappers go here
 module TagHelper
-  def icon_tag(icon_class, **options)
-    icon_class ||= 'fas fa-question-circle'
-    dom_class = add_dom_classes(options[:class], icon_class)
-
-    content_tag :i, nil, class: dom_class
+  def icon_tag(icon, **props)
+    icon.tag(self, **props)
   end
 
-  def page_header_tag(text = nil, **options)
-    content_tag(:div, **options.merge(class: 'row border-bottom pb-2 mb-3')) do
+  def fa_icon_tag(dom_classes, **props)
+    icon_tag(Icon.for(:fa, name: dom_classes), **props)
+  end
+
+  def page_header_tag(text = nil, **props)
+    content_tag(:div, **props.merge(class: 'row border-bottom pb-2 mb-3')) do
       content_tag(:div, class: 'col') do
         content_tag(:h2) { block_given? ? yield : text }
       end
@@ -33,7 +34,7 @@ module TagHelper
     end
   end
 
-  def form_group_tag(**options, &blk)
-    content_tag(:div, class: add_dom_classes('form-group', options[:class]), data: options[:data] || {}, &blk)
+  def form_group_tag(**props, &blk)
+    content_tag(:div, class: add_dom_classes('form-group', props[:class]), data: props[:data] || {}, &blk)
   end
 end

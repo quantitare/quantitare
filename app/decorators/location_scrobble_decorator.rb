@@ -14,16 +14,12 @@ class LocationScrobbleDecorator < ApplicationDecorator
     object.name
   end
 
-  def icon_tag(options = {})
-    h.icon_tag(icon_class, options)
+  def icon_tag(**props)
+    h.icon_tag(icon, **props)
   end
 
   def icon
-    object.category_info.icon.with_indifferent_access
-  end
-
-  def icon_class
-    'fas fa-map-marker-alt'
+    object.category_info.icon
   end
 
   def colors

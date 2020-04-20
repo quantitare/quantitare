@@ -9,7 +9,7 @@ json.extract! place,
   :street_1, :street_2, :city, :state, :zip, :country,
   :longitude, :latitude, :global
 
-json.icon place.category_icon
+json.icon place.category_icon.to_h
 json.isCustom place.custom?
 
 json.partial! 'shared/model_props', model: place

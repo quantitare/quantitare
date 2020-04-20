@@ -32,8 +32,8 @@ RSpec.describe Provider do
   end
 
   describe '#icon' do
-    it 'is an icon-hash' do
-      expect(Provider.all.first.icon).to have_key(:type)
+    it 'is an Icon instance' do
+      expect(Provider.all.first.icon).to be_an(Icon)
     end
   end
 end

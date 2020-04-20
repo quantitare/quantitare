@@ -4,6 +4,6 @@
 # Place-specific data for {LocationCategory}s
 #
 class PlaceCategory < LocationCategory
-  DATA_PATH = Rails.root.join('app', 'data', 'place_categories.yml').freeze
-  DEFAULT_ICON = { type: 'fa', name: 'map-marker-alt' }.freeze
+  DATA_PATH = Rails.root.join('app/data/place_categories.yml').freeze
+  DEFAULT_ICON = Icon.for(:fa, name: 'fas fa-map-marker-alt')
 end

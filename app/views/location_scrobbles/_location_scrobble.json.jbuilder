@@ -6,7 +6,7 @@ json.extract! location_scrobble,
   :id, :name, :original_name,
   :distance, :trackpoints,
   :start_time, :end_time,
-  :icon, :colors,
+  :colors,
   :singular
 
 json.type location_scrobble.friendly_type
@@ -27,6 +27,10 @@ json.place do
   else
     json.partial! 'places/place', place: location_scrobble.place.try(:decorate) || current_user.places.build.decorate
   end
+end
+
+json.icon do
+  json.merge! location_scrobble.icon.to_h
 end
 
 json.partial! 'shared/model_props', model: location_scrobble

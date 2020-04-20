@@ -65,8 +65,7 @@ module ApplicationHelper
   end
 
   def omniauth_provider_icon_tag(provider_name)
-    icon_class = Provider[provider_name].icon_css_class
-    icon_tag(icon_class)
+    icon_tag Provider[provider_name].icon
   end
 
   def omniauth_button(provider)
@@ -91,11 +90,10 @@ module ApplicationHelper
   end
 
   def add_dom_classes(original_dom_class, *additional_classes)
-    output = (original_dom_class || '')
-    new_classes = additional_classes.join(' ')
-    output += ' ' + new_classes
+    all_classes = (original_dom_class || '').split(' ')
+    all_classes += additional_classes.compact.flat_map { |additional_class| additional_class.split(' ') }
 
-    output.squish
+    all_classes.uniq.join(' ').squish.strip
   end
 
   private

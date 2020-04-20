@@ -2,7 +2,7 @@
   f.button class: 'btn btn-outline-success form-control',
     data: { target: 'place-scrobbles--edit.placeSubmittable' } do
 %>
-  <%= icon_tag 'fas fa-check' %>
+  <%= fa_icon_tag 'fas fa-check' %>
 <% end %>
 
 <%=
@@ -13,7 +13,7 @@
     },
     html: { type: 'button' } do
 %>
-  <%= icon_tag 'fas fa-plus' %>
+  <%= fa_icon_tag 'fas fa-plus' %>
 <% end %>
 
 <div class="btn-group w-100" data-target="place-scrobbles--edit.placeEditableInitializable">
@@ -22,7 +22,7 @@
       data: { action: 'place-scrobbles--edit#placeEditOpen' },
       html: { type: 'button' } do
   %>
-    <%= icon_tag 'fas fa-pencil-alt' %>
+    <%= fa_icon_tag 'fas fa-pencil-alt' %>
   <% end %>
 
   <%=
@@ -30,7 +30,7 @@
       data: { action: 'place-scrobbles--edit#placeNewOpen' },
       html: { type: 'button' } do
   %>
-    <%= icon_tag 'fas fa-plus' %>
+    <%= fa_icon_tag 'fas fa-plus' %>
   <% end %>
 </div>
 
@@ -39,5 +39,5 @@
     data: { target: 'place-scrobbles--edit.placeClosable', action: 'place-scrobbles--edit#placeEditClose' },
     html: { type: 'button' } do
 %>
-  <%= icon_tag 'fas fa-times' %>
+  <%= fa_icon_tag 'fas fa-times' %>
 <% end %>

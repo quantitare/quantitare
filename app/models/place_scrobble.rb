@@ -8,6 +8,9 @@ class PlaceScrobble < LocationScrobble
 
   validate :singular_scrobbles_cannot_have_a_place
 
+  delegate :place_match, to: :match_options
+  delegate :attributes=, to: :match_options, prefix: true
+
   accepts_nested_attributes_for :place
 
   def friendly_type
@@ -20,6 +23,10 @@ class PlaceScrobble < LocationScrobble
 
   def category_klass
     place.try(:service_id).present? ? Aux::PlaceCategory : super
+  end
+
+  def match_options
+    @match_options ||= MatchOptions.new(self)
   end
 
   private

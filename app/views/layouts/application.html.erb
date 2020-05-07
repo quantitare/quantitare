@@ -22,10 +22,12 @@
   <body>
     <%= render 'layouts/nav' %>
 
-    <%= content_tag :div, id: 'app', class: 'container py-4' do %>
+    <%= content_tag :div, id: 'app', class: 'container py-4', data: { controller: 'modal-template' } do %>
       <%= render 'layouts/alerts' %>
 
       <%= yield %>
+
+      <%= render 'layouts/modal_template' %>
     <% end %>
   </body>
 </html>

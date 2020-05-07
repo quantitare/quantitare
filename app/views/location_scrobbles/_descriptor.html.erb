@@ -1,5 +1,5 @@
 <% if scrobble.transit? %>
-  <%= scrobble.distance %> &middot;
+  <%= scrobble.distance_traveled %> &middot;
 <% end %>
 
 <%= time_tag scrobble.start_time %> <i class="text-muted">to</i> <%= time_tag scrobble.end_time %>

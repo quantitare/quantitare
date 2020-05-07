@@ -8,21 +8,32 @@ module PlaceMatches
   class MatchingLocationScrobbleQuery < ApplicationQuery
     include PolymorphicJoinable
 
+    RADIUS_COLUMN_NAME = :'place_matches.source_field_radius'
+
     relation PlaceMatch
     params :location_scrobble
 
     def call
       @relation = relation
-        .joins(joins)
+        .select(coordinate_query_options[:select])
+        .joins(source_joins)
         .where(source_match_pairs)
-        .where(where_str, *where_params)
+        .order(coordinate_query_options[:order])
+
+      define_filters!
 
       relation
     end
 
     private
 
-    def joins
+    def define_filters!
+      @relation = relation
+        .where(*coordinate_query_options[:conditions])
+        .or(relation.where(source_field_name: location_scrobble.read_attribute(:name)))
+    end
+
+    def source_joins
       polymorphic_joins(location_scrobble.source)
     end
 
@@ -30,21 +41,14 @@ module PlaceMatches
       location_scrobble.source.source_match_condition
     end
 
-    def where_str
-      <<~SQL.squish
-        (NOT (place_matches.source_fields ? 'name') OR place_matches.source_fields @> :name::jsonb)
-          AND (
-            NOT (place_matches.source_fields ?& array['longitude', 'latitude'])
-              OR place_matches.source_fields @> :coordinates::jsonb
-          )
-      SQL
+    def coordinate_query_options
+      latitude, longitude = extract_coordinates
+
+      relation.near_scope_options(latitude, longitude, RADIUS_COLUMN_NAME)
     end
 
-    def where_params
-      [
-        name: { name: location_scrobble.name }.to_json,
-        coordinates: { longitude: location_scrobble.longitude, latitude: location_scrobble.latitude }.to_json
-      ]
+    def extract_coordinates
+      Geocoder::Calculations.extract_coordinates(location_scrobble)
     end
   end
 end

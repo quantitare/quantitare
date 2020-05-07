@@ -1,130 +1,50 @@
-import { Controller } from 'stimulus'
+import ModeSelectController from '../mode_select_controller'
 
-export default class extends Controller {
+export default class extends ModeSelectController {
   static targets = [
     'placeId',
-    'placeSubmittable', 'placeInitializable', 'placeEditableInitializable', 'placeClosable',
-    'placeFields'
+    'placeSubmittable', 'placeInitializable', 'placeEditable', 'placeClosable',
+    'newPlaceFields', 'editPlaceFields', 'matchFields'
   ]
 
-  connect() {
-    this.refreshPlaceElements()
-
-    this.hidePlaceFields()
+  get hideableTargets() {
+    return ['placeSubmittable', 'placeInitializable', 'placeEditable', 'placeClosable', 'matchFields']
   }
 
-  get placeButtonTypes() {
-    return ['placeSubmittable', 'placeInitializable', 'placeEditableInitializable', 'placeClosable']
+  get removableTargets()  {
+    return ['newPlaceFields', 'editPlaceFields']
   }
 
-  // ========----------------------------------------------========
-  // Model attributes
-  // ========----------------------------------------------========
-
-  get placeId() {
-    return this.hasPlaceIdTarget && parseInt(this.placeIdTarget.value)
+  get disableableTargets() {
+    return ['placeId']
   }
 
-  // ========----------------------------------------------========
-  // State getters
-  // ========----------------------------------------------========
+  get modes() {
+    return {
+      initial: {
+        show: ['placeInitializable'],
+        showIf: [{ target: 'placeEditable', condition: () => this.hasEditPlaceFieldsTarget }]
+      },
 
-  get placeEditing() {
-    return this.data.has('placeEditing') && this.data.get('placeEditing') == 'true'
-  }
+      placeSelected: {
+        show: ['matchFields', 'placeSubmittable']
+      },
 
-  get canPlaceSubmit() {
-    return !this.placeEditing && this.placeId
-  }
+      newPlace: {
+        insert: ['newPlaceFields'],
+        show: ['matchFields', 'placeClosable', 'placeSubmittable'],
+        disable: ['placeId']
+      },
 
-  get canPlaceInitialize() {
-    return !this.placeEditing && !this.placeId
-  }
-
-  get canPlaceEditInitialize() {
-    return
-  }
-
-  // ========----------------------------------------------========
-  // Actions
-  // ========----------------------------------------------========
-
-  placeNewOpen(event) {
-    event.preventDefault()
-
-    this.showPlaceFields()
-    this.refreshPlaceElements()
-  }
-
-  placeEditClose(event) {
-    event.preventDefault()
-
-    this.hidePlaceFields()
-    this.refreshPlaceElements()
-  }
-
-  // ========----------------------------------------------========
-  // General helpers
-  // ========----------------------------------------------========
-
-  toggleElementsForTypes(elementType, show) {
-    const action = show ? 'remove' : 'add'
-
-    this[`${elementType}Targets`].forEach((element) => element.classList[action]('d-none'))
-  }
-
-  // ========----------------------------------------------========
-  // Place button helpers
-  // ========----------------------------------------------========
-
-  refreshPlaceElements() {
-    this.hidePlaceButtons()
-    this.showRelevantPlaceButtons()
-
-    this.setPlaceIdState()
-  }
-
-  hidePlaceButtons() {
-    this.placeButtonTypes.forEach((buttonType) => this.hidePlaceButtonsForType(buttonType))
-  }
-
-  hidePlaceButtonsForType(buttonType) {
-    this.toggleElementsForTypes(buttonType, false)
-  }
-
-  showRelevantPlaceButtons() {
-    if (this.canPlaceSubmit) {
-      this.showPlaceButtonsForType('placeSubmittable')
-    } else if (this.canPlaceInitialize) {
-      this.showPlaceButtonsForType('placeInitializable')
-    } else if (this.canPlaceEditInitialize) {
-      this.showPlaceButtonsForType('placeEditableInitializable')
-    } else {
-      this.showPlaceButtonsForType('placeClosable')
+      editPlace: {
+        insert: ['editPlaceFields'],
+        show: ['matchFields', 'placeClosable', 'placeSubmittable'],
+        disable: ['placeId']
+      }
     }
   }
 
-  showPlaceButtonsForType(buttonType) {
-    this.toggleElementsForTypes(buttonType, true)
-  }
-
-  setPlaceIdState() {
-    this.placeIdTargets.forEach((element) => element.disabled = this.placeEditing)
-  }
-
-  // ========----------------------------------------------========
-  // Place field helpers
-  // ========----------------------------------------------========
-
-  hidePlaceFields() {
-    this.toggleElementsForTypes('placeFields', false)
-    this.data.set('placeEditing', 'false')
-
-    this.refreshPlaceElements()
-  }
-
-  showPlaceFields() {
-    this.toggleElementsForTypes('placeFields', true)
-    this.data.set('placeEditing', 'true')
+  get placeId() {
+    return this.hasPlaceIdTarget && parseInt(this.placeIdTarget.value)
   }
 }

@@ -58,7 +58,15 @@ module TimelineModules
             x2: time_to_js(scrobble.end_time),
             y: scrobble.place? ? 2 : 1,
 
-            color: scrobble.category_info.colors['primary'] || '#ccc'
+            color: scrobble.category_info.colors['primary'] || '#ccc',
+
+            qnOptions: {
+              data: {
+                action: 'click->modal-template#show',
+
+                modalTemplatePath: "/locations/scrobbles/#{scrobble.id}"
+              }
+            }
           }
         end
       end

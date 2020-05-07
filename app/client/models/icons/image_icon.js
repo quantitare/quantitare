@@ -3,11 +3,14 @@ export default class ImageIcon {
     this.options = options
   }
 
-  tag({ size, className }) {
+  tag({ size, className, height, width }) {
     const element = new Image()
 
-    element.src = options[size]
-    element.classList.add(...className.split(' '))
+    element.src = this.options[size]
+
+    element.height = height
+    element.width = width
+    if (className) element.classList.add(...className.split(' '))
 
     return element.outerHTML
   }

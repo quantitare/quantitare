@@ -23,7 +23,7 @@ class ArcJSONAdapter
         type: type,
         name: name,
         category: category,
-        distance: distance,
+        distance_traveled: distance_traveled,
         description: '',
 
         place: place,
@@ -62,7 +62,7 @@ class ArcJSONAdapter
       place? ? '' : TRANSIT_CATEGORY_MAPPINGS[raw_item['activityType']]
     end
 
-    def distance
+    def distance_traveled
       place? ? 0 : Util.distance_travelled_by_trackpoints(trackpoints)
     end
 

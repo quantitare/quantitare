@@ -12,9 +12,9 @@ class Place < ApplicationRecord
   CATEGORY_KLASS = PlaceCategory
 
   FULL_ADDRESS_ATTRS = [:street_1, :street_2, :city, :state, :zip, :country].freeze
-  COORDINATES_ATTRS = [:longitude, :latitude].freeze
+  COORDINATES_ATTRS = [:latitude, :longitude].freeze
 
-  belongs_to :user, optional: true
+  belongs_to :user
   belongs_to :service, optional: true
   has_many :location_scrobbles, dependent: :nullify
   has_many :place_matches, dependent: :destroy
@@ -31,7 +31,7 @@ class Place < ApplicationRecord
   scope :custom, -> { where(service: nil) }
 
   geocoded_by :full_address
-  reverse_geocoded_by :longitude, :latitude do |obj, results|
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
     geo = results.first
 
     if geo

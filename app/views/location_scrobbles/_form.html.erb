@@ -2,9 +2,7 @@
   <div class="col mb-2">
     <div
       data-controller="mapbox"
-      data-mapbox-scrobbles="<%=
-        json_partial('location_scrobbles/location_scrobbles', locals: { location_scrobbles: [scrobble] })
-      %>"
+      data-mapbox-scrobbles-path="<%= location_scrobble_url(scrobble, format: :geojson) %>"
     >
       <div data-target="mapbox.map"></div>
     </div>

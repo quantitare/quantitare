@@ -7,7 +7,7 @@ export default class FontAwesomeIcon {
     const element = document.createElement('i')
 
     element.classList.add(...this.name.split(' '))
-    element.classList.add(...className.split(' '))
+    if (className) element.classList.add(...className.split(' '))
 
     return element.outerHTML
   }

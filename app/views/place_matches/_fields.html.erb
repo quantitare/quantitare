@@ -1,12 +1,13 @@
-<%= section_header_2_tag 'Match options' %>
-
 <%= form_group_tag do %>
   <% if f.object.persisted? && scrobble.place.blank? %>
+
     <div class="custom-control custom-checkbox">
       <%= f.check_box :to_delete, class: 'custom-control-input' %>
       <%= f.label :to_delete, 'Clear match rules for this source', class: 'custom-control-label' %>
     </div>
+
   <% else %>
+
     <div data-controller="collapse-toggle">
       <%= form_group_tag do %>
         <div class="custom-control custom-checkbox">
@@ -15,6 +16,7 @@
               class: 'custom-control-input',
               data: { target: 'collapse-toggle.state', action: 'collapse-toggle#toggle' }
           %>
+
           <%= f.label :enabled, class: 'custom-control-label' do %>
             <% if f.object.new_record? %>
               Match similar location scrobbles from this source to this place
@@ -25,18 +27,59 @@
         </div>
       <% end %>
 
-      <%= f.fields_for :source_fields do |source_fields_f| %>
-        <div data-target="collapse-toggle.collapsible">
-          <%= section_header_3_tag 'Match attributes' %>
+      <div data-target="collapse-toggle.collapsible">
+        <%= section_header_3_tag 'Match attributes' %>
 
+        <%= form_group_tag do %>
+          <div class="custom-control custom-checkbox">
+            <%= f.check_box :match_name, class: 'custom-control-input' %>
+
+            <%= f.label :match_name, class: 'custom-control-label' do %>
+              Name <span class="text-muted">« <%= f.object.source_field_name %> »</span>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div data-controller="collapse-toggle">
           <%= form_group_tag do %>
             <div class="custom-control custom-checkbox">
-              <%= source_fields_f.check_box :name, class: 'custom-control-input' %>
-              <%= source_fields_f.label :name, class: 'custom-control-label' %>
+              <%=
+                f.check_box :match_coordinates,
+                  class: 'custom-control-input',
+                    data: { target: 'collapse-toggle.state', action: 'collapse-toggle#toggle' }
+              %>
+
+              <%= f.label :match_coordinates, class: 'custom-control-label' do %>
+                Coordinates <span class="text-muted">« <%= f.object.coordinates.join(', ') %> »</span>
+              <% end %>
             </div>
           <% end %>
+
+          <div data-controller="updatable-field-display" data-target="collapse-toggle.collapsible">
+            <%= form_group_tag do %>
+              <div class="d-flex">
+                <%= f.label :source_field_radius, 'Radius', class: 'mr-auto' %>
+
+                <div>
+                  <span data-target="updatable-field-display.display"></span>m
+                </div>
+              </div>
+
+
+              <%=
+                f.range_field :source_field_radius,
+                  in: 0..1000, step: 10,
+                  class: 'custom-range',
+                  data: {
+                    target: 'updatable-field-display.field',
+                    action: 'input->updatable-field-display#update change->updatable-field-display#update'
+                  }
+              %>
+            <% end %>
+          </div>
         </div>
-      <% end %>
+      </div>
     </div>
+
   <% end %>
 <% end %>

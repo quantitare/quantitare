@@ -6,6 +6,15 @@ FactoryBot.define do
     source { create :location_import }
     place
 
-    source_fields { { longitude: Faker::Address.longitude.to_s, latitude: Faker::Address.latitude.to_s } }
+    source_field_radius { 250 }
+    source_field_latitude { Faker::Address.latitude }
+    source_field_longitude { Faker::Address.longitude }
+
+    trait :name_only do
+      source_field_name { Faker::Lorem.word }
+      source_field_radius { nil }
+      source_field_latitude { nil }
+      source_field_longitude { nil }
+    end
   end
 end

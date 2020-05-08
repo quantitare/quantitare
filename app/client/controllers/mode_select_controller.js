@@ -98,9 +98,7 @@ export default class extends Controller {
   }
 
   showConditionalTargets(targetSpecs) {
-    targetSpecs.forEach((spec) => {
-      if (spec.condition()) this.toggleShownStateForTypes(spec.target, true)
-    })
+    runConditionaSpecs(targetSpecs, this.toggleShownStateForTypes)
   }
 
   insertTargets(targetNames) {
@@ -108,8 +106,12 @@ export default class extends Controller {
   }
 
   insertConditionalTargets(targetSpecs) {
+    runConditionaSpecs(targetSpecs, this.toggleInsertedStateForTypes)
+  }
+
+  runConditionaSpecs(targetSpecs, callback) {
     targetSpecs.forEach((spec) => {
-      if (spec.condition()) this.toggleInsertedStateForTypes(spec.target, true)
+      if (spec.condition()) callback(spec.target, true)
     })
   }
 

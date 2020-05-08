@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :connections, only: [:index, :show, :new, :create, :update, :destroy]
 
-  resources :places, only: [:show, :new, :create, :update] do
+  resources :places, only: [:show] do
     collection do
       get :search
     end

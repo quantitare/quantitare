@@ -7,13 +7,13 @@ class UpdateLocationScrobble
   include ApplicationOrganizer
 
   class << self
-    def call(location_scrobble:, params:)
-      with(location_scrobble: location_scrobble, params: params).reduce(actions)
+    def call(location_scrobble:, params:, **kwargs)
+      with(location_scrobble: location_scrobble, params: params, **kwargs).reduce(actions)
     end
 
     def actions
       [
-        reduce_if(->(ctx) { ctx.location_scrobble.place? }, UpdatePlaceScrobble.actions)
+        reduce_if(->(ctx) { ctx[:location_scrobble].place? }, UpdatePlaceScrobble.actions)
       ]
     end
   end

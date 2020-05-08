@@ -4,8 +4,6 @@
 # Base controller for {LocationScrobble}-related actions.
 #
 class LocationScrobblesController < ApplicationController
-  include PlaceMatchable
-
   respond_to :geojson, only: [:index, :show]
   respond_to :js, only: :update
 
@@ -39,7 +37,7 @@ class LocationScrobblesController < ApplicationController
   def update
     @location_scrobble = current_user.location_scrobbles.find(params[:id])
 
-    UpdatePlaceScrobble.(location_scrobble: @location_scrobble, params: location_scrobble_params, save: true)
+    UpdateLocationScrobble.(location_scrobble: @location_scrobble, params: location_scrobble_params, save: true)
 
     @location_scrobble = @location_scrobble.decorate
 

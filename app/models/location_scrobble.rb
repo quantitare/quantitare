@@ -25,6 +25,12 @@ class LocationScrobble < ApplicationRecord
 
   scope :from_other_sources, ->(other) { where.not(id: other.id).where.not(source: other.source) }
 
+  accepts_nested_attributes_for :place
+
+  reverse_geocoded_by :latitude, :longitude
+
+  alias coordinates to_coordinates
+
   def place?
     is_a? PlaceScrobble
   end

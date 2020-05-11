@@ -8,6 +8,10 @@ class ImageIcon < Icon
     helper.image_tag src(props[:size] || :xl), **props
   end
 
+  def to_h
+    options.merge({ type: 'img' })
+  end
+
   private
 
   def src(size)

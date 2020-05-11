@@ -1,38 +1,4 @@
-<div class="row">
-  <div class="col" data-controller="editable">
-    <%= page_header_tag data: { target: 'editable.active' } do %>
-      <%= form_with model: scrobble, data: { target: 'editable.form' } do |f| %>
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><%= icon_tag scrobble.category_icon %></span>
-          </div>
-
-          <%= f.text_field :name, class: 'form-control', data: { target: 'editable.input' } %>
-
-          <div class="input-group-append">
-            <%= f.button class: 'btn btn-outline-success' do %>
-              <%= fa_icon_tag 'fas fa-check' %>
-            <% end %>
-
-            <%= button_tag class: 'btn btn-outline-danger', data: { action: 'editable#deactivate' } do %>
-              <%= fa_icon_tag 'fas fa-times' %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-
-    <%= page_header_tag data: { target: 'editable.inactive' } do %>
-      <%= icon_tag scrobble.category_icon %>
-
-      <span class="pl-2" data-target="editable.output" data-action="click->editable#activate">
-        <%= scrobble.name %>
-      </span>
-
-      <small class="text-muted"><%= scrobble.category %></small>
-    <% end %>
-  </div>
-</div>
+<%= render 'place_header', scrobble: @location_scrobble %>
 
 <div class="row mb-4">
   <div class="col">
@@ -40,7 +6,7 @@
   </div>
 </div>
 
-<div class="row mb-4">
+<div class="row">
   <div class="col">
     <%= render 'place_form', scrobble: scrobble %>
   </div>

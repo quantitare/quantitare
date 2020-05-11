@@ -9,14 +9,15 @@ module FormHelper
     # rubocop:disable Rails/HelperInstanceVariable
     def choices(attribute, select_options, **options)
       @template.content_tag(:div,
-        data: {
+        data: (options[:data] || {}).merge({
           controller: 'choices',
           'choices-inner-class': options[:class],
-          'choices-search-path': options[:search_path]
-        }) do
+          'choices-search-path': options[:search_path],
+          'choices-value': object.public_send(attribute)
+        })) do
         select(
           attribute, select_options, {},
-          data: (options[:data] || {}).merge({
+          data: (options[:select_data] || {}).merge({
             target: @template.add_dom_classes('choices.select', options.dig(:data, :target))
           })
         )

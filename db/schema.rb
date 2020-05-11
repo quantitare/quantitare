@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_153043) do
+ActiveRecord::Schema.define(version: 2020_05_03_183733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_153043) do
     t.string "type", null: false
     t.string "name"
     t.string "category"
-    t.decimal "distance"
+    t.decimal "distance_traveled"
     t.text "description"
     t.string "guid"
     t.jsonb "trackpoints", default: [], null: false
@@ -80,16 +80,22 @@ ActiveRecord::Schema.define(version: 2020_04_15_153043) do
   end
 
   create_table "place_matches", force: :cascade do |t|
-    t.jsonb "source_fields", default: {}, null: false
+    t.string "source_field_name"
+    t.decimal "source_field_radius"
+    t.decimal "source_field_longitude"
+    t.decimal "source_field_latitude"
     t.string "source_identifier"
     t.string "source_type"
     t.bigint "source_id"
     t.bigint "place_id"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_place_matches_on_place_id"
-    t.index ["source_fields"], name: "index_place_matches_on_source_fields", using: :gin
+    t.index ["source_field_latitude"], name: "index_place_matches_on_source_field_latitude"
+    t.index ["source_field_longitude"], name: "index_place_matches_on_source_field_longitude"
+    t.index ["source_field_name"], name: "index_place_matches_on_source_field_name"
+    t.index ["source_field_radius"], name: "index_place_matches_on_source_field_radius"
     t.index ["source_identifier"], name: "index_place_matches_on_source_identifier"
     t.index ["source_type", "source_id"], name: "index_place_matches_on_source_type_and_source_id"
     t.index ["user_id"], name: "index_place_matches_on_user_id"
@@ -275,8 +281,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_153043) do
   add_foreign_key "location_imports", "users"
   add_foreign_key "location_scrobbles", "places"
   add_foreign_key "location_scrobbles", "users"
-  add_foreign_key "place_matches", "places"
-  add_foreign_key "place_matches", "users"
   add_foreign_key "places", "services"
   add_foreign_key "places", "users"
   add_foreign_key "scrobblers", "services"

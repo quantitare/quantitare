@@ -11,7 +11,8 @@ export default class extends Controller {
       container: this.mapTarget,
       style: 'mapbox://styles/mapbox/light-v10',
 
-      bounds: this.previousBounds
+      bounds: this.previousBounds,
+      maxZoom: 17,
     })
 
     this.map.on('load', () => {

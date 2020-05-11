@@ -1,5 +1,5 @@
 <div data-controller="place-scrobbles--edit">
-  <%= form_with model: scrobble, data: { controller: 'reactive-form' } do |f| %>
+  <%= form_with model: scrobble, data: { controller: 'reactive-form', target: 'disjointed-form.form' } do |f| %>
     <%= section_header_2_tag 'Options' %>
 
     <% if scrobble.place.blank? || scrobble.place.new_record? %>
@@ -13,35 +13,98 @@
     <% end %>
 
     <% unless scrobble.singular? %>
-      <%= section_header_2_tag 'Place info' %>
-
       <%= form_group_tag do %>
         <%= f.label :place_id, 'Choose a place' %>
         <div class="form-row">
-          <div class="col-sm-9">
+          <div class="col">
             <%=
               f.choices :place_id, [],
+                search_path: search_places_path(longitude: scrobble.longitude, latitude: scrobble.latitude),
                 class: 'form-control w-100',
-                data: { target: 'place-scrobbles--edit.placeId' }
-            %>
-          </div>
+                data: {
+                  target: 'place-scrobbles--edit.placeId',
+                  action: 'change->place-scrobbles--edit#setMode',
 
-          <div class="col-sm-3">
-            <%= render 'place_buttons', f: f %>
+                  mode: 'placeSelected',
+                  'choices-formatter': 'placesGrouped'
+                }
+            %>
           </div>
         </div>
       <% end %>
 
-      <div data-target="place-scrobbles--edit.placeFields">
-        <%= f.fields_for :place do |place_f| %>
+      <%= form_group_tag do %>
+        <div class="form-row">
+          <div class="col" data-target="place-scrobbles--edit.placeInitializable">
+            <%=
+              button_tag class: 'btn btn-outline-success form-control',
+                data: {
+                  controller: 'tooltip',
+                  action: 'place-scrobbles--edit#setMode',
+                  mode: 'newPlace'
+                },
+                html: { type: 'button' } do
+            %>
+              <%= fa_icon_tag 'fas fa-plus' %>
+            <% end %>
+          </div>
+
+          <div class="col" data-target="place-scrobbles--edit.placeEditable">
+            <%=
+              button_tag class: 'btn btn-outline-primary form-control',
+                data: {
+                  controller: 'tooltip',
+                  action: 'place-scrobbles--edit#setMode',
+                  mode: 'editPlace'
+                },
+                html: { type: 'button' } do
+            %>
+              <%= fa_icon_tag 'fas fa-pencil-alt' %>
+            <% end %>
+          </div>
+
+          <div class="col" data-target="place-scrobbles--edit.placeClosable">
+            <%=
+              button_tag class: 'btn btn-outline-danger form-control',
+                data: {
+                  controller: 'tooltip',
+                  action: 'place-scrobbles--edit#setMode',
+                  mode: 'initial'
+                },
+                html: { type: 'button' } do
+            %>
+              <%= fa_icon_tag 'fas fa-times' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div data-target="place-scrobbles--edit.newPlaceFields">
+        <%= f.fields_for :place, @fresh_place do |place_f| %>
           <%= render 'places/fields', f: place_f %>
         <% end %>
       </div>
 
-      <div>
-        <%= fields model: @place_match do |place_match_f| %>
+      <% if scrobble.place.present? %>
+        <div data-target="place-scrobbles--edit.editPlaceFields">
+          <%= f.fields_for :place do |place_f| %>
+            <%= render 'places/fields', f: place_f %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div data-target="place-scrobbles--edit.matchFields">
+        <%= f.fields_for :match_options, f.object.match_options do |place_match_f| %>
           <%= render 'place_matches/fields', f: place_match_f, scrobble: scrobble %>
         <% end %>
+      </div>
+
+      <div class="form-row" data-target="place-scrobbles--edit.placeSubmittable">
+        <div class="col">
+          <%= f.button class: 'btn btn-outline-primary form-control' do %>
+            <%= fa_icon_tag 'fas fa-check' %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>

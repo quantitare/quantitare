@@ -1,90 +1,90 @@
 - name: Home
   icon:
     type: fa
-    name: home
+    name: "fas fa-home"
 - name: Residence
   icon:
     type: fa
-    name: home
+    name: "fas fa-home"
 
 - name: Office
   icon:
     type: fa
-    name: building
+    name: "fas fa-building"
 
 - name: Transit stop
   icon:
     type: fa
-    name: bus
+    name: "fas fa-bus"
 
 - name: Restaurant
   icon:
     type: fa
-    name: utensils
+    name: "fas fa-utensils"
 - name: Café
   icon:
     type: fa
-    name: coffee
+    name: "fas fa-coffee"
 - name: Bar
   icon:
     type: fa
-    name: beer
+    name: "fas fa-beer"
 
 - name: School
   icon:
     type: fa
-    name: school
+    name: "fas fa-school"
 - name: College
   icon:
     type: fa
-    name: graduation-cap
+    name: "fas fa-graduation-cap"
 - name: Classroom
   icon:
     type: fa
-    name: chalkboard-teacher
+    name: "fas fa-chalkboard-teacher"
 
 - name: Grocery
   icon:
     type: fa
-    name: apple-alt
+    name: "fas fa-apple-alt"
 - name: Shop
   icon:
     type: fa
-    name: shopping-cart
+    name: "fas fa-shopping-cart"
 - name: Hospital
   icon:
     type: fa
-    name: hospital
+    name: "fas fa-hospital"
 - name: Hotel
   icon:
     type: fa
-    name: hotel
+    name: "fas fa-hotel"
 - name: Movie theater
   icon:
     type: fa
-    name: film
+    name: "fas fa-film"
 - name: Place of worship
   icon:
     type: fa
-    name: place-of-worship
+    name: "fas fa-place-of-worship"
 - name: Wellness
   icon:
     type: fa
-    name: spa
+    name: "fas fa-spa"
 - name: Park
   icon:
     type: fa
-    name: tree
+    name: "fas fa-tree"
 - name: Parking lot
   icon:
     type: fa
-    name: parking
+    name: "fas fa-parking"
 
 - name: City
   icon:
     type: fa
-    name: city
+    name: "fas fa-city"
 - name: Campground
   icon:
     type: fa
-    name: campground
+    name: "fas fa-campground"

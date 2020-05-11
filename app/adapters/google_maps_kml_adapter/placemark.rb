@@ -22,7 +22,7 @@ class GoogleMapsKMLAdapter
         type: type,
         name: name,
         category: category,
-        distance: distance,
+        distance_traveled: distance_traveled,
         description: description,
 
         trackpoints: trackpoints.map(&:to_h),
@@ -35,7 +35,7 @@ class GoogleMapsKMLAdapter
     alias to_hash to_h
 
     def type
-      distance.zero? ? PlaceScrobble.name : TransitScrobble.name
+      distance_traveled.zero? ? PlaceScrobble.name : TransitScrobble.name
     end
 
     def name
@@ -46,7 +46,7 @@ class GoogleMapsKMLAdapter
       process_input_category(raw_category)
     end
 
-    def distance
+    def distance_traveled
       value_from_xml_path(xml_node, 'ExtendedData Data[name="Distance"] value').to_f
     end
 

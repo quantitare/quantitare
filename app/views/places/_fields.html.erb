@@ -1,3 +1,5 @@
+<% uuid = f.object.new_record? ? SecureRandom.hex : f.object.id %>
+
 <%= form_group_tag do %>
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
@@ -6,7 +8,12 @@
 
 <%= form_group_tag do %>
   <%= f.label :category %>
-  <%= f.choices :category, [], class: 'form-control w-100', search_path: location_categories_path %>
+  <%=
+    f.choices :category, [],
+      class: 'form-control w-100',
+      search_path: location_categories_path,
+      data: { 'choices-formatter': 'locationCategories' }
+  %>
   <%= f.errors :category %>
 <% end %>
 
@@ -15,20 +22,35 @@
 
   <ul class="nav nav-pills nav-fill mb-3">
     <li class="nav-item">
-      <a href="#locate_by_address" class="nav-link active" data-toggle="pill">Address</a>
+      <a
+        href="#locate_by_address_<%= uuid %>"
+        class="nav-link <%= 'active' if f.object.full_address.present? %>"
+        data-toggle="pill"
+      >
+        Address
+      </a>
     </li>
 
     <li class="nav-item">
-      <a href="#locate_by_coordinates" class="nav-link" data-toggle="pill">Coordinates</a>
+      <a
+        href="#locate_by_coordinates_<%= uuid %>"
+        class="nav-link <%= 'active' unless f.object.full_address.present? %>"
+        data-toggle="pill"
+      >
+        Coordinates
+      </a>
     </li>
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane show active" id="locate_by_address">
+    <div class="tab-pane show <%= 'active' if f.object.full_address.present? %>" id="locate_by_address_<%= uuid %>">
       <%= render 'places/address_fields', f: f %>
     </div>
 
-    <div class="tab-pane show" id="locate_by_coordinates">
+    <div
+      class="tab-pane show <%= 'active' unless f.object.full_address.present? %>"
+      id="locate_by_coordinates_<%= uuid %>"
+    >
       <%= render 'places/coordinates_fields', f: f %>
     </div>
   </div>

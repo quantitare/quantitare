@@ -4,7 +4,7 @@ json.key_format! camelize: :lower
 
 json.extract! location_scrobble,
   :id, :name, :original_name,
-  :distance, :trackpoints,
+  :distance_traveled, :trackpoints,
   :start_time, :end_time,
   :colors,
   :singular

@@ -5,12 +5,17 @@ require 'rails_helper'
 RSpec.describe LocationScrobbles::MatchingPlaceMatchQuery, :vcr do
   describe '#call' do
     let(:name) { Faker::Lorem.words(number: 2).join(' ') }
-    let(:source_fields) { { name: name } }
+    let(:source_field_name) { name }
 
-    let!(:matching_location_scrobble_1) { create :place_scrobble, name: name }
-    let!(:non_matching_location_scrobble_1) { create :place_scrobble, name: 'This should not match' }
+    let(:place_match) { build :place_match, source_field_name: source_field_name, source_field_radius: nil }
 
-    let(:place_match) { build :place_match, source_fields: source_fields }
+    let!(:matching_location_scrobble_1) do
+      create :place_scrobble, name: name, source: place_match.source
+    end
+    let!(:non_matching_location_scrobble_1) do
+      create :place_scrobble, name: 'This should not match', source: place_match.source
+    end
+
 
     subject { LocationScrobbles::MatchingPlaceMatchQuery }
 
@@ -35,13 +40,26 @@ RSpec.describe LocationScrobbles::MatchingPlaceMatchQuery, :vcr do
     context 'with more complex matching conditions' do
       let(:longitude) { 1 }
       let(:latitude) { 1 }
-      let(:source_fields) { { name: name, longitude: longitude, latitude: latitude } }
+
+      let(:place_match) do
+        create :place_match,
+          source_field_name: source_field_name,
+          source_field_longitude: longitude,
+          source_field_latitude: latitude,
+          source_field_radius: 1
+      end
 
       let!(:matching_location_scrobble_1) do
-        create :place_scrobble, name: name, trackpoints: [{ longitude: longitude, latitude: latitude }]
+        create :place_scrobble,
+          name: name,
+          source: place_match.source,
+          trackpoints: [{ longitude: longitude, latitude: latitude }]
       end
       let!(:non_matching_location_scrobble_1) do
-        create :place_scrobble, name: name, trackpoints: [{ longitude: longitude, latitude: latitude + 1 }]
+        create :place_scrobble,
+          name: name,
+          source: place_match.source,
+          trackpoints: [{ longitude: longitude, latitude: latitude + 100 }]
       end
 
       it 'matches only the one that matches' do

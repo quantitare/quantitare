@@ -1,42 +1,13 @@
 import { Controller } from 'stimulus'
 import * as Choices from 'choices.js/public/assets/scripts/choices'
 
-const formatChoices = (data) => {
-  if (!data[0].grouping) return
-
-  return data.map((grouping, idx) => {
-    return {
-      label: grouping.label,
-      id: grouping.id,
-      disabled: false,
-      choices: grouping.places.map((place) => {
-        return {
-          value: place.id,
-          label: place.name,
-          customProperties: { icon: place.icon }
-        }
-      })
-    }
-  })
-}
-
-const formatSelect = (data) => {
-  const opts = {}
-  const customProperties = JSON.parse(data.customProperties || '{}')
-
-  if (customProperties.icon) {
-    opts.innerHTML = `<i class="${customProperties.icon.data} mr-2"></i> ${data.label}`
-  }
-
-  return opts
-}
+import ChoicesFormatter from '../models/choices_formatter'
 
 export default class extends Controller {
   static targets = ['select']
 
-  initialize() {
+  connect() {
     this.choices = new Choices(this.selectTarget, this.choicesParams)
-
     this.selectObserver = new MutationObserver((mutationList, observer) => {
       mutationList.forEach((mutation) => this.handleSelectMutation(mutation))
     })
@@ -47,17 +18,19 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.choices.destroy()
     this.selectObserver.disconnect()
+    this.choices.destroy()
   }
 
   fetchChoicesFromPath() {
+    this.choices.clearChoices()
+
     this.choices.setChoices(() => {
       return fetch(this.searchPath)
         .then((response) => response.json())
-        .then((data) => formatChoices(data))
-        .catch((data) => console.log(data))
-    })
+        .then(this.dataFormatter)
+        .catch((error) => console.error(error))
+    }).then((builder) => builder.setChoiceByValue(this.value))
   }
 
   handleSelectMutation(mutation) {
@@ -69,25 +42,18 @@ export default class extends Controller {
   get choicesParams() {
     const params = {
       classNames: { containerOuter: this.outerClassName, containerInner: this.innerClassName },
+      removeItems: true,
       removeItemButton: true,
       duplicateItemsAllowed: false,
 
-      callbackOnCreateTemplates: (template) => {
-        return {
-          choice: (classNames, data, ...rest) => {
-            const opts = formatSelect(data)
+      placeholder: true,
+      placeholderValue: 'Make a selection',
+      searchPlaceholderValue: 'Make a selection',
 
-            return Object.assign(Choices.defaults.templates.choice.call(this, classNames, data, ...rest), opts)
-          },
-
-          item: (classNames, data, ...rest) => {
-            const opts = formatSelect(data)
-
-            return Object.assign(Choices.defaults.templates.item.call(this, classNames, data, ...rest), opts)
-          }
-        }
-      }
+      shouldSort: false,
     }
+
+    if (this.formatter) params.callbackOnCreateTemplates = this.formatter.templater
 
     return params
   }
@@ -112,7 +78,23 @@ export default class extends Controller {
     return base.join(' ')
   }
 
+  get value() {
+    return this.data.has('value') && this.data.get('value')
+  }
+
   get searchPath() {
     return this.data.has('search-path') && this.data.get('search-path')
+  }
+
+  get formatter() {
+    return this.formatterName ? new ChoicesFormatter(this.formatterName) : null
+  }
+
+  get formatterName() {
+    return this.data.has('formatter') && this.data.get('formatter')
+  }
+
+  get dataFormatter() {
+    return this.formatter ? this.formatter.dataFormatter : (data) => data
   }
 }

@@ -7,13 +7,18 @@ RSpec.describe PlaceMatches::MatchingLocationScrobbleQuery, :vcr do
 
   describe '#call' do
     let(:name) { Faker::Lorem.words(number: 2).join(' ') }
-    let(:longitude) { '1.0' }
-    let(:latitude) { '2.0' }
+    let(:longitude) { '1.0'.to_d }
+    let(:latitude) { '2.0'.to_d }
 
     let(:location_scrobble) { build :place_scrobble, longitude: longitude, latitude: latitude }
-    let!(:matching_place_match) { create :place_match, source_fields: { longitude: longitude, latitude: latitude } }
+    let!(:matching_place_match) do
+      create :place_match, source_field_longitude: longitude, source_field_latitude: latitude, source_field_radius: 0
+    end
     let!(:non_matching_place_match) do
-      create :place_match, source_fields: { longitude: 'hello', latitude: 'world' }
+      create :place_match,
+        source_field_longitude: longitude + 100,
+        source_field_latitude: latitude,
+        source_field_radius: 0
     end
 
     it 'returns a PlaceMatch whose source_fields match the related fields on the LocationScrobble' do
@@ -27,10 +32,15 @@ RSpec.describe PlaceMatches::MatchingLocationScrobbleQuery, :vcr do
     context 'when matching against more than one attribute' do
       let(:location_scrobble) { build :place_scrobble, name: name, longitude: longitude, latitude: latitude }
       let!(:matching_place_match) do
-        create :place_match, source_fields: { name: name, longitude: longitude, latitude: latitude }
+        create :place_match,
+          source_field_name: name,
+          source_field_radius: 0,
+          source_field_longitude: longitude,
+          source_field_latitude: latitude
       end
       let!(:non_matching_place_match) do
-        create :place_match, source_fields: { longitude: 'hello', latitude: 'world' }
+        create :place_match,
+          source_field_latitude: latitude + 150, source_field_longitude: longitude, source_field_radius: 0
       end
 
       it 'returns a PlaceMatch whose source_fields match the related fields on the LocationScrobble' do
@@ -45,9 +55,18 @@ RSpec.describe PlaceMatches::MatchingLocationScrobbleQuery, :vcr do
     context 'when more than one PlaceMatches match' do
       let(:location_scrobble) { build :place_scrobble, name: name, longitude: longitude, latitude: latitude }
       let!(:matching_place_match) do
-        create :place_match, source_fields: { name: name, longitude: longitude, latitude: latitude }
+        create :place_match,
+          source_field_name: name,
+          source_field_longitude: longitude,
+          source_field_latitude: latitude,
+          source_field_radius: 0
       end
-      let!(:matching_place_match_2) { create :place_match, source_fields: { longitude: longitude, latitude: latitude } }
+      let!(:matching_place_match_2) do
+        create :place_match,
+          source_field_longitude: longitude,
+          source_field_latitude: latitude,
+          source_field_radius: 0
+      end
 
       it 'returns all matching place matches' do
         expect(subject.(location_scrobble: location_scrobble)).to(

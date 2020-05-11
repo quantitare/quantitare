@@ -12,17 +12,10 @@ RSpec.describe PlaceMatch, :vcr do
   describe 'validations' do
     subject { create :place_match }
 
-    it { should validate_presence_of(:source_fields) }
-    it do
-      should(
-        validate_uniqueness_of(:source_fields)
-        .scoped_to(:user_id, :source_identifier)
-        .with_message('cannot have two place assignments per source')
-      )
-    end
-
     it 'is invalid if coordinates are not provided' do
-      expect(build :place_match, source_fields: { name: 'foo', longitude: nil, latitude: nil }).to be_invalid
+      expect(
+        build :place_match, source_field_radius: 1, source_field_longitude: nil, source_field_latitude: nil
+      ).to be_invalid
     end
   end
 

@@ -7,8 +7,8 @@ FactoryBot.define do
     name { Faker::Lorem.words(number: 2).join(' ') }
     category { Faker::Lorem.words(number: 1).join(' ') }
 
-    longitude { 37.8053204 }
-    latitude { -122.27254440000002 }
+    latitude { 37.8053204 }
+    longitude { -122.27254440000002 }
 
     trait :starting_with_address do
       longitude { nil }

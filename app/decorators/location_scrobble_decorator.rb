@@ -35,7 +35,14 @@ class LocationScrobbleDecorator < ApplicationDecorator
   end
 
   def distance
-    "#{object.distance == object.distance.to_i ? object.distance.to_i : object.distance}m"
+    base =
+      if object.distance_traveled == object.distance_traveled.to_i
+        object.distance_traveled.to_i
+      else
+        object.distance_traveled
+      end
+
+    "#{base}m"
   end
 
   def geo_json_coordinates

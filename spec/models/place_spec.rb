@@ -7,7 +7,7 @@ RSpec.describe Place, :vcr do
 
   it { should have_db_index :user_id }
 
-  it { should belong_to(:user).optional }
+  it { should belong_to(:user) }
   it { should belong_to(:service).optional }
   it { should have_many(:location_scrobbles) }
   it { should have_many(:place_matches) }
@@ -124,7 +124,7 @@ RSpec.describe Place, :vcr do
     end
 
     it 'returns coordinates in the right order' do
-      expect(subject.coordinates).to eq([subject.longitude, subject.latitude])
+      expect(subject.coordinates).to eq([subject.latitude, subject.longitude])
     end
   end
 

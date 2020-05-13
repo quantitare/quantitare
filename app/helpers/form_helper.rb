@@ -19,13 +19,14 @@ module FormHelper
           attribute, select_options, {},
           data: (options[:select_data] || {}).merge({
             target: @template.add_dom_classes('choices.select', options.dig(:data, :target))
-          })
+          }),
+          **options
         )
       end
     end
 
     def optionable_field(config, **opts)
-      public_send(*optionable_field_type_args(config, **opts), **opts)
+      public_send(*optionable_field_type_args(config), **optionable_field_type_opts(config, **opts))
     end
 
     def errors(attribute)
@@ -40,15 +41,27 @@ module FormHelper
     private
 
     def optionable_field_type_args(config)
-      if optionable_single_select?(config)
-        ['select', optionable_selection_options(config), { include_blank: true }]
+      if optionable_single_select?(config) || optionable_multi_select?(config)
+        ['choices', config[:name], optionable_selection_options(config)]
       elsif optionable_text_field?(config)
-        ['text_field']
+        ['text_field', config[:name]]
+      end
+    end
+
+    def optionable_field_type_opts(config, **opts)
+      if optionable_multi_select?(config)
+        opts.merge(multiple: true)
+      else
+        opts
       end
     end
 
     def optionable_single_select?(config)
       config[:type] != 'array' && config[:display].key?(:selection)
+    end
+
+    def optionable_multi_select?(config)
+      config[:type] == 'array' && config[:display].key?(:selection)
     end
 
     def optionable_text_field?(config)

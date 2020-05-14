@@ -899,22 +899,22 @@
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.1.0.tgz#497c67a1cef50d1a2459ba60f315e448d2ad87fe"
   integrity sha512-Es6WcD0nO5l+2BOQS4uLfNPYQaNDfbot3X1XUoloz+x0mPDS3eeORZJl06HXjwBG1fOGwCRnzK88LMdxKRrd6Q==
 
-"@rails/actioncable@^6.0.2-2":
-  version "6.0.2-2"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.2-2.tgz#237907f8111707950381387c273b19ac25958408"
-  integrity sha512-0sKStf8hnberH1TKup10PJ92JT2dVqf3gf+OT4lJ7DiYSBEuDcvICHxWsyML2oWTpjUhC4kLvUJ3pXL2JJrJuQ==
+"@rails/actioncable@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
+  integrity sha512-I01hgqxxnOgOtJTGlq0ZsGJYiTEEiSGVEGQn3vimZSqEP1HqzyFNbzGTq14Xdyeow2yGJjygjoFF1pmtE+SQaw==
 
-"@rails/activestorage@^6.0.2-2":
-  version "6.0.2-2"
-  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.0.2-2.tgz#108b0ad80a7cbf8d7e4c3ef5e54ea6ddb2a06d3c"
-  integrity sha512-bIQJqywfagz/UV0RP4jgLclUaBBsRoIdzGClaJ6z9EGa2QAnzu2Fdr7MrqlIDZl0/SZgteOmgF+WjZXNewSucA==
+"@rails/activestorage@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.0.3.tgz#401d2a28ecb7167cdb5e830ffddaa17c308c31aa"
+  integrity sha512-YdNwyfryHlcKj7Ruix89wZ2aiN3KTYULdW1Y/hNlHJlrY2/PXjT2YBTzZiVd+dcjrwHBsXV2rExdy+Z/lsrlEg==
   dependencies:
     spark-md5 "^3.0.0"
 
-"@rails/ujs@^6.0.2-2":
-  version "6.0.2-2"
-  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.2-2.tgz#7a28774789ca3f4a8e95e58e5a19dbaa9d6c0feb"
-  integrity sha512-JtDia3bpMbk4WeI4TwGzBfO9ahe6JeNaVE5d6qt1dS0c2KSSXxtKG4YpdiSQLZbutKAiakJPLZ3ZeoD6wRRIXg==
+"@rails/ujs@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.3.tgz#e68a03278e30daea6a110aac5dfa33c60c53055d"
+  integrity sha512-CM9OEvoN9eXkaX7PXEnbsQLULJ97b9rVmwliZbz/iBOERLJ68Rk3ClJe+fQEMKU4CBZfky2lIRnfslOdUs9SLQ==
 
 "@rails/webpacker@5.1.1":
   version "5.1.1"
@@ -3660,10 +3660,10 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-highcharts@^8.0.4:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-8.0.4.tgz#a717434012bd5f9b82b94b737d62acec501d360c"
-  integrity sha512-RD86/w7VNwuY96c2Pv16dtZujJ4vg5viiVjbFF/TCrvFpmtQRzBIECG90ww0JtiK6+6TKlwCYf0an+kgQshnRw==
+highcharts@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-8.1.0.tgz#f93adaf8d53b0f83c74c9854f0ad10baec010d97"
+  integrity sha512-4KXq9t2/PU0cqKUtET7om9Kh5AyOinIn4vYi62oYVsb4ql5wyUYW06f9Si/ERG2Thoy/rcwNmR77upKjg8xhqQ==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"

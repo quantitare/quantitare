@@ -10,7 +10,7 @@ module ScrobblerHelper
         [
           omniauth_provider_name(provider.name),
           provider.name,
-          { data: { 'custom-properties': { icon: provider.icon } } }
+          { data: { 'custom-properties': { icon: provider.icon.to_h } } }
         ]
       end
     )

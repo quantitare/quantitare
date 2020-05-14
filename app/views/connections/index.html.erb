@@ -5,7 +5,7 @@
 <%= section_header_2_tag 'New connection' %>
 
 <div class="row pb-4">
-  <%= form_with url: new_connection_path, method: 'get', class: 'form-inline col-sm-8' do |f| %>
+  <%= form_with url: new_connection_path, method: 'get', local: true, class: 'form-inline col-sm-12' do |f| %>
     <%= f.label :provider, class: 'sr-only' %>
     <div class="w-50 mr-2" data-controller="choices" data-choices-inner-class="form-control w-100">
       <%= f.select :provider, provider_select_options, { include_blank: true }, data: { target: 'choices.select' } %>

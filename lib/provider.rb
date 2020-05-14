@@ -27,12 +27,17 @@ class Provider
       registry[provider_name] = instance
     end
 
+    def register_internal(provider_name, *args, **kwargs)
+      instance = InternalProvider.new(provider_name, *args, **kwargs)
+      registry[provider_name] = instance
+    end
+
     def oauth_providers
       all.select(&:oauth?)
     end
 
     def non_oauth_providers
-      all.reject(&:oauth?)
+      all.reject(&:oauth?).reject(&:internal?)
     end
 
     def non_oauth_provider_names
@@ -63,6 +68,10 @@ class Provider
 
   def oauth?
     true
+  end
+
+  def internal?
+    false
   end
 
   def valid?
@@ -176,6 +185,11 @@ class Provider
     icon_css_class: 'fas fa-check-double',
     icon_text_color: '#fff',
     icon_bg_color: '#e44232'
+  )
+
+  Provider.register_internal(
+    :webhook,
+    icon_css_class: 'fas fa-link'
   )
 end
 # rubocop:enable Metrics/ClassLength

@@ -25,6 +25,10 @@ module FormHelper
       end
     end
 
+    def json_field(attribute, **opts)
+      text_area attribute, **opts
+    end
+
     def optionable_field(config, **opts)
       public_send(*optionable_field_type_args(config), **optionable_field_type_opts(config, **opts))
     end
@@ -43,7 +47,9 @@ module FormHelper
     def optionable_field_type_args(config)
       if optionable_single_select?(config) || optionable_multi_select?(config)
         ['choices', config[:name], optionable_selection_options(config)]
-      elsif optionable_text_field?(config)
+      elsif optionable_json_field?(config)
+        ['json_field', config[:name]]
+      else
         ['text_field', config[:name]]
       end
     end
@@ -57,15 +63,19 @@ module FormHelper
     end
 
     def optionable_single_select?(config)
-      config[:type] != 'array' && config[:display].key?(:selection)
+      config[:type] != 'array' && optionable_has_selection?(config)
     end
 
     def optionable_multi_select?(config)
-      config[:type] == 'array' && config[:display].key?(:selection)
+      config[:type] == 'array' && optionable_has_selection?(config)
     end
 
-    def optionable_text_field?(config)
-      config[:type] == 'string'
+    def optionable_json_field?(config)
+      config.dig(:display, :field) == :json
+    end
+
+    def optionable_has_selection?(config)
+      config[:display]&.key?(:selection)
     end
 
     def optionable_selection_options(config)

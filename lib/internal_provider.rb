@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 ##
-# A registry for non-OAuth providers. Provides a way of accepting credentials for services that don't require OAuth.
+# Represents a provider that does not link out to an external service. {Service} records aren't created from scrobblers
+# that hook up to these. Instead, they become {Scrobbler}s in themselves, where +service+ is +nil+.
 #
-class TokenProvider
+class InternalProvider
   attr_reader :name, :options
 
   def initialize(name, **options)
@@ -16,11 +17,7 @@ class TokenProvider
   end
 
   def internal?
-    false
-  end
-
-  def fields
-    options[:fields]
+    true
   end
 
   def icon
@@ -29,13 +26,5 @@ class TokenProvider
 
   def icon_css_class
     options[:icon_css_class]
-  end
-
-  def icon_text_color
-    options[:icon_text_color]
-  end
-
-  def icon_bg_color
-    options[:icon_bg_color]
   end
 end

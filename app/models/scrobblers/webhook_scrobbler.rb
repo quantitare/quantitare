@@ -17,7 +17,7 @@ module Scrobblers
 
       attribute :scrobble_params, String,
         default: { category: 'log', data: { content: 'scrobble' } }.to_json,
-        field: :json
+        display: { field: :json }
 
       validate do |options|
         JSON.parse(options.scrobble_params)

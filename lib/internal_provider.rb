@@ -27,4 +27,12 @@ class InternalProvider
   def icon_css_class
     options[:icon_css_class]
   end
+
+  def icon_text_color
+    options[:icon_text_color]
+  end
+
+  def icon_bg_color
+    options[:icon_bg_color]
+  end
 end

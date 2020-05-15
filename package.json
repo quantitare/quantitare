@@ -8,6 +8,7 @@
     "@rails/webpacker": "5.1.1",
     "bootstrap": "^4.4.1",
     "choices.js": "^9.0.1",
+    "codemirror": "^5.53.2",
     "dotenv": "^8.2.0",
     "highcharts": "^8.1.0",
     "jquery": "^3.5.1",

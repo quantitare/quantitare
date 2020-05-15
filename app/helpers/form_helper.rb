@@ -25,8 +25,8 @@ module FormHelper
       end
     end
 
-    def json_field(attribute, **opts)
-      text_area attribute, **opts
+    def code_field(attribute, **opts)
+      text_area attribute, **opts.deep_merge({ data: { controller: 'code-field' } })
     end
 
     def optionable_field(config, **opts)
@@ -47,8 +47,10 @@ module FormHelper
     def optionable_field_type_args(config)
       if optionable_single_select?(config) || optionable_multi_select?(config)
         ['choices', config[:name], optionable_selection_options(config)]
-      elsif optionable_json_field?(config)
-        ['json_field', config[:name]]
+      elsif optionable_textarea_field?(config)
+        ['text_area', config[:name]]
+      elsif optionable_code_field?(config)
+        ['code_field', config[:name]]
       else
         ['text_field', config[:name]]
       end
@@ -56,7 +58,11 @@ module FormHelper
 
     def optionable_field_type_opts(config, **opts)
       if optionable_multi_select?(config)
-        opts.merge(multiple: true)
+        opts.merge({ multiple: true })
+      elsif optionable_code_field?(config)
+        opts.deep_merge({
+          data: { 'code-field-languages': (config.dig(:display, :languages) || ['json']).to_json }
+        })
       else
         opts
       end
@@ -70,8 +76,12 @@ module FormHelper
       config[:type] == 'array' && optionable_has_selection?(config)
     end
 
-    def optionable_json_field?(config)
-      config.dig(:display, :field) == :json
+    def optionable_textarea_field?(config)
+      config.dig(:display, :field) == :textarea
+    end
+
+    def optionable_code_field?(config)
+      config.dig(:display, :field) == :code
     end
 
     def optionable_has_selection?(config)

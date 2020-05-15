@@ -1,0 +1,10 @@
+@use "~bootstrap/scss/forms";
+
+.CodeMirror {
+  @extend .form-control;
+  @extend textarea.form-control;
+}
+
+.CodeMirror-focused {
+  @include form-control-focus($ignore-warning: true);
+}

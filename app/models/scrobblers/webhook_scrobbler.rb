@@ -8,16 +8,18 @@ module Scrobblers
     include Templatable
     include LiquidDroppable
 
+    not_schedulable!
+
     configure_options(:options) do
       attribute :token, String, default: 'supersecretstring'
       attribute :verbs, String, default: 'post'
 
       attribute :response_code, Integer, default: '200'
-      attribute :response_body, String, default: 'scrobble created'
+      attribute :response_body, String, default: 'scrobble created', display: { field: :textarea }
 
       attribute :scrobble_params, String,
         default: { category: 'log', data: { content: 'scrobble' } }.to_json,
-        display: { field: :json }
+        display: { field: :code, languages: [:json] }
 
       validate do |options|
         JSON.parse(options.scrobble_params)

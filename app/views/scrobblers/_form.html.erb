@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6 pr-5" data-controller="collapse-toggle">
+  <div class="col-md-8 pr-5" data-controller="collapse-toggle">
     <div class="row d-flex mb-2 justify-content-end">
       <div class="custom-control custom-switch">
         <%=
@@ -40,13 +40,15 @@
           <%= render 'shared/optionable_fields', f: f, attribute: :options %>
 
           <div data-target="collapse-toggle.collapsible">
-            <%= form_group_tag do %>
-              <%= f.label :earliest_data_at, 'Date of earliest data' %>
-              <%= f.date_field :earliest_data_at, class: 'form-control', data: { controller: 'datepicker' } %>
-              <%= f.errors :earliest_data_at %>
-            <% end %>
+            <% if f.object.schedulable? %>
+              <%= form_group_tag do %>
+                <%= f.label :earliest_data_at, 'Date of earliest data' %>
+                <%= f.date_field :earliest_data_at, class: 'form-control', data: { controller: 'datepicker' } %>
+                <%= f.errors :earliest_data_at %>
+              <% end %>
 
-            <%= render 'scrobblers/schedule_fields', f: f %>
+              <%= render 'scrobblers/schedule_fields', f: f %>
+            <% end %>
           </div>
 
           <%= f.submit scrobbler.new_record? ? 'Connect' : 'Update', class: 'btn btn-primary btn-block' %>

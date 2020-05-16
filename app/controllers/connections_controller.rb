@@ -36,15 +36,16 @@ class ConnectionsController < ApplicationController
 
   def update
     @scrobbler = current_user.scrobblers.find params[:id]
+    @scrobbler.update scrobbler_params
 
-    respond_with @scrobbler
+    respond_with @scrobbler, location: -> { connections_path }
   end
 
   def destroy
-    @service = current_user.services.find params[:id]
-    @service.destroy
+    @scrobbler = current_user.scrobblers.find params[:id]
+    @scrobbler.destroy
 
-    respond_with @service, location: -> { connections_path }
+    respond_with @scrobbler, location: -> { connections_path }
   end
 
   private
@@ -52,7 +53,7 @@ class ConnectionsController < ApplicationController
   def scrobbler_params
     params.require(:scrobbler).permit(
       :type, :name, :service_id, :earliest_data_at, :enabled,
-      schedules: {}, options: {}
+      schedules: {}, options_attributes: {}
     )
   end
 

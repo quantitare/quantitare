@@ -9,7 +9,6 @@ module Checkable
   included do
     include Schedulable
 
-    class_attribute :schedulable, instance_writer: false, default: true
     class_attribute :fetches_in_chunks, instance_writer: false, default: false
     class_attribute :request_chunk_size, instance_writer: false, default: 7.days
     class_attribute :request_cadence, instance_writer: false, default: 0.seconds
@@ -18,10 +17,6 @@ module Checkable
   class_methods do
     def fetches_in_chunks!
       self.fetches_in_chunks = true
-    end
-
-    def not_schedulable!
-      self.schedulable = false
     end
   end
 

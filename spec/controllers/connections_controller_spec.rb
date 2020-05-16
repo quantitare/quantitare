@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ConnectionsController do
@@ -226,39 +228,32 @@ RSpec.describe ConnectionsController do
   end
 
   describe 'DELETE destroy' do
-    let!(:service) { create :service, :twitter, user: user }
-    let(:action) { delete :destroy, params: { id: service.id } }
+    let!(:scrobbler) { create :twitter_scrobbler, user: user }
+    let(:action) { delete :destroy, params: { id: scrobbler.id } }
 
     it_behaves_like 'authenticated_action'
 
     it 'destroys the record' do
-      expect { action }.to change(Service, :count).by(-1)
+      expect { action }.to change(Scrobbler, :count).by(-1)
     end
 
     it 'redirects to the index' do
       action
+
       expect(response).to redirect_to(connections_path)
     end
 
-    context 'when there are scrobblers created for the service' do
-      let!(:scrobbler) { create :twitter_scrobbler, service: service, user: user }
-
-      it 'destroys the scrobbler' do
-        action
-        expect { scrobbler.reload }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
-
     context "when the user attempts to destroy another user's scrobbler" do
-      let!(:service) { create :service, :twitter }
+      let!(:scrobbler) { create :twitter_scrobbler, user: create(:user) }
 
       it "does not let the user destroy other users' scrobblers" do
         action
+
         expect(response).to have_http_status(:not_found)
       end
 
       it 'does not destroy any records' do
-        expect { action }.to_not change(Service, :count)
+        expect { action }.to_not change(Scrobbler, :count)
       end
     end
   end

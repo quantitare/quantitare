@@ -9,12 +9,29 @@ module Schedulable
   class CheckNotFound < StandardError; end
 
   included do
-    validates :earliest_data_at, presence: true
+    validates :earliest_data_at, presence: true, if: :schedulable?
 
+    scope :all_schedulable, -> { where(type: schedulable_type_names) }
     scope :scheduled_for, ->(schedule) { Scrobblers::ScheduledForQuery.(all, schedule: schedule) }
+
+    class_attribute :schedulable, instance_writer: false, default: true
 
     attribute :schedules, :json, default: DEFAULT_SCHEDULES
     attribute :earliest_data_at, :datetime, default: -> { 15.years.ago.beginning_of_day }
+  end
+
+  class_methods do
+    def not_schedulable!
+      self.schedulable = false
+    end
+
+    def schedulable_types
+      @schedulable_types ||= types.select(&:schedulable?)
+    end
+
+    def schedulable_type_names
+      @schedulable_type_names ||= schedulable_types.map(&:name)
+    end
   end
 
   # A list of checks, ordered by depth

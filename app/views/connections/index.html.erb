@@ -44,7 +44,7 @@
             <td>
               <%=
                 form_with model: scrobbler,
-                  scope: "scrobbler_#{scrobbler.id}",
+                  scope: "scrobbler",
                   id: "scrobbler_#{scrobbler.id}",
                   url: connection_path(scrobbler),
                   data: { controller: 'reactive-form' } do |f|
@@ -68,7 +68,7 @@
 
                 <div class="dropdown-menu dropdown-menu-right py-1">
                   <div class="dropdown-divider my-1"></div>
-                  <%= link_to connection_path(scrobbler.service), class: 'dropdown-item', method: :delete do %>
+                  <%= link_to connection_path(scrobbler), class: 'dropdown-item', method: :delete do %>
                     <i class="fas fa-trash text-danger"></i> Delete
                   <% end %>
                 </div>

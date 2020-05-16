@@ -11,10 +11,12 @@ module Scrobblers
     not_schedulable!
 
     configure_options(:options) do
-      attribute :token, String, default: 'supersecretstring'
-      attribute :verbs, String, default: 'post'
+      attribute :token, String, default: 'supersecretstring', display: { help: 'A secret, URL safe token' }
+      attribute :verbs, String, default: 'post', display: { help: 'A comma-separated list of acceptable HTTP verbs' }
 
-      attribute :response_code, Integer, default: '200'
+      attribute :response_code, Integer,
+        default: '200',
+        display: { help: 'The HTTP status code for a successful response' }
       attribute :response_body, String, default: 'scrobble created', display: { field: :textarea }
 
       attribute :scrobble_params, String,

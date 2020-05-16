@@ -3,6 +3,10 @@
     <%= form_group_tag do %>
       <%= options_f.label config[:name] %>
       <%= options_f.optionable_field config, class: 'form-control' %>
+
+      <% if config.dig(:display, :help) %>
+        <small class="form-text text-muted"><%= config[:display][:help] %></small>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

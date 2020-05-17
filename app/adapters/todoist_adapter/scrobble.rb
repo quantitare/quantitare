@@ -57,7 +57,9 @@ class TodoistAdapter
     def tags
       return nil unless task
 
-      task['item'].labels.map { |label_id| Aux::Todoist::Label.fetch(id: label_id, adapter: metadata_adapter).name }
+      task['item'].labels.map do |label_id|
+        Aux::Todoist::Label.fetch(identifier: label_id, adapter: metadata_adapter).name
+      end
     end
   end
 end

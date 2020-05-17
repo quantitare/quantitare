@@ -6,7 +6,8 @@ module Aux
     # A cached representation of a Photo entity on Flickr
     #
     class Photo < ServiceCache
-      store_accessor :data, :title
+      jsonb_accessor :data,
+        title: :string
 
       json_schema :data,
         Rails.root.join('app', 'models', 'json_schemas', 'aux', 'flickr', 'photo_data_schema.json')

@@ -6,12 +6,15 @@ module Aux
     # A cached representation of a "label" object in Todoist.
     #
     class Label < ServiceCache
-      store_accessor :data, :name
+      jsonb_accessor :data,
+        identifier: :integer,
+        name: :string,
+        color: :integer
 
       json_schema :data,
         Rails.root.join('app', 'models', 'json_schemas', 'aux', 'todoist', 'label_data_schema.json')
 
-      fetcher :id, [:id]
+      fetcher :identifier, [:identifier]
     end
   end
 end

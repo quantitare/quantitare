@@ -12,7 +12,7 @@
 
     "title": {
       "description": "The title of the photo",
-      "type": "string"
+      "type": "string, null"
     },
 
     "description": {

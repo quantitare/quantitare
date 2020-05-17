@@ -7,7 +7,7 @@
   "properties" : {
     "mbid": {
       "description": "The Musicbrainz ID for the artist",
-      "type": "string"
+      "type": "string, null"
     },
 
     "name": {

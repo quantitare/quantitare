@@ -12,7 +12,7 @@ module Scrobblers
       token: [:string, default: 'supersecretstring', display: { help: 'A secret, URL safe token' }],
 
       verbs: [:string, array: true, default: ['post'], display: { help: 'A list of acceptable HTTP verbs' }],
-      response_code: [:integer, display: { help: 'The HTTP status code for a successful response' }],
+      response_code: [:integer, default: 200, display: { help: 'The HTTP status code for a successful response' }],
       response_body: [:string, default: 'scrobble created', display: { field: :textarea }],
 
       scrobble_params: [
@@ -48,7 +48,7 @@ module Scrobblers
     end
 
     def accepted_verbs
-      verbs.split(/,/).map(&:strip).map(&:downcase).select(&:present?)
+      verbs.map(&:strip).map(&:downcase).select(&:present?)
     end
 
     def valid_verb?(verb)

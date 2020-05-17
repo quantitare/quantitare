@@ -33,8 +33,8 @@ module AttributeAnnotatable
 
         {
           name: attribute_name,
-          type: type_for_attribute(attribute_name),
-          subtype: subtype_for_attribute(attribute_name),
+          type: type_for_annotated_attribute(attribute_name),
+          subtype: subtype_for_annotated_attribute(attribute_name),
           display: display
         }
       ]
@@ -45,17 +45,13 @@ module AttributeAnnotatable
 
   private
 
-  def type_info_for_attribute(attribute_name)
-    self.class.attribute_types[attribute_name.to_s]
-  end
-
-  def type_for_attribute(attribute_name)
-    info = type_info_for_attribute(attribute_name)
+  def type_for_annotated_attribute(attribute_name)
+    info = type_for_attribute(attribute_name)
 
     info.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Array) ? :array : info.type
   end
 
-  def subtype_for_attribute(attribute_name)
-    type_info_for_attribute(attribute_name).try(:subtype)&.type
+  def subtype_for_annotated_attribute(attribute_name)
+    type_for_attribute(attribute_name).try(:subtype)&.type
   end
 end

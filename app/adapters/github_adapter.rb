@@ -62,7 +62,6 @@ class GithubAdapter
 
   def scrobble_for_raw_commit_activity(raw_commit_activity, raw_repo)
     commit = ::Aux::CodeCommit.fetch(repository_name: raw_repo.full_name, sha: raw_commit_activity.sha, adapter: self)
-
     GithubAdapter::Scrobble.commit_from_api(commit, raw_repo).to_scrobble
   end
 

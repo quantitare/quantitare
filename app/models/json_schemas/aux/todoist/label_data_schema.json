@@ -5,20 +5,20 @@
 
   "type": "object",
   "properties": {
-    "identifier": {
+    "id": {
       "description": "The ID of the label",
-      "type": "integer, null"
+      "type": "integer"
     },
 
     "name": {
       "description": "The name of the label",
-      "type": "string, null"
+      "type": "string"
     },
 
     "color": {
       "description": "The coded color of the label designated by the user",
-      "type": "integer, null"
+      "type": "integer"
     }
   },
-  "required": ["identifier", "name"]
+  "required": ["id", "name"]
 }

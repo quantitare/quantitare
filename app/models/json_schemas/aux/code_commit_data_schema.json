@@ -7,17 +7,17 @@
   "properties": {
     "repository_name": {
       "description": "The name of the repository in which the commit can be found",
-      "type": "string, null"
+      "type": "string"
     },
 
     "sha": {
       "description": "The SHA hash of the commit",
-      "type": "string, null"
+      "type": "string"
     },
 
     "message": {
       "description": "The commit message of the commit",
-      "type": "string, null"
+      "type": "string"
     },
 
     "author": {

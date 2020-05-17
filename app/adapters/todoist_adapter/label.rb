@@ -25,7 +25,7 @@ class TodoistAdapter
 
     def data
       {
-        identifier: raw_label.id,
+        id: raw_label.id,
         name: raw_label.name,
         color: raw_label.color
       }

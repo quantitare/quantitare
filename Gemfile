@@ -109,6 +109,7 @@ end
 group :test do
   gem 'rails-controller-testing'
   gem 'webmock'
+  gem 'with_model'
 
   gem 'shoulda-matchers'
   gem 'vcr'

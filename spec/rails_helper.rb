@@ -31,6 +31,7 @@ require 'light-service/testing'
 require 'sidekiq/testing'
 require 'webmock/rspec'
 require 'vcr'
+require 'with_model'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -107,6 +108,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :helper
+  config.extend WithModel
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true

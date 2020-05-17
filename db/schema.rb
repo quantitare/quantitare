@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_183733) do
+ActiveRecord::Schema.define(version: 2020_05_16_163058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(version: 2020_05_03_183733) do
   end
 
   create_table "scrobblers", force: :cascade do |t|
-    t.text "options"
     t.string "type", null: false
     t.string "name"
     t.string "guid", null: false
@@ -144,8 +143,10 @@ ActiveRecord::Schema.define(version: 2020_05_03_183733) do
     t.datetime "updated_at", null: false
     t.jsonb "schedules", default: {}, null: false
     t.datetime "earliest_data_at"
+    t.jsonb "options", default: {}
     t.index ["disabled"], name: "index_scrobblers_on_disabled"
     t.index ["guid"], name: "index_scrobblers_on_guid"
+    t.index ["options"], name: "index_scrobblers_on_options", using: :gin
     t.index ["schedules"], name: "index_scrobblers_on_schedules", using: :gin
     t.index ["service_id"], name: "index_scrobblers_on_service_id"
     t.index ["type"], name: "index_scrobblers_on_type"

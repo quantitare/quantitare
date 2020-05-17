@@ -14,20 +14,17 @@ module Scrobblers
 
     self.request_cadence = Rails.env.test? ? 0.seconds : 0.25.seconds
 
+    jsonb_accessor :options,
+      categories: [:string, array: true, default: proc { CATEGORIES.dup }, display: { selection: CATEGORIES }]
+
+    validate do |object|
+      errors[:categories] << 'must contain valid categories' if object.categories.any? { |cat| !cat.in?(CATEGORIES) }
+    end
+
     requires_provider :trakt
     # requires_metadata_provider(
     #   trakt: ->(scrobbler) { TraktAdapter.new(scrobbler.metadata_service) }
     # )
-
-    configure_options(:options) do
-      attribute :categories, Array[String], default: proc { CATEGORIES.dup }, display: { selection: CATEGORIES }
-
-      validate do |object|
-        errors[:categories] << 'must contain valid categories' if object.categories.any? { |cat| !cat.in?(CATEGORIES) }
-      end
-    end
-
-    delegate :categories, to: :options
 
     def adapter
       TraktAdapter.new(service)

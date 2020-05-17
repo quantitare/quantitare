@@ -69,11 +69,11 @@ module FormHelper
     end
 
     def optionable_single_select?(config)
-      config[:type] != 'array' && optionable_has_selection?(config)
+      config[:type] != :array && optionable_has_selection?(config)
     end
 
     def optionable_multi_select?(config)
-      config[:type] == 'array' && optionable_has_selection?(config)
+      config[:type] == :array && optionable_has_selection?(config)
     end
 
     def optionable_textarea_field?(config)

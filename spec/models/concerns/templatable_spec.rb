@@ -4,9 +4,8 @@ RSpec.describe Templatable do
   class Scrobblers::TemplatableScrobbler < Scrobbler
     include Templatable
 
-    configure_options(:options) do
-      attribute :name, String
-    end
+    jsonb_accessor :options,
+      name: :string
   end
 
   let(:templatable) { Scrobblers::TemplatableScrobbler.new }
@@ -108,9 +107,9 @@ RSpec.describe Templatable do
   end
 
   describe '#templated' do
-    let(:options) { { name: 'the {{ thing }}' } }
+    let(:name) { 'the {{ thing }}' }
 
-    before { templatable.options = options }
+    before { templatable.name = name }
 
     it 'behaves like a hash' do
       expect(templatable.templated).to respond_to(:[])

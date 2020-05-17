@@ -14,6 +14,15 @@ GIT
       simplecov
 
 GIT
+  remote: https://github.com/madeintandem/jsonb_accessor.git
+  revision: 7329b9b1d4022ddc59ee2062d97e347f98488ce2
+  specs:
+    jsonb_accessor (1.1.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      pg (>= 0.18.1)
+
+GIT
   remote: https://github.com/quantitare/quantitare-categories.git
   revision: d22ee0d32e1f1956d2e32106f150ce38ba5dca61
   specs:
@@ -538,6 +547,7 @@ DEPENDENCIES
   has_scope (~> 0.7.2)
   jbuilder
   json_schemer
+  jsonb_accessor!
   lastfm
   light-service
   liquid

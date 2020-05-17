@@ -11,7 +11,6 @@ const MODE_MAP = { json: 'javascript', [DEFAULT_MODE_KEY]: 'javascript' }
 
 export default class extends Controller {
   connect() {
-    console.log(MODE_MAP)
     this.editor = CodeMirror.fromTextArea(this.element, {
       mode: this.mode,
       json: this.isJSON,

@@ -1,12 +1,10 @@
-<%= f.fields_for(attribute) do |options_f| %>
-  <% f.object.options_config_for(attribute).each do |config| %>
-    <%= form_group_tag do %>
-      <%= options_f.label config[:name] %>
-      <%= options_f.optionable_field config, class: 'form-control' %>
+<% f.object.options_config_for(attribute).each do |name, config| %>
+  <%= form_group_tag do %>
+    <%= f.label name %>
+    <%= f.optionable_field config, class: 'form-control' %>
 
-      <% if config.dig(:display, :help) %>
-        <small class="form-text text-muted"><%= config[:display][:help] %></small>
-      <% end %>
+    <% if config.dig(:display, :help) %>
+      <small class="form-text text-muted"><%= config[:display][:help] %></small>
     <% end %>
   <% end %>
 <% end %>

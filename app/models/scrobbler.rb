@@ -30,7 +30,6 @@ class Scrobbler < ApplicationRecord
   include HasGuid
   include Intervalable
   include Oauthable
-  include Optionable
   include Typeable
 
   has_many :scrobbles, as: :source, dependent: :destroy
@@ -46,7 +45,6 @@ class Scrobbler < ApplicationRecord
   delegate :provider_name, to: :class
 
   load_types_in 'Scrobblers'
-  options_attribute :options
 
   class << self
     def new_from_service(service, **params)

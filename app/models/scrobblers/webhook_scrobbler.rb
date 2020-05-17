@@ -8,27 +8,26 @@ module Scrobblers
     include Templatable
     include LiquidDroppable
 
-    not_schedulable!
+    jsonb_accessor :options,
+      token: [:string, default: 'supersecretstring', display: { help: 'A secret, URL safe token' }],
 
-    configure_options(:options) do
-      attribute :token, String, default: 'supersecretstring', display: { help: 'A secret, URL safe token' }
-      attribute :verbs, String, default: 'post', display: { help: 'A comma-separated list of acceptable HTTP verbs' }
+      verbs: [:string, array: true, default: ['post'], display: { help: 'A list of acceptable HTTP verbs' }],
+      response_code: [:integer, display: { help: 'The HTTP status code for a successful response' }],
+      response_body: [:string, default: 'scrobble created', display: { field: :textarea }],
 
-      attribute :response_code, Integer,
-        default: '200',
-        display: { help: 'The HTTP status code for a successful response' }
-      attribute :response_body, String, default: 'scrobble created', display: { field: :textarea }
-
-      attribute :scrobble_params, String,
+      scrobble_params: [
+        :string,
         default: { category: 'log', data: { content: 'scrobble' } }.to_json,
         display: { field: :code, languages: [:json] }
+      ]
 
-      validate do |options|
-        JSON.parse(options.scrobble_params)
-      rescue JSON::ParserError
-        errors[:scrobble_params] << 'must be valid JSON'
-      end
+    validate do |object|
+      JSON.parse(object.scrobble_params)
+    rescue JSON::ParserError
+      errors[:scrobble_params] << 'must be valid JSON'
     end
+
+    not_schedulable!
 
     # @param request [ActionDispatch::Request] the inbound webhook request object
     def handle_webhook(request)
@@ -39,7 +38,7 @@ module Scrobblers
 
       create_scrobble(parsed_scrobble_params(params))
 
-      WebResponse.new(content: options.response_body, status: options.response_code)
+      WebResponse.new(content: response_body, status: response_code)
     end
 
     def parsed_scrobble_params(params)
@@ -49,7 +48,7 @@ module Scrobblers
     end
 
     def accepted_verbs
-      options.verbs.split(/,/).map(&:strip).map(&:downcase).select(&:present?)
+      verbs.split(/,/).map(&:strip).map(&:downcase).select(&:present?)
     end
 
     def valid_verb?(verb)
@@ -57,7 +56,7 @@ module Scrobblers
     end
 
     def valid_token?(token)
-      options.token == token
+      self.token == token
     end
 
     private

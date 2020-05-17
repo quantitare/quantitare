@@ -12,7 +12,7 @@ FactoryBot.define do
 
     factory :rescuetime_scrobbler, class: Scrobblers::RescuetimeScrobbler do
       service { create :service, :rescuetime }
-      options { { time_zone: 'Pacific Time (US & Canada)' } }
+      time_zone { 'Pacific Time (US & Canada)' }
     end
 
     factory :todoist_scrobbler, class: Scrobblers::TodoistScrobbler do
@@ -21,7 +21,7 @@ FactoryBot.define do
 
     factory :trakt_scrobbler, class: Scrobblers::TraktScrobbler do
       service { create :service, :trakt }
-      options { { categories: Scrobblers::TraktScrobbler::CATEGORIES } }
+      categories { Scrobblers::TraktScrobbler::CATEGORIES }
     end
 
     factory :twitter_scrobbler, class: Scrobblers::TwitterScrobbler do
@@ -32,7 +32,7 @@ FactoryBot.define do
 
     factory :withings_scrobbler, class: Scrobblers::WithingsScrobbler do
       service { create :service, :withings2 }
-      options { { categories: Scrobblers::WithingsScrobbler::CATEGORIES } }
+      categories { Scrobblers::WithingsScrobbler::CATEGORIES }
     end
   end
 end

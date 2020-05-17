@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Scrobblers::WebhookScrobbler do
   let(:scrobble_params) { { category: 'log', data: { content: 'stuff' } }.to_json }
-  let(:scrobbler) { build(:webhook_scrobbler, options: { token: 'foobar', scrobble_params: scrobble_params }) }
+  let(:scrobbler) { build(:webhook_scrobbler, token: 'foobar', scrobble_params: scrobble_params) }
   let(:payload) { ActionController::Parameters.new(token: 'foobar') }
   let(:request_method) { 'POST' }
   let(:request) do
@@ -14,17 +14,17 @@ RSpec.describe Scrobblers::WebhookScrobbler do
   end
 
   describe 'validations' do
-    context 'when options.scrobble_params is invalid JSON' do
+    context 'when scrobble_params is invalid JSON' do
       let(:scrobble_params) { '}{!@F({' }
 
       it 'is invalid' do
         expect(scrobbler).to_not be_valid
       end
 
-      it 'sets an error on the options object' do
+      it 'sets an error on for the scrobble_params attribute' do
         scrobbler.validate
 
-        expect(scrobbler.options.errors[:scrobble_params]).to be_present
+        expect(scrobbler.errors[:scrobble_params]).to be_present
       end
     end
   end

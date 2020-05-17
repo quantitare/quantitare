@@ -174,6 +174,16 @@ RSpec.describe ConnectionsController do
       expect(response.body).to include('window.location=')
     end
 
+    context 'with a model that has options' do
+      let(:params) { { scrobbler: { type: Scrobblers::DummyScrobbler.name, name: 'hello', title: 'world' } } }
+
+      it 'correctly sets the options attribute' do
+        action
+
+        expect(Scrobbler.last.title).to eq('world')
+      end
+    end
+
     context 'with invalid params' do
       let(:params) { { scrobbler: { type: Scrobblers::DummyScrobbler.name, name: nil } } }
 

@@ -24,6 +24,10 @@ module AttributeAnnotatable
     def attribute_annotations
       @attribute_annotations ||= Hash.new { |h, k| h[k] = {} }
     end
+
+    def jsonb_accessor_names(column)
+      attribute_annotations[column].keys.map(&:to_sym)
+    end
   end
 
   def attribute_annotation_for(column)

@@ -5,7 +5,6 @@
 #
 class TimelineModule < ApplicationRecord
   include HasGuid
-  include Optionable
   include Typeable
 
   TimelineGroup = Struct.new(:name, :categories)
@@ -25,7 +24,6 @@ class TimelineModule < ApplicationRecord
   validates :type, presence: true
 
   load_types_in 'TimelineModules'
-  options_attribute :options
 
   class << self
     def timeline_group(name, categories: [])

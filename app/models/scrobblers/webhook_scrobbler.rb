@@ -8,10 +8,16 @@ module Scrobblers
     include Templatable
     include LiquidDroppable
 
+    VERBS = %w[GET POST PUT PATCH DELETE].freeze
+
     jsonb_accessor :options,
       token: [:string, default: 'supersecretstring', display: { help: 'A secret, URL safe token' }],
 
-      verbs: [:string, array: true, default: ['post'], display: { help: 'A list of acceptable HTTP verbs' }],
+      verbs: [
+        :string,
+        array: true, default: ['POST'],
+        display: { help: 'A list of acceptable HTTP verbs', selection: VERBS }
+      ],
       response_code: [:integer, default: 200, display: { help: 'The HTTP status code for a successful response' }],
       response_body: [:string, default: 'scrobble created', display: { field: :textarea }],
 
@@ -20,6 +26,8 @@ module Scrobblers
         default: { category: 'log', data: { content: 'scrobble' } }.to_json,
         display: { field: :code, languages: [:json] }
       ]
+
+    validates :verbs, length: { minimum: 1, too_short: 'at least one verb required' }
 
     not_schedulable!
 

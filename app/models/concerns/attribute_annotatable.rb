@@ -7,7 +7,7 @@ module AttributeAnnotatable
   extend ActiveSupport::Concern
 
   included do
-    delegate :attribute_annotations, to: :class
+    delegate :attribute_annotations, :type_for_annotated_attribute, :subtype_for_annotated_attribute, to: :class
   end
 
   class_methods do
@@ -28,6 +28,16 @@ module AttributeAnnotatable
     def jsonb_accessor_names(column)
       attribute_annotations[column].keys.map(&:to_sym)
     end
+
+    def type_for_annotated_attribute(attribute_name)
+      info = type_for_attribute(attribute_name)
+
+      info.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Array) ? :array : info.type
+    end
+
+    def subtype_for_annotated_attribute(attribute_name)
+      type_for_attribute(attribute_name).try(:subtype)&.type
+    end
   end
 
   def attribute_annotation_for(column)
@@ -46,16 +56,4 @@ module AttributeAnnotatable
   end
 
   alias options_config_for attribute_annotation_for
-
-  private
-
-  def type_for_annotated_attribute(attribute_name)
-    info = type_for_attribute(attribute_name)
-
-    info.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Array) ? :array : info.type
-  end
-
-  def subtype_for_annotated_attribute(attribute_name)
-    type_for_attribute(attribute_name).try(:subtype)&.type
-  end
 end

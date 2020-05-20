@@ -54,12 +54,26 @@ class ConnectionsController < ApplicationController
     params.require(:scrobbler).permit(
       :type, :name, :service_id, :earliest_data_at, :enabled,
       *scrobbler_options_params,
-      schedules: {}
+      schedules: {},
+      **scrobbler_options_keywords
     )
   end
 
+  def scrobbler_klass
+    @scrobbler&.class || params[:scrobbler][:type].constantize
+  end
+
   def scrobbler_options_params
-    (@scrobbler&.class || params[:scrobbler][:type].constantize).jsonb_accessor_names(:options)
+    scrobbler_klass.jsonb_accessor_names(:options).reject { |name| nested_type_name?(name) }
+  end
+
+  def scrobbler_options_keywords
+    scrobbler_klass.jsonb_accessor_names(:options).select { |name| nested_type_name?(name) }
+      .index_with { [] }
+  end
+
+  def nested_type_name?(name)
+    scrobbler_klass.type_for_annotated_attribute(name).in?([:array, :json])
   end
 
   def ensure_exclusive_params

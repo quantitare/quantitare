@@ -16,7 +16,7 @@ module FormHelper
           'choices-value': object.public_send(attribute)
         })) do
         select(
-          attribute, select_options, {},
+          attribute, select_options, { include_blank: true, include_hidden: false },
           data: (options[:select_data] || {}).merge({
             target: @template.add_dom_classes('choices.select', options.dig(:data, :target))
           }),

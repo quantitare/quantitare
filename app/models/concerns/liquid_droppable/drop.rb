@@ -22,7 +22,7 @@ module LiquidDroppable
     def as_json
       return {} unless defined?(self.class::METHODS)
 
-      Hash[self.class::METHODS.map { |method_name| [method_name, send(method_name).as_json] }]
+      self.class::METHODS.index_with { |method_name| send(method_name).as_json }
     end
   end
 end

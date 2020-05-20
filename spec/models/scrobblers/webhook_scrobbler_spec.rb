@@ -78,5 +78,34 @@ RSpec.describe Scrobblers::WebhookScrobbler do
         expect(Scrobble.last.data['content']).to eq('hello')
       end
     end
+
+    context 'with more complicated templated params' do
+      let(:scrobble_params) { <<~JSON }
+        {
+          "category": "data",
+          "data": {{ custom_data | to_json }}
+        }
+      JSON
+
+      let(:payload) do
+        ActionController::Parameters.new({
+          token: 'foobar', custom_data: { field_a: 'will', field_b: 'this', field_c: 'work' }
+        })
+      end
+
+      it 'is valid' do
+        expect(scrobbler).to be_valid
+      end
+
+      it 'returns 2xx' do
+        expect(scrobbler.handle_webhook(request).status).to eq(200)
+      end
+
+      it 'sets the data properly' do
+        scrobbler.handle_webhook(request)
+
+        expect(Scrobble.last.data['field_b']).to eq('this')
+      end
+    end
   end
 end

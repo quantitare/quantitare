@@ -21,12 +21,6 @@ module Scrobblers
         display: { field: :code, languages: [:json] }
       ]
 
-    validate do |object|
-      JSON.parse(object.scrobble_params)
-    rescue JSON::ParserError
-      errors[:scrobble_params] << 'must be valid JSON'
-    end
-
     not_schedulable!
 
     # @param request [ActionDispatch::Request] the inbound webhook request object

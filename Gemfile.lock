@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/quantitare/quantitare-categories.git
-  revision: d22ee0d32e1f1956d2e32106f150ce38ba5dca61
+  revision: a9c9532c3717b6390bb0a4c8414c7cf5b9eb7f48
   specs:
     quantitare-categories (0.1.0)
       activesupport
@@ -266,7 +266,7 @@ GEM
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.0)
+    minitest (5.14.1)
     msgpack (1.3.3)
     multi_json (1.14.1)
     multi_xml (0.6.0)

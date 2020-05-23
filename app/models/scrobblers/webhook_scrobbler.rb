@@ -44,7 +44,7 @@ module Scrobblers
     end
 
     def parsed_scrobble_params(params)
-      template_with(params.permit!.to_h) do
+      template_with(params.to_h) do
         JSON.parse(templated['scrobble_params']).with_indifferent_access.reverse_merge(timestamp: Time.current)
       end
     end

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
 
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, unless: :skip_csrf?
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :omniauth_provider_name, :user_omniauth_authorize_path
@@ -43,5 +43,9 @@ class ApplicationController < ActionController::Base
 
   def not_found!
     render file: 'public/404.html', layout: false, status: :not_found
+  end
+
+  def skip_csrf?
+    false
   end
 end

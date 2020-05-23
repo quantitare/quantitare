@@ -9,11 +9,15 @@ class WebhooksController < ApplicationController
   def handle
     return unless set_user && set_scrobbler
 
-    scrobbler_response = scrobbler.handle_webhook(request)
+    scrobbler_response = @scrobbler.handle_webhook(request)
     handle_web_response(scrobbler_response)
   end
 
   private
+
+  def skip_csrf?
+    true
+  end
 
   def set_user
     @user = User.find_by(id: params[:user_id])

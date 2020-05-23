@@ -14,15 +14,6 @@ GIT
       simplecov
 
 GIT
-  remote: https://github.com/madeintandem/jsonb_accessor.git
-  revision: 7329b9b1d4022ddc59ee2062d97e347f98488ce2
-  specs:
-    jsonb_accessor (1.1.0)
-      activerecord (>= 5.0)
-      activesupport (>= 5.0)
-      pg (>= 0.18.1)
-
-GIT
   remote: https://github.com/quantitare/quantitare-categories.git
   revision: 45910006943f9967c789c600d54b806f74aa0420
   specs:
@@ -99,6 +90,8 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
+    attr_json (1.0.0)
+      activerecord (>= 5.0.0, < 6.1)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -531,6 +524,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import (~> 1.0.0)
   acts-as-taggable-on (~> 6.0)
+  attr_json
   bcrypt
   bootsnap (>= 1.1.0)
   carmen
@@ -549,7 +543,6 @@ DEPENDENCIES
   has_scope (~> 0.7.2)
   jbuilder
   json_schemer
-  jsonb_accessor!
   lastfm
   light-service
   liquid

@@ -4,8 +4,6 @@
 # Abstract application record
 #
 class ApplicationRecord < ActiveRecord::Base
-  include AttributeAnnotatable
-
   self.abstract_class = true
 
   class << self

@@ -10,8 +10,7 @@ module Scrobblers
       respiratory_rate sleep spo2 steps weight workout
     ].freeze
 
-    jsonb_accessor :options,
-      categories: [:string, array: true, default: proc { [] }, display: { selection: CATEGORIES }]
+    attr_json :categories, :string, array: true, default: proc { [] }, display: { selection: CATEGORIES }
 
     validate do |object|
       errors[:categories] << 'must contain valid categories' if object.categories.any? { |cat| !cat.in?(CATEGORIES) }

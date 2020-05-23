@@ -26,6 +26,9 @@
 #   either of these bounds, you may set it accordingly. This functionality comes from the {Intervalable} concern.
 #
 class Scrobbler < ApplicationRecord
+  include AttrJson::Record
+  include AttributeAnnotatable
+
   include Checkable
   include HasGuid
   include Intervalable
@@ -43,6 +46,8 @@ class Scrobbler < ApplicationRecord
   delegate :issues?, to: :service, allow_nil: true, prefix: true
   delegate :oauth?, to: :service, allow_nil: true
   delegate :provider_name, to: :class
+
+  attr_json_config default_container_attribute: :options
 
   load_types_in 'Scrobblers'
 

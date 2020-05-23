@@ -7,14 +7,10 @@ module Scrobblers
   class RescuetimeScrobbler < Scrobbler
     TIME_ZONES = Time.zone.class.all.map(&:name)
 
-    jsonb_accessor :options,
-      time_zone: [
-        :string,
-        display: { selection: TIME_ZONES, help: <<~TEXT.squish }
-          The time zone you have selected in Rescuetime. This will determine how the data retrieved from the service is
-          parsed.
-        TEXT
-      ]
+    attr_json :time_zone, :string, display: { selection: TIME_ZONES, help: <<~TEXT.squish }
+      The time zone you have selected in Rescuetime. This will determine how the data retrieved from the service is
+      parsed.
+    TEXT
 
     validates :time_zone, presence: true, inclusion: { in: TIME_ZONES }
 

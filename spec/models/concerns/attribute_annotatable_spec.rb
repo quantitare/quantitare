@@ -17,16 +17,17 @@ RSpec.describe AttributeAnnotatable do
     end
 
     model do
+      include AttrJson::Record
       include AttributeAnnotatable
 
-      jsonb_accessor :options,
-        widget: :string,
-        gadgets: [:string, array: true],
-        number: [:integer, display: { help: 'Something' }],
-        stuff: :json
+      attr_json_config default_container_attribute: :options
 
-      jsonb_accessor :settings,
-        other_thing: :string
+      attr_json :widget, :string
+      attr_json :gadgets, :string, array: true
+      attr_json :number, :integer, display: { help: 'Something' }
+      attr_json :stuff, :json
+
+      attr_json :other_thing, :string, container_attribute: :settings
     end
   end
 

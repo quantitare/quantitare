@@ -4,8 +4,7 @@ RSpec.describe Templatable do
   class Scrobblers::TemplatableScrobbler < Scrobbler
     include Templatable
 
-    jsonb_accessor :options,
-      name: :string
+    attr_json :name, :string
   end
 
   let(:templatable) { Scrobblers::TemplatableScrobbler.new }

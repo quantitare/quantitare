@@ -14,8 +14,7 @@ module Scrobblers
 
     self.request_cadence = Rails.env.test? ? 0.seconds : 0.25.seconds
 
-    jsonb_accessor :options,
-      categories: [:string, array: true, default: proc { CATEGORIES.dup }, display: { selection: CATEGORIES }]
+    attr_json :categories, :string, array: true, default: proc { CATEGORIES.dup }, display: { selection: CATEGORIES }
 
     validate do |object|
       errors[:categories] << 'must contain valid categories' if object.categories.any? { |cat| !cat.in?(CATEGORIES) }

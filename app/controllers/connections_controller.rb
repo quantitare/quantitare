@@ -64,11 +64,11 @@ class ConnectionsController < ApplicationController
   end
 
   def scrobbler_options_params
-    scrobbler_klass.jsonb_accessor_names(:options).reject { |name| nested_type_name?(name) }
+    scrobbler_klass.store_accessor_names(:options).reject { |name| nested_type_name?(name) }
   end
 
   def scrobbler_options_keywords
-    scrobbler_klass.jsonb_accessor_names(:options).select { |name| nested_type_name?(name) }
+    scrobbler_klass.store_accessor_names(:options).select { |name| nested_type_name?(name) }
       .index_with { [] }
   end
 

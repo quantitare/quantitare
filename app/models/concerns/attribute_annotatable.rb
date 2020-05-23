@@ -11,32 +11,30 @@ module AttributeAnnotatable
   end
 
   class_methods do
-    def jsonb_accessor(attribute_name, **config)
-      config.each do |name, type|
-        _type, options = Array(type)
+    def attr_json(attribute_name, type, **options)
+      column_name = options[:container_attribute] || attr_json_config.default_container_attribute
 
-        attribute_annotations[attribute_name.to_sym][name.to_sym] = options.try(:delete, :display)
-      end
+      attribute_annotations[column_name.to_sym][attribute_name.to_sym] = options.try(:delete, :display) || {}
 
-      super
+      super(attribute_name, type, **options)
     end
 
     def attribute_annotations
       @attribute_annotations ||= Hash.new { |h, k| h[k] = {} }
     end
 
-    def jsonb_accessor_names(column)
+    def store_accessor_names(column)
       attribute_annotations[column].keys.map(&:to_sym)
     end
 
     def type_for_annotated_attribute(attribute_name)
-      info = type_for_attribute(attribute_name)
+      info = attr_json_registry[attribute_name.to_sym].type
 
-      info.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Array) ? :array : info.type
+      info.is_a?(AttrJson::Type::Array) ? :array : info.type
     end
 
     def subtype_for_annotated_attribute(attribute_name)
-      type_for_attribute(attribute_name).try(:subtype)&.type
+      attr_json_registry[attribute_name.to_sym].type.try(:base_type)&.type
     end
   end
 

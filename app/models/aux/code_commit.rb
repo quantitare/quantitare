@@ -5,9 +5,18 @@ module Aux
   # A representation of a commit made in a source control system
   #
   class CodeCommit < ServiceCache
-    store_accessor :data, :repository_name, :sha, :author, :committer, :message, :parents, :diff
+    attr_json :repository_name, :string
+    attr_json :sha, :string
+    attr_json :message, :string
 
-    json_schema :data, Rails.root.join('app', 'models', 'json_schemas', 'aux', 'code_commit_data_schema.json')
+    attr_json :author, Aux::CodeParticipant.to_type
+    attr_json :committer, Aux::CodeParticipant.to_type
+
+    attr_json :diff, Aux::CodeDiff.to_type
+    attr_json :parents, Aux::CodeCommitReference.to_type, array: true, default: proc { [] }
+
+    validates :repository_name, presence: true
+    validates :sha, presence: true
 
     fetcher :repository_name_and_sha, [:repository_name, :sha]
   end

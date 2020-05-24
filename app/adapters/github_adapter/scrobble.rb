@@ -30,7 +30,7 @@ class GithubAdapter
     private
 
     def timestamp
-      Time.zone.parse(code_commit.author['date'])
+      code_commit.author.date
     end
 
     def data
@@ -48,23 +48,23 @@ class GithubAdapter
 
     def author
       {
-        name: code_commit.author['name'],
-        email: code_commit.author['email']
+        name: code_commit.author.name,
+        email: code_commit.author.email
       }
     end
 
     def committer
       {
-        name: code_commit.committer['name'],
-        email: code_commit.committer['email']
+        name: code_commit.committer.name,
+        email: code_commit.committer.email
       }
     end
 
     def diff
       {
-        files_changed: code_commit.diff['files_changed'],
-        additions: code_commit.diff['additions'],
-        deletions: code_commit.diff['deletions']
+        files_changed: code_commit.diff.files_changed,
+        additions: code_commit.diff.additions,
+        deletions: code_commit.diff.deletions
       }
     end
   end

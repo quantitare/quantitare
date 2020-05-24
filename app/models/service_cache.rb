@@ -5,10 +5,12 @@
 #
 class ServiceCache < ApplicationRecord
   include ServiceFetchable
+  include AttrJson::Record
+  include AttributeAnnotatable
 
   EXPIRY_INTERVAL = 1.month.freeze
 
-  serialize :data, HashSerializer
+  attr_json_config default_container_attribute: :data
 
   belongs_to :service, optional: true
 

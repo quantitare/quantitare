@@ -459,7 +459,8 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
-    thwait (0.1.0)
+    thwait (0.2.0)
+      e2mmap
     tilt (2.0.10)
     todoist-ruby (0.2.4)
       concurrent-ruby (~> 1.0)

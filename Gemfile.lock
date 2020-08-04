@@ -233,7 +233,7 @@ GEM
     lastfm (1.27.3)
       httparty
       xml-simple
-    light-service (0.14.0)
+    light-service (0.15.0)
       activesupport (>= 3.0.0)
     liquid (4.0.3)
     listen (3.2.1)

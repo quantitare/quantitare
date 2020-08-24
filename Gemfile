@@ -113,7 +113,7 @@ group :test do
   gem 'vcr'
 
   # CodeClimate's test reporter is broken for Simplecov version 0.18+. Update these gems once the issue is resolved.
-  gem 'simplecov', '< 0.18'
+  gem 'simplecov', '<= 0.19.0'
   gem 'simplecov-json',
     require: false,
     git: 'https://github.com/kevjin/simplecov-json.git',

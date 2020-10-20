@@ -6,7 +6,7 @@
     "@rails/activestorage": "^6.0.3",
     "@rails/ujs": "^6.0.3",
     "@rails/webpacker": "5.2.1",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.5.3",
     "choices.js": "^9.0.1",
     "dotenv": "^8.2.0",
     "highcharts": "^8.2.0",

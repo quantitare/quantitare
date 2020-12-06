@@ -3,12 +3,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '2.7.2'
 
 gem 'rails', '~> 6.0.2'
 
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.0'
 
 # Quantitare modules
 gem 'quantitare-categories', github: 'quantitare/quantitare-categories'
@@ -99,7 +99,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '<= 3.2.1'
+  gem 'listen', '>= 3.0.5', '<= 3.3.1'
   gem 'web-console', '>= 3.3.0'
 
   gem 'spring'
@@ -115,7 +115,7 @@ group :test do
   gem 'vcr'
 
   # CodeClimate's test reporter is broken for Simplecov version 0.18+. Update these gems once the issue is resolved.
-  gem 'simplecov', '< 0.18'
+  gem 'simplecov', '<= 0.19.1'
   gem 'simplecov-json',
     require: false,
     git: 'https://github.com/kevjin/simplecov-json.git',

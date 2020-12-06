@@ -13,22 +13,6 @@ RSpec.describe Scrobblers::WebhookScrobbler do
     )
   end
 
-  describe 'validations' do
-    context 'when scrobble_params is invalid JSON' do
-      let(:scrobble_params) { '}{!@F({' }
-
-      it 'is invalid' do
-        expect(scrobbler).to_not be_valid
-      end
-
-      it 'sets an error on for the scrobble_params attribute' do
-        scrobbler.validate
-
-        expect(scrobbler.errors[:scrobble_params]).to be_present
-      end
-    end
-  end
-
   describe '#handle_webhook' do
     it 'returns an OK status' do
       expect(scrobbler.handle_webhook(request).status).to eq(200)

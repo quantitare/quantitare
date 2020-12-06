@@ -39,7 +39,7 @@ module Scrobblers
     end
 
     def parsed_scrobble_params(params)
-      template_with(params.to_h) do
+      template_with(params) do
         JSON.parse(templated['scrobble_params']).with_indifferent_access.reverse_merge(timestamp: Time.current)
       end
     end
@@ -59,7 +59,7 @@ module Scrobblers
     private
 
     def prepare_webhook(request)
-      params = request.params.except(:action, :controller, :user_id, :scrobbler_id, :format)
+      params = request.params.to_unsafe_h.except(:action, :controller, :user_id, :scrobbler_id, :format)
       verb = request.method_symbol.to_s.downcase
       token = params.delete(:token)
 

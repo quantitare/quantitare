@@ -1,17 +1,12 @@
 require 'simplecov'
+require 'simplecov_json_formatter'
 
 SimpleCov.start 'rails' do
-  if ENV['CI']
-    formatter SimpleCov::Formatter::SimpleFormatter
-  else
-    require 'simplecov-json'
-
-    formatter SimpleCov::Formatter::MultiFormatter.new([
-      SimpleCov::Formatter::SimpleFormatter,
-      SimpleCov::Formatter::HTMLFormatter,
-      SimpleCov::Formatter::JSONFormatter
-    ])
-  end
+  formatter SimpleCov::Formatter::MultiFormatter.new([
+    SimpleCov::Formatter::SimpleFormatter,
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::JSONFormatter
+  ])
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'

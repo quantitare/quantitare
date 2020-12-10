@@ -235,7 +235,7 @@ GEM
     light-service (0.15.0)
       activesupport (>= 3.0.0)
     liquid (4.0.3)
-    listen (3.3.1)
+    listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.7.0)
@@ -541,7 +541,7 @@ DEPENDENCIES
   lastfm
   light-service
   liquid
-  listen (>= 3.0.5, <= 3.3.1)
+  listen (>= 3.0.5, <= 3.3.3)
   memoist
   nokogiri
   octokit

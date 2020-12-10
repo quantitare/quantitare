@@ -14,7 +14,7 @@
     "lodash": "^4.17.20",
     "mapbox-gl": "^1.13.0",
     "popper.js": "^1.16.1",
-    "stimulus": "^1.1.1",
+    "stimulus": "^2.0.0",
     "turbolinks": "^5.2.0",
     "vanillajs-datepicker": "^1.0.3"
   },

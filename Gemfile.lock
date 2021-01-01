@@ -5,15 +5,6 @@ GIT
     rescuetime (1.0.1)
 
 GIT
-  remote: https://github.com/kevjin/simplecov-json.git
-  revision: dfdf187383dd7038ed37c8107da57a5d5d3ee759
-  ref: dfdf187383dd7038ed37c8107da57a5d5d3ee759
-  specs:
-    simplecov-json (0.2)
-      json
-      simplecov
-
-GIT
   remote: https://github.com/quantitare/quantitare-categories.git
   revision: d22ee0d32e1f1956d2e32106f150ce38ba5dca61
   specs:
@@ -119,7 +110,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    docile (1.3.2)
+    docile (1.3.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
@@ -222,7 +213,6 @@ GEM
     ice_nine (0.11.2)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
-    json (2.3.1)
     json_schemer (0.2.17)
       ecma-re-validator (~> 0.3)
       hana (~> 1.3)
@@ -573,8 +563,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq
   sidekiq-scheduler
-  simplecov (<= 0.20.0)
-  simplecov-json!
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   thwait

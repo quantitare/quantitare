@@ -112,10 +112,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'vcr'
 
-  # CodeClimate's test reporter is broken for Simplecov version 0.18+. Update these gems once the issue is resolved.
-  gem 'simplecov', '<= 0.20.0'
-  gem 'simplecov-json',
-    require: false,
-    git: 'https://github.com/kevjin/simplecov-json.git',
-    ref: 'dfdf187383dd7038ed37c8107da57a5d5d3ee759'
+  gem 'simplecov'
 end

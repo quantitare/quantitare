@@ -4,8 +4,6 @@ SimpleCov.start 'rails' do
   if ENV['CI']
     formatter SimpleCov::Formatter::SimpleFormatter
   else
-    require 'simplecov-json'
-
     formatter SimpleCov::Formatter::MultiFormatter.new([
       SimpleCov::Formatter::SimpleFormatter,
       SimpleCov::Formatter::HTMLFormatter,

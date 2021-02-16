@@ -917,10 +917,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@rails/actioncable@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
-  integrity sha512-I01hgqxxnOgOtJTGlq0ZsGJYiTEEiSGVEGQn3vimZSqEP1HqzyFNbzGTq14Xdyeow2yGJjygjoFF1pmtE+SQaw==
+"@rails/actioncable@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.2.tgz#c2eb025afd3f97d2328aef5c647c1b44dcecb83c"
+  integrity sha512-KGl8Vd5MWAIE6X/QVr36y5LLkqNRgt8frflIUkuMm/zB/+vnL6vO8jXQgSzpmPHZ7+j7fJv4JmfL1jofKUDFdw==
 
 "@rails/activestorage@^6.0.3":
   version "6.0.3"

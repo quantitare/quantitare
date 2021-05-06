@@ -53,7 +53,7 @@ gem 'rails-settings-cached', '~> 0.7.1'
 gem 'responders', '~> 3.0.0'
 
 # Authentication
-gem 'devise', '~> 4.7.0'
+gem 'devise', '~> 4.8.0'
 gem 'omniauth', '~> 1.9.0'
 
 # Omniauth strategies

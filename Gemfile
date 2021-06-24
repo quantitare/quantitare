@@ -44,7 +44,7 @@ gem 'thwait'
 
 # Extensions
 gem 'activerecord-import', '~> 1.1.0'
-gem 'acts-as-taggable-on', '~> 7.0'
+gem 'acts-as-taggable-on', '~> 8.0'
 gem 'draper', '~> 4.0.0'
 gem 'has_scope', '~> 0.8.0'
 gem 'memoist'

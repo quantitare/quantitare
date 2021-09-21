@@ -219,8 +219,8 @@ GEM
     lastfm (1.27.4)
       httparty
       xml-simple
-    light-service (0.15.0)
-      activesupport (>= 3.0.0)
+    light-service (0.17.0)
+      activesupport (>= 4.0.0)
     liquid (5.0.1)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)

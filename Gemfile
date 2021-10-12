@@ -8,7 +8,7 @@ ruby '2.7.2'
 gem 'rails', '~> 6.0.2'
 
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.5'
 
 # Quantitare modules
 gem 'quantitare-categories', github: 'quantitare/quantitare-categories'

@@ -54,7 +54,7 @@ gem 'responders', '~> 3.0.0'
 
 # Authentication
 gem 'devise', '~> 4.8.0'
-gem 'omniauth', '~> 1.9.0'
+gem 'omniauth', '~> 1.9.2'
 
 # Omniauth strategies
 gem 'omniauth-flickr'

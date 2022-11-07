@@ -9,7 +9,7 @@
     "bootstrap": "^4.5.3",
     "choices.js": "^9.0.1",
     "dotenv": "^10.0.0",
-    "highcharts": "^9.1.1",
+    "highcharts": "^10.3.1",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.3.1",
